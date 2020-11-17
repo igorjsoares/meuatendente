@@ -1,2 +1,2 @@
 <?php
-echo "Em construção v. 0.1.001";
+echo "Em construção v. 0.1.002";
