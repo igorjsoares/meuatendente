@@ -166,7 +166,7 @@
             //Envia a requisição
             public function sendRequest($motivo, $method, $data)
             {
-                include("dados_conexao.php");
+                include("../dados_conexao.php");
 
                 $url = 'https://' . $this->APIurl . $method;
                 if (is_array($data)) {
@@ -181,7 +181,7 @@
 
                 $response = file_get_contents($url, false, $options);
 
-                file_put_contents('log.txt', "> REQ " . date('d/m/Y h:i:s') . ' Resp Requisição: ' . $response . PHP_EOL, FILE_APPEND);
+                $this->logSis('REQ', 'Resp Requisição: ' . $response);
 
                 //return $response;
 
@@ -193,13 +193,13 @@
                     $resultado = mysqli_query($conn['link'], $sql);
                     $idInteracaoIn = mysqli_insert_id($conn['link']);
                     if ($resultado != '1') {
-                        file_put_contents('log.txt', "> ERR " . date('d/m/Y h:i:s') . ' Insert interação IN. Erro: ' . $resultado . PHP_EOL, FILE_APPEND);
+                $this->logSis('ERR', 'Insert interação IN. Erro: ' . $resultado);
                     } else {
-                        file_put_contents('log.txt', "> SUC " . date('d/m/Y h:i:s') . ' Insert interação IN. ID_Interação: ' . $idInteracaoIn . PHP_EOL, FILE_APPEND);
-
+                $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
                     }
                 } else {
-                    file_put_contents('log.txt', "> ERR " . date('d/m/Y h:i:s') . ' Não teve resposta da requisição a tempo' . $resposta . PHP_EOL, FILE_APPEND);
+                $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
+
                 }
             } //# FCT Envio Requisição
 
