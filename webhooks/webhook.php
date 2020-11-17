@@ -207,6 +207,7 @@
                 if ($resultado != '1') {
                     $erro = mysqli_error($conn['link']);
                     $this->logSis('ERR', 'Insert interação IN. Erro: ' . $erro);
+                    $this->logSis('DEB', 'SQL : ' . $sql);
                 } else {
                     $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
                 }
