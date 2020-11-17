@@ -205,10 +205,11 @@
                 $resultado = mysqli_query($conn['link'], $sql);
                 $idInteracaoIn = mysqli_insert_id($conn['link']);
                 if ($resultado != '1') {
-                    $this->logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_connect_error());
+                    $this->logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_error( $conn['link'] ));
                 } else {
                     $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
                 }
+                mysqli_close($conn['link']);
         }
 
         //* Função de LOG
