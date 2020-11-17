@@ -126,7 +126,9 @@
                     }
 
                     //( Insere a interação que recebida no BD 
-                    $sql = "INSERT INTO tbl_interacoes(direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES (0, $this->id_contato, '', '', '$idMensagemWhats', '$mensagem', 1, FROM_UNIXTIME($timestamp))";
+                $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', $idMensagemWhats, $mensagem, 1);
+
+                    $sql = "INSERT INTO tbl_interacoes(direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ()";
                     $resultado = mysqli_query($conn['link'], $sql);
                     $this->id_interacao = mysqli_insert_id($conn['link']);
                     if ($resultado != '1') {
@@ -145,9 +147,9 @@
         public function ftcAbertura($remoteJID, $primeiroContato)
         {
             if ($primeiroContato == true) {
-                if($this->conf_cad_dados == 1){ //( Solicitar os dados ao cliente 
+                if ($this->conf_cad_dados == 1) { //( Solicitar os dados ao cliente 
                     $aberturaString = $this->msg_cad_dados;
-                }else{
+                } else {
                     $aberturaString = $this->msg_inicial;
                 }
                 $this->sendMessage("Inicial", $remoteJID, $aberturaString);
@@ -155,53 +157,59 @@
         }
 
         //* P R E P A R O  E N V I O
-            //Prepara para envio da mensagem de texto
-            public function sendMessage($motivo, $remoteJID, $text)
-            {
-                $data = array('number' => $remoteJID, 'menssage' => $text);
-                $this->sendRequest($motivo, 'send_message', $data);
+        //Prepara para envio da mensagem de texto
+        public function sendMessage($motivo, $remoteJID, $text)
+        {
+            $data = array('number' => $remoteJID, 'menssage' => $text);
+            $this->sendRequest($motivo, 'send_message', $data);
+        }
+
+        //* E N V I O
+        //Envia a requisição
+        public function sendRequest($motivo, $method, $data)
+        {
+            include("../dados_conexao.php");
+
+            $url = 'https://' . $this->APIurl . $method;
+            if (is_array($data)) {
+                $data = json_encode($data);
             }
 
-            //* E N V I O
-            //Envia a requisição
-            public function sendRequest($motivo, $method, $data)
-            {
-                include("../dados_conexao.php");
+            $options = stream_context_create(['http' => [
+                'method'  => 'POST',
+                'header'  => "Content-type: application/json\r\nAuthorization: $this->token\r\n",
+                'content' => $data
+            ]]);
 
-                $url = 'https://' . $this->APIurl . $method;
-                if (is_array($data)) {
-                    $data = json_encode($data);
-                }
+            $response = file_get_contents($url, false, $options);
 
-                $options = stream_context_create(['http' => [
-                    'method'  => 'POST',
-                    'header'  => "Content-type: application/json\r\nAuthorization: $this->token\r\n",
-                    'content' => $data
-                ]]);
+            $this->logSis('REQ', 'Resp Requisição: ' . $response);
 
-                $response = file_get_contents($url, false, $options);
+            //return $response;
 
-                $this->logSis('REQ', 'Resp Requisição: ' . $response);
-
-                //return $response;
-
-                $resposta = json_decode($response, true);
-                $statusEnvio = $resposta['message'];
-                if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
-                    $id_resposta = $resposta['requestMenssage']['id'];
-                    $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($this->idInstancia, 1, $this->id_contato, 2, $this->id_interacao, '$id_resposta', '$motivo', 1, NOW())";
-                    $resultado = mysqli_query($conn['link'], $sql);
-                    $idInteracaoIn = mysqli_insert_id($conn['link']);
-                    if ($resultado != '1') {
-                $this->logSis('ERR', 'Insert interação IN. Erro: ' . $resultado);
-                    } else {
-                $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
-                    }
-                } else {
+            $resposta = json_decode($response, true);
+            $statusEnvio = $resposta['message'];
+            if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
+                $id_resposta = $resposta['requestMenssage']['id'];
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, 2, $this->id_interacao, $id_resposta, $motivo, 1);
+                
+            } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
+            }
+        } //# FCT Envio Requisição
 
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $resposta, $id_mensagem, $mensagem, $status){
+            include("../dados_conexao.php");
+
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, $id_contato, $tipo, '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+                $resultado = mysqli_query($conn['link'], $sql);
+                $idInteracaoIn = mysqli_insert_id($conn['link']);
+                if ($resultado != '1') {
+                    $this->logSis('ERR', 'Insert interação IN. Erro: ' . $resultado);
+                } else {
+                    $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
                 }
-            } //# FCT Envio Requisição
+        }
 
         //* Função de LOG
         public function logSis($tipo, $texto)
