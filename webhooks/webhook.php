@@ -126,14 +126,9 @@
                     }
 
                     //( Insere a interação que recebida no BD 
-                $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', $idMensagemWhats, $mensagem, 1);
+                    $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', $idMensagemWhats, $mensagem, 1);
 
-                    $sql = "INSERT INTO tbl_interacoes(direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ()";
-                    $resultado = mysqli_query($conn['link'], $sql);
-                    $this->id_interacao = mysqli_insert_id($conn['link']);
-                    if ($resultado != '1') {
-                        $this->logSis('ERR', 'Insert interação. Erro: ' . $resultado . mysqli_connect_error());
-                    } else {
+                    if ($resultado == '1') {
                         if ($this->primeirocontato == true) { //( Se for o primeiro contato
                             $this->ftcAbertura($decoded['Body']['Info']['RemoteJid'], true);
                         }
@@ -192,26 +187,27 @@
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
                 $id_resposta = $resposta['requestMenssage']['id'];
                 $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, 2, $this->id_interacao, $id_resposta, $motivo, 1);
-                
             } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
             }
         } //# FCT Envio Requisição
 
-        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $resposta, $id_mensagem, $mensagem, $status){
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $resposta, $id_mensagem, $mensagem, $status)
+        {
             include("../dados_conexao.php");
 
             $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, $id_contato, $tipo, '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
-                $resultado = mysqli_query($conn['link'], $sql);
-                $idInteracaoIn = mysqli_insert_id($conn['link']);
-                if ($resultado != '1') {
-                    $erro = mysqli_error($conn['link']);
-                    $this->logSis('ERR', 'Insert interação IN. Erro: ' . $erro);
-                    $this->logSis('DEB', 'SQL : ' . $sql);
-                } else {
-                    $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
-                }
-                mysqli_close($conn['link']);
+            $resultado = mysqli_query($conn['link'], $sql);
+            $idInteracaoIn = mysqli_insert_id($conn['link']);
+            if ($resultado != '1') {
+                $erro = mysqli_error($conn['link']);
+                $this->logSis('ERR', 'Insert interação IN. Erro: ' . $erro);
+                $this->logSis('DEB', 'SQL : ' . $sql);
+            } else {
+                return 1;
+                $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
+            }
+            mysqli_close($conn['link']);
         }
 
         //* Função de LOG
