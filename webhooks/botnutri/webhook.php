@@ -137,6 +137,7 @@
             }
         }
 
+        //* Validação de e-mail
         public function validaEmail($palavra, $numero, $primeiroContato, $idContato)
         {
             if ($primeiroContato == true) {
@@ -158,12 +159,12 @@
 
                     $this->sendMessage("Inicial", $numero, 'Esse é um e-mail válido e cadastrado');
                 }else{
-                    $this->sendMessage("Inicial", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br");
+                    $this->sendMessage("ErroBDEmail", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br");
 
                 }
             } else { //e-mail invalido
                 $texto = $msgBoasVindas . "Não identificamos um e-mal válido na sua mensagem.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ";
-                $this->sendMessage("Inicial", $numero, $texto);
+                $this->sendMessage("ErroEmail", $numero, $texto);
             }
         }
 
