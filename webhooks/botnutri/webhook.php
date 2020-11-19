@@ -113,10 +113,10 @@
                         if ($this->primeirocontato == true) { //( Se for o primeiro contato
                             //$this->ftcAbertura($decoded['Body']['Info']['RemoteJid'], true);
                             //( Verifica se o e-mail é valido
-                            $this->validaEmail($palavra, $numero, true);
+                            $this->validaEmail($palavra, $numero, true, 0);
                         } else if ($email == '') { //Sem e-mail cadastrado
                             //( Verifica se o e-mail é valido
-                            $this->validaEmail($palavra, $numero, false);
+                            $this->validaEmail($palavra, $numero, false, $idContato);
                         }
                     }
                 }
@@ -137,7 +137,7 @@
             }
         }
 
-        public function validaEmail($palavra, $numero, $primeiroContato)
+        public function validaEmail($palavra, $numero, $primeiroContato, $idContato)
         {
             if ($primeiroContato == true) {
                 $msgBoasVindas = "Que bom que você está aqui! Parabéns pela sua atitude.\n\n";
@@ -153,10 +153,33 @@
             }
 
             if ($validado == true) { //E-mail válido
-                $this->sendMessage("Inicial", $numero, 'Esse é um e-mail válido');
+                $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'email', $palavra, "id_contato='$idContato'");
+                if($atualizacaoBD == true){
+
+                    $this->sendMessage("Inicial", $numero, 'Esse é um e-mail válido e cadastrado');
+                }else{
+                    $this->sendMessage("Inicial", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br");
+
+                }
             } else { //e-mail invalido
                 $texto = $msgBoasVindas . "Não identificamos um e-mal válido na sua mensagem.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ";
                 $this->sendMessage("Inicial", $numero, $texto);
+            }
+        }
+
+        //* Atualização de campo genérico em tabela genérica
+        private function atualizaCampo($tabela, $campo, $valor, $where){
+            include("dados_conexao.php");
+            $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
+
+            $query = mysqli_query($conn['link'], $sql);
+            $linhasAfetadas = mysqli_affected_rows($conn['link']);
+
+            if ($query != true && $linhasAfetadas == 0) {
+                return false;
+                $this->logSis('ERR', 'Não alterou no BD . Tbl: ' . $tabela.' Campo: '.$campo.' Valor: '.$valor);
+            } else {
+                return true;
             }
         }
 
