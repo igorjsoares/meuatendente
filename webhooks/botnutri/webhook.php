@@ -83,7 +83,7 @@
                     }
 
                     if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
-                        $idContato = $consultaContato['id_contato'];
+                        $this->id_contato = $consultaContato['id_contato'];
                         $nome = $consultaContato['nome'];
                         $email = $consultaContato['email'];
                         $fase = $consultaContato['fase'];
@@ -113,10 +113,10 @@
                         if ($this->primeirocontato == true) { //( Se for o primeiro contato
                             //$this->ftcAbertura($decoded['Body']['Info']['RemoteJid'], true);
                             //( Verifica se o e-mail é valido
-                            $this->validaEmail($palavra, $numero, true, 0);
+                            $this->validaEmail($palavra, $numero, true, $this->id_contato);
                         } else if ($email == '') { //Sem e-mail cadastrado
                             //( Verifica se o e-mail é valido
-                            $this->validaEmail($palavra, $numero, false, $idContato);
+                            $this->validaEmail($palavra, $numero, false, $this->id_contato);
                         }
                     }
                 }
