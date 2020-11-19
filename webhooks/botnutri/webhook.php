@@ -6,7 +6,7 @@
 
         public function __construct()
         {
-            include("../dados_conexao.php");
+            include("dados_conexao.php");
 
             //& Alterar aqui depois os dados para a consulta no BD 
             $tempoMenu = 7200; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
@@ -159,7 +159,7 @@
         //Envia a requisição
         public function sendRequest($motivo, $method, $data)
         {
-            include("../dados_conexao.php");
+            include("dados_conexao.php");
 
             $url = 'https://' . $this->APIurl . $method;
             if (is_array($data)) {
@@ -190,7 +190,7 @@
 
         public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $resposta, $id_mensagem, $mensagem, $status)
         {
-            include("../dados_conexao.php");
+            include("dados_conexao.php");
 
             $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, $id_contato, '$tipo', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             $resultado = mysqli_query($conn['link'], $sql);
