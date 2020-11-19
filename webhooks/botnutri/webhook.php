@@ -230,7 +230,7 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $remoteJID, $text)
         {
-            $data = array('number' => $remoteJID.'s.whatsapp.net', 'menssage' => $text);
+            $data = array('number' => $remoteJID.'@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data);
         }
 
