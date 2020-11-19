@@ -146,6 +146,7 @@
                 $msgBoasVindas = "";
             }
 
+            //( Validação do e-mail
             if (filter_var($palavra, FILTER_VALIDATE_EMAIL)) {
                 $validado = true;
             } else {
@@ -153,23 +154,39 @@
                 $validado = false;
             }
 
-            if ($validado == true) { //E-mail válido
-                $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'email', $palavra, "id_contato='$idContato'");
-                if($atualizacaoBD == true){
+            //( E-mail válido
+            if ($validado == true) {
+                $email = $palavra;
+                //( Atualização do email na tbl_contatos
+                $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'email', $email, "id_contato='$idContato'");
 
-                    $this->sendMessage("Inicial", $numero, 'Esse é um e-mail válido e cadastrado');
-                }else{
+                if ($atualizacaoBD == true) { //( Conseguiu atualizar 
+                    //( Envio do e-mail 
+                    $textoEmail = "Olá! \n\nComo prometi, segue o link para acessar o conteúdo.\n\nQualquer dúvida pode nos responder esse e-mail ou chamar nosso atendimento no Whatsapp.\n\nhttps://nutrimarimartins.com.br/comoemagrecer.html\n\nEquipe Nutri Mari Martins";
+                    $statusEnvioEmail = $this->enviarEmail($email, $textoEmail);
+
+                    //& Colocar aqui uma inteligência pra que o cliente reveja o e-mail e possa alterar o mesmo
+                    if ($statusEnvioEmail == true) { //( Conseguiu enviar
+                        //( Atualiza a TBL_CONTATOS com a fase 1, ou seja já enviou o e-mail 
+                        $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'fase', 1, "id_contato='$idContato'");
+                        $this->sendMessage("okEmail", $numero, "Enviei um e-mail com o conteúdo para $email, entre na sua caixa de e-mail e aproveite esse conteúo feito com todo carinho pra você.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.");
+                    } else { //( Não enviou
+                        $this->sendMessage("okEmail", $numero, "Em breve você receberá o nosso conteúdo no e-mail $email.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.");
+                    }
+                } else { //( Não atualizou
                     $this->sendMessage("ErroBDEmail", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br");
-
                 }
-            } else { //e-mail invalido
+
+                //( e-mail invalido
+            } else {
                 $texto = $msgBoasVindas . "Não identificamos um e-mal válido na sua mensagem.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ";
                 $this->sendMessage("ErroEmail", $numero, $texto);
             }
         }
 
         //* Atualização de campo genérico em tabela genérica
-        private function atualizaCampo($tabela, $campo, $valor, $where){
+        private function atualizaCampo($tabela, $campo, $valor, $where)
+        {
             include("dados_conexao.php");
             $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
 
@@ -178,9 +195,34 @@
 
             if ($query != true && $linhasAfetadas == 0) {
                 return false;
-                $this->logSis('ERR', 'Não alterou no BD . Tbl: ' . $tabela.' Campo: '.$campo.' Valor: '.$valor);
+                $this->logSis('ERR', 'Não alterou no BD . Tbl: ' . $tabela . ' Campo: ' . $campo . ' Valor: ' . $valor);
             } else {
                 return true;
+            }
+        }
+
+        //* ENVIA UM E-MAIL
+        public function enviarEmail($email, $texto)
+        {
+            $subject = 'NUTRI MARI MARTINS - Conteúdo';
+
+            $mensagem = $texto;
+
+            $myEmail = "contato@meuatendente.com.br"; //é necessário informar um e-mail do próprio domínio
+            $headers = "From: contato@meuatendente.com.br\r\n";
+            $headers .= "Reply-To: contato@meuatendente.com.br\r\n";
+
+            $corpo = $mensagem . "\n";
+
+            $email_to = $email;
+
+            $status = mail($email_to, $subject, $corpo, $headers);
+
+            if ($status) {
+                return true;
+            } else {
+                $this->logSis('ERR', 'Não enviou o e-mail da Finalização. E-mail: ' . $email);
+                return false;
             }
         }
 
