@@ -82,8 +82,12 @@
                         exit(0);
                     }
 
-                    if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS 
-
+                    if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
+                        $idContato = $consultaContato['id_contato'];
+                        $nome = $consultaContato['nome'];
+                        $email = $consultaContato['email'];
+                        $fase = $consultaContato['fase'];
+                        $teste = $consultaContato['teste'];
                     } else { //( O CONTATO NÃO EXISTE 
                         $this->primeirocontato = true;
 
@@ -109,8 +113,12 @@
 
                             $mensagem = explode(' ', trim($decoded['Body']['Text']));
                             $palavra = mb_strtolower($mensagem[0], 'UTF-8');
+
                             //( Verifica se o e-mail é valido
-                            $this->validaEmail($palavra, $numero);
+                            $this->validaEmail($palavra, $numero, true);
+                        } else if ($email == '') { //Sem e-mail cadastrado
+                            //( Verifica se o e-mail é valido
+                            $this->validaEmail($palavra, $numero, false);
                         }
                     }
                 }
@@ -131,8 +139,14 @@
             }
         }
 
-        public function validaEmail($palavra, $numero)
+        public function validaEmail($palavra, $numero, $primeiroContato)
         {
+            if ($primeiroContato == true) {
+                $msgBoasVindas = "Que bom que você está aqui! Parabéns pela sua atitude.\n\n";
+            } else {
+                $msgBoasVindas = "";
+
+            }
             if (filter_var($palavra, FILTER_VALIDATE_EMAIL)) {
                 $validado = true;
             } else {
@@ -143,7 +157,8 @@
             if ($validado == true) { //E-mail válido
                 $this->sendMessage("Inicial", $numero, 'Esse é um e-mail válido');
             } else { //e-mail invalido
-                $this->sendMessage("Inicial", $numero, "Que bom que você está aqui!\nPorém não identificamos um e-mal válido na mensagem enviada.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ");
+                $texto = $msgBoasVindas . "Não identificamos um e-mal válido na sua mensagem.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ";
+                $this->sendMessage("Inicial", $numero, $texto);
             }
         }
 
