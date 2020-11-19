@@ -207,7 +207,7 @@
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, $id_contato, '$tipo', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             $resultado = mysqli_query($conn['link'], $sql);
             $idInteracaoIn = mysqli_insert_id($conn['link']);
             if ($resultado != '1') {
