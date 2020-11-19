@@ -107,13 +107,11 @@
                     $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', $idMensagemWhats, $mensagem, 1);
 
                     if ($resultado == '1') {
+                        $mensagem = explode(' ', trim($decoded['Body']['Text']));
+                        $palavra = mb_strtolower($mensagem[0], 'UTF-8');
 
                         if ($this->primeirocontato == true) { //( Se for o primeiro contato
                             //$this->ftcAbertura($decoded['Body']['Info']['RemoteJid'], true);
-
-                            $mensagem = explode(' ', trim($decoded['Body']['Text']));
-                            $palavra = mb_strtolower($mensagem[0], 'UTF-8');
-
                             //( Verifica se o e-mail é valido
                             $this->validaEmail($palavra, $numero, true);
                         } else if ($email == '') { //Sem e-mail cadastrado
@@ -145,8 +143,8 @@
                 $msgBoasVindas = "Que bom que você está aqui! Parabéns pela sua atitude.\n\n";
             } else {
                 $msgBoasVindas = "";
-
             }
+
             if (filter_var($palavra, FILTER_VALIDATE_EMAIL)) {
                 $validado = true;
             } else {
