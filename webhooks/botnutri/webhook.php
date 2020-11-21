@@ -222,10 +222,17 @@
         {
             include("dados_conexao.php");
             $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
+            $this->logSis("DEB", $sql);
 
             $query = mysqli_query($conn['link'], $sql);
             $linhasAfetadas = mysqli_affected_rows($conn['link']);
+            
+            if (!$query) {
+                echo "Erro ao tentar conectar no MYSQL " . mysqli_connect_error();
+                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error());
 
+                exit(0);
+            }
             if ($query != true && $linhasAfetadas == 0) {
                 return false;
                 $this->logSis('ERR', 'Não alterou no BD . Tbl: ' . $tabela . ' Campo: ' . $campo . ' Valor: ' . $valor);
