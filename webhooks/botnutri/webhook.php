@@ -139,7 +139,7 @@
                                     $this->sendMessage("solicitaNome", $numero, $texto);
                                 } else { // encontrou o primeiro nome
                                     //( Salva o nome no banco 
-                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $this->idContato);
+                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $this->id_contato);
                                     if ($resultadoAtualizaNome == true) {
                                         $textoComplementar = "Prazer em conhecer você $nome!\n\n";
                                         $this->envioMenu($numero, $textoComplementar);
@@ -222,7 +222,7 @@
         {
             include("dados_conexao.php");
             $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
-            $this->logSis("DEB", $sql);
+            //$this->logSis("DEB", $sql);
 
             $query = mysqli_query($conn['link'], $sql);
             $linhasAfetadas = mysqli_affected_rows($conn['link']);
