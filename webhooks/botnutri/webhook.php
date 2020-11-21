@@ -226,10 +226,9 @@
 
             $query = mysqli_query($conn['link'], $sql);
             $linhasAfetadas = mysqli_affected_rows($conn['link']);
-            
+
             if (!$query) {
-                echo "Erro ao tentar conectar no MYSQL " . mysqli_connect_error();
-                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error());
+                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error($conn['link']));
 
                 exit(0);
             }
