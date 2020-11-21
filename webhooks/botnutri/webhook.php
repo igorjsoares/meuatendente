@@ -121,6 +121,7 @@
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['data'], new DateTime());
 
+                            //( Caso não tenha enviado ainda a pergunta do nome
                             if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
                                 if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
                                     $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
