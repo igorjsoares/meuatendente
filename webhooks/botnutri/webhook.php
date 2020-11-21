@@ -139,7 +139,7 @@
                                     $this->sendMessage("solicitaNome", $numero, $texto);
                                 } else { // encontrou o primeiro nome
                                     //( Salva o nome no banco 
-                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $idContato);
+                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $this->idContato);
                                     if ($resultadoAtualizaNome == true) {
                                         $textoComplementar = "Prazer em conhecer você $nome!\n\n";
                                         $this->envioMenu($numero, $textoComplementar);
