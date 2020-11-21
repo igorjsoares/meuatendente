@@ -127,6 +127,8 @@
                                 } else {
                                     $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
                                 }
+
+                                $this->sendMessage("solicitaNome", $numero, $texto);
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
                                 //( Verifica a mensagem em busca do primeiro nome 
                                 $nome = $this->verificaNome($mensagem);
@@ -141,7 +143,6 @@
                                     }
                                 }
                             }
-                            $this->sendMessage("solicitaNome", $numero, '');
                         }
                     }
                 }
