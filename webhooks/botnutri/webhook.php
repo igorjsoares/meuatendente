@@ -117,9 +117,14 @@
                             //( Verifica se o e-mail é valido
                             $this->validaEmail($palavra, $numero, false, $this->id_contato);
                         } else if ($nome == '') {
+                            $this->logSis('DEB', 'Identificou que nome é vazio no BD');
+
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['data'], new DateTime());
+                            $this->logSis('DEB', 'Última interação'.$ultimaInteracao['mensagem']);
+                            $this->logSis('DEB', 'Tempo para última interação'.$tempoParaUltimaInteracao);
+
 
                             //( Caso não tenha enviado ainda a pergunta do nome
                             if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
