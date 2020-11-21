@@ -134,7 +134,6 @@
 
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
                                 //( Verifica a mensagem em busca do primeiro nome 
-                                $this->logSis("DEB", "Entrou no verificar nome");
                                 $nome = $this->verificaNome($decoded['Body']['Text']);
                                 if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
                                     $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
@@ -224,6 +223,7 @@
         {
             include("dados_conexao.php");
             $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
+            $this->logSis("DEB", $sql);
 
             $query = mysqli_query($conn['link'], $sql);
             $linhasAfetadas = mysqli_affected_rows($conn['link']);
