@@ -123,6 +123,9 @@
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $this->logSis('DEB', 'Última interação: ' . $ultimaInteracao['mensagem']);
                             $dataAtual = new DateTime();
+                            $this->logSis('DEB', 'Data ultimaInteracao: ' . $ultimaInteracao['dataEnvio']);
+                            $this->logSis('DEB', 'Data atual: ' . $dataAtual);
+
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], $dataAtual);
                             $this->logSis('DEB', 'Tempo para última interação' . $tempoParaUltimaInteracao);
 
