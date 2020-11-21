@@ -135,7 +135,7 @@
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
                                 //( Verifica a mensagem em busca do primeiro nome 
                                 $this->logSis("DEB", "Entrou no verificar nome");
-                                $nome = $this->verificaNome($mensagem);
+                                $nome = $this->verificaNome($decoded['Body']['Text']);
                                 if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
                                     $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
                                 } else { // encontrou o primeiro nome
@@ -319,7 +319,7 @@
             }
 
             if ($numRow != 0) {
-                $this->logSis('DEB', "Resultado da última interação. Mensagem:  " . $consultaInteracao['mensagem'] . " Data: " . $consultaInteracao['data_envio']);
+                //$this->logSis('DEB', "Resultado da última interação. Mensagem:  " . $consultaInteracao['mensagem'] . " Data: " . $consultaInteracao['data_envio']);
 
                 return array(
                     "mensagem" => $consultaInteracao['mensagem'],
@@ -362,7 +362,6 @@
         //* Verifica a diferença entre datas e retorna em horas 
         public function difDatasEmHoras($dataInicio, $dataFim)
         {
-            $this->logSis('DEB', 'Inicio verificação datas. DataIni: ' . $dataInicio . ' DataFim: ' . $dataFim);
             $datatime1 = new DateTime($dataInicio);
             $datatime2 = new DateTime($dataFim);
 
