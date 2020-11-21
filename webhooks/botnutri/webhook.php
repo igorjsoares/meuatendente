@@ -222,7 +222,6 @@
         {
             include("dados_conexao.php");
             $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
-            $this->logSis("DEB", $sql);
 
             $query = mysqli_query($conn['link'], $sql);
             $linhasAfetadas = mysqli_affected_rows($conn['link']);
