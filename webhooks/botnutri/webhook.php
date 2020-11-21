@@ -308,7 +308,7 @@
             $numRow = mysqli_num_rows($query);
 
             if (!$query) {
-                $this->logSis('ERR', "Mysql Connect Num: " . mysqli_connect_error());
+                $this->logSis('ERR', "Mysql Connect Num: " . mysqli_error($conn['link']));
 
                 exit(0);
             }
