@@ -121,9 +121,9 @@
 
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
-                            $this->logSis('DEB', 'Última interação'.$ultimaInteracao['mensagem']);
+                            $this->logSis('DEB', 'Última interação: ' . $ultimaInteracao['mensagem']);
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['data'], new DateTime());
-                            $this->logSis('DEB', 'Tempo para última interação'.$tempoParaUltimaInteracao);
+                            $this->logSis('DEB', 'Tempo para última interação' . $tempoParaUltimaInteracao);
 
 
                             //( Caso não tenha enviado ainda a pergunta do nome
@@ -325,7 +325,7 @@
 
             if ($numRow != 0) {
                 $this->logSis('DEB', "Resultado da última interação. Mensagem:  " . $consultaInteracao['mensagem'] . " Data: " . $consultaInteracao['data_envio']);
-                
+
                 return array(
                     "mensagem" => $consultaInteracao['mensagem'],
                     "data" => $consultaInteracao['data_envio']
@@ -367,6 +367,7 @@
         //* Verifica a diferença entre datas e retorna em horas 
         public function difDatasEmHoras($dataInicio, $dataFim)
         {
+            $this->logSis('DEB', 'Inicio verificação datas. DataIni: ' . $dataInicio . ' DataFim: ' . $dataFim);
             $datatime1 = new DateTime($dataInicio);
             $datatime2 = new DateTime($dataFim);
 
