@@ -123,11 +123,13 @@
 
                             //( Caso não tenha enviado ainda a pergunta do nome
                             if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
+                                $this->logSis('DEB', 'Entrou para perguntar o nome');
                                 if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
                                     $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
                                 } else {
                                     $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
                                 }
+                                $this->logSis('DEB', $texto);
 
                                 $this->sendMessage("solicitaNome", $numero, $texto);
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
