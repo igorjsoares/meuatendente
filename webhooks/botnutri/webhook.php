@@ -77,7 +77,7 @@
                     $numRow = mysqli_num_rows($query);
 
                     if (!$query) {
-                        $this->logSis('ERR', "Mysql Connect Num: " . mysqli_connect_error());
+                        $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
 
                         exit(0);
                     }
@@ -130,12 +130,12 @@
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
                                 //( Verifica a mensagem em busca do primeiro nome 
                                 $nome = $this->verificaNome($mensagem);
-                                if($nome == "" || strlen($nome) < 2 ){ // não trouxe nada 
+                                if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
                                     $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
-                                }else{ // encontrou o primeiro nome
+                                } else { // encontrou o primeiro nome
                                     //( Salva o nome no banco 
                                     $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = $idInstancia AND id_contato = $idContato');
-                                    if($resultadoAtualizaNome == true){
+                                    if ($resultadoAtualizaNome == true) {
                                         $textoComplementar = "Prazer em conhecer você $nome!\n\n";
                                         $this->envioMenu($numero, $textoComplementar);
                                     }
@@ -209,7 +209,8 @@
             }
         }
 
-        public function envioMenu($numero, $textoComplementar){
+        public function envioMenu($numero, $textoComplementar)
+        {
             //& Envio do MENU
         }
 
@@ -308,7 +309,7 @@
             $numRow = mysqli_num_rows($query);
 
             if (!$query) {
-                $this->logSis('ERR', "Mysql Connect Num: " . mysqli_error($conn['link']));
+                $this->logSis('ERR', "Mysql Connect idContato: " . $idContato . " Erro: " . mysqli_error($conn['link']). " Sql: " . $sql);
 
                 exit(0);
             }
