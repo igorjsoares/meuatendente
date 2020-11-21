@@ -122,7 +122,8 @@
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $this->logSis('DEB', 'Última interação: ' . $ultimaInteracao['mensagem']);
-                            $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['data'], new DateTime());
+                            $dataAtual = new DateTime();
+                            $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], $dataAtual);
                             $this->logSis('DEB', 'Tempo para última interação' . $tempoParaUltimaInteracao);
 
 
@@ -328,7 +329,7 @@
 
                 return array(
                     "mensagem" => $consultaInteracao['mensagem'],
-                    "data" => $consultaInteracao['data_envio']
+                    "dataEnvio" => $consultaInteracao['data_envio']
                 );
             }
         }
