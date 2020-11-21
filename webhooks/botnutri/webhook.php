@@ -228,8 +228,7 @@
             $linhasAfetadas = mysqli_affected_rows($conn['link']);
 
             if (!$query) {
-                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error($conn['link']));
-
+                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_error($conn['link']));
                 exit(0);
             }
             if ($query != true && $linhasAfetadas == 0) {
