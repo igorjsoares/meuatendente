@@ -121,7 +121,7 @@
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
-                            
+
                             //( Caso não tenha enviado ainda a pergunta do nome
                             if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
                                 $this->logSis('DEB', 'Entrou para perguntar o nome');
@@ -131,7 +131,6 @@
                                     $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
                                 }
                                 $this->sendMessage("solicitaNome", $numero, $texto);
-
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
                                 //( Verifica a mensagem em busca do primeiro nome 
                                 $nome = $this->verificaNome($decoded['Body']['Text']);
@@ -140,7 +139,7 @@
                                     $this->sendMessage("solicitaNome", $numero, $texto);
                                 } else { // encontrou o primeiro nome
                                     //( Salva o nome no banco 
-                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = $idInstancia AND id_contato = $idContato');
+                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $idContato);
                                     if ($resultadoAtualizaNome == true) {
                                         $textoComplementar = "Prazer em conhecer você $nome!\n\n";
                                         $this->envioMenu($numero, $textoComplementar);
