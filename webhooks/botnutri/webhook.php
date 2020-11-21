@@ -118,7 +118,7 @@
                             $this->validaEmail($palavra, $numero, false, $this->id_contato);
                         } else if ($nome == '') {
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
-                            $ultimaInteracao = $this->verificaInteracao($idInstancia, $idContato);
+                            $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['data'], new DateTime());
 
                             if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
@@ -309,7 +309,7 @@
             $numRow = mysqli_num_rows($query);
 
             if (!$query) {
-                $this->logSis('ERR', "Mysql Connect idContato: " . $idContato . " Erro: " . mysqli_error($conn['link']). " Sql: " . $sql);
+                $this->logSis('ERR', "Mysql Connect idContato: " . $idContato . " Erro: " . mysqli_error($conn['link']));
 
                 exit(0);
             }
