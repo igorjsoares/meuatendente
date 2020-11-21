@@ -337,7 +337,7 @@
             $mensagem = mb_strtolower($mensagem);
             $mensagem = str_replace('  ', ' ', $mensagem);
             $mensagem = explode(' ', trim($mensagem));
-            $excluidas = array("meu", "xamo", "xamu", "nome", "mim", "chamam", "min", "é", "e", "me", "chamo", "aqui", "eu", "sou", "a", "o", "pode", "me", "chamar", "de", "sou", "chame", "chamo-me",);
+            $excluidas = array("meu", ",", "xamo", "xamu", "nome", "mim", "chamam", "min", "é", "e", "me", "chamo", "aqui", "eu", "sou", "a", "o", "pode", "me", "chamar", "de", "sou", "chame", "chamo-me",);
             $resultado = array_values(array_diff($mensagem, $excluidas));
 
             $nome = mb_strtolower($resultado[0], 'UTF-8');
