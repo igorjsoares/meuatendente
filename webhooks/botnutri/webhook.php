@@ -117,19 +117,11 @@
                             //( Verifica se o e-mail é valido
                             $this->validaEmail($palavra, $numero, false, $this->id_contato);
                         } else if ($nome == '') {
-                            $this->logSis('DEB', 'Identificou que nome é vazio no BD');
 
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
-                            $this->logSis('DEB', 'Última interação: ' . $ultimaInteracao['mensagem']);
-                            $dataAtual = date("Y-m-d H:i:s");
-                            $this->logSis('DEB', 'Data ultimaInteracao: ' . $ultimaInteracao['dataEnvio']);
-                            $this->logSis('DEB', 'Data atual: ' . $dataAtual);
-
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
-                            $this->logSis('DEB', 'Tempo para última interação' . $tempoParaUltimaInteracao);
-
-
+                            
                             //( Caso não tenha enviado ainda a pergunta do nome
                             if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
                                 $this->logSis('DEB', 'Entrou para perguntar o nome');
@@ -138,11 +130,11 @@
                                 } else {
                                     $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
                                 }
-                                $this->logSis('DEB', $texto);
-
                                 $this->sendMessage("solicitaNome", $numero, $texto);
+
                             } else { //( Caso a última interação tenha sido solicitado o nome. 
                                 //( Verifica a mensagem em busca do primeiro nome 
+                                $this->logSis("DEB", "Entrou no verificar nome");
                                 $nome = $this->verificaNome($mensagem);
                                 if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
                                     $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
@@ -160,7 +152,6 @@
                 }
             }
         }
-
 
         //* PRIMEIRO CONTATO - Primeiras mensagens ou mensagem de erro 
         public function primeiroContato($remoteJID, $primeiroContato)

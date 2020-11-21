@@ -25,7 +25,7 @@
                 //Coloca para salvar todas as requisições recebidas em um arquivo de log
                 //file_put_contents('inputs.log',$input.PHP_EOL,FILE_APPEND); 
 
-                //) Verifica se é uma mensagem recebida 
+                //( Verifica se é uma mensagem recebida 
                 if (isset($decoded['Type']) && ( $decoded['Type'] == 'receveid_message' || $decoded['Type'] == 'receveid_audio_message')) {
                     $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
                     $RemoteJidArray = explode("@", $RemoteJid);
@@ -37,7 +37,7 @@
                     $mensagem = $decoded['Body']['Text'];
 
 
-                    //) Busca informações da instância CHATPRO no banco de dados 
+                    //( Busca informações da instância CHATPRO no banco de dados 
                     $sql = "SELECT * FROM tbl_instancias WHERE id_instancia = $idInstancia";
                     $query = mysqli_query($conn['link'], $sql);
                     $consultaInstancia = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -62,10 +62,10 @@
                     }
 
 
-                    //) Verifica se é uma mensagem recebida de um número ou GRUPO 
+                    //( Verifica se é uma mensagem recebida de um número ou GRUPO 
                     if ($tipoNumero == 's.whatsapp.net') {
 
-                        //) Consulta o contato no BD 
+                        //( Consulta o contato no BD 
                         $sql = "SELECT * FROM tbl_contatos WHERE numero = $numero AND id_instancia = $idInstancia";
                         $query = mysqli_query($conn['link'], $sql);
                         $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -76,7 +76,7 @@
                             exit(0);
                         }
 
-                        if ($numRow != 0) { //) O CONTATO EXISTE NO BANCO DE DADOS 
+                        if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS 
                             //CONTATO EXISTE
                             $this->id_contato = $consultaContato['id_contato'];
                             $nome = $consultaContato['nome'];
@@ -84,7 +84,7 @@
 
 
 
-                            //) Procura se essa mensagem já foi recebida e tratada, caso exista ele acaba tudo 
+                            //( Procura se essa mensagem já foi recebida e tratada, caso exista ele acaba tudo 
                             $sql = "SELECT id_interacao FROM tbl_interacoes WHERE id_mensagem = '$idMensagemWhats'";
                             $query = mysqli_query($conn['link'], $sql);
                             $consultaMensagemWhats = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -95,10 +95,10 @@
                             } else if ($numRow > 0) {
                                 exit(0);
                             }
-                        } else { //) O CONTATO NÃO EXISTE 
+                        } else { //( O CONTATO NÃO EXISTE 
 
                             //CONTATO NÃO EXISTE 
-                            //) Insere o contato no banco de dados 
+                            //( Insere o contato no banco de dados 
                             $sql = "INSERT INTO tbl_contatos(id_instancia, numero, teste, created_at) VALUES ('$idInstancia', '$numero', 0, NOW())";
                             $resultado = mysqli_query($conn['link'], $sql);
                             $this->id_contato = mysqli_insert_id($conn['link']);
@@ -109,7 +109,7 @@
                         }
 
 
-                        //) Procurar a última interação realizada para ver se tem tempo suficiente para envio do menu 
+                        //( Procurar a última interação realizada para ver se tem tempo suficiente para envio do menu 
                         $sql = "SELECT MAX(data_envio) AS ultima_interacao, TIMESTAMPDIFF(SECOND,MAX(data_envio),NOW()) AS segundos FROM tbl_interacoes WHERE direcao = '0' AND id_contato = '$this->id_contato'";
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
@@ -120,7 +120,7 @@
                         }
 
 
-                        //) Insere a interação que recebemos no BD 
+                        //( Insere a interação que recebemos no BD 
                         $sql = "INSERT INTO tbl_interacoes(direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES (0, $this->id_contato, '', '', '$idMensagemWhats', '$mensagem', 1, FROM_UNIXTIME($timestamp))";
                         $resultado = mysqli_query($conn['link'], $sql);
                         $this->id_interacao = mysqli_insert_id($conn['link']);
@@ -137,7 +137,7 @@
                                 //Confirma se a mensagem realmente não foi enviada do Bot
                                 if (!$decoded['Body']['Info']['FromMe']) {
 
-                                    //) Inicia a verificação se a resposta já foi dada 
+                                    //( Inicia a verificação se a resposta já foi dada 
                                     switch (mb_strtolower($mensagem[0], 'UTF-8')) {
                                         case 'sim': {
                                                 $comando = 'SIM';
@@ -157,28 +157,28 @@
                                             }
                                     }
 
-                                    //) Procura se esse TIPO DE RESPOSTA já foi dado 
+                                    //( Procura se esse TIPO DE RESPOSTA já foi dado 
                                     $idContato = $this->id_contato;
                                     $idInstancia = $this->idInstancia;
                                     $sql = "SELECT id_interacao FROM tbl_interacoes WHERE id_contato = $idContato and id_instancia = $idInstancia AND tipo = 2 AND mensagem = '$comando'";
                                     $query = mysqli_query($conn['link'], $sql);
                                     $numRow = mysqli_num_rows($query);
 
-                                    if ($numRow > 0) { //) Resposta já foi dada 
+                                    if ($numRow > 0) { //( Resposta já foi dada 
 
-                                        //) Procura se a resposta de DUPLICADA já foi dada mais de 2 vezes 
+                                        //( Procura se a resposta de DUPLICADA já foi dada mais de 2 vezes 
                                         $sql = "SELECT id_interacao FROM tbl_interacoes WHERE id_contato = $idContato and id_instancia = $idInstancia AND tipo = 2 AND mensagem = 'DUPLICADA'";
                                         $query = mysqli_query($conn['link'], $sql);
                                         $numRow = mysqli_num_rows($query);
 
-                                        if ($numRow > 2) { //) Resposta já foi dada mais de 2 vezes 
+                                        if ($numRow > 2) { //( Resposta já foi dada mais de 2 vezes 
                                             exit(0);
                                         } else {
                                             $this->opcao4($decoded['Body']['Info']['RemoteJid'], false);
                                         }
                                     } else {
                                         //verifique qual comando contém a primeira palavra e chamea a função
-                                        //) Faz as verificações da mensagem e chama a função de acordo com o foi enviado 
+                                        //( Faz as verificações da mensagem e chama a função de acordo com o foi enviado 
                                         switch (mb_strtolower($mensagem[0], 'UTF-8')) {
 
                                             case 'sim': {
