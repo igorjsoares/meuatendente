@@ -338,6 +338,7 @@
 
             $nome = mb_strtolower($resultado[0], 'UTF-8');
 
+            $this->logSis("DEB", $nome);
             return ucfirst($nome);
         }
 
