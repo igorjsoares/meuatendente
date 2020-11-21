@@ -111,12 +111,37 @@
                         $palavra = mb_strtolower($mensagem[0], 'UTF-8');
 
                         if ($this->primeirocontato == true) { //( Se for o primeiro contato
-                            //$this->ftcAbertura($decoded['Body']['Info']['RemoteJid'], true);
                             //( Verifica se o e-mail é valido
                             $this->validaEmail($palavra, $numero, true, $this->id_contato);
                         } else if ($email == '') { //Sem e-mail cadastrado
                             //( Verifica se o e-mail é valido
                             $this->validaEmail($palavra, $numero, false, $this->id_contato);
+                        } else if ($nome == '') {
+                            //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
+                            $ultimaInteracao = $this->verificaInteracao($idInstancia, $idContato);
+                            $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['data'], new DateTime());
+
+                            if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
+                                if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
+                                    $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
+                                } else {
+                                    $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
+                                }
+                            } else { //( Caso a última interação tenha sido solicitado o nome. 
+                                //( Verifica a mensagem em busca do primeiro nome 
+                                $nome = $this->verificaNome($mensagem);
+                                if($nome == "" || strlen($nome) < 2 ){ // não trouxe nada 
+                                    $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
+                                }else{ // encontrou o primeiro nome
+                                    //( Salva o nome no banco 
+                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = $idInstancia AND id_contato = $idContato');
+                                    if($resultadoAtualizaNome == true){
+                                        $textoComplementar = "Prazer em conhecer você $nome!\n\n";
+                                        $this->envioMenu($numero, $textoComplementar);
+                                    }
+                                }
+                            }
+                            $this->sendMessage("solicitaNome", $numero, '');
                         }
                     }
                 }
@@ -184,6 +209,10 @@
             }
         }
 
+        public function envioMenu($numero, $textoComplementar){
+            //& Envio do MENU
+        }
+
         //* Atualização de campo genérico em tabela genérica
         private function atualizaCampo($tabela, $campo, $valor, $where)
         {
@@ -230,7 +259,7 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $remoteJID, $text)
         {
-            $data = array('number' => $remoteJID.'@s.whatsapp.net', 'menssage' => $text);
+            $data = array('number' => $remoteJID . '@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data);
         }
 
@@ -267,6 +296,44 @@
             }
         } //# FCT Envio Requisição
 
+        //* Busca no BD qual a última interação
+        private function verificaInteracao($idInstancia, $idContato)
+        {
+            include('dados_conexao.php');
+
+            //( Consulta da interação no BD 
+            $sql = "SELECT mensagem, data_envio FROM tbl_interacoes WHERE direcao= 1 AND id_instancia = $idInstancia AND id_contato = $idContato ORDER BY id_interacao DESC limit 1";
+            $query = mysqli_query($conn['link'], $sql);
+            $consultaInteracao = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $numRow = mysqli_num_rows($query);
+
+            if (!$query) {
+                $this->logSis('ERR', "Mysql Connect Num: " . mysqli_connect_error());
+
+                exit(0);
+            }
+
+            if ($numRow != 0) {
+                return array(
+                    "mensagem" => $consultaInteracao['mensagem'],
+                    "data" => $consultaInteracao['data_envio']
+                );
+            }
+        }
+
+        private function verificaNome($mensagem)
+        {
+            $mensagem = mb_strtolower($mensagem);
+            $mensagem = str_replace('  ', ' ', $mensagem);
+            $mensagem = explode(' ', trim($mensagem));
+            $excluidas = array("meu", "xamo", "xamu", "nome", "mim", "chamam", "min", "é", "e", "me", "chamo", "aqui", "eu", "sou", "a", "o", "pode", "me", "chamar", "de", "sou", "chame", "chamo-me",);
+            $resultado = array_values(array_diff($mensagem, $excluidas));
+
+            $nome = mb_strtolower($resultado[0], 'UTF-8');
+
+            return ucfirst($nome);
+        }
+
         public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
@@ -283,6 +350,18 @@
                 $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
             }
             mysqli_close($conn['link']);
+        }
+
+        //* Verifica a diferença entre datas e retorna em horas 
+        public function difDatasEmHoras($dataInicio, $dataFim)
+        {
+            $datatime1 = new DateTime($dataInicio);
+            $datatime2 = new DateTime($dataFim);
+
+            $diff = $datatime1->diff($datatime2);
+            $horas = $diff->h + ($diff->days * 24);
+
+            return $horas;
         }
 
         //* Função de LOG
