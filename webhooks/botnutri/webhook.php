@@ -138,6 +138,7 @@
                                 $nome = $this->verificaNome($decoded['Body']['Text']);
                                 if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
                                     $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
+                                    $this->sendMessage("solicitaNome", $numero, $texto);
                                 } else { // encontrou o primeiro nome
                                     //( Salva o nome no banco 
                                     $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = $idInstancia AND id_contato = $idContato');
@@ -338,7 +339,6 @@
 
             $nome = mb_strtolower($resultado[0], 'UTF-8');
 
-            $this->logSis("DEB", $nome);
             return ucfirst($nome);
         }
 
