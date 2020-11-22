@@ -244,7 +244,7 @@
         {
             include("dados_conexao.php");
 
-            $idInstancia = $this->id_instancia;
+            $idInstancia = $this->idInstancia;
             $sql = 'SELECT * FROM tbl_retornos WHERE id_instancia = $idInstancia AND id_retorno = $id_retorno';
 
             $query = mysqli_query($conn['link'], $sql);
@@ -255,7 +255,7 @@
                 exit(0);
             }
             if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
-                $this->logSis('ERR', 'Não encontrou a mensagem inicial Instância. Instância: ' . $this->id_instancia);
+                $this->logSis('ERR', 'Não encontrou a mensagem inicial Instância. Instância: ' . $this->idInstancia);
                 exit(0);
             } else {
                 $id_retorno = $consultaRetorno['id_retorno'];  //ID da tabela retorno (chave)
