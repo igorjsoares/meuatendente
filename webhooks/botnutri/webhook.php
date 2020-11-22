@@ -492,10 +492,10 @@
             $statusEnvio = $resposta['message'];
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
                 $id_resposta = $resposta['requestMenssage']['id'];
-                if ($retorno != '') {
-                    $tipo = $retorno['modo'];
-                } else {
+                if ($retorno == '') {
                     $tipo = '';
+                } else {
+                    $tipo = $retorno['modo'];
                 }
                 $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
@@ -549,6 +549,8 @@
             include("dados_conexao.php");
 
             $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $this->logSis('DEB', 'SQL : ' . $sql);
+
             $resultado = mysqli_query($conn['link'], $sql);
             if (!$resultado) {
                 $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
