@@ -245,7 +245,8 @@
             include("dados_conexao.php");
 
             $idInstancia = $this->idInstancia;
-            $sql = 'SELECT * FROM tbl_retornos WHERE id_instancia = $idInstancia AND id_retorno = $id_retorno';
+            $sql = "SELECT * FROM tbl_retornos WHERE id_instancia = $idInstancia AND id_retorno = $id_retorno";
+            $this->logSis('DEB', $sql);
 
             $query = mysqli_query($conn['link'], $sql);
             $consultaRetorno = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -262,6 +263,8 @@
                 $mensagem = utf8_encode($consultaRetorno['mensagem']);
                 //Consulta das opções
                 $sql = "SELECT * FROM tbl_opcoes WHERE listavel = 1 AND id_instancia = $idInstancia AND id_retorno = $id_retorno ORDER BY indice ASC";
+                $this->logSis('DEB', $sql);
+
                 $query = mysqli_query($conn['link'], $sql);
                 $numRow = mysqli_num_rows($query);
 
