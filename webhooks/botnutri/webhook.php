@@ -497,6 +497,8 @@
                 } else {
                     $tipo = $retorno['modo'];
                 }
+            $this->logSis('REQ', 'Chegou aqui: Tipo' . $tipo);
+
                 $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
