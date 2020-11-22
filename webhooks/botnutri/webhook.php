@@ -61,6 +61,7 @@
                     $this->conf_cad_dados =  $consultaInstancia['conf_cad_dados'];
                     $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
                     $this->msg_inicial =  $consultaInstancia['msg_inicial'];
+                    $this->menuRaiz =  $consultaInstancia['menu_raiz'];
                     $limite = $consultaInstancia['limite'];
                     $status = $consultaInstancia['status'];
                     $nome = $consultaInstancia['nome'];
@@ -104,7 +105,7 @@
                     //( Insere a interação que foi recebida no BD 
                     //& Quando inserir a mensagem do cliente, já trazer o ID para colocar na coluna id_retorno na mensagem que vamos enviar. 
                     //& Verificar também o retorno de erro, caso não consiga inserir o cliente. 
-                    $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', $idMensagemWhats, $mensagem, 1);
+                    $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', $idMensagemWhats, $mensagem, 1);
 
                     if ($resultado == '1') {
                         $mensagem = explode(' ', trim($decoded['Body']['Text']));
@@ -116,39 +117,194 @@
                         } else if ($email == '') { //Sem e-mail cadastrado
                             //( Verifica se o e-mail é valido
                             $this->validaEmail($palavra, $numero, false, $this->id_contato);
-                        } else if ($nome == '') {
+                        } else {
 
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                             $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
 
-                            //( Caso não tenha enviado ainda a pergunta do nome
-                            if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
-                                $this->logSis('DEB', 'Entrou para perguntar o nome');
-                                if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
-                                    $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
-                                } else {
-                                    $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
-                                }
-                                $this->sendMessage("solicitaNome", $numero, $texto);
-                            } else { //( Caso a última interação tenha sido solicitado o nome. 
-                                //( Verifica a mensagem em busca do primeiro nome 
-                                $nome = $this->verificaNome($decoded['Body']['Text']);
-                                if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
-                                    $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
-                                    $this->sendMessage("solicitaNome", $numero, $texto);
-                                } else { // encontrou o primeiro nome
-                                    //( Salva o nome no banco 
-                                    $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $this->id_contato);
-                                    if ($resultadoAtualizaNome == true) {
-                                        $textoComplementar = "Prazer em conhecer você $nome!\n\n";
-                                        $this->envioMenu($numero, $textoComplementar);
+                            if ($nome == '') {
+                                //( Caso não tenha enviado ainda a pergunta do nome
+                                if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
+                                    $this->logSis('DEB', 'Entrou para perguntar o nome');
+                                    if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
+                                        $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
+                                    } else {
+                                        $texto = 'Olá, para que possamos seguir com o atendimento, por favor digite seu nome?';
+                                    }
+                                    $this->sendMessage("solicitaNome", $numero, $texto, '');
+                                } else { //( Caso a última interação tenha sido solicitado o nome. 
+                                    //( Verifica a mensagem em busca do primeiro nome 
+                                    $nome = $this->verificaNome($decoded['Body']['Text']);
+                                    if ($nome == "" || strlen($nome) < 2) { // não trouxe nada 
+                                        $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
+                                        $this->sendMessage("solicitaNome", $numero, $texto, '');
+                                    } else { // encontrou o primeiro nome
+                                        //( Salva o nome no banco 
+                                        $resultadoAtualizaNome = $this->atualizaCampo('tbl_contatos', 'nome', $nome, 'id_instancia = ' . $idInstancia . ' AND id_contato = ' . $this->id_contato);
+                                        if ($resultadoAtualizaNome == true) {
+                                            $textoComplementar = "Prazer em conhecer você $nome!\n\n";
+
+                                            $this->envioMenuRaiz($numero, $textoComplementar);
+                                        }
                                     }
                                 }
+                            } else {
+                                $this->resposta($numero, $decoded);
                             }
                         }
                     }
                 }
+            }
+        }
+
+        public function resposta($numero, $mensagem)
+        {
+            /*
+                        include("dados_conexao.php");
+
+            //( Procurar a última interação realizada para ver se tem tempo suficiente para envio do menu
+            //( Caso o tempo da resposta seja maior que o tempo estipulado para $tempoMenu, ele chama o menu ao invez de qualquer coisa. 
+            $sql = "SELECT data_envio AS ultima_interacao, TIMESTAMPDIFF(SECOND,data_envio,NOW()) AS segundos FROM tbl_interacoes WHERE id_instancia = $this->id_instancia AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            $query = mysqli_query($conn['link'], $sql);
+            $numRow = mysqli_num_rows($query);
+            $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+            if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
+                $oQueChamar = "Menu";
+            }
+
+
+            //(ULTIMA INTERAÇÃO DE MENU
+            $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->id_instancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            $query = mysqli_query($conn['link'], $sql);
+            $numRow = mysqli_num_rows($query);
+            $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $this->ultimoRetorno = $consultaUltima['id_retorno'];
+
+            //excluir espaços em excesso e dividir a mensagem em espaços.
+            //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
+            $mensagem = explode(' ', trim($decoded['Body']['Text']));
+
+            //Confirma se a mensagem realmente não foi enviada do Bot
+            if (!$decoded['Body']['Info']['FromMe']) {
+                $mensagemCliente = mb_strtolower($mensagem[0], 'UTF-8');
+
+                if ($mensagemCliente == 1 || $mensagemCliente == 2 || $mensagemCliente == 3 || $mensagemCliente == 5 || $mensagemCliente == 6 || $mensagemCliente == 7 || $mensagemCliente == "sair") {
+                    //Fazer uma funçao aqui para retornar um objeto, ou um array
+                    //!Separar aqui como no direcionamento PARA ESSE MYSQL FICAR MELHOR
+                    $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->id_instancia AND indice = '$mensagemCliente' AND id_retorno = $this->ultimoRetorno)";
+                    $query = mysqli_query($conn['link'], $sql);
+                    $consultaResposta = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                    $numRow = mysqli_num_rows($query);
+                    if ($numRow != 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
+                        $retorno = $this->consultaRetorno('Retorno', $consultaResposta['id_retorno']);
+                        $this->direcaoEnvio($consultaResposta['tipo'], $decoded['Body']['Info']['RemoteJid'], $retorno);
+                    }
+                } else {
+                    //verifique qual comando contém a primeira palavra e chamea a função
+                    switch ($mensagemCliente) {
+                            ////case '1':{$this->opcao1($decoded['Body']['Info']['RemoteJid'],true); break;}
+                            ////case '2':{$this->opcao2($decoded['Body']['Info']['RemoteJid'],true); break;}
+                        case '3': {
+                                $this->opcao3($decoded['Body']['Info']['RemoteJid'], true);
+                                break;
+                            }
+                        case 'sair': {
+                                $this->sair($decoded['Body']['Info']['RemoteJid'], true);
+                                break;
+                            }
+                        case 'suporte': {
+                                $this->suporte($this->numerosuporte, true);
+                                break;
+                            }
+                        case '4': {
+                                $this->dados($decoded['Body']['Info']['RemoteJid'], true);
+                                break;
+                            }
+                            ////case '5':{$this->opcao5($decoded['Body']['Info']['RemoteJid'],true); break;}
+                        default: {
+                                $this->welcome($decoded['Body']['Info']['RemoteJid'], true);
+                                break;
+                            }
+                    }
+                }
+            }
+            */
+        }
+
+        public function envioMenuRaiz($numero)
+        {
+            $arrayRetorno = $this->consultaRetorno($this->menuRaiz);
+            $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+        }
+
+
+        //* C O N S U L T A  R E T O R N O
+        public function consultaRetorno($id_retorno)
+        {
+            include("dados_conexao.php");
+
+            $sql = "SELECT * FROM tbl_retornos WHERE id_instancia = $this->id_instancia AND id_retorno = $id_retorno";
+
+            $query = mysqli_query($conn['link'], $sql);
+            $consultaRetorno = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $numRow = mysqli_num_rows($query);
+            if (!$query) {
+                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_error($conn['link']));
+                exit(0);
+            }
+            if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
+                $this->logSis('ERR', 'Não encontrou a mensagem inicial Instância. Instância: ' . $this->id_instancia);
+                exit(0);
+            } else {
+                $id_retorno = $consultaRetorno['id_retorno'];  //ID da tabela retorno (chave)
+                $mensagem = utf8_encode($consultaRetorno['mensagem']);
+                //Consulta das opções
+                $sql = "SELECT * FROM tbl_opcoes WHERE listavel = 1 AND id_instancia = $this->id_instancia AND id_retorno = $id_retorno ORDER BY indice ASC";
+                $query = mysqli_query($conn['link'], $sql);
+                $numRow = mysqli_num_rows($query);
+
+                if ($numRow != 0) {
+                    $mensagem .= "\n";
+                    while ($opcao = mysqli_fetch_array($query)) {
+                        $mensagem .= '*' . $opcao['indice'] . '.* ' . utf8_encode($opcao['mensagem']) . "\n";
+                    }
+                }
+
+                $retorno = array(
+                    'id_retorno' => $consultaRetorno['id_retorno'],
+                    'nome' => $consultaRetorno['nome'],
+                    'modo' => $consultaRetorno['modo'],
+                    'tipo' => $consultaRetorno['tipo'],
+                    'coringa' => $consultaRetorno['coringa'], //para tipo 6 (Inclusão lista) -> lista_X
+                    'mensagem' => $mensagem,
+                    'url' => $consultaRetorno['url'],
+                    'lat' => $consultaRetorno['lat'],
+                    'lng' => $consultaRetorno['lng'],
+                    'name' => $consultaRetorno['name'],
+                    'address' => $consultaRetorno['address']
+                );
+                return $retorno;
+            }
+        }
+
+        //* D I R E C I O N A M E N T O  E N V I O
+        //
+        public function direcaoEnvio($tipo, $numero, $retorno)
+        {
+            if ($tipo == 1) { //texto
+                $this->sendMessage($retorno['nome'], $numero, $retorno['mensagem'], $retorno);
+            } elseif ($tipo == 2) { //imagem
+                $this->envioImagem($retorno['nome'], $numero, $retorno);
+            } elseif ($tipo == 3) { //arquivo
+                $this->envioArquivo($retorno['nome'], $numero, $retorno);
+            } elseif ($tipo == 4) { //localização
+                $this->envioLocalizacao($retorno['nome'], $numero, $retorno);
+            } elseif ($tipo == 6) { //Inclusão em lista
+                //$this->InOutListas($retorno['nome'], $numero, $retorno, 1);
+            } elseif ($tipo == 7) { //Exclusão em lista
+                //$this->InOutListas($retorno['nome'], $numero, $retorno, 0);
             }
         }
 
@@ -161,7 +317,7 @@
                 } else {
                     $aberturaString = $this->msg_inicial;
                 }
-                $this->sendMessage("Inicial", $remoteJID, $aberturaString);
+                $this->sendMessage("Inicial", $remoteJID, $aberturaString, '');
             }
         }
 
@@ -197,18 +353,18 @@
                     if ($statusEnvioEmail == true) { //( Conseguiu enviar
                         //( Atualiza a TBL_CONTATOS com a fase 1, ou seja já enviou o e-mail 
                         $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'fase', 1, "id_contato='$idContato'");
-                        $this->sendMessage("okEmail", $numero, "Enviei um e-mail com o conteúdo para $email, entre na sua caixa de e-mail e aproveite esse conteúo feito com todo carinho pra você.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_");
+                        $this->sendMessage("okEmail", $numero, "Enviei um e-mail com o conteúdo para $email, entre na sua caixa de e-mail e aproveite esse conteúo feito com todo carinho pra você.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
                     } else { //( Não enviou
-                        $this->sendMessage("okEmail", $numero, "Em breve você receberá o nosso conteúdo no e-mail $email.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_");
+                        $this->sendMessage("okEmail", $numero, "Em breve você receberá o nosso conteúdo no e-mail $email.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
                     }
                 } else { //( Não atualizou
-                    $this->sendMessage("ErroBDEmail", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br");
+                    $this->sendMessage("ErroBDEmail", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br", '');
                 }
 
                 //( e-mail invalido
             } else {
                 $texto = $msgBoasVindas . "Não identificamos um e-mal válido na sua mensagem.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ";
-                $this->sendMessage("ErroEmail", $numero, $texto);
+                $this->sendMessage("ErroEmail", $numero, $texto, '');
             }
         }
 
@@ -264,17 +420,55 @@
             }
         }
 
-        //* P R E P A R O  E N V I O
+        //* E N V I O  T E X T O
         //Prepara para envio da mensagem de texto
-        public function sendMessage($motivo, $remoteJID, $text)
+        public function sendMessage($motivo, $numero, $text, $retorno)
         {
-            $data = array('number' => $remoteJID . '@s.whatsapp.net', 'menssage' => $text);
-            $this->sendRequest($motivo, 'send_message', $data);
+ 
+            $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
+            $this->sendRequest($motivo, 'send_message', $data, $retorno);
+        }
+
+        //* E N V I O  I M A G E M
+        //
+        public function envioImagem($motivo, $remoteJID, $retorno)
+        {
+            $data = array(
+                'url' => $retorno['url'],
+                'number' => $remoteJID,
+                'caption' => $retorno['mensagem']
+            );
+            $this->sendRequest($motivo, $remoteJID, 'send_message_file_from_url', $data, $retorno);
+        }
+
+        //* E N V I O  A R Q U I V O
+        //
+        public function envioArquivo($motivo, $remoteJID, $retorno)
+        {
+            $data = array(
+                'url' => $retorno['url'],
+                'number' => $remoteJID
+            );
+            $this->sendRequest($motivo, $remoteJID, 'send_message_file_from_url', $data, $retorno);
+        }
+
+        //* E N V I O  L O C A L I Z A Ç Ã O
+        //
+        public function envioLocalizacao($motivo, $remoteJID, $retorno)
+        {
+            $data = array(
+                'address' => $retorno['address'],
+                'lat' => $retorno['lat'],
+                'lng' => $retorno['lng'],
+                'name' => $retorno['name'],
+                'number' => $remoteJID
+            );
+            $this->sendRequest($motivo, $remoteJID, 'send_location', $data, $retorno);
         }
 
         //* E N V I O
         //Envia a requisição
-        public function sendRequest($motivo, $method, $data)
+        public function sendRequest($motivo, $method, $data, $retorno)
         {
             include("dados_conexao.php");
 
@@ -299,7 +493,8 @@
             $statusEnvio = $resposta['message'];
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
                 $id_resposta = $resposta['requestMenssage']['id'];
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, 2, $this->id_interacao, $id_resposta, $motivo, 1);
+                
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $retorno['modo'], $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
             }
@@ -327,6 +522,7 @@
 
                 return array(
                     "mensagem" => $consultaInteracao['mensagem'],
+                    "id_retorno" => $consultaInteracao['id_retorno'],
                     "dataEnvio" => $consultaInteracao['data_envio']
                 );
             }
@@ -345,20 +541,23 @@
             return ucfirst($nome);
         }
 
-        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $resposta, $id_mensagem, $mensagem, $status)
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', $id_retorno, '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             $resultado = mysqli_query($conn['link'], $sql);
-            $idInteracaoIn = mysqli_insert_id($conn['link']);
+            if ($direcao == 0) {
+                $this->id_interacao_cliente = mysqli_insert_id($conn['link']);
+            }
+            $this->id_interacao = mysqli_insert_id($conn['link']);
             if ($resultado != '1') {
                 $erro = mysqli_error($conn['link']);
                 $this->logSis('ERR', 'Insert interação IN. Erro: ' . $erro);
                 $this->logSis('DEB', 'SQL : ' . $sql);
             } else {
                 return 1;
-                $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $idInteracaoIn);
+                $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $this->id_interacao);
             }
             mysqli_close($conn['link']);
         }
