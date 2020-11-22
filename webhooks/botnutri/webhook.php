@@ -244,7 +244,8 @@
         {
             include("dados_conexao.php");
 
-            $sql = "SELECT * FROM tbl_retornos WHERE id_instancia = $this->id_instancia AND id_retorno = $id_retorno";
+            //$idInstancia = $this->id_instancia;
+            $sql = 'SELECT * FROM tbl_retornos WHERE id_instancia = $this->id_instancia AND id_retorno = $id_retorno';
 
             $query = mysqli_query($conn['link'], $sql);
             $consultaRetorno = mysqli_fetch_array($query, MYSQLI_ASSOC);
