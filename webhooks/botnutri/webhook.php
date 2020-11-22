@@ -79,7 +79,6 @@
 
                     if (!$query) {
                         $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
-
                         exit(0);
                     }
 
@@ -126,7 +125,7 @@
                             if ($nome == '') {
                                 //( Caso não tenha enviado ainda a pergunta do nome
                                 if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
-                                    $this->logSis('DEB', 'Entrou para perguntar o nome');
+                                    
                                     if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
                                         $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
                                     } else {
@@ -355,7 +354,7 @@
                         $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'fase', 1, "id_contato='$idContato'");
                         $this->sendMessage("okEmail", $numero, "Enviei um e-mail com o conteúdo para $email, entre na sua caixa de e-mail e aproveite esse conteúo feito com todo carinho pra você.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
                     } else { //( Não enviou
-                        $this->sendMessage("okEmail", $numero, "Em breve você receberá o nosso conteúdo no e-mail $email.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
+                        $this->sendMessage("okEmail", $numero, "Em breve você receberá o nosso conteúdo no e-mail $email.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, enviando um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
                     }
                 } else { //( Não atualizou
                     $this->sendMessage("ErroBDEmail", $numero, "No momento não conseguimos registrar o seu e-mail na nossa base de dados.\n\nFavor enviar um e-mail para contato@nutrimarimartins.com.br", '');
@@ -547,10 +546,15 @@
 
             $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             $resultado = mysqli_query($conn['link'], $sql);
+            if (!$resultado) {
+                $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
+                exit(0);
+            }
             if ($direcao == 0) {
                 $this->id_interacao_cliente = mysqli_insert_id($conn['link']);
             }
             $this->id_interacao = mysqli_insert_id($conn['link']);
+
             if ($resultado != '1') {
                 $erro = mysqli_error($conn['link']);
                 $this->logSis('ERR', 'Insert interação IN. Erro: ' . $erro);
