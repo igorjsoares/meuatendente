@@ -232,10 +232,12 @@
             */
         }
 
-        public function envioMenuRaiz($numero)
+        public function envioMenuRaiz($numero, $textoComplementar)
         {
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz);
-            $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+            $texto = $textoComplementar . $arrayRetorno['mensagem'];
+            $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
+
         }
 
 
