@@ -125,7 +125,7 @@
                             if ($nome == '') {
                                 //( Caso não tenha enviado ainda a pergunta do nome
                                 if ($ultimaInteracao['mensagem'] != 'solicitaNome') {
-                                    
+
                                     if ($tempoParaUltimaInteracao >= 2) { //Se tiver mais de 2 horas sem interação, dar umas boas vindas ao cliente
                                         $texto = 'Olá, que bom que está de volta! Para que eu possa te conhecer melhor, qual o seu nome?';
                                     } else {
@@ -423,7 +423,7 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $numero, $text, $retorno)
         {
- 
+
             $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data, $retorno);
         }
@@ -492,8 +492,12 @@
             $statusEnvio = $resposta['message'];
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
                 $id_resposta = $resposta['requestMenssage']['id'];
-                
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $retorno['modo'], $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+                if ($retorno != '') {
+                    $tipo = $retorno['modo'];
+                } else {
+                    $tipo = '';
+                }
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
             }
@@ -556,8 +560,7 @@
             $this->id_interacao = mysqli_insert_id($conn['link']);
 
             if ($resultado != '1') {
-                $erro = mysqli_error($conn['link']);
-                $this->logSis('ERR', 'Insert interação IN. Erro: ' . $erro);
+                $this->logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_error($conn['link']));
                 $this->logSis('DEB', 'SQL : ' . $sql);
             } else {
                 return 1;
