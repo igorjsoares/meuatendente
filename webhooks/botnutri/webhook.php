@@ -9,7 +9,7 @@
             include("dados_conexao.php");
 
             //& Alterar aqui depois os dados para a consulta no BD 
-            $tempoMenu = 7200; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
+            $this->tempoMenu = 7200; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
             $idInstancia = 1;
             $this->idInstancia = $idInstancia;
 
@@ -181,7 +181,7 @@
             $this->logSis('DEB', 'Tempo da última: ' . $consultaUltima['segundos']);
 
 
-            if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
+            if ($numRow > 0 && $consultaUltima['segundos'] > $this->tempoMenu) {
                 $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $consultaUltima['segundos'] . ' segundos');
 
                 $this->envioMenuRaiz($numero, '');
