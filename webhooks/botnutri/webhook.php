@@ -229,7 +229,7 @@
             include("dados_conexao.php");
 
             if ($id_retorno == '') { //ou seja, não sei qual o retorno
-                $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $this->ultimoRetorno)";
+                $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
             } else { //Sei qual o retorno atual
                 //$idInstancia = $this->idInstancia;
                 $sql = "SELECT * FROM tbl_retornos WHERE id_instancia = $this->idInstancia AND id_retorno = $id_retorno";
@@ -248,10 +248,11 @@
                 $this->logSis('ERR', 'Não encontrou a mensagem inicial Instância. Instância: ' . $this->idInstancia);
                 exit(0);
             } else {
+                //& VERIFICAR AQUI SE VAI TER AMBIGUIDADE COM A PRIMEIRA CONSULTA 
                 $id_retorno = $consultaRetorno['id_retorno'];  //ID da tabela retorno (chave)
                 $mensagem = utf8_encode($consultaRetorno['mensagem']);
                 //Consulta das opções
-                $sql = "SELECT * FROM tbl_opcoes WHERE listavel = 1 AND id_instancia = $idInstancia AND id_retorno = $id_retorno ORDER BY indice ASC";
+                $sql = "SELECT * FROM tbl_opcoes WHERE listavel = 1 AND id_instancia = $this->idInstancia AND id_retorno = $id_retorno ORDER BY indice ASC";
                 $this->logSis('DEB', $sql);
 
                 $query = mysqli_query($conn['link'], $sql);
