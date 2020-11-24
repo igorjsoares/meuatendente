@@ -9,7 +9,7 @@
             include("dados_conexao.php");
 
             //& Alterar aqui depois os dados para a consulta no BD 
-            $this->tempoMenu = 7200; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
+            $this->tempoMenu = 60; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
             $idInstancia = 1;
             $this->idInstancia = $idInstancia;
 
