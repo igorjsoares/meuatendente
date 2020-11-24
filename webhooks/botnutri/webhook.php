@@ -168,9 +168,17 @@
             $sql = "SELECT data_envio AS ultima_interacao, TIMESTAMPDIFF(SECOND,data_envio,NOW()) AS segundos FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $this->logSis('DEB', 'SQL: '.$sql);
             $query = mysqli_query($conn['link'], $sql);
+            if (!$query) {
+                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_error($conn['link']));
+                exit(0);
+            }
+            if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
+                $this->logSis('ERR', 'Não encontrou a interação na consulta da Resposta. Número: ' . $numero);
+                exit(0);
+            }
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            $this->logSis('DEB', 'Tempo da última: '.$consultaUltima);
+            $this->logSis('DEB', 'Tempo da última: '.$consultaUltima['segundos']);
 
 
             if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
