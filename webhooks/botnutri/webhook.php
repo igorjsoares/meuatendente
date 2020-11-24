@@ -161,7 +161,7 @@
 
         public function resposta($numero, $mensagem)
         {
-            include("dados_conexao");
+            include("dados_conexao.php");
 
             //( Procurar a última interação realizada para ver se tem tempo suficiente para envio do menu
             //( Caso o tempo da resposta seja maior que o tempo estipulado para $tempoMenu, ele chama o menu ao invez de qualquer coisa. 
