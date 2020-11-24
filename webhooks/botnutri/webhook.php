@@ -177,10 +177,7 @@
             }
 
             //(ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
-            $idInstancia = $this->id_instancia;
-            $idContato = $this->id_contato;
-            $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $idContato ORDER BY data_envio DESC LIMIT 1";
-            $this->logSis('DEB', 'SQL: ' . $sql);
+            $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
 
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
