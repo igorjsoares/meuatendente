@@ -38,6 +38,7 @@
                 $idMensagemWhats = $decoded['Body']['Info']['Id'];
                 $timestamp = $decoded['Body']['Info']['Timestamp'];
                 $mensagem = $decoded['Body']['Text'];
+                $this->stringMensagemAtual = $mensagem;
 
 
                 //( Busca informações da instância CHATPRO no banco de dados 
@@ -196,12 +197,12 @@
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
-            $mensagem = explode(' ', trim($decoded['Body']['Text']));
+            $mensagem = explode(' ', trim($this->stringMensagemAtual));
 
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
                 $primeiraPalavraCliente = mb_strtolower($mensagem[0], 'UTF-8');
-                $this->logSis('DEB', 'PRIMIERA PALAVRA' . $primeiraPalavraCliente);
+                $this->logSis('DEB', 'PRIMEIRA PALAVRA' . $primeiraPalavraCliente);
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
