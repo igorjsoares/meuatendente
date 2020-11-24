@@ -169,7 +169,7 @@
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
             if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
-                $oQueChamar = "Menu";
+                $this->envioMenuRaiz($numero, '');
             }
 
             //(ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
