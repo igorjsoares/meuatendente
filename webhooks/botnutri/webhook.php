@@ -208,7 +208,7 @@
                 if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
                     $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
-                    $arrayRetorno = $this->consultaRetorno('', $this->menuRaiz, $primeiraPalavraCliente, $this->ultimoRetorno);
+                    $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                     $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                 } else { // Caso não seja um número, ele vai analisar as palavras
 
