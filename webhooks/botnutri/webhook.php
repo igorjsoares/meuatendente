@@ -149,6 +149,8 @@
                                     }
                                 }
                             } else {
+                                $this->logSis('DEB', 'Indetificou que tem nome');
+
                                 $this->resposta($numero, $decoded);
                             }
                         }
@@ -169,6 +171,8 @@
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
             if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
+                $this->logSis('DEB', 'Indetificou que faz tempo desde a última '.$consultaUltima['segundos'].' segundos');
+
                 $this->envioMenuRaiz($numero, '');
             }
 
@@ -192,11 +196,9 @@
 
                     $arrayRetorno = $this->consultaRetorno('', $this->menuRaiz, $primeiraPalavraCliente, $this->ultimoRetorno);
                     $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
-
                 } else { // Caso não seja um número, ele vai analisar as palavras
 
                 }
-
             }
         }
 
@@ -531,7 +533,7 @@
             include("dados_conexao.php");
 
             $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
-            $this->logSis('DEB', 'SQL : ' . $sql);
+            //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
             if (!$resultado) {
