@@ -169,6 +169,8 @@
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $this->logSis('DEB', 'Tempo da última: '.$consultaUltima);
+
 
             if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
                 $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $consultaUltima['segundos'] . ' segundos');
