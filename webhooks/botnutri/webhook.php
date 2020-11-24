@@ -159,8 +159,7 @@
 
         public function resposta($numero, $mensagem)
         {
-            /*
-                        include("dados_conexao.php");
+            include("dados_conexao");
 
             //( Procurar a última interação realizada para ver se tem tempo suficiente para envio do menu
             //( Caso o tempo da resposta seja maior que o tempo estipulado para $tempoMenu, ele chama o menu ao invez de qualquer coisa. 
@@ -173,8 +172,7 @@
                 $oQueChamar = "Menu";
             }
 
-
-            //(ULTIMA INTERAÇÃO DE MENU
+            //(ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
             $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->id_instancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
@@ -187,67 +185,41 @@
 
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
-                $mensagemCliente = mb_strtolower($mensagem[0], 'UTF-8');
+                $primeiraPalavraCliente = mb_strtolower($mensagem[0], 'UTF-8');
 
-                if ($mensagemCliente == 1 || $mensagemCliente == 2 || $mensagemCliente == 3 || $mensagemCliente == 5 || $mensagemCliente == 6 || $mensagemCliente == 7 || $mensagemCliente == "sair") {
-                    //Fazer uma funçao aqui para retornar um objeto, ou um array
-                    //!Separar aqui como no direcionamento PARA ESSE MYSQL FICAR MELHOR
-                    $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->id_instancia AND indice = '$mensagemCliente' AND id_retorno = $this->ultimoRetorno)";
-                    $query = mysqli_query($conn['link'], $sql);
-                    $consultaResposta = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                    $numRow = mysqli_num_rows($query);
-                    if ($numRow != 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
-                        $retorno = $this->consultaRetorno('Retorno', $consultaResposta['id_retorno']);
-                        $this->direcaoEnvio($consultaResposta['tipo'], $decoded['Body']['Info']['RemoteJid'], $retorno);
-                    }
-                } else {
-                    //verifique qual comando contém a primeira palavra e chamea a função
-                    switch ($mensagemCliente) {
-                            ////case '1':{$this->opcao1($decoded['Body']['Info']['RemoteJid'],true); break;}
-                            ////case '2':{$this->opcao2($decoded['Body']['Info']['RemoteJid'],true); break;}
-                        case '3': {
-                                $this->opcao3($decoded['Body']['Info']['RemoteJid'], true);
-                                break;
-                            }
-                        case 'sair': {
-                                $this->sair($decoded['Body']['Info']['RemoteJid'], true);
-                                break;
-                            }
-                        case 'suporte': {
-                                $this->suporte($this->numerosuporte, true);
-                                break;
-                            }
-                        case '4': {
-                                $this->dados($decoded['Body']['Info']['RemoteJid'], true);
-                                break;
-                            }
-                            ////case '5':{$this->opcao5($decoded['Body']['Info']['RemoteJid'],true); break;}
-                        default: {
-                                $this->welcome($decoded['Body']['Info']['RemoteJid'], true);
-                                break;
-                            }
-                    }
+                //( Verifica se é um número 
+                if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
+
+                    $arrayRetorno = $this->consultaRetorno('', $this->menuRaiz, $primeiraPalavraCliente, $this->ultimoRetorno);
+                    $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+
+                } else { // Caso não seja um número, ele vai analisar as palavras
+
                 }
+
             }
-            */
         }
 
+        //* Envio Menu raiz
         public function envioMenuRaiz($numero, $textoComplementar)
         {
-            $arrayRetorno = $this->consultaRetorno($this->menuRaiz);
+            $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
             $texto = $textoComplementar . $arrayRetorno['mensagem'];
             $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
-
         }
 
-
         //* C O N S U L T A  R E T O R N O
-        public function consultaRetorno($id_retorno)
+        public function consultaRetorno($id_retorno, $primeiraPalavraCliente, $ultimoRetorno)
         {
             include("dados_conexao.php");
 
-            $idInstancia = $this->idInstancia;
-            $sql = "SELECT * FROM tbl_retornos WHERE id_instancia = $idInstancia AND id_retorno = $id_retorno";
+            if ($id_retorno == '') { //ou seja, não sei qual o retorno
+                $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->id_instancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $this->ultimoRetorno)";
+            } else { //Sei qual o retorno atual
+                //$idInstancia = $this->idInstancia;
+                $sql = "SELECT * FROM tbl_retornos WHERE id_instancia = $this->idInstancia AND id_retorno = $id_retorno";
+            }
+
             $this->logSis('DEB', $sql);
 
             $query = mysqli_query($conn['link'], $sql);
