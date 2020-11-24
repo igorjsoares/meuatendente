@@ -171,13 +171,15 @@
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
             if ($numRow > 0 && $consultaUltima['segundos'] > $tempoMenu) {
-                $this->logSis('DEB', 'Indetificou que faz tempo desde a última '.$consultaUltima['segundos'].' segundos');
+                $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $consultaUltima['segundos'] . ' segundos');
 
                 $this->envioMenuRaiz($numero, '');
             }
 
             //(ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
             $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->id_instancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            $this->logSis('DEB', 'SQL: ' . $sql);
+
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
