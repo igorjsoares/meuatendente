@@ -9,7 +9,7 @@
             include("dados_conexao.php");
 
             //& Alterar aqui depois os dados para a consulta no BD 
-            $this->tempoMenu = 60; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
+            $this->tempoMenu = 7200; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
             $idInstancia = 1;
             $this->idInstancia = $idInstancia;
 
@@ -189,8 +189,6 @@
 
             //(ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
             $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
-            $this->logSis('DEB', 'SQL: ' . $sql);
-
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -203,9 +201,11 @@
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
                 $primeiraPalavraCliente = mb_strtolower($mensagem[0], 'UTF-8');
+                $this->logSis('DEB', 'PRIMIERA PALAVRA' . $primeiraPalavraCliente);
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
+                    $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
                     $arrayRetorno = $this->consultaRetorno('', $this->menuRaiz, $primeiraPalavraCliente, $this->ultimoRetorno);
                     $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
