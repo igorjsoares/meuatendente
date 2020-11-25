@@ -212,7 +212,7 @@
                 if (is_numeric($primeiraPalavraCliente) || count($mensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
                     $this->logSis('DEB', 'É NÚMERO, ou APENAS uma palavra' . $primeiraPalavraCliente);
 
-                    if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
+                    if ($primeiraPalavraCliente == '0') { //Se o cliente escolher 0, tem que retornar
                         $this->logSis('DEB', 'É igual a 0 -> ' . $primeiraPalavraCliente);
 
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
