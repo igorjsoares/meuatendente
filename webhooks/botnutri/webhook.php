@@ -190,17 +190,23 @@
 
             //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
             $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 2";
-            $this->logSis('DEB', 'SQL Interação ' . $sql);
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
-            $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            $this->logSis('DEB', 'ArrayAssoc ' . var_dump($consultaUltima));
+            //$consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
-            if ($numRow > 1) {
-                $this->ultimoRetorno = $consultaUltima[0]['id_retorno'];
-                $this->penultimoRetorno = $consultaUltima[1]['id_retorno'];
-            }else{
-                $this->ultimoRetorno = $consultaUltima['id_retorno'];
+            $arrayRetornos = [];
+            while ($retorno = mysqli_fetch_array($query)) {
+                array_push($arrayRetornos, array(
+                    'id_interacao' => $consultaUltima['id_interacao'],
+                    'id_retorno' => $consultaUltima['id_retorno']
+                ));
+            }
+
+            if (count($arrayRetornos) > 1) {
+                $this->ultimoRetorno = $arrayRetornos[0]['id_retorno'];
+                $this->penultimoRetorno = $arrayRetornos[1]['id_retorno'];
+            } else {
+                $this->ultimoRetorno = $arrayRetornos['id_retorno'];
                 $this->penultimoRetorno = '';
             }
 
@@ -211,7 +217,7 @@
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
                 $primeiraPalavraCliente = mb_strtolower($mensagem[0], 'UTF-8');
-                $this->logSis('DEB', 'PRIMEIRA PALAVRA' . $primeiraPalavraCliente);
+                $this->logSis('DEB', 'PRIMEIRA PALAVRA: ' . $primeiraPalavraCliente);
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
@@ -279,7 +285,7 @@
                         $mensagem .= '*' . $opcao['indice'] . '.* ' . utf8_encode($opcao['mensagem']) . "\n";
                     }
                     if ($consultaRetorno['modo'] == 1 && $consultaRetorno['id_retorno'] != $this->menuRaiz) {
-                        $mensagem .= "*0* Voltar ao menu anterior\n";
+                        $mensagem .= "*0.* Voltar ao menu anterior\n";
                     }
                 }
 
