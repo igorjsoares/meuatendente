@@ -229,8 +229,9 @@
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
                 } else { // Caso não seja um número, ele vai analisar as palavras
-                    //& NÃO É UM NÚMERO A RESPOSTA DO CLIENTE
-                    //& IDENTIFICAR SE NA MENSAGEM DO CLIENTE TEM ALGUMA PALAVRA QUE SEJA RESPOSTA NA COLUNA PALAVRAS 
+                    
+                    $this->logSis('DEB', 'NÃO É NÚMERO');
+                    
                     $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
 
                     $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
@@ -601,7 +602,7 @@
         //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
         public function verficaPalavras($ultimoRetorno, $mensagem)
         {
-            $this->logSis('DEB', 'Mensagem do cliente ' . print_r($mensagem));
+            $this->logSis('DEB', 'ENTROU NO VERIFICA PALAVRA - Mensagem do cliente ' . print_r($mensagem));
 
             include("dados_conexao.php");
             $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
@@ -615,6 +616,7 @@
                     'palavras' => $opcao['palavras']
                 ));
             }
+
             $this->logSis('DEB', 'Array das opções do retorno ' . print_r($arrayOpcoes));
 
         }
