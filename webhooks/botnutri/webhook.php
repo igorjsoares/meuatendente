@@ -213,10 +213,17 @@
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
 
+                        //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
+                        $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
+                        $query = mysqli_query($conn['link'], $sql);
+                        $numRow = mysqli_num_rows($query);
+                        $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                        $this->menuAnterior = $consultaUltima['menu_anterior'];
+                        $this->ultimoRetorno = $consultaUltima['id_retorno'];
+
                         $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '');
                         $this->ultimoRetorno = 0;
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
-
                     } else {
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
