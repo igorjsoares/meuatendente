@@ -267,6 +267,8 @@
         //* C O N S U L T A  R E T O R N O
         public function consultaRetorno($id_retorno, $primeiraPalavraCliente, $ultimoRetorno)
         {
+            $this->logSis('DEB', 'Entrou no Retorno. idRetorno: ' . $id_retorno . ' Palavra: ' . $primeiraPalavraCliente . ' UltimoRetorno: ' . $ultimoRetorno);
+
             include("dados_conexao.php");
 
             if ($id_retorno == '') { //ou seja, não sei qual o retorno
@@ -373,8 +375,8 @@
                 "Opção SUPORTE",
                 $numero,
                 "*SUPORTE SOLICITADO*",
-            ''
-        );
+                ''
+            );
             /* $this->sendMessage(
                 "Opção SUPORTE",
                 $numero,
