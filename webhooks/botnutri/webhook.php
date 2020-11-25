@@ -212,7 +212,9 @@
                     $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
+
                         $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '');
+                        $this->menuAnterior = 0;
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
 
                     } else {
