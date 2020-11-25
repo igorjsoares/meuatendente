@@ -194,7 +194,9 @@
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
             $this->ultimoRetorno = $consultaUltima[0]['id_retorno'];
-            $this->penultimoRetorno = $consultaUltima[1]['id_retorno'];
+            if ($numRow > 1) {
+                $this->penultimoRetorno = $consultaUltima[1]['id_retorno'];
+            }
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
@@ -209,13 +211,12 @@
                 if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
                     $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
-                    if($primeiraPalavraCliente == 0){ //Se o cliente escolher 0, tem que retornar
+                    if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
                         $arrayRetorno = $this->consultaRetorno($this->penultimoRetorno, '', '');
-                    }else{
+                    } else {
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
-
                 } else { // Caso não seja um número, ele vai analisar as palavras
                     //& NÃO É UM NÚMERO A RESPOSTA DO CLIENTE
                     //& IDENTIFICAR SE NA MENSAGEM DO CLIENTE TEM ALGUMA PALAVRA QUE SEJA RESPOSTA NA COLUNA PALAVRAS 
@@ -271,7 +272,7 @@
                     while ($opcao = mysqli_fetch_array($query)) {
                         $mensagem .= '*' . $opcao['indice'] . '.* ' . utf8_encode($opcao['mensagem']) . "\n";
                     }
-                    if($consultaRetorno['modo'] == 1 && $consultaRetorno['id_retorno'] != $this->menuRaiz){
+                    if ($consultaRetorno['modo'] == 1 && $consultaRetorno['id_retorno'] != $this->menuRaiz) {
                         $mensagem .= "*0* Voltar ao menu anterior\n";
                     }
                 }
