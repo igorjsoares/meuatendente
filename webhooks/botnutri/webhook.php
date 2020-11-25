@@ -210,9 +210,10 @@
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente) || count($mensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
-                    $this->logSis('DEB', 'É NÚMERO, ou uma palavra só ' . $primeiraPalavraCliente);
+                    $this->logSis('DEB', 'É NÚMERO, ou APENAS uma palavra' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
+                        $this->logSis('DEB', 'É igual a 0 -> ' . $primeiraPalavraCliente);
 
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
                         $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
