@@ -188,11 +188,13 @@
                 $this->envioMenuRaiz($numero, '');
             }
 
-            //(ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
+            //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
             $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 2";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $this->logSis('DEB', 'ArrayAssoc ' . var_dump($consultaUltima));
+
             $this->ultimoRetorno = $consultaUltima[0]['id_retorno'];
             if ($numRow > 1) {
                 $this->penultimoRetorno = $consultaUltima[1]['id_retorno'];
