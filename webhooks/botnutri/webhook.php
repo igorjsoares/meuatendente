@@ -379,7 +379,7 @@
                 "*ID_contato:* " . $this->id_contato . "\n" .
                 "http://wa.me/" . $numero;
 
-            $data = array('number' => $this->numerocliente . '@s.whatsapp.net', 'menssage' => $texto);
+            $data = array('number' => $this->numerosuporte . '@s.whatsapp.net', 'menssage' => $texto);
             $retornoEnvio = $this->sendRequest('Receptivo', 'send_message', $data, '');
 
             if ($retornoEnvio == true) {
