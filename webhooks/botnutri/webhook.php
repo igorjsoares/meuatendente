@@ -210,7 +210,7 @@
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente) || count($mensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
-                    $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
+                    $this->logSis('DEB', 'É NÚMERO, ou uma palavra só ' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
 
