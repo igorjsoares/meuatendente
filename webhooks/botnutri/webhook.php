@@ -196,11 +196,11 @@
 
             $arrayRetornos = [];
             while ($retorno = mysqli_fetch_array($query)) {
-                $this->logSis('DEB', 'REtornos: ' . $consultaUltima['id_retorno']);
+                $this->logSis('DEB', 'REtornos: ' . $retorno['id_retorno']);
 
                 array_push($arrayRetornos, array(
-                    'id_interacao' => $consultaUltima['id_interacao'],
-                    'id_retorno' => $consultaUltima['id_retorno']
+                    'id_interacao' => $retorno['id_interacao'],
+                    'id_retorno' => $retorno['id_retorno']
                 ));
             }
             $this->logSis('DEB', 'Cont: ' . count($arrayRetornos));
