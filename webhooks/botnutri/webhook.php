@@ -189,10 +189,11 @@
             }
 
             //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 2";
+            $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 2";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $this->menuAnterior = $consultaUltima['menu_anterior'];
             $this->ultimoRetorno = $consultaUltima['id_retorno'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
@@ -211,8 +212,8 @@
                     $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
-                        //$arrayRetorno = $this->consultaRetorno($this->penultimoRetorno, '', '');
-                        //$this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+                        $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '');
+                        $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
 
                     } else {
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
