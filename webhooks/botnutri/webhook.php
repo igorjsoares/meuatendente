@@ -196,11 +196,14 @@
 
             $arrayRetornos = [];
             while ($retorno = mysqli_fetch_array($query)) {
+                $this->logSis('DEB', 'REtornos: ' . $consultaUltima['id_retorno']);
+
                 array_push($arrayRetornos, array(
                     'id_interacao' => $consultaUltima['id_interacao'],
                     'id_retorno' => $consultaUltima['id_retorno']
                 ));
             }
+            $this->logSis('DEB', 'Cont: ' . count($arrayRetornos));
 
             if (count($arrayRetornos) > 1) {
                 $this->ultimoRetorno = $arrayRetornos[0]['id_retorno'];
@@ -209,6 +212,10 @@
                 $this->ultimoRetorno = $arrayRetornos['id_retorno'];
                 $this->penultimoRetorno = '';
             }
+
+            $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
+            $this->logSis('DEB', 'penultimoRetorno: ' . $this->penultimoRetorno);
+
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
