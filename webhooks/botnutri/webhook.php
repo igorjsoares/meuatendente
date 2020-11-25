@@ -196,9 +196,12 @@
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
             $this->logSis('DEB', 'ArrayAssoc ' . var_dump($consultaUltima));
 
-            $this->ultimoRetorno = $consultaUltima[0]['id_retorno'];
             if ($numRow > 1) {
+                $this->ultimoRetorno = $consultaUltima[0]['id_retorno'];
                 $this->penultimoRetorno = $consultaUltima[1]['id_retorno'];
+            }else{
+                $this->ultimoRetorno = $consultaUltima['id_retorno'];
+                $this->penultimoRetorno = '';
             }
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
