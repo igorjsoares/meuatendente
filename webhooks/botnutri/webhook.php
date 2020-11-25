@@ -511,7 +511,7 @@
                 }
                 $this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->menuAnterior, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
             }
