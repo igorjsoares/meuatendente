@@ -234,13 +234,14 @@
                     $this->logSis('DEB', 'NÃO É NÚMERO');
 
                     $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
-                    if($opcaoEscolhida == 0){
+                    $this->logSis('DEB', 'Retorno Palavras: ' . $opcaoEscolhida);
+
+                    if ($opcaoEscolhida == 0) {
                         $this->envioErro($numero, '');
-                    }else{
+                    } else {
                         $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
-
                 }
             }
         }
@@ -621,9 +622,14 @@
             $query = mysqli_query($conn['link'], $sql);
 
             while ($opcao = mysqli_fetch_array($query)) {
-                $palavras = explode(',', trim($opcao['palavras']));
+                $this->logSis('DEB', 'Verificação Palavras. id_opcao: ' . $opcao['id_opcao'] . ' Palavras: ' . $opcao['palavras']);
 
-                if (count(array_intersect($mensagem, $palavras)) > 0) {
+                $palavras = explode(',', trim($opcao['palavras']));
+                $palavrasEncontradas = count(array_intersect($mensagem, $palavras));
+                $this->logSis('DEB', 'Encontradas: ' . $palavrasEncontradas);
+
+                if ($palavrasEncontradas > 0) {
+
                     return $opcao['resposta'];
                     exit(0);
                 }
