@@ -258,7 +258,9 @@
         public function envioErro($numero, $textoComplementar)
         {
             $texto = $textoComplementar . $this->msg_erro;
-            $this->sendMessage('Erro', $numero, $texto, '');
+            $this->logSis('DEB', 'Mandando mensagem de erro. Número: ' . $numero . ' Texto: ' . $texto);
+
+            $this->sendMessage("Erro", $numero, $texto, '');
         }
 
         //* C O N S U L T A  R E T O R N O
