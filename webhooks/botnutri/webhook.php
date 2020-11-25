@@ -105,7 +105,7 @@
                     //( Insere a interação que foi recebida no BD 
                     //& Quando inserir a mensagem do cliente, já trazer o ID para colocar na coluna id_retorno na mensagem que vamos enviar. 
                     //& Verificar também o retorno de erro, caso não consiga inserir o cliente. 
-                    $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', $idMensagemWhats, $mensagem, 1);
+                    $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', '', $idMensagemWhats, $mensagem, 1);
 
                     if ($resultado == '1') {
                         $mensagem = explode(' ', trim($decoded['Body']['Text']));
@@ -508,7 +508,7 @@
                 }
                 $this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
             }
@@ -557,11 +557,11 @@
         }
 
         //* Inserir interação 
-        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$this->ultimoRetorno', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
