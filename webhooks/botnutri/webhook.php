@@ -232,6 +232,8 @@
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
                         $arrayRetorno = $this->consultaRetorno($this->penultimoRetorno, '', '');
+                        $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+
                     } else {
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
