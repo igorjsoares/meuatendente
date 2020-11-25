@@ -257,7 +257,9 @@
         //* Envio de erro
         public function envioErro($numero, $textoComplementar)
         {
-            $texto = $textoComplementar . $this->msg_erro;
+            //$texto = $textoComplementar . $this->msg_erro;
+            $texto = 'Não compreendi, pode por favor enviar somente o seu primeiro nome.';
+
             $this->logSis('DEB', 'Mandando mensagem de erro. Número: ' . $numero . ' Texto: ' . $texto);
 
             $this->sendMessage("Erro", $numero, $texto, '');
