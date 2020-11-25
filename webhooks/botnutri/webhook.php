@@ -189,7 +189,7 @@
             }
 
             //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 2";
+            $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -213,7 +213,7 @@
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
 
-                        //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
+                        //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
                         $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
@@ -231,6 +231,10 @@
                 } else { // Caso não seja um número, ele vai analisar as palavras
                     //& NÃO É UM NÚMERO A RESPOSTA DO CLIENTE
                     //& IDENTIFICAR SE NA MENSAGEM DO CLIENTE TEM ALGUMA PALAVRA QUE SEJA RESPOSTA NA COLUNA PALAVRAS 
+                    $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
+
+                    $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
+                    $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                 }
             }
         }
@@ -592,6 +596,27 @@
                 $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $this->id_interacao);
             }
             mysqli_close($conn['link']);
+        }
+
+        //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
+        public function verficaPalavras($ultimoRetorno, $mensagem)
+        {
+            $this->logSis('DEB', 'Mensagem do cliente ' . print_r($mensagem));
+
+            include("dados_conexao.php");
+            $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
+            $query = mysqli_query($conn['link'], $sql);
+
+            $arrayOpcoes = [];
+            while ($opcao = mysqli_fetch_array($query)) {
+                array_push($arrayOpcoes, array(
+                    'id_opcao' => $opcao['id_opcao'],
+                    'resposta' => $opcao['resposta'],
+                    'palavras' => $opcao['palavras']
+                ));
+            }
+            $this->logSis('DEB', 'Array das opções do retorno ' . print_r($arrayOpcoes));
+
         }
 
         //* Verifica a diferença entre datas e retorna em horas 
