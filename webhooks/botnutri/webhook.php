@@ -62,6 +62,7 @@
                     $this->conf_cad_dados =  $consultaInstancia['conf_cad_dados'];
                     $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
                     $this->msg_inicial =  $consultaInstancia['msg_inicial'];
+                    $this->msg_erro =  $consultaInstancia['msg_erro'];
                     $this->menuRaiz =  $consultaInstancia['menu_raiz'];
                     $limite = $consultaInstancia['limite'];
                     $status = $consultaInstancia['status'];
@@ -234,7 +235,7 @@
 
                     $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
                     if($opcaoEscolhida == 0){
-                        //& Chama a mensagem de erro 
+                        $this->envioErro($numero, '');
                     }else{
                         $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
@@ -250,6 +251,13 @@
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
             $texto = $textoComplementar . $arrayRetorno['mensagem'];
             $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
+        }
+
+        //* Envio de erro
+        public function envioErro($numero, $textoComplementar)
+        {
+            $texto = $textoComplementar . $this->msg_erro;
+            $this->sendMessage('Erro', $numero, $texto, '');
         }
 
         //* C O N S U L T A  R E T O R N O
