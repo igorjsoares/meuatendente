@@ -192,30 +192,10 @@
             $sql = "SELECT id_interacao, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 2";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
-            //$consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
-
-            $arrayRetornos = [];
-            while ($retorno = mysqli_fetch_array($query)) {
-                $this->logSis('DEB', 'REtornos: ' . $retorno['id_retorno']);
-
-                array_push($arrayRetornos, array(
-                    'id_interacao' => $retorno['id_interacao'],
-                    'id_retorno' => $retorno['id_retorno']
-                ));
-            }
-            $this->logSis('DEB', 'Cont: ' . count($arrayRetornos));
-
-            if (count($arrayRetornos) > 1) {
-                $this->ultimoRetorno = $arrayRetornos[0]['id_retorno'];
-                $this->penultimoRetorno = $arrayRetornos[1]['id_retorno'];
-            } else {
-                $this->ultimoRetorno = $arrayRetornos['id_retorno'];
-                $this->penultimoRetorno = '';
-            }
+            $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $this->ultimoRetorno = $consultaUltima['id_retorno'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
-            $this->logSis('DEB', 'penultimoRetorno: ' . $this->penultimoRetorno);
-
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
@@ -231,8 +211,8 @@
                     $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
-                        $arrayRetorno = $this->consultaRetorno($this->penultimoRetorno, '', '');
-                        $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+                        //$arrayRetorno = $this->consultaRetorno($this->penultimoRetorno, '', '');
+                        //$this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
 
                     } else {
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
@@ -562,6 +542,7 @@
             }
         }
 
+        //* Verifica o nome 
         private function verificaNome($mensagem)
         {
             $mensagem = mb_strtolower($mensagem);
@@ -575,11 +556,12 @@
             return ucfirst($nome);
         }
 
+        //* Inserir interação 
         public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$this->ultimoRetorno', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
