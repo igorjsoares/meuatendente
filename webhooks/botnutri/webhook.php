@@ -229,13 +229,17 @@
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
                 } else { // Caso não seja um número, ele vai analisar as palavras
-                    
-                    $this->logSis('DEB', 'NÃO É NÚMERO');
-                    
-                    $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
 
-                    $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
-                    $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+                    $this->logSis('DEB', 'NÃO É NÚMERO');
+
+                    $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
+                    if($opcaoEscolhida == 0){
+                        //& Chama a mensagem de erro 
+                    }else{
+                        $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
+                        $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+                    }
+
                 }
             }
         }
@@ -608,17 +612,16 @@
             $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
             $query = mysqli_query($conn['link'], $sql);
 
-            $arrayOpcoes = [];
             while ($opcao = mysqli_fetch_array($query)) {
-                array_push($arrayOpcoes, array(
-                    'id_opcao' => $opcao['id_opcao'],
-                    'resposta' => $opcao['resposta'],
-                    'palavras' => $opcao['palavras']
-                ));
+                $palavras = explode(',', trim($opcao['palavras']));
+
+                if (count(array_intersect($mensagem, $palavras)) > 0) {
+                    return $opcao['resposta'];
+                    exit(0);
+                }
             }
 
-            $this->logSis('DEB', 'Array das opções do retorno ' . print_r($arrayOpcoes));
-
+            return 0;
         }
 
         //* Verifica a diferença entre datas e retorna em horas 
