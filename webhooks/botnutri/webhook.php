@@ -602,7 +602,7 @@
         //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
         public function verficaPalavras($ultimoRetorno, $mensagem)
         {
-            $this->logSis('DEB', 'ENTROU NO VERIFICA PALAVRA - Mensagem do cliente ' . print_r($mensagem));
+            $this->logSis('DEB', 'ENTROU NO VERIFICA PALAVRA - Mensagem do cliente ' . $mensagem[0]);
 
             include("dados_conexao.php");
             $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
