@@ -344,7 +344,7 @@
             } elseif ($tipo == 4) { //localização
                 $this->envioLocalizacao($retorno['nome'], $numero, $retorno);
             } elseif ($tipo == 5) { //Envio receptivo
-                $this->receptivo($numero);
+                $this->receptivo($numero, $retorno);
             } elseif ($tipo == 6) { //Inclusão em lista
                 //$this->InOutListas($retorno['nome'], $numero, $retorno, 1);
             } elseif ($tipo == 7) { //Exclusão em lista
@@ -372,21 +372,19 @@
 
         //* OPÇÃO SUPORTE
         //Envia uma mensagem de texto para o número especificado na instância
-        public function receptivo($numero)
+        public function receptivo($numero, $retorno)
         {
-            $this->sendMessage(
-                "Opção SUPORTE",
-                $numero,
-                "*SUPORTE SOLICITADO*",
-                ''
-            );
-            /* $this->sendMessage(
-                "Opção SUPORTE",
-                $numero,
-                "*SUPORTE SOLICITADO*\n" .
-                    "*Numero:* " . $this->numerocliente . "\n" .
-                    "*ID_contato:* " . $this->id_contato . "\n"
-            ); */
+            $texto = "*SUPORTE SOLICITADO*\n" .
+                "*Numero:* " . $numero . "\n" .
+                "*ID_contato:* " . $this->id_contato . "\n" .
+                "http://wa.me/" . $numero;
+
+            $data = array('number' => $this->numerocliente . '@s.whatsapp.net', 'menssage' => $texto);
+            $retornoEnvio = $this->sendRequest('Receptivo', 'send_message', $data, '');
+
+            if ($retornoEnvio == true) {
+                $this->sendMessage($retorno['nome'], $numero, $retorno['mensagem'], $retorno);
+            }
         }
 
         //* PRIMEIRO CONTATO - Primeiras mensagens ou mensagem de erro 
@@ -568,6 +566,11 @@
             $resposta = json_decode($response, true);
             $statusEnvio = $resposta['message'];
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
+                //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
+                if ($motivo == 'Receptivo') {
+                    return true;
+                    exit(0);
+                }
                 $id_resposta = $resposta['requestMenssage']['id'];
                 if ($retorno == '') {
                     $tipo = '';
@@ -580,6 +583,10 @@
 
                 $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
+                if ($motivo == 'Receptivo') {
+                    return false;
+                    exit(0);
+                }
                 $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
             }
         } //# FCT Envio Requisição
