@@ -378,6 +378,8 @@
                 "*Numero:* " . $numero . "\n" .
                 "*ID_contato:* " . $this->id_contato . "\n" .
                 "http://wa.me/" . $numero;
+                $this->logSis('DEB', 'Suporte ' . $texto . ' Para: ' . $this->numerosuporte);
+
 
             $data = array('number' => $this->numerosuporte . '@s.whatsapp.net', 'menssage' => $texto);
             $retornoEnvio = $this->sendRequest('Receptivo', 'send_message', $data, '');
