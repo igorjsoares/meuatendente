@@ -229,9 +229,10 @@
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
-                } else { // Caso não seja um número, ele vai analisar as palavras
+                    
+                } else { //( A mensagem é um texto 
 
-                    $this->logSis('DEB', 'NÃO É NÚMERO');
+                    $this->logSis('DEB', 'É TEXTO');
 
                     $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
                     $this->logSis('DEB', 'Retorno Palavras: ' . $opcaoEscolhida);
@@ -239,7 +240,7 @@
                     if ($opcaoEscolhida == 0) {
                         $this->envioErro($numero, '');
                     } else {
-                        $arrayRetorno = $this->consultaRetorno('', $opcaoEscolhida, $this->ultimoRetorno);
+                        $arrayRetorno = $this->consultaRetorno($opcaoEscolhida, '', $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
                 }
@@ -257,8 +258,7 @@
         //* Envio de erro
         public function envioErro($numero, $textoComplementar)
         {
-            //$texto = $textoComplementar . $this->msg_erro;
-            $texto = utf8_encode($this->msg_erro);
+            $texto = $textoComplementar . utf8_encode($this->msg_erro);
 
             $this->logSis('DEB', 'Mandando mensagem de erro. Número: ' . $numero . ' Texto: ' . $texto);
 
