@@ -95,7 +95,7 @@
 
                         //CONTATO NÃO EXISTE 
                         //( Insere o contato no banco de dados 
-                        $sql = "INSERT INTO tbl_contatos(id_instancia, numero, teste, created_at) VALUES ('$idInstancia', '$numero', 0, NOW())";
+                        $sql = "INSERT INTO tbl_contatos(id_instancia, numero, lista_0, teste, created_at) VALUES ('$idInstancia', '$numero', 1, 0, NOW())";
                         $resultado = mysqli_query($conn['link'], $sql);
                         $this->id_contato = mysqli_insert_id($conn['link']);
                         if ($resultado != '1') {
@@ -209,7 +209,7 @@
                 $this->logSis('DEB', 'PRIMEIRA PALAVRA: ' . $primeiraPalavraCliente);
 
                 //( Verifica se é um número 
-                if (is_numeric($primeiraPalavraCliente)) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
+                if (is_numeric($primeiraPalavraCliente) || count($mensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
                     $this->logSis('DEB', 'É NÚMERO ' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == 0) { //Se o cliente escolher 0, tem que retornar
@@ -229,7 +229,6 @@
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
-                    
                 } else { //( A mensagem é um texto 
 
                     $this->logSis('DEB', 'É TEXTO');
@@ -339,11 +338,50 @@
                 $this->envioArquivo($retorno['nome'], $numero, $retorno);
             } elseif ($tipo == 4) { //localização
                 $this->envioLocalizacao($retorno['nome'], $numero, $retorno);
+            } elseif ($tipo == 5) { //Envio receptivo
+                $this->receptivo($numero);
             } elseif ($tipo == 6) { //Inclusão em lista
                 //$this->InOutListas($retorno['nome'], $numero, $retorno, 1);
             } elseif ($tipo == 7) { //Exclusão em lista
-                //$this->InOutListas($retorno['nome'], $numero, $retorno, 0);
+                $this->InOutListas($retorno['nome'], $numero, $retorno, 0);
             }
+        }
+
+        //* I N C L U S Ã O  E  E X C L U S Ã O  D E  L I S T A
+        //
+        public function InOutListas($motivo, $remoteJID, $retorno, $valor)
+        {
+            include("dados_conexao.php");
+            $coluna = 'lista_' . $retorno['coringa'];
+
+            $id_contato = $this->id_contato;
+            $sql = "UPDATE tbl_contatos SET $coluna = $valor WHERE id_contato = $id_contato";
+            $resuldadoUpdateLista = mysqli_query($conn['link'], $sql);
+
+            if ($resuldadoUpdateLista == true) {
+                $this->sendMessage('Retorno', $remoteJID, $retorno['mensagem'], $retorno);
+            } else {
+                $this->sendMessage('Retorno', $remoteJID, $this->mensagem_erro, $retorno);
+            }
+        }
+
+        //* OPÇÃO SUPORTE
+        //Envia uma mensagem de texto para o número especificado na instância
+        public function receptivo($numero)
+        {
+            $this->sendMessage(
+                "Opção SUPORTE",
+                $numero,
+                "*SUPORTE SOLICITADO*",
+            ''
+        );
+            /* $this->sendMessage(
+                "Opção SUPORTE",
+                $numero,
+                "*SUPORTE SOLICITADO*\n" .
+                    "*Numero:* " . $this->numerocliente . "\n" .
+                    "*ID_contato:* " . $this->id_contato . "\n"
+            ); */
         }
 
         //* PRIMEIRO CONTATO - Primeiras mensagens ou mensagem de erro 
@@ -404,11 +442,6 @@
                 $texto = $msgBoasVindas . "Não identificamos um e-mal válido na sua mensagem.\nPara receber nosso conteúdo, favor envie uma mensagem somente com o seu e-mail. ";
                 $this->sendMessage("ErroEmail", $numero, $texto, '');
             }
-        }
-
-        public function envioMenu($numero, $textoComplementar)
-        {
-            //& Envio do MENU
         }
 
         //* Atualização de campo genérico em tabela genérica
@@ -619,18 +652,15 @@
         //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
         public function verficaPalavras($ultimoRetorno, $mensagem)
         {
-            $this->logSis('DEB', 'ENTROU NO VERIFICA PALAVRA - Mensagem do cliente ' . $mensagem[0]);
 
             include("dados_conexao.php");
             $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
             $query = mysqli_query($conn['link'], $sql);
 
             while ($opcao = mysqli_fetch_array($query)) {
-                $this->logSis('DEB', 'Verificação Palavras. id_opcao: ' . $opcao['id_opcao'] . ' Palavras: ' . $opcao['palavras']);
 
                 $palavras = explode(',', trim($opcao['palavras']));
                 $palavrasEncontradas = count(array_intersect($mensagem, $palavras));
-                $this->logSis('DEB', 'Encontradas: ' . $palavrasEncontradas);
 
                 if ($palavrasEncontradas > 0) {
 
