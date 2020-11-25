@@ -226,6 +226,8 @@
                         $this->ultimoRetorno = 0;
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     } else {
+                        $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
+
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
