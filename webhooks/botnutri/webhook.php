@@ -211,7 +211,8 @@
                     $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                     $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                 } else { // Caso não seja um número, ele vai analisar as palavras
-
+                    //& NÃO É UM NÚMERO A RESPOSTA DO CLIENTE
+                    //& IDENTIFICAR SE NA MENSAGEM DO CLIENTE TEM ALGUMA PALAVRA QUE SEJA RESPOSTA NA COLUNA PALAVRAS 
                 }
             }
         }
