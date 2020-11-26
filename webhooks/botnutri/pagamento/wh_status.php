@@ -10,10 +10,8 @@
 
             //Recebe o corpo do Json enviado pela instância
             $json = file_get_contents('php://input');
-            $decoded = json_decode($json, true); //Decodifica
+            file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
 
-            //Recebe o corpo do Json enviado pela instância
-            $json = file_get_contents('php://input');
             $decoded = json_decode($json, true); //Decodifica
 
             //Grava o JSON-body no arquivo de debug
