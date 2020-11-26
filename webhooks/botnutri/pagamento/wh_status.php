@@ -6,7 +6,7 @@
 
         public function __construct()
         {
-            include("dados_conexao.php");
+            include("../dados_conexao.php");
 
             //Recebe o corpo do Json enviado pela instância
             $json = file_get_contents('php://input');
