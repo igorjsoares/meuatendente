@@ -11,13 +11,19 @@
             //Recebe o corpo do Json enviado pela instância
             $json = file_get_contents('php://input');
             $decoded = json_decode($json, true); //Decodifica
-            $decoded = $decoded[0];
+
+            //Recebe o corpo do Json enviado pela instância
+            $json = file_get_contents('php://input');
+            $decoded = json_decode($json, true); //Decodifica
 
             //Grava o JSON-body no arquivo de debug
             ob_start();
             var_dump($decoded);
             $input = ob_get_contents();
             ob_end_clean();
+
+            //Coloca para salvar todas as requisições recebidas em um arquivo de log
+            file_put_contents('inputs.log', $input . PHP_EOL, FILE_APPEND);
 
             $object = $decoded['object'];
             $id = $decoded['id'];
