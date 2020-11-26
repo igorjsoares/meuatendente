@@ -11,6 +11,7 @@
             //Recebe o corpo do Json enviado pela instância
             $json = file_get_contents('php://input');
             $decoded = json_decode($json, true); //Decodifica
+            $decoded = $decoded[0];
 
             //Grava o JSON-body no arquivo de debug
             ob_start();
