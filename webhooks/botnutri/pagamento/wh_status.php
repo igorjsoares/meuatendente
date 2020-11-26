@@ -9,10 +9,17 @@
             include("../dados_conexao.php");
 
             //Recebe o corpo do Json enviado pela instância
-            $json = file_get_contents('php://input');
-            file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
+            //$json = file_get_contents('php://input');
+            
+            parse_str(file_get_contents("php://input"), $data);
+            // Cast it to an object
+            $data = (object)$data;
+            
+            var_dump($data);
+            
+            file_put_contents('inputs2.log', $data . PHP_EOL, FILE_APPEND);
 
-            $decoded = json_decode($json, true); //Decodifica
+            $decoded = json_decode($data, true); //Decodifica
 
             //Grava o JSON-body no arquivo de debug
             ob_start();
