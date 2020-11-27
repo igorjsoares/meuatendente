@@ -731,10 +731,11 @@
             if (curl_errno($pagarme)) {
                 $this->logSis('ERR', 'Erro na criação do link. Erro: ' . curl_error($pagarme));
             } else { //CASO A REQUISIÇÃO NÃO RETORNE ERRO
-                if (isset($result['id'])) {
-                    $this->logSis('SUC', 'Link criado. Link1: ' . $result['url']);
+                $arrayResult = json_decode($result, true);
+                if (isset($arrayResult['id'])) {
+                    $this->logSis('SUC', 'Link criado. Link1: ' . $arrayResult['url']);
                 } else {
-                    $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $result);
+                    $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $arrayResult);
                 }
             }
         }
