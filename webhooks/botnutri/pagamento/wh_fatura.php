@@ -55,6 +55,7 @@
                 $query = mysqli_query($conn['link'], $sql);
                 $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
                 $numRow = mysqli_num_rows($query);
+                $this->logSis('SQL', "SQL: " . $sql);
 
                 if (!$query) {
                     $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
@@ -66,9 +67,10 @@
                     $this->id_instancia = $consultaContato['id_instancia'];
                     $this->APIurl = $consultaContato['endpoint'];
                     $this->token = $consultaContato['token'];
+                    
+                    $this->logSis('DEB', 'Consulta Contato: ' . $this->numero . '    ' . $this->APIurl . '    ' . $this->token);
                 } else { //( O CONTATO NÃO EXISTE 
                     $this->logSis('ERR', "Nao encontrado nenhum contato na FATURA: " . $idContato);
-
                 }
 
 
@@ -81,6 +83,8 @@
                         "Clique no link abaixo para acessar o boleto, ou copie o código de barras abaixo do link." .
                         $boleto_url . "\n\n" .
                         $boleto_barcode;
+
+                    $this->logSis('DEB', 'Texto: ' . $texto);
 
                     $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
                 }
