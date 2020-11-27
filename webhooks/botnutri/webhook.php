@@ -680,13 +680,13 @@
             $arrayDados = array(
                 "api_key" => "ak_test_EfQ4KKaduJJHqYYDpPJvDjsuH5D1GG",
                 "amount" => 10000,
-                "items" => array(
+                "items" => array(array(
                     "id" => '1',
                     "title" => 'Consulta Online',
                     "unit_price" => 10000,
                     "quantity" => 1,
                     "tangible" => true,
-                ),
+                )),
                 "payment_config" => array(
                     "boleto" => array(
                         "enabled" => true,
