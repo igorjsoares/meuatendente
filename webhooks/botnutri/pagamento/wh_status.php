@@ -2,6 +2,18 @@
     class wh_status
     {
 
+        //Status	Significado
+        //processing        Transação está em processo de autorização.
+        //authorized        Transação foi autorizada. Cliente possui saldo na conta e este valor foi reservado para futura captura, que deve acontecer em até 5 dias para transações criadas com api_key. Caso não seja capturada, a autorização é cancelada automaticamente pelo banco emissor, e o status dela permanece como authorized.
+        //paid              Transação paga. Foi autorizada e capturada com sucesso. Para Boleto, significa que nossa API já identificou o pagamento de seu cliente.
+        //refunded	        Transação estornada completamente.
+        //waiting_payment	Transação aguardando pagamento (status válido para Boleto bancário).
+        //pending_refund	Transação do tipo Boleto e que está aguardando confirmação do estorno solicitado.
+        //refused           Transação recusada, não autorizada.
+        //chargedback       Transação sofreu chargeback. Veja mais sobre isso em nossa central de ajuda
+        //analyzing         Transação encaminhada para a análise manual feita por um especialista em prevenção a fraude.
+        //pending_review	Transação pendente de revisão manual por parte do lojista. Uma transação ficará com esse status por até 48 horas corridas.
+
         //$id_instancia = $_GET['codigo']; //chatpro-yybwcu3f69   
 
         public function __construct()
@@ -39,7 +51,41 @@
                 $this->logSis('DEB', 'SQL : ' . $sql);
             } else {
                 $this->logSis('SUC', 'Insert STATUS FINANCEIRO. ID_GATEWAY: ' . $id);
-                //& CONTINUAR AQUI PARA AÇÕES PÓS CONFIRMAÇÃO DE PAGAMENTO
+
+                //( Consulta o contato no BD o endPoint e o token
+                $sql = "SELECT c.numero, i.id_instancia, endpoint, token FROM tbl_contatos c, tbl_instancias i WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia";
+                $query = mysqli_query($conn['link'], $sql);
+                $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                $numRow = mysqli_num_rows($query);
+                $this->logSis('SQL', "SQL: " . $sql);
+
+                if (!$query) {
+                    $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
+                    exit(0);
+                }
+
+                if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
+                    $this->numero = $consultaContato['numero'];
+                    $this->idInstancia = $consultaContato['id_instancia'];
+                    $this->APIurl = $consultaContato['endpoint'] . '/api/v1/';
+                    $this->token = $consultaContato['token'];
+                    
+                    $this->logSis('DEB', 'Consulta Contato: ' . $this->numero . '    ' . $this->APIurl . '    ' . $this->token);
+                } else { //( O CONTATO NÃO EXISTE 
+                    $this->logSis('ERR', "Nao encontrado nenhum contato na FATURA: " . $idContato);
+                }
+                
+                if($current_status == 'paid'){
+                    $texto = "Seu pagamento foi confirmado\n" .
+                        "Número da ordem: " . $id ."\n".
+                        "Status: 🟢 *PAGAMENTO CONFIRMADO*\n\n".
+                        "A seguir enviaremos as datas disponíveis para agendamento.";
+
+                    $this->logSis('DEB', 'Texto: ' . $texto);
+
+                    $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
+                }
+
             }
         }
 
@@ -130,7 +176,7 @@
             }
             mysqli_close($conn['link']);
         }
-
+        
         //* Função de LOG
         public function logSis($tipo, $texto)
         {

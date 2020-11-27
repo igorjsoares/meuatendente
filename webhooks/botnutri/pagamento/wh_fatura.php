@@ -9,6 +9,7 @@
             include("../dados_conexao.php");
 
             $idContato = $_GET['id_contato'];
+            $id_contato = $_GET['id_contato'];
 
             $id_fin_fatura = $_POST['id_fin_fatura'];
             $id = $_POST['id'];
@@ -64,7 +65,7 @@
 
                 if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
                     $this->numero = $consultaContato['numero'];
-                    $this->id_instancia = $consultaContato['id_instancia'];
+                    $this->idInstancia = $consultaContato['id_instancia'];
                     $this->APIurl = $consultaContato['endpoint'] . '/api/v1/';
                     $this->token = $consultaContato['token'];
                     
@@ -74,11 +75,12 @@
                 }
 
 
-                //( Verifica se é um boleto
-                if ($payment_method == 'boleto') {
+                //( Verifica se é um boleto e se está aguardando pagamento 
+                if ($payment_method == 'boleto' && $current_status == 'waiting_payment') {
 
                     $texto = "Você optou por pagamento via *Boleto Bancário*\n" .
                         "Número da ordem: " . $order_id ."\n".
+                        "Status: 🟡 *AGUARDANDO PAGAMENTO*\n".
                         "Neste método de pagamento, aguardaremos a compensação do pagamento, e assim que confirmada entraremos em contato por aqui com link para marcarmos o horário do atendimento.\n" .
                         "Clique no link abaixo para acessar o boleto, ou copie o código de barras abaixo do link.\n\n" .
                         $boleto_url . "\n\n" .
