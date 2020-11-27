@@ -724,14 +724,19 @@
             $headers[] = 'Accept: application/json';
             $headers[] = 'Content-Type: application/json';
             curl_setopt($pagarme, CURLOPT_HTTPHEADER, $headers);
-
+            
             $result = curl_exec($pagarme);
+            
+            $this->logSis('SUC', 'Link criado. Link0: ' . $result);
 
             if (curl_errno($pagarme)) {
                 $this->logSis('ERR', 'Erro na criação do link. Erro: ' . curl_error($pagarme));
             } else { //CASO A REQUISIÇÃO NÃO RETORNE ERRO
                 $camposLink = json_decode($result, true);
-                $this->logSis('SUC', 'Link criado. Link: ' . $camposLink['url']);
+                $this->logSis('SUC', 'Link criado. Link1: ' . $result['url']);
+                $this->logSis('SUC', 'Link criado. Link2: ' . $result['id']);
+                $this->logSis('SUC', 'Link criado. Link3: ' . $camposLink['url']);
+                $this->logSis('SUC', 'Link criado. Link4: ' . $camposLink['id']);
             }
         }
 
