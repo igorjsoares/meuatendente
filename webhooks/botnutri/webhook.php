@@ -203,7 +203,7 @@
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
 
-            if(mb_strtolower($mensagem[0], 'UTF-8') == 'link'){
+            if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
                 $this->solicitaLink();
@@ -677,38 +677,38 @@
 
             include("dados_conexao.php");
 
-            $jsonDados = "{
-'api_key': 'ak_test_EfQ4KKaduJJHqYYDpPJvDjsuH5D1GG',
-'amount': 10000,
-'items': [
-{
-'id': '1',
-'title': 'Consulta Online',
-'unit_price': 10000,
-'quantity': 1,
-'tangible': true
-}
-],
-'payment_config': {
-'boleto': {
-'enabled': true,
-'expires_in': 3
-},
-'credit_card': {
-'enabled': true,
-'free_installments': 1,
-'interest_rate': 0.01,
-'max_installments': 12
-},
-'default_payment_method': 'credit_card'
-},
-'postback_config': {
-'orders': 'https://meuatendente.com/webhooks/botnutri/pagamento/wh_status.php',
-'transactions': 'https://meuatendente.com/webhooks/botnutri/pagamento/wh_fatura.php'
-},
-'max_orders': 1,
-'expires_in': 60
-}";
+            $arrayDados = array(
+                "api_key" => "ak_test_EfQ4KKaduJJHqYYDpPJvDjsuH5D1GG",
+                "amount" => 10000,
+                "items" => array(
+                    "id" => '1',
+                    "title" => 'Consulta Online',
+                    "unit_price" => 10000,
+                    "quantity" => 1,
+                    "tangible" => true,
+                ),
+                "payment_config" => array(
+                    "boleto" => array(
+                        "enabled" => true,
+                        "expires_in" => 3
+                    ),
+                    "credit_card" => array(
+                        "enabled" => true,
+                        "free_installments" => 1,
+                        "interest_rate" => 0.01,
+                        "max_installments" => 12
+                    ),
+                    "default_payment_method" => "credit_card"
+                ),
+                "postback_config" => array(
+                    "orders" => "https://meuatendente.com/webhooks/botnutri/pagamento/wh_status.php",
+                    "transactions" => "https://meuatendente.com/webhooks/botnutri/pagamento/wh_fatura.php",
+                ),
+                "max_orders" => 1,
+                "expires_in" => 60
+            );
+
+            $jsonDados = json_encode($arrayDados);
 
             $pagarme = curl_init();
 
@@ -724,19 +724,17 @@
             $headers[] = 'Accept: application/json';
             $headers[] = 'Content-Type: application/json';
             curl_setopt($pagarme, CURLOPT_HTTPHEADER, $headers);
-            
+
             $result = curl_exec($pagarme);
-            
-            $this->logSis('SUC', 'Link criado. Link0: ' . $result);
 
             if (curl_errno($pagarme)) {
                 $this->logSis('ERR', 'Erro na criação do link. Erro: ' . curl_error($pagarme));
             } else { //CASO A REQUISIÇÃO NÃO RETORNE ERRO
-                $camposLink = json_decode($result, true);
-                $this->logSis('SUC', 'Link criado. Link1: ' . $result['url']);
-                $this->logSis('SUC', 'Link criado. Link2: ' . $result['id']);
-                $this->logSis('SUC', 'Link criado. Link3: ' . $camposLink['url']);
-                $this->logSis('SUC', 'Link criado. Link4: ' . $camposLink['id']);
+                if (isset($result['id'])) {
+                    $this->logSis('SUC', 'Link criado. Link1: ' . $result['url']);
+                } else {
+                    $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $result);
+                }
             }
         }
 
