@@ -9,15 +9,21 @@
             include("../dados_conexao.php");
 
             //Recebe o corpo do Json enviado pela instância
-            $wwwform = file_get_contents('php://input');
-            file_put_contents('inputs2.log', $wwwform . PHP_EOL, FILE_APPEND);
+            //$wwwform = file_get_contents('php://input');
+
+            $json = $_POST["order"];
+            $decoded = json_decode($json, true); //Decodifica
+            file_put_contents('inputs2.log', $decoded[0]['id'] . PHP_EOL, FILE_APPEND);
+            file_put_contents('inputs2.log', $decoded['id'] . PHP_EOL, FILE_APPEND);
+
+            /* file_put_contents('inputs2.log', $wwwform . PHP_EOL, FILE_APPEND);
             file_put_contents('inputs2.log', $wwwform[0]['id'] . PHP_EOL, FILE_APPEND);
-            file_put_contents('inputs2.log', $wwwform['id'] . PHP_EOL, FILE_APPEND);
+            file_put_contents('inputs2.log', $wwwform['id'] . PHP_EOL, FILE_APPEND); */
 
 
             foreach (explode('&', $wwwform) as $chunk) {
                 $param = explode("=", $chunk);
-            
+
                 if ($param) {
                     printf("Value for parameter \"%s\" is \"%s\"<br/>\n", urldecode($param[0]), urldecode($param[1]));
                 }
