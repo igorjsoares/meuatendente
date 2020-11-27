@@ -16,12 +16,15 @@
             $object = $_POST['object'];
             $order = $_POST['order'];
 
-            $this->logSis('DEB', 'ORder: ' . $order);
+            $this->logSis('DEB', 'ORder19: ' . $order);
+            $this->logSis('DEB', 'ORder20: ' . $order['id']);
+            $this->logSis('DEB', 'ORder21: ' . $order->id);
+            $this->logSis('DEB', 'ORder: ' . print_r($order));
             
             $decodedOrder = json_decode($order[0], true);
-            $this->logSis('DEB', 'ORder: ' . $decodedOrder);
-            $this->logSis('DEB', 'ORder: ' . $decodedOrder[0]['id']);
-            $this->logSis('DEB', 'ORder: ' . $decodedOrder[0]);
+            $this->logSis('DEB', 'ORder25: ' . $decodedOrder);
+            $this->logSis('DEB', 'ORder26: ' . $decodedOrder[0]['id']);
+            $this->logSis('DEB', 'ORder27: ' . $decodedOrder[0]);
 
 
             $object = $decodedOrder['object'];
