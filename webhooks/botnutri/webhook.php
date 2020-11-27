@@ -709,6 +709,7 @@
             );
 
             $jsonDados = json_encode($arrayDados);
+            $this->logSis('SUC', 'Jason Dados -> ' . $jsonDados);
 
             $pagarme = curl_init();
 
