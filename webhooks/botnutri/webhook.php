@@ -709,7 +709,7 @@
             );
 
             $jsonDados = json_encode($arrayDados);
-            $this->logSis('SUC', 'Jason Dados -> ' . $jsonDados);
+            $this->logSis('SUC', 'Json Dados -> ' . $jsonDados);
 
             $pagarme = curl_init();
 
@@ -775,7 +775,7 @@
 
                     }
                 } else {
-                    $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $arrayResult);
+                    $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $result);
                 }
             }
         }
