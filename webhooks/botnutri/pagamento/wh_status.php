@@ -8,54 +8,26 @@
         {
             include("../dados_conexao.php");
 
-            //Recebe o corpo do Json enviado pela instância
-            //$wwwform = file_get_contents('php://input');
-                $file=   $_FILES['id'];
-            $json = $_POST["id"];
-            //$decoded = json_decode($json, true); //Decodifica
-            file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
-            file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
-            //file_put_contents('inputs2.log', $decoded['id'] . PHP_EOL, FILE_APPEND);
+            $fingerprint = $_POST['fingerprint'];
+            $event = $_POST['event'];
+            $old_status = $_POST['old_status'];
+            $desired_status = $_POST['desired_status'];
+            $current_status = $_POST['current_status'];
+            $object = $_POST['object'];
+            $order = $_POST['order'];
 
-            /* file_put_contents('inputs2.log', $wwwform . PHP_EOL, FILE_APPEND);
-            file_put_contents('inputs2.log', $wwwform[0]['id'] . PHP_EOL, FILE_APPEND);
-            file_put_contents('inputs2.log', $wwwform['id'] . PHP_EOL, FILE_APPEND); */
+            
+            $decodedOrder = json_decode($json, true);
 
-
-            foreach (explode('&', $wwwform) as $chunk) {
-                $param = explode("=", $chunk);
-
-                if ($param) {
-                    printf("Value for parameter \"%s\" is \"%s\"<br/>\n", urldecode($param[0]), urldecode($param[1]));
-                }
-            }
-
-            $json = urldecode($wwwform);
-            file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
-
-            $decoded = json_decode($json, true); //Decodifica
-            file_put_contents('inputs2.log', $decoded[0]['id'] . PHP_EOL, FILE_APPEND);
-            file_put_contents('inputs2.log', $decoded['id'] . PHP_EOL, FILE_APPEND);
-
-
-            //Grava o JSON-body no arquivo de debug
-            ob_start();
-            var_dump($decoded);
-            $input = ob_get_contents();
-            ob_end_clean();
-
-            //Coloca para salvar todas as requisições recebidas em um arquivo de log
-            file_put_contents('inputs.log', $input . PHP_EOL, FILE_APPEND);
-
-            $object = $decoded['object'];
-            $id = $decoded['id'];
-            $company_id = $decoded['company_id'];
-            $status = $decoded['status'];
-            $amount = $decoded['amount'];
-            $payment_link_id = $decoded['payment_link_id'];
+            $object = $decodedOrder['object'];
+            $id = $decodedOrder['id'];
+            $company_id = $decodedOrder['company_id'];
+            $status = $decodedOrder['status'];
+            $amount = $decodedOrder['amount'];
+            $payment_link_id = $decodedOrder['payment_link_id'];
 
             //( INSERE OS DADOS DO STATUS NO BANCO DE DADOS 
-            $sql = "INSERT INTO tbl_fin_status(object, id, company_id, status, amount, payment_link_id, create_at) VALUES ('$object', '$id', '$company_id', '$status', '$amount', '$payment_link_id', NOW())";
+            $sql = "INSERT INTO tbl_fin_status(fingerprint, event, old_status, desired_status, current_status, object, id, company_id, status, amount, payment_link_id, create_at) VALUES ('$fingerprint', '$event', '$old_status', '$desired_status', '$current_status', '$object', '$id', '$company_id', '$status', '$amount', '$payment_link_id', NOW())";
 
             $resultado = mysqli_query($conn['link'], $sql);
             if (!$resultado) {
