@@ -65,7 +65,7 @@
                 if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
                     $this->numero = $consultaContato['numero'];
                     $this->id_instancia = $consultaContato['id_instancia'];
-                    $this->APIurl = $consultaContato['endpoint'];
+                    $this->APIurl = $consultaContato['endpoint'] . '/api/v1/';
                     $this->token = $consultaContato['token'];
                     
                     $this->logSis('DEB', 'Consulta Contato: ' . $this->numero . '    ' . $this->APIurl . '    ' . $this->token);
@@ -78,9 +78,9 @@
                 if ($payment_method == 'boleto') {
 
                     $texto = "Você optou por pagamento via *Boleto Bancário*\n" .
-                        "Número da ordem: " . $order_id .
+                        "Número da ordem: " . $order_id ."\n".
                         "Neste método de pagamento, aguardaremos a compensação do pagamento, e assim que confirmada entraremos em contato por aqui com link para marcarmos o horário do atendimento.\n" .
-                        "Clique no link abaixo para acessar o boleto, ou copie o código de barras abaixo do link." .
+                        "Clique no link abaixo para acessar o boleto, ou copie o código de barras abaixo do link.\n\n" .
                         $boleto_url . "\n\n" .
                         $boleto_barcode;
 
