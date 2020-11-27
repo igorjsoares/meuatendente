@@ -206,7 +206,7 @@
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
-                $this->solicitaLink($numero);
+                $this->solicitaLink($numero, 10000, 1, 'Consulta Online', 10000, 1);
                 exit(0);
             }
 
@@ -671,7 +671,7 @@
         }
 
         //* Funcção que solicita um link de pagamento
-        private function solicitaLink($numero)
+        private function solicitaLink($numero, $valorTotal, $itemId, $itemNome, $itemValor, $itemQuantidade)
         {
             $this->logSis('DEB', 'Entrou na solicitação do link');
 
@@ -679,12 +679,12 @@
 
             $arrayDados = array(
                 "api_key" => "ak_test_EfQ4KKaduJJHqYYDpPJvDjsuH5D1GG",
-                "amount" => 10000,
+                "amount" => $valorTotal,
                 "items" => array(array(
-                    "id" => '1',
-                    "title" => 'Consulta Online',
-                    "unit_price" => 10000,
-                    "quantity" => 1,
+                    "id" => $itemId,
+                    "title" => $itemNome,
+                    "unit_price" => $itemValor,
+                    "quantity" => $itemQuantidade,
                     "tangible" => true,
                 )),
                 "payment_config" => array(
