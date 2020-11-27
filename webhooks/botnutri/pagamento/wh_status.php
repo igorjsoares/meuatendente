@@ -43,6 +43,94 @@
             }
         }
 
+        //* E N V I O  T E X T O
+        //Prepara para envio da mensagem de texto
+        public function sendMessage($motivo, $numero, $text, $retorno)
+        {
+
+            $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
+            $this->sendRequest($motivo, 'send_message', $data, $retorno);
+        }
+
+        //* E N V I O
+        //Envia a requisição
+        public function sendRequest($motivo, $method, $data, $retorno)
+        {
+            include("../dados_conexao.php");
+
+            $url = 'https://' . $this->APIurl . $method;
+            if (is_array($data)) {
+                $data = json_encode($data);
+            }
+
+            $options = stream_context_create(['http' => [
+                'method'  => 'POST',
+                'header'  => "Content-type: application/json\r\nAuthorization: $this->token\r\n",
+                'content' => $data
+            ]]);
+
+            $response = file_get_contents($url, false, $options);
+
+            $this->logSis('REQ', 'Resp Requisição: ' . $response);
+
+            //return $response;
+
+            $resposta = json_decode($response, true);
+            $statusEnvio = $resposta['message'];
+            if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
+                //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
+                if ($motivo == 'Receptivo') {
+                    return true;
+                    exit(0);
+                }
+                $id_resposta = $resposta['requestMenssage']['id'];
+                if ($retorno == '') {
+                    $tipo = '';
+                    $idRetorno = '';
+                } else {
+                    $tipo = $retorno['modo'];
+                    $idRetorno = $retorno['id_retorno'];
+                }
+                $this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
+
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+            } else {
+                if ($motivo == 'Receptivo') {
+                    return false;
+                    exit(0);
+                }
+                $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
+            }
+        } //# FCT Envio Requisição
+
+        //* Inserir interação 
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
+        {
+            include("../dados_conexao.php");
+
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            //$this->logSis('DEB', 'SQL : ' . $sql);
+
+            $resultado = mysqli_query($conn['link'], $sql);
+            if (!$resultado) {
+                $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
+                exit(0);
+            }
+            if ($direcao == 0) {
+                $this->id_interacao_cliente = mysqli_insert_id($conn['link']);
+            }
+            $this->id_interacao = mysqli_insert_id($conn['link']);
+
+            if ($resultado != '1') {
+                $this->logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_error($conn['link']));
+                $this->logSis('DEB', 'SQL : ' . $sql);
+            } else {
+                return 1;
+                $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $this->id_interacao);
+            }
+            mysqli_close($conn['link']);
+        }
+
         //* Função de LOG
         public function logSis($tipo, $texto)
         {
