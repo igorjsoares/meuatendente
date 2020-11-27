@@ -729,8 +729,6 @@
 
             if (curl_errno($pagarme)) {
                 $this->logSis('ERR', 'Erro na criação do link. Erro: ' . curl_error($pagarme));
-
-                file_put_contents('erro.txt', date('d/m/Y h:i:s') . ' Erro na consulta do Card: ' . $idCard . ' Erro: ' . curl_error($pagarme) . PHP_EOL, FILE_APPEND);
             } else { //CASO A REQUISIÇÃO NÃO RETORNE ERRO
                 $camposLink = json_decode($result, true);
                 $this->logSis('SUC', 'Link criado. Link: ' . $camposLink['url']);
