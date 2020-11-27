@@ -16,8 +16,13 @@
             $object = $_POST['object'];
             $order = $_POST['order'];
 
+            $this->logSis('DEB', 'ORder: ' . $order);
             
             $decodedOrder = json_decode($order[0], true);
+            $this->logSis('DEB', 'ORder: ' . $decodedOrder);
+            $this->logSis('DEB', 'ORder: ' . $decodedOrder[0]['id']);
+            $this->logSis('DEB', 'ORder: ' . $decodedOrder[0]);
+
 
             $object = $decodedOrder['object'];
             $id = $decodedOrder['id'];
