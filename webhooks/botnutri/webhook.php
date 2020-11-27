@@ -206,7 +206,7 @@
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
-                $this->solicitaLink();
+                $this->solicitaLink($numero);
                 exit(0);
             }
 
@@ -671,7 +671,7 @@
         }
 
         //* Funcção que solicita um link de pagamento
-        private function solicitaLink()
+        private function solicitaLink($numero)
         {
             $this->logSis('DEB', 'Entrou na solicitação do link');
 
@@ -734,6 +734,46 @@
                 $arrayResult = json_decode($result, true);
                 if (isset($arrayResult['id'])) {
                     $this->logSis('SUC', 'Link criado. Link1: ' . $arrayResult['url']);
+
+                    $id_fin_link = $arrayResult['id_fin_link'];
+                    $object = $arrayResult['object'];
+                    $id = $arrayResult['id'];
+                    $company_id = $arrayResult['company_id'];
+                    $amount = $arrayResult['amount'];
+                    $item_external_id = $arrayResult['item_external_id'];
+                    $item_title = $arrayResult['item_title'];
+                    $item_unit_price = $arrayResult['item_unit_price'];
+                    $item_quantity = $arrayResult['item_quantity'];
+                    $short_id = $arrayResult['short_id'];
+                    $url = $arrayResult['url'];
+                    $date_created = $arrayResult['date_created'];
+                    $date_updated = $arrayResult['date_updated'];
+                    $expires_at = $arrayResult['expires_at'];
+                    $create_at = $arrayResult['create_at'];
+
+
+
+                    //( INSERE OS DADOS DO LINK NO BANCO DE DADOS 
+                    $sql = "INSERT INTO tbl_fin_links(id_instancia, id_contato, object, id, company_id, amount, item_external_id, item_title, item_unit_price, item_quantity, short_id, url, date_created, date_updated, expires_at, create_at) VALUES ($this->idInstancia, $this->id_contato, '$object', '$id', '$company_id', '$amount', '$item_external_id', '$item_title', '$item_unit_price', '$item_quantity', '$short_id', '$url', '$date_created', '$date_updated', '$expires_at', NOW())";
+
+                    $resultado = mysqli_query($conn['link'], $sql);
+                    if (!$resultado) {
+                        $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
+                        exit(0);
+                    }
+
+                    if ($resultado != '1') {
+                        $this->logSis('ERR', 'Insert LINK FINANCEIRO IN. Erro: ' . mysqli_error($conn['link']));
+                        $this->logSis('DEB', 'SQL : ' . $sql);
+                    } else {
+                        $this->logSis('SUC', 'Insert LINK FINANCEIRO. ID_GATEWAY: ' . $id);
+                        
+                        //( Envia mensagem para o cliente com o link gerado
+
+                        $texto = "*Seu link de pagamento foi gerado com sucesso!*\n\n_Ao acessar o link abaixo você será direcionado para a página de pagamento da PAGAR.ME._\n\n".$url."\nAssim que confirmarmos o pagamento, entraremos em contato por aqui para marcar o horário.";
+                        $this->sendMessage('EnvioLink', $numero, $texto, '');
+
+                    }
                 } else {
                     $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $arrayResult);
                 }
