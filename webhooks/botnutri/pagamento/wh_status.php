@@ -17,7 +17,7 @@
             $order = $_POST['order'];
 
             
-            $decodedOrder = json_decode($order, true);
+            $decodedOrder = json_decode($order[0], true);
 
             $object = $decodedOrder['object'];
             $id = $decodedOrder['id'];
