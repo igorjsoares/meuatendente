@@ -14,6 +14,9 @@
             file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
 
             $decoded = json_decode($json, true); //Decodifica
+            file_put_contents('inputs2.log', $decoded[0]['id'] . PHP_EOL, FILE_APPEND);
+            file_put_contents('inputs2.log', $decoded['id'] . PHP_EOL, FILE_APPEND);
+
 
             //Grava o JSON-body no arquivo de debug
             ob_start();
