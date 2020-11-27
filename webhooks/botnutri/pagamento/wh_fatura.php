@@ -82,7 +82,7 @@
                         $boleto_url . "\n\n" .
                         $boleto_barcode;
 
-                    $this->sendMessage('criacaoBoleto', $numero, $texto, '');
+                    $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
                 }
             }
         }
