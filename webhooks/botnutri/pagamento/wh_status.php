@@ -10,10 +10,10 @@
 
             //Recebe o corpo do Json enviado pela instância
             $wwwform = file_get_contents('php://input');
-            file_put_contents('inputs2.log', $wwwform . PHP_EOL, FILE_APPEND);
+            //file_put_contents('inputs2.log', $wwwform . PHP_EOL, FILE_APPEND);
 
             $json = urlencode($wwwform);
-            file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
+            //file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
 
             $decoded = json_decode($json, true); //Decodifica
             file_put_contents('inputs2.log', $decoded[0]['id'] . PHP_EOL, FILE_APPEND);
