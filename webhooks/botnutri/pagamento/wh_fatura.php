@@ -8,7 +8,7 @@
         {
             include("../dados_conexao.php");
 
-            $idContato = $_POST['id_contato'];
+            $idContato = $_GET['id_contato'];
 
             $id_fin_fatura = $_POST['id_fin_fatura'];
             $id = $_POST['id'];
