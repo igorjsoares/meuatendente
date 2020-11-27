@@ -203,6 +203,13 @@
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
 
+            if(mb_strtolower($mensagem[0], 'UTF-8') == 'link'){
+                $this->logSis('DEB', 'Identificado o comando link');
+
+                $this->solicitaLink();
+                exit(0);
+            }
+
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
                 $primeiraPalavraCliente = mb_strtolower($mensagem[0], 'UTF-8');
@@ -378,7 +385,7 @@
                 "*Numero:* " . $numero . "\n" .
                 "*ID_contato:* " . $this->id_contato . "\n" .
                 "http://wa.me/" . $numero;
-                $this->logSis('DEB', 'Suporte ' . $texto . ' Para: ' . $this->numerosuporte);
+            $this->logSis('DEB', 'Suporte ' . $texto . ' Para: ' . $this->numerosuporte);
 
 
             $data = array('number' => $this->numerosuporte . '@s.whatsapp.net', 'menssage' => $texto);
@@ -661,6 +668,73 @@
                 $this->logSis('SUC', 'Insert interação IN. ID_Interação: ' . $this->id_interacao);
             }
             mysqli_close($conn['link']);
+        }
+
+        //* Funcção que solicita um link de pagamento
+        private function solicitaLink()
+        {
+            $this->logSis('DEB', 'Entrou na solicitação do link');
+
+            include("dados_conexao.php");
+
+            $jsonDados = "{
+'api_key': 'ak_test_EfQ4KKaduJJHqYYDpPJvDjsuH5D1GG',
+'amount': 10000,
+'items': [
+{
+'id': '1',
+'title': 'Consulta Online',
+'unit_price': 10000,
+'quantity': 1,
+'tangible': true
+}
+],
+'payment_config': {
+'boleto': {
+'enabled': true,
+'expires_in': 3
+},
+'credit_card': {
+'enabled': true,
+'free_installments': 1,
+'interest_rate': 0.01,
+'max_installments': 12
+},
+'default_payment_method': 'credit_card'
+},
+'postback_config': {
+'orders': 'https://meuatendente.com/webhooks/botnutri/pagamento/wh_status.php',
+'transactions': 'https://meuatendente.com/webhooks/botnutri/pagamento/wh_fatura.php'
+},
+'max_orders': 1,
+'expires_in': 60
+}";
+
+            $pagarme = curl_init();
+
+            curl_setopt($pagarme, CURLOPT_URL, "https://api.pagar.me/1/payment_links");
+            curl_setopt($pagarme, CURLOPT_RETURNTRANSFER, 1);
+            //curl_setopt($pagarme, CURLOPT_POSTFIELDS, "{ \"query\": \"{ me { name } }\"}");
+            //curl_setopt($pagarme, CURLOPT_POSTFIELDS, "{\"query\":\"{\\n  card(id: $idCard) {\\n    id\\n    title\\n    creatorEmail\\n    fields{\\n      name\\n      value\\n    }\\n  }\\n}\"}");
+            curl_setopt($pagarme, CURLOPT_POSTFIELDS, $jsonDados);
+
+            curl_setopt($pagarme, CURLOPT_POST, 1);
+
+            $headers = array();
+            $headers[] = 'Accept: application/json';
+            $headers[] = 'Content-Type: application/json';
+            curl_setopt($pagarme, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($pagarme);
+
+            if (curl_errno($pagarme)) {
+                $this->logSis('ERR', 'Erro na criação do link. Erro: ' . curl_error($pagarme));
+
+                file_put_contents('erro.txt', date('d/m/Y h:i:s') . ' Erro na consulta do Card: ' . $idCard . ' Erro: ' . curl_error($pagarme) . PHP_EOL, FILE_APPEND);
+            } else { //CASO A REQUISIÇÃO NÃO RETORNE ERRO
+                $camposLink = json_decode($result, true);
+                $this->logSis('SUC', 'Link criado. Link: ' . $camposLink['url']);
+            }
         }
 
         //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
