@@ -701,8 +701,8 @@
                     "default_payment_method" => "credit_card"
                 ),
                 "postback_config" => array(
-                    "orders" => "https://meuatendente.com/webhooks/botnutri/pagamento/wh_status.php",
-                    "transactions" => "https://meuatendente.com/webhooks/botnutri/pagamento/wh_fatura.php",
+                    "orders" => "https://meuatendente.com/webhooks/botnutri/pagamento/wh_status.php?id_contato=$this->id_contato",
+                    "transactions" => "https://meuatendente.com/webhooks/botnutri/pagamento/wh_fatura.php?id_contato=$this->id_contato",
                 ),
                 "max_orders" => 1,
                 "expires_in" => 60

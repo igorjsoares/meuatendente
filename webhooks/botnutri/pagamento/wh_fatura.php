@@ -8,6 +8,8 @@
         {
             include("../dados_conexao.php");
 
+            $idContato = $_POST['id_contato'];
+
             $id_fin_fatura = $_POST['id_fin_fatura'];
             $id = $_POST['id'];
             $fingerprint = $_POST['fingerprint'];
@@ -33,7 +35,7 @@
 
 
             //( INSERE OS DADOS DO STATUS NO BANCO DE DADOS 
-            $sql = "INSERT INTO tbl_fin_faturas(id_fin_fatura, id, fingerprint, event, old_status, desired_status, current_status, object, acquirer_id, tid, date_created, date_updated, amount, authorized_amount, paid_amount, payment_method, boleto_url, boleto_barcode, boleto_expiration_date, order_id, create_at) VALUES (id_fin_fatura, '$id', '$fingerprint', '$event', '$old_status', '$desired_status', '$current_status', '$object', '$acquirer_id', '$tid', '$date_created', '$date_updated', '$amount', '$authorized_amount', '$paid_amount', '$payment_method', '$boleto_url', '$boleto_barcode', '$boleto_expiration_date', '$order_id', NOW())";
+            $sql = "INSERT INTO tbl_fin_faturas(id_contato, id_fin_fatura, id, fingerprint, event, old_status, desired_status, current_status, object, acquirer_id, tid, date_created, date_updated, amount, authorized_amount, paid_amount, payment_method, boleto_url, boleto_barcode, boleto_expiration_date, order_id, create_at) VALUES ($idContato, id_fin_fatura, '$id', '$fingerprint', '$event', '$old_status', '$desired_status', '$current_status', '$object', '$acquirer_id', '$tid', '$date_created', '$date_updated', '$amount', '$authorized_amount', '$paid_amount', '$payment_method', '$boleto_url', '$boleto_barcode', '$boleto_expiration_date', '$order_id', NOW())";
 
             $resultado = mysqli_query($conn['link'], $sql);
             if (!$resultado) {

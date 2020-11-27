@@ -8,6 +8,8 @@
         {
             include("../dados_conexao.php");
 
+            $idContato = $_GET['id_contato'];
+
             $fingerprint = $_POST['fingerprint'];
             $event = $_POST['event'];
             $old_status = $_POST['old_status'];
@@ -24,7 +26,7 @@
             $payment_link_id = $order['payment_link_id'];
 
             //( INSERE OS DADOS DO STATUS NO BANCO DE DADOS 
-            $sql = "INSERT INTO tbl_fin_status(fingerprint, event, old_status, desired_status, current_status, object, id, company_id, status, amount, payment_link_id, create_at) VALUES ('$fingerprint', '$event', '$old_status', '$desired_status', '$current_status', '$object', '$id', '$company_id', '$status', '$amount', '$payment_link_id', NOW())";
+            $sql = "INSERT INTO tbl_fin_status(id_contato, fingerprint, event, old_status, desired_status, current_status, object, id, company_id, status, amount, payment_link_id, create_at) VALUES ($idContato, '$fingerprint', '$event', '$old_status', '$desired_status', '$current_status', '$object', '$id', '$company_id', '$status', '$amount', '$payment_link_id', NOW())";
 
             $resultado = mysqli_query($conn['link'], $sql);
             if (!$resultado) {
