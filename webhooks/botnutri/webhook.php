@@ -206,7 +206,7 @@
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
-                $this->solicitaLink($numero, 10000, 1, 'Consulta Online', 10000, 1);
+                $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, 1);
                 exit(0);
             }
 
