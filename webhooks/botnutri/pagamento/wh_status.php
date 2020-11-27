@@ -12,7 +12,7 @@
             $wwwform = file_get_contents('php://input');
             //file_put_contents('inputs2.log', $wwwform . PHP_EOL, FILE_APPEND);
 
-            $json = urlencode($wwwform);
+            $json = urldecode($wwwform);
             //file_put_contents('inputs2.log', $json . PHP_EOL, FILE_APPEND);
 
             $decoded = json_decode($json, true); //Decodifica
