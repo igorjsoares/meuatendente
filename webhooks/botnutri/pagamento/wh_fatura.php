@@ -50,6 +50,34 @@
             } else {
                 $this->logSis('SUC', 'Insert FATURA FINANCEIRO. ID_GATEWAY: ' . $id);
 
+                if ($this->consultarFaturasUnicas($id) == 0) {
+                    //( INSERE OS DADOS DO FATURAMENTO UNICO NO BANCO DE DADOS 
+                    $sql = "INSERT INTO tbl_fin_faturas_unicas(id, id_contato, old_status, desired_status, current_status, date_created, date_updated, amount, order_id, create_at, update_at) VALUES ('$id', $idContato, '$old_status', '$desired_status', '$current_status', '$date_created', '$date_updated', '$amount', '$order_id', NOW(), NOW())";
+
+                    $resultado = mysqli_query($conn['link'], $sql);
+                    if (!$resultado) {
+                        $this->logSis('ERR', "FATURA UNICA - Mysql Connect Erro: " . mysqli_error($conn['link']));
+                        exit(0);
+                    }
+                    if ($resultado != '1') {
+                        $this->logSis('ERR', "Não conseguiu salvar FATURA ÚNICA. ID: " . $id);
+                    }
+                } else {
+                    //( ATUALIZA OS DADOS DO FATURAMENTO UNICO NO BANCO DE DADOS 
+                    $sql = "UPDATE tbl_fin_faturas_unicas SET old_status = '$old_status', desired_status = '$desired_status', current_status = '$current_status', date_updated = '$date_updated', update_at = NOW() WHERE id = $id";
+
+                    $query = mysqli_query($conn['link'], $sql);
+                    $linhasAfetadas = mysqli_affected_rows($conn['link']);
+
+                    if (!$query) {
+                        $this->logSis('ERR', 'FATURA UNICA - Mysql Connect: ' . mysqli_error($conn['link']));
+                        exit(0);
+                    }
+                    if ($query != true && $linhasAfetadas == 0) {
+                        $this->logSis('ERR', "Não conseguiu ATUALIZAR FATURA ÚNICA. ID: " . $id);
+                    }
+                }
+
 
                 //( Consulta o contato no BD o endPoint e o token
                 $sql = "SELECT c.numero, i.id_instancia, endpoint, token FROM tbl_contatos c, tbl_instancias i WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia";
@@ -68,7 +96,7 @@
                     $this->idInstancia = $consultaContato['id_instancia'];
                     $this->APIurl = $consultaContato['endpoint'] . '/api/v1/';
                     $this->token = $consultaContato['token'];
-                    
+
                     $this->logSis('DEB', 'Consulta Contato: ' . $this->numero . '    ' . $this->APIurl . '    ' . $this->token);
                 } else { //( O CONTATO NÃO EXISTE 
                     $this->logSis('ERR', "Nao encontrado nenhum contato na FATURA: " . $idContato);
@@ -79,8 +107,8 @@
                 if ($payment_method == 'boleto' && $current_status == 'waiting_payment') {
 
                     $texto = "Você optou por pagamento via *Boleto Bancário*\n" .
-                        "Número da ordem: " . $order_id ."\n".
-                        "Status: 🟡 *AGUARDANDO PAGAMENTO*\n".
+                        "Número da ordem: " . $order_id . "\n" .
+                        "Status: 🟡 *AGUARDANDO PAGAMENTO*\n" .
                         "Neste método de pagamento, aguardaremos a compensação do pagamento, e assim que confirmada entraremos em contato por aqui com link para marcarmos o horário do atendimento.\n" .
                         "Clique no link abaixo para acessar o boleto, ou copie o código de barras abaixo do link.\n\n" .
                         $boleto_url . "\n\n" .
@@ -92,6 +120,28 @@
                 }
             }
         }
+
+        //* Consultar Faturas únicas
+        public function consultarFaturasUnicas($id)
+        {
+            include("../dados_conexao.php");
+
+            $sql = "SELECT id FROM tbl_fin_faturas_unicas WHERE id = $id";
+            $query = mysqli_query($conn['link'], $sql);
+            $numRow = mysqli_num_rows($query);
+
+            if (!$query) {
+                $this->logSis('ERR', "Fatura - Mysql Connect Erro: " . mysqli_error($conn['link']));
+                exit(0);
+            }
+
+            if ($numRow != 0) { //( EXISTE NO BANCO DE DADOS  
+                return 1;
+            } else { //( O NÃO EXISTE 
+                return 0;
+            }
+        }
+
 
         //* E N V I O  T E X T O
         //Prepara para envio da mensagem de texto

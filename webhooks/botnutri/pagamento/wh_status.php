@@ -84,6 +84,15 @@
                     $this->logSis('DEB', 'Texto: ' . $texto);
 
                     $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
+                }else if($current_status == 'refused'){
+                    $texto = "Infelizmente seu pagamento foi recusado\n" .
+                        "Número da ordem: " . $id ."\n".
+                        "Status: 🔴 *PAGAMENTO RECUSADO*\n\n".
+                        "A seguir enviaremos outro link de pagamento para uma nova tentativa, caso persista, solicite suporte enviando a palavra SUPORTE.";
+
+                    $this->logSis('DEB', 'Texto: ' . $texto);
+
+                    $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
                 }
 
             }
@@ -176,7 +185,7 @@
             }
             mysqli_close($conn['link']);
         }
-        
+
         //* Função de LOG
         public function logSis($tipo, $texto)
         {
