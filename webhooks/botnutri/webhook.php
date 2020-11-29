@@ -209,6 +209,12 @@
                 $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, 1);
                 exit(0);
             }
+            if (mb_strtolower($mensagem[0], 'UTF-8') == 'marcar') {
+                $this->logSis('DEB', 'Identificado o comando marcar');
+
+                $this->marcarHorario($numero, $this->id_contato);
+                exit(0);
+            }
 
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
@@ -356,6 +362,8 @@
                 //$this->InOutListas($retorno['nome'], $numero, $retorno, 1);
             } elseif ($tipo == 7) { //Exclusão em lista
                 $this->InOutListas($retorno['nome'], $numero, $retorno, 0);
+            } elseif ($tipo == 7) { //Marcação horário
+                $this->marcarHorario($numero, $retorno);
             }
         }
 
@@ -588,7 +596,7 @@
                     $tipo = $retorno['modo'];
                     $idRetorno = $retorno['id_retorno'];
                 }
-                $this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
+                //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
                 $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
@@ -767,16 +775,50 @@
                         $this->logSis('DEB', 'SQL : ' . $sql);
                     } else {
                         $this->logSis('SUC', 'Insert LINK FINANCEIRO. ID_GATEWAY: ' . $id);
-                        
+
                         //( Envia mensagem para o cliente com o link gerado
 
-                        $texto = "*Seu link de pagamento foi gerado com sucesso!*\n\n_Ao acessar o link abaixo você será direcionado para a página de pagamento da PAGAR.ME._\n\n".$url."\nAssim que confirmarmos o pagamento, entraremos em contato por aqui para marcar o horário.";
+                        $texto = "*Seu link de pagamento foi gerado com sucesso!*\n\n_Ao acessar o link abaixo você será direcionado para a página de pagamento da PAGAR.ME._\n\n" . $url . "\nAssim que confirmarmos o pagamento, entraremos em contato por aqui para marcar o horário.";
                         $this->sendMessage('EnvioLink', $numero, $texto, '');
-
                     }
                 } else {
                     $this->logSis('ERR', 'Erro ao tentar gerar o link ' . $result);
                 }
+            }
+        }
+
+        //* Funcção que solicita um link de pagamento
+        private function marcarHorario($numero, $retorno)
+        {
+            $this->logSis('DEB', 'Entrou na marcação de horário');
+            include("dados_conexao.php");
+            include("horarios.php");
+            include("servicos.php");
+
+            switch ($retorno['coringa']) {
+                case 'mes':
+                    $arrayMeses = fctConsultaMeses();
+                    if ($arrayMeses == false) {
+                        logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível. Usuário: ' . $idContato);
+                    } else {                        
+                        $texto = $retorno['mensagem'];
+                        foreach ($arrayMeses as $value) {
+                            $texto .= $value['mes']. ' - ' . $value['nome_mes']. "\n";
+                        }
+                        $jsonDados = json_encode($arrayMeses);
+                        $arrayRetorno = array(
+                            "modo" => $retorno['tipo'], //tipo
+                            "id_retorno" => $retorno['id_retorno'],
+                            "opcoes" => $jsonDados
+                        );
+
+                        $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
+                    }
+                    break;
+
+                default:
+                    # code...
+                    break;
             }
         }
 
