@@ -18,13 +18,20 @@ function fctConsultaMeses()
         return false;
     } else {
         $arrayResultado = [];
-        while ($linha = $resultado) {
+        foreach ($arrayMeses as $value) {
+            array_push($arrayResultado, array(
+                'mes' => $value['mes'],
+                'nome_mes' => fctNomeMes($value['mes'])
+            ));
+            logSis('DEB', 'Encontrado mês: ' . $value['mes']);
+        }
+        /* while ($linha = $resultado) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])
             ));
             logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
-        }
+        } */
         return $arrayResultado;
     }
 }
