@@ -17,15 +17,17 @@ function fctConsultaMeses()
     if ($resultado == false) {
         return false;
     } else {
-        $arrayResultado = [];
+        return $resultado;
+        /* $arrayResultado = [];
         while ($linha = $resultado) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])
             ));
             logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
-        }
+        } 
         return $arrayResultado;
+        */
     }
 }
 

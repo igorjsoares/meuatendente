@@ -21,7 +21,17 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        return mysqli_fetch_assoc($query);
+        //return mysqli_fetch_assoc($query);
+
+        $arrayResultado = [];
+        while ($linha = $resultado) {
+            array_push($arrayResultado, array(
+                'mes' => $linha['mes'],
+                'nome_mes' => fctNomeMes($linha['mes'])
+            ));
+            logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
+        }
+        return $arrayResultado;
     }
 }
 
