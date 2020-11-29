@@ -21,7 +21,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        return mysqli_fetch_array($query);
+        return mysqli_fetch_assoc($query);
     }
 }
 
