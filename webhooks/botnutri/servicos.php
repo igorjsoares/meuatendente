@@ -37,11 +37,12 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 
         while ($linha = mysqli_fetch_assoc($query)) {
             $arrayColuna = [];
-            while ($coluna = $colunas) {
-                logSis('DEB', "While Coluna -> " . $coluna);
+
+            foreach ($colunas as $value) {
+                logSis('DEB', "While Coluna -> " . $value);
 
                 array_push($arrayColuna, array(
-                    $coluna => $linha[$coluna]
+                    $value => $linha[$value]
                 ));
                 logSis('DEB', "Array coluna -> " . print_r($arrayColuna, true));
             }
