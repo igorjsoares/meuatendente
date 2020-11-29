@@ -11,6 +11,8 @@ function fctConsultaParaArray($nomeConsulta, $sql)
     include("dados_conexao.php");
 
     $query = mysqli_query($conn['link'], $sql);
+    $numRow = mysqli_num_rows($query);
+
     if (!$query) {
         logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
         exit(0);
