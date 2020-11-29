@@ -31,7 +31,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
             ));
 
         }
-        logSis('DEB', "==========" . var_dump($arrayResultado));
+        logSis('DEB', "==========" . print_r($arrayResultado, true));
 
         return $arrayResultado;
     }
