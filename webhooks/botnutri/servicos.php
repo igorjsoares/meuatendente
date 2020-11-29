@@ -6,6 +6,8 @@
 //* Função para fazer uma CONSULTA SQL COM RETORNO EM ARRAY 
 function fctConsultaParaArray($nomeConsulta, $sql)
 {
+    logSis('DEB', 'Entrou no fctConsultaParaArray');
+
     include("dados_conexao.php");
 
     $query = mysqli_query($conn['link'], $sql);
