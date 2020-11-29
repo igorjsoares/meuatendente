@@ -794,7 +794,7 @@
         {
             $this->logSis('DEB', 'Entrou na marcação de horário');
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
-            
+
             include("dados_conexao.php");
             include("horarios.php");
             include("servicos.php");
@@ -802,12 +802,16 @@
             switch ($retorno['coringa']) {
                 case 'mes':
                     $arrayMeses = fctConsultaMeses();
+
                     if ($arrayMeses == false) {
                         logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível. Usuário: ' . $idContato);
                     } else {
+                        $this->logSis('DEB', 'Entrou nos meses');
+
                         $texto = $retorno['mensagem'];
                         foreach ($arrayMeses as $value) {
                             $texto .= $value['mes'] . ' - ' . $value['nome_mes'] . "\n";
+                            $this->logSis('DEB', 'mês pra dentro->' . $value['nome_mes']);
                         }
                         $jsonDados = json_encode($arrayMeses);
                         $arrayRetorno = array(
