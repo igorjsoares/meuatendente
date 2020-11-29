@@ -21,19 +21,16 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        //return mysqli_fetch_assoc($query);
-        $arrayQuery = mysqli_fetch_assoc($query);
-
-        return json_encode($arrayQuery, true);
-        /* $arrayResultado = [];
+        return mysqli_fetch_assoc($query);
+        
+        $arrayResultado = [];
         while ($linha = $arrayQuery) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])
             ));
-            logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
         }
-        return $arrayResultado; */
+        return $arrayResultado;
     }
 }
 
