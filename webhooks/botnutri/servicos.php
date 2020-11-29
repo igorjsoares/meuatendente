@@ -28,7 +28,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
             $mesNome = fctNomeMes($linha['mes']);
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
-                'nome_mes' => $mesNome
+                'nome_mes' => $linha['mes']
             ));
         }
         return $arrayResultado;
@@ -89,7 +89,7 @@ function fctNomeMes($mes)
         case '10':
             return "Outubro";
             break;
-        case 11:
+        case '11':
             return "Novembro";
             break;
         case '12':
