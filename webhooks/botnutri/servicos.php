@@ -25,9 +25,10 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         
         $arrayResultado = [];
         while ($linha = mysqli_fetch_assoc($query)) {
+            $mesNome = fctNomeMes($linha['mes']);
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
-                'nome_mes' => fctNomeMes($linha['mes'])
+                'nome_mes' => $mesNome
             ));
         }
         return $arrayResultado;
