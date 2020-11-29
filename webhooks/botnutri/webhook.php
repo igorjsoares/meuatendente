@@ -349,6 +349,7 @@
         //
         public function direcaoEnvio($tipo, $numero, $retorno)
         {
+
             if ($tipo == 1) { //texto
                 $this->sendMessage($retorno['nome'], $numero, $retorno['mensagem'], $retorno);
             } elseif ($tipo == 2) { //imagem
@@ -363,7 +364,7 @@
                 //$this->InOutListas($retorno['nome'], $numero, $retorno, 1);
             } elseif ($tipo == 7) { //Exclusão em lista
                 $this->InOutListas($retorno['nome'], $numero, $retorno, 0);
-            } elseif ($tipo == 7) { //Marcação horário
+            } elseif ($tipo == 8) { //Marcação horário
                 $this->marcarHorario($numero, $retorno);
             }
         }
@@ -801,10 +802,10 @@
                     $arrayMeses = fctConsultaMeses();
                     if ($arrayMeses == false) {
                         logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível. Usuário: ' . $idContato);
-                    } else {                        
+                    } else {
                         $texto = $retorno['mensagem'];
                         foreach ($arrayMeses as $value) {
-                            $texto .= $value['mes']. ' - ' . $value['nome_mes']. "\n";
+                            $texto .= $value['mes'] . ' - ' . $value['nome_mes'] . "\n";
                         }
                         $jsonDados = json_encode($arrayMeses);
                         $arrayRetorno = array(
