@@ -795,7 +795,7 @@
             $this->logSis('DEB', 'Entrou na marcação de horário');
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
 
-            include("dados_conexao.php");
+            //include("dados_conexao.php");
             include("horarios.php");
             include("servicos.php");
 
