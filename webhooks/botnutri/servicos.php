@@ -21,7 +21,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        $arrayTeste = mysqli_fetch_assoc($query);
+        $arrayTeste = mysqli_fetch_array($query);
         logSis('DEB', "==========" . print_r($arrayTeste, true));
 
         $arrayResultado = [];
@@ -38,7 +38,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
     }
 }
 
-//* Função para fazer uma CONSULTA SQL COM RETORNO EM ARRAY 
+//* Função para fazer uma update
 function fctUpdate($nomeUpdate, $sql)
 {
     include("dados_conexao.php");
