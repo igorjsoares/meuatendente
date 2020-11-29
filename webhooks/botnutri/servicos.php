@@ -21,8 +21,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        //return mysqli_fetch_assoc($query);
-        
+
         $arrayResultado = [];
         while ($linha = mysqli_fetch_assoc($query)) {
             $mesNome = fctNomeMes($linha['mes']);
@@ -30,7 +29,10 @@ function fctConsultaParaArray($nomeConsulta, $sql)
                 'mes' => $linha['mes'],
                 'nome_mes' => $mesNome
             ));
+
         }
+        logSis('DEB', "==========" . var_dump($arrayResultado));
+
         return $arrayResultado;
     }
 }
