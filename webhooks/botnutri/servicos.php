@@ -89,7 +89,7 @@ function fctNomeMes($mes)
         case '10':
             return "Outubro";
             break;
-        case '11':
+        case 11:
             return "Novembro";
             break;
         case '12':
