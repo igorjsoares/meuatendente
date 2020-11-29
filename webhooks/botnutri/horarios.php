@@ -23,6 +23,7 @@ function fctConsultaMeses()
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])
             ));
+            logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
         }
         return $arrayResultado;
     }
@@ -103,5 +104,3 @@ function fctConsultaMeusHorarios($idContato)
         return $arrayResultado;
     }
 }
-
-
