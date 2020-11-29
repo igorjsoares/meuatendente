@@ -23,7 +23,9 @@ function fctConsultaParaArray($nomeConsulta, $sql)
     } else {
         //return mysqli_fetch_assoc($query);
         $arrayQuery = mysqli_fetch_assoc($query);
-        $arrayResultado = [];
+
+        return $arrayQuery;
+        /* $arrayResultado = [];
         while ($linha = $arrayQuery) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
@@ -31,7 +33,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
             ));
             logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
         }
-        return $arrayResultado;
+        return $arrayResultado; */
     }
 }
 

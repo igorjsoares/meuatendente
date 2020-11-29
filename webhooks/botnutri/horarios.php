@@ -17,8 +17,8 @@ function fctConsultaMeses()
     if ($resultado == false) {
         return false;
     } else {
-        return $resultado;
-        /* $arrayResultado = [];
+        //return $resultado;
+        $arrayResultado = [];
         while ($linha = $resultado) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
@@ -27,7 +27,7 @@ function fctConsultaMeses()
             logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
         } 
         return $arrayResultado;
-        */
+       
     }
 }
 
