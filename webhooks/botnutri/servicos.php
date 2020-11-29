@@ -8,7 +8,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
 {
     logSis('DEB', 'Entrou no fctConsultaParaArray');
 
-    include("dados_conexao.php");
+    include_once("dados_conexao.php");
 
     $query = mysqli_query($conn['link'], $sql);
     if (!$query) {
@@ -26,7 +26,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
 //* Função para fazer uma CONSULTA SQL COM RETORNO EM ARRAY 
 function fctUpdate($nomeUpdate, $sql)
 {
-    include("dados_conexao.php");
+    include_once("dados_conexao.php");
 
     $query = mysqli_query($conn['link'], $sql);
     $linhasAfetadas = mysqli_affected_rows($conn['link']);

@@ -7,7 +7,7 @@
 function fctConsultaMeses()
 {
     logSis('DEB', 'Entrou no fctConsultaMeses');
-    //include("servicos.php");
+    include_once("servicos.php");
 
     $resultado = fctConsultaParaArray(
         'ConsultaMês',
@@ -31,7 +31,7 @@ function fctConsultaMeses()
 //* Consulta os dias com horários disponíveis apartir do mês 
 function fctConsultaDias($mes)
 {
-    include("servicos.php");
+    include_once("servicos.php");
 
     $resultado = fctConsultaParaArray(
         'ConsultaDias',
@@ -55,7 +55,7 @@ function fctConsultaDias($mes)
 //* Consulta os horários disponíveis a partir do dia e do mês 
 function fctConsultaHorarios($dia, $mes)
 {
-    include("servicos.php");
+    include_once("servicos.php");
 
     $resultado = fctConsultaParaArray(
         'ConsultaHorarios',
@@ -81,7 +81,7 @@ function fctConsultaHorarios($dia, $mes)
 //* Consulta os horários pendentes do cliente 
 function fctConsultaMeusHorarios($idContato)
 {
-    include("servicos.php");
+    include_once("servicos.php");
 
     $resultado = fctConsultaParaArray(
         'ConsultaMeusHorarios',
