@@ -18,6 +18,8 @@ function fctConsultaMeses()
         return false;
     } else {
         //return $resultado;
+        $resultado = json_decode($resultado);
+        
         $arrayResultado = [];
         foreach ($resultado as $value) {
             logSis('DEB', 'Encontrado mês: ' . $value['mes']);

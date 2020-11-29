@@ -12,7 +12,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
 
     $query = mysqli_query($conn['link'], $sql);
     $numRow = mysqli_num_rows($query);
-
+    
     if (!$query) {
         logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
         exit(0);
@@ -24,7 +24,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         //return mysqli_fetch_assoc($query);
         $arrayQuery = mysqli_fetch_assoc($query);
 
-        return $arrayQuery;
+        return json_encode($arrayQuery, true);
         /* $arrayResultado = [];
         while ($linha = $arrayQuery) {
             array_push($arrayResultado, array(
