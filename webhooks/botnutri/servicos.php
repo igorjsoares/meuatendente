@@ -4,7 +4,7 @@
 // By Igor Soares
 
 //* Função para fazer uma CONSULTA SQL COM RETORNO EM ARRAY 
-function fctConsultaParaArray($nomeConsulta, $sql)
+function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 {
     logSis('DEB', 'Entrou no fctConsultaParaArray');
 
@@ -12,7 +12,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
 
     $query = mysqli_query($conn['link'], $sql);
     $numRow = mysqli_num_rows($query);
-    
+
     if (!$query) {
         logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
         exit(0);
@@ -21,17 +21,27 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        $arrayTeste = mysqli_fetch_array($query);
-        logSis('DEB', "==========" . print_r($arrayTeste, true));
+
 
         $arrayResultado = [];
-        while ($linha = mysqli_fetch_assoc($query)) {
+        /* while ($linha = mysqli_fetch_assoc($query)) {
             $mesNome = fctNomeMes($linha['mes']);
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => $mesNome
             ));
+        } */
 
+        //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
+
+        while ($linha = mysqli_fetch_assoc($query)) {
+            $arrayColuna = [];
+            while ($coluna = $colunas) {
+                array_push($arrayColuna, array(
+                    $coluna => $linha[$coluna]
+                ));
+            }
+            array_push($arrayResultado, $arrayColuna);
         }
 
         return $arrayResultado;
@@ -47,12 +57,12 @@ function fctUpdate($nomeUpdate, $sql)
     $linhasAfetadas = mysqli_affected_rows($conn['link']);
 
     if (!$query) {
-        logSis('ERR', $nomeUpdate.' - Mysql Connect: ' . mysqli_error($conn['link']));
+        logSis('ERR', $nomeUpdate . ' - Mysql Connect: ' . mysqli_error($conn['link']));
         exit(0);
     }
     if ($query != true && $linhasAfetadas == 0) {
         return false;
-        logSis('ERR', $nomeUpdate.' - Não alterou nada no BD . Sql: ' . $sql);
+        logSis('ERR', $nomeUpdate . ' - Não alterou nada no BD . Sql: ' . $sql);
     } else {
         return true;
     }
