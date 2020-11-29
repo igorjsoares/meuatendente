@@ -19,7 +19,7 @@ function fctConsultaMeses()
     } else {
         //return $resultado;
         $resultado = json_decode($resultado);
-        
+
         $arrayResultado = [];
         foreach ($resultado as $value) {
             logSis('DEB', 'Encontrado mês: ' . $value['mes']);
@@ -32,7 +32,7 @@ function fctConsultaMeses()
             )); 
             logSis('DEB', 'Encontrado mês: ' . $linha['mes']);
         }  */
-        //return $arrayResultado;
+        return $resultado;
        
     }
 }
