@@ -21,10 +21,10 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
         return false;
     } else {
-        return mysqli_fetch_assoc($query);
+        //return mysqli_fetch_assoc($query);
         
         $arrayResultado = [];
-        while ($linha = $arrayQuery) {
+        while ($linha = mysqli_fetch_assoc($query)) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])
