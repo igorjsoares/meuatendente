@@ -38,9 +38,13 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         while ($linha = mysqli_fetch_assoc($query)) {
             $arrayColuna = [];
             while ($coluna = $colunas) {
+            logSis('DEB', "While Coluna -> " . $coluna);
+
                 array_push($arrayColuna, array(
                     $coluna => $linha[$coluna]
                 ));
+            logSis('DEB', "Array coluna -> " . print_r($arrayColuna, true));
+                
             }
             array_push($arrayResultado, $arrayColuna);
         }
