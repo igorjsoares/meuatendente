@@ -6,8 +6,8 @@
 //* Consulta os meses disponíveis 
 function fctConsultaMeses()
 {
+    logSis('DEB', 'Entrou no fctConsultaMeses');
     include("servicos.php");
-    logSis('DEB', 'Entrou na consulta dos meses');
 
     $resultado = fctConsultaParaArray(
         'ConsultaMês',
