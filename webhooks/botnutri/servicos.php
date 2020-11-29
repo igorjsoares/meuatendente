@@ -22,9 +22,9 @@ function fctConsultaParaArray($nomeConsulta, $sql)
         return false;
     } else {
         //return mysqli_fetch_assoc($query);
-
+        $arrayQuery = mysqli_fetch_assoc($query);
         $arrayResultado = [];
-        while ($linha = mysqli_fetch_assoc($query)) {
+        while ($linha = $arrayQuery) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])
