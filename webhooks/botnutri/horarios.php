@@ -41,7 +41,8 @@ function fctConsultaDias($mes)
 
     $resultado = fctConsultaParaArray(
         'ConsultaDias',
-        "SELECT day(horario) AS dia FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes GROUP BY day(horario)"
+        "SELECT day(horario) AS dia FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes GROUP BY day(horario)",
+        ''
     );
 
     if ($resultado == false) {
@@ -65,7 +66,8 @@ function fctConsultaHorarios($dia, $mes)
 
     $resultado = fctConsultaParaArray(
         'ConsultaHorarios',
-        "SELECT id_horario, day(horario) AS dia, WEEKDAY(horario) AS dia_semana, DATE_FORMAT(horario, '%H:%i') AS hora FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes AND day(horario) = $dia"
+        "SELECT id_horario, day(horario) AS dia, WEEKDAY(horario) AS dia_semana, DATE_FORMAT(horario, '%H:%i') AS hora FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes AND day(horario) = $dia",
+        ''
     );
 
     if ($resultado == false) {
@@ -91,7 +93,8 @@ function fctConsultaMeusHorarios($idContato)
 
     $resultado = fctConsultaParaArray(
         'ConsultaMeusHorarios',
-        "SELECT id_horario, day(horario) AS dia, WEEKDAY(horario) AS dia_semana, DATE_FORMAT(horario, '%H:%i') AS hora FROM tbl_horarios WHERE status = 1 AND id_contato = $idContato"
+        "SELECT id_horario, day(horario) AS dia, WEEKDAY(horario) AS dia_semana, DATE_FORMAT(horario, '%H:%i') AS hora FROM tbl_horarios WHERE status = 1 AND id_contato = $idContato",
+        ''
     );
 
     if ($resultado == false) {
