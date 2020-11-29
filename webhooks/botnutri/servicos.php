@@ -28,7 +28,7 @@ function fctConsultaParaArray($nomeConsulta, $sql)
             $mesNome = fctNomeMes($linha['mes']);
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
-                'nome_mes' => $linha['mes']
+                'nome_mes' => $mesNome
             ));
         }
         return $arrayResultado;
@@ -58,7 +58,7 @@ function fctUpdate($nomeUpdate, $sql)
 //* Função para retornar o nome do MÊS em português 
 function fctNomeMes($mes)
 {
-    switch ($$mes) {
+    switch ($mes) {
         case '1':
             return "Janeiro";
             break;
