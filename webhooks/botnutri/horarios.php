@@ -7,7 +7,7 @@
 function fctConsultaMeses()
 {
     logSis('DEB', 'Entrou no fctConsultaMeses');
-    include("servicos.php");
+    //include("servicos.php");
 
     $resultado = fctConsultaParaArray(
         'ConsultaMês',
