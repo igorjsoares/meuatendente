@@ -22,6 +22,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         return false;
     } else {
 
+        logSis('DEB', "Array Colunas -> " . print_r($colunas, true));
 
         $arrayResultado = [];
         /* while ($linha = mysqli_fetch_assoc($query)) {
