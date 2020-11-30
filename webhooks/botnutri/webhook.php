@@ -821,7 +821,7 @@
                             "opcoes" => $jsonDados
                         );
 
-                        $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
+                        //$this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                     }
                     break;
 
