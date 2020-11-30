@@ -48,7 +48,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
                 logSis('DEB', "While Coluna -> " . $coluna);
                 
                 array_push($arrayColuna, array(
-                    $coluna => $linha[$coluna]
+                    $coluna => $linha['mes']
                 ));
                 logSis('DEB', "Array coluna -> " . print_r($arrayColuna, true));
             }
