@@ -820,6 +820,7 @@
                             "id_retorno" => $retorno['id_retorno'],
                             "opcoes" => $jsonDados
                         );
+                        $this->logSis('DEB', '>>>>>>>> ENVIAR MENSAGEM');
 
                         //$this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                     }
