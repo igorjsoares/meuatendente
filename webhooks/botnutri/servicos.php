@@ -23,33 +23,35 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         return false;
     } else {
 
-        
+
         $arrayResultado = [];
-       /*  while ($linha = mysqli_fetch_assoc($query)) {
+        /*  while ($linha = mysqli_fetch_assoc($query)) {
             $mesNome = fctNomeMes($linha['mes']);
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => $mesNome
             ));
         } */
-        
-        
-        
+
+
+
         //$resultadoQuery = mysqli_fetch_array($query);
-        logSis('DEB', "----> Consulta -> " . print_r(mysqli_fetch_array($query)));
 
         while ($linha = mysqli_fetch_array($query)) {
-            $mesNome = fctNomeMes($linha['mes']);
-            array_push($arrayResultado, array(
-                'mes' => $linha['mes'],
-                'nome_mes' => $mesNome
-            ));
+            $myObj = (object)[];
+
+            foreach ($colunas as $coluna) {
+                $myObj->$coluna = $linha[$coluna];
+            }
+            $myJSON = json_encode($myObj);
+            $myArray = json_decode($myJSON, true);
+            array_push($arrayResultado, $myArray);
         }
-        
+
         //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
         //logSis('DEB', "----> Consulta -> " . print_r($resultadoQuery));
         //logSis('DEB', "----> Colunas -> " . print_r($colunas));
-        
+
         /* foreach ($resultadoQuery as $linha) {
         logSis('DEB', "----> Linha -> " . print_r($linha));
             
