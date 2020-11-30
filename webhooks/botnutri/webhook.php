@@ -317,6 +317,7 @@
                 $query = mysqli_query($conn['link'], $sql);
                 $numRow = mysqli_num_rows($query);
 
+                
                 if ($numRow != 0) {
                     $mensagem .= "\n";
                     while ($opcao = mysqli_fetch_array($query)) {
