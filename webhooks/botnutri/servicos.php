@@ -43,8 +43,10 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
             foreach ($colunas as $coluna) {
                 $myObj->$coluna = $linha[$coluna];
             }
+            
             $myJSON = json_encode($myObj);
             $myArray = json_decode($myJSON, true);
+
             array_push($arrayResultado, $myArray);
         }
 
