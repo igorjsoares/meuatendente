@@ -18,7 +18,7 @@ function fctConsultaMeses()
     if ($resultado == false) {
         return false;
     } else {
-        //logSis('DEB', "Voltou ao horários " . print_r($resultado));
+        logSis('DEB', "Voltou ao horários " . print_r($resultado, true));
 
         $arrayResultado = [];
         while ($linha = $resultado) {
