@@ -43,6 +43,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
             $myArray = json_decode($myJSON, true);
             array_push($arrayResultado, $myArray);
         }
+        logSis('ERR', "Dentro do serviços " . print_r($arrayResultado));
 
         return $arrayResultado;
     }

@@ -26,6 +26,8 @@ function fctConsultaMeses()
                 'nome_mes' => fctNomeMes($linha['mes'])
             )); 
         } 
+        logSis('ERR', "Dentro do Horarios " . print_r($arrayResultado));
+
         return $arrayResultado;
        
     }
