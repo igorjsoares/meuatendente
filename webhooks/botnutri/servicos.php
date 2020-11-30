@@ -34,10 +34,10 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         } */
         
         //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
-        
+        $nomeColuna = 'mes';
         while ($linha = mysqli_fetch_array($query)) {
             array_push($arrayResultado, array(
-                'mes' => $linha['mes']
+                $nomeColuna => $linha[$nomeColuna]
             ));
         }
         logSis('DEB', "Array query -> " . print_r(mysqli_fetch_array($query)));
