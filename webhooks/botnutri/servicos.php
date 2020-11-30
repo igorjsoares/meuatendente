@@ -35,8 +35,8 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         $resultadoQuery = mysqli_fetch_array($query);
         
         //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
-        logSis('DEB', "----> Consulta -> " . print_r($resultadoQuery));
-        logSis('DEB', "----> Colunas -> " . print_r($colunas));
+        //logSis('DEB', "----> Consulta -> " . print_r($resultadoQuery));
+        //logSis('DEB', "----> Colunas -> " . print_r($colunas));
         
         foreach ($resultadoQuery as $linha) {
         logSis('DEB', "----> Linha -> " . print_r($linha));
