@@ -35,10 +35,10 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         
         
         
-        $resultadoQuery = mysqli_fetch_array($query);
-        logSis('DEB', "----> Consulta -> " . print_r($resultadoQuery));
+        //$resultadoQuery = mysqli_fetch_array($query);
+        //logSis('DEB', "----> Consulta -> " . print_r($resultadoQuery));
 
-        while ($linha = $resultadoQuery) {
+        while ($linha = mysqli_fetch_array($query)) {
             $mesNome = fctNomeMes($linha['mes']);
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
