@@ -9,6 +9,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     logSis('DEB', 'Entrou no fctConsultaParaArray');
 
     include("dados_conexao.php");
+    logSis('DEB', "==SQL==" . $sql);
 
     $query = mysqli_query($conn['link'], $sql);
     $numRow = mysqli_num_rows($query);
@@ -22,8 +23,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         return false;
     } else {
 
-        logSis('DEB', "Array query -> " . print_r(mysqli_fetch_array($query)));
-
+        
         $arrayResultado = [];
         /* while ($linha = mysqli_fetch_assoc($query)) {
             $mesNome = fctNomeMes($linha['mes']);
@@ -32,21 +32,22 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
                 'nome_mes' => $mesNome
             ));
         } */
-
+        
         //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
-
+        
         while ($linha = mysqli_fetch_array($query)) {
-                array_push($arrayResultado, array(
-                    'mes' => $linha['mes']
-                ));
-            }
-       /*  while ($linha = mysqli_fetch_array($query)) {
+            array_push($arrayResultado, array(
+                'mes' => $linha['mes']
+            ));
+        }
+        logSis('DEB', "Array query -> " . print_r(mysqli_fetch_array($query)));
+        /*  while ($linha = mysqli_fetch_array($query)) {
             $arrayColuna = [];
             $arrayColunas = $colunas;
-
+            
             foreach ($arrayColunas as $value) {
                 logSis('DEB', "While Coluna -> " . $value);
-
+                
                 array_push($arrayColuna, array(
                     $value => $linha[$value]
                 ));
