@@ -38,6 +38,8 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         logSis('DEB', "----> Colunas -> " . print_r($colunas));
         
         foreach (mysqli_fetch_array($query) as $linha) {
+        logSis('DEB', "----> Linha -> " . print_r($linha));
+            
             $arrayColunas = $colunas;
             $arrayColuna = [];
 
