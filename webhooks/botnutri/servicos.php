@@ -22,7 +22,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         return false;
     } else {
 
-        logSis('DEB', "Array query -> " . print_r(mysqli_fetch_assoc($query)));
+        logSis('DEB', "Array query -> " . print_r(mysqli_fetch_array($query)));
 
         $arrayResultado = [];
         while ($linha = mysqli_fetch_assoc($query)) {
