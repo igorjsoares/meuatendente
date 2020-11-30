@@ -36,6 +36,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
         
         foreach (mysqli_fetch_array($query) as $linha) {
+            $arrayColunas = $colunas;
             $arrayColuna = [];
 
             foreach ($arrayColunas as $coluna) {
