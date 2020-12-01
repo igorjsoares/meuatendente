@@ -23,15 +23,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         return false;
     } else {
 
-
         $arrayResultado = [];
-        /*  while ($linha = mysqli_fetch_assoc($query)) {
-            $mesNome = fctNomeMes($linha['mes']);
-            array_push($arrayResultado, array(
-                'mes' => $linha['mes'],
-                'nome_mes' => $mesNome
-            ));
-        } */
 
         while ($linha = mysqli_fetch_array($query)) {
             $myObj = (object)[];
@@ -45,8 +37,8 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 
             array_push($arrayResultado, $myArray);
         }
-        
-        logSis('DEB', "Array Resyltado -> " . print_r($arrayResultado, true));
+
+        logSis('DEB', $nomeConsulta . " - Array Resultado -> " . print_r($arrayResultado, true));
 
         return $arrayResultado;
     }

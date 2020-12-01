@@ -18,7 +18,6 @@ function fctConsultaMeses()
     if ($resultado == false) {
         return false;
     } else {
-        logSis('DEB', "Voltou ao horários " . print_r($resultado, true));
 
         $arrayResultado = [];
         foreach ($resultado as $linha) {
@@ -27,7 +26,6 @@ function fctConsultaMeses()
                 'nome_mes' => fctNomeMes($linha['mes'])
             )); 
         } 
-        logSis('ERR', "Dentro do Horarios " . print_r($arrayResultado));
 
         return $arrayResultado;
        
@@ -42,7 +40,7 @@ function fctConsultaDias($mes)
     $resultado = fctConsultaParaArray(
         'ConsultaDias',
         "SELECT day(horario) AS dia FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes GROUP BY day(horario)",
-        ''
+        array('dia')
     );
 
     if ($resultado == false) {

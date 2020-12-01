@@ -820,8 +820,10 @@
                             "id_retorno" => $retorno['id_retorno'],
                             "opcoes" => $jsonDados
                         );
-                        $this->logSis('DEB', '>>>>>>>> ENVIAR MENSAGEM');
 
+                        //& Está trazendo o menu corretamente
+                        //& Colocar agora para quando enviar para o envio de mensagem, enviar também o CORINGA com o status atual do menu
+                        //& A partir daí criar o CASE para DIA 
                         $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                     }
                     break;
