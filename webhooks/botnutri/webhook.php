@@ -598,9 +598,9 @@
                     $tipo = $retorno['modo'];
                     $idRetorno = $retorno['id_retorno'];
                 }
-                if(isset($retorno['subtipo'])){
+                if ($retorno['subtipo'] != '') {
                     $subTipo = $retorno['subtipo'];
-                }else{
+                } else {
                     $subTipo = '';
                 }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
@@ -822,7 +822,7 @@
                         $jsonDados = json_encode($arrayMeses);
                         $arrayRetorno = array(
                             "modo" => $retorno['tipo'], //tipo
-                            "subtipo"=>'mes',
+                            "subtipo" => 'mes',
                             "id_retorno" => $retorno['id_retorno'],
                             "opcoes" => $jsonDados
                         );
