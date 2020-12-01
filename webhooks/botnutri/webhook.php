@@ -598,9 +598,14 @@
                     $tipo = $retorno['modo'];
                     $idRetorno = $retorno['id_retorno'];
                 }
+                if(isset($retorno['subtipo'])){
+                    $subtipo = $retorno['subtipo'];
+                }else{
+                    $subtipo = '';
+                }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $subTipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 if ($motivo == 'Receptivo') {
                     return false;
@@ -657,7 +662,7 @@
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
@@ -817,6 +822,7 @@
                         $jsonDados = json_encode($arrayMeses);
                         $arrayRetorno = array(
                             "modo" => $retorno['tipo'], //tipo
+                            "subtipo"=>'mes',
                             "id_retorno" => $retorno['id_retorno'],
                             "opcoes" => $jsonDados
                         );
