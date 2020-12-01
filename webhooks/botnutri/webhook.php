@@ -599,9 +599,9 @@
                     $idRetorno = $retorno['id_retorno'];
                 }
                 if(isset($retorno['subtipo'])){
-                    $subtipo = $retorno['subtipo'];
+                    $subTipo = $retorno['subtipo'];
                 }else{
-                    $subtipo = '';
+                    $subTipo = '';
                 }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
