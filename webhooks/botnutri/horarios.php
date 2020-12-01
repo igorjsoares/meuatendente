@@ -21,7 +21,7 @@ function fctConsultaMeses()
         logSis('DEB', "Voltou ao horários " . print_r($resultado, true));
 
         $arrayResultado = [];
-        while ($linha = $resultado) {
+        foreach ($resultado as $linha) {
             array_push($arrayResultado, array(
                 'mes' => $linha['mes'],
                 'nome_mes' => fctNomeMes($linha['mes'])

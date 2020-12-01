@@ -33,58 +33,19 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
             ));
         } */
 
-
-
-        //$resultadoQuery = mysqli_fetch_array($query);
-
         while ($linha = mysqli_fetch_array($query)) {
             $myObj = (object)[];
 
             foreach ($colunas as $coluna) {
                 $myObj->$coluna = $linha[$coluna];
             }
-            
+
             $myJSON = json_encode($myObj);
             $myArray = json_decode($myJSON, true);
 
             array_push($arrayResultado, $myArray);
         }
-
-        //& Tentar colocar essa função para ser dinâmica preenchendo as colunas de acordo com os nomes das colunas enviadas nos argumentos
-        //logSis('DEB', "----> Consulta -> " . print_r($resultadoQuery));
-        //logSis('DEB', "----> Colunas -> " . print_r($colunas));
-
-        /* foreach ($resultadoQuery as $linha) {
-        logSis('DEB', "----> Linha -> " . print_r($linha));
-            
-            $arrayColunas = $colunas;
-            $arrayColuna = [];
-
-            foreach ($arrayColunas as $coluna) {
-                logSis('DEB', "While Coluna -> " . $coluna);
-                
-                array_push($arrayColuna, array(
-                    $coluna => $linha['mes']
-                ));
-                logSis('DEB', "Array coluna -> " . print_r($arrayColuna, true));
-            }
-            array_push($arrayResultado, $arrayColuna);
-        } */
-
-        /*  while ($linha = mysqli_fetch_array($query)) {
-            $arrayColuna = [];
-            $arrayColunas = $colunas;
-            
-            foreach ($arrayColunas as $value) {
-                logSis('DEB', "While Coluna -> " . $value);
-                
-                array_push($arrayColuna, array(
-                    $value => $linha[$value]
-                ));
-                logSis('DEB', "Array coluna -> " . print_r($arrayColuna, true));
-            }
-            array_push($arrayResultado, $arrayColuna);
-        } */
+        
         logSis('DEB', "Array Resyltado -> " . print_r($arrayResultado, true));
 
         return $arrayResultado;
