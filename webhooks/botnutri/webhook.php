@@ -658,7 +658,7 @@
         }
 
         //* Inserir interação 
-        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subtipo, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
 
