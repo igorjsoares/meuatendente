@@ -819,13 +819,13 @@
                         $jsonDados = json_encode($arrayMeses);
                         $arrayRetorno = array(
                             "modo" => $retorno['tipo'], //tipo
-                            "subtipo"=>'mes',
+                            "subtipo" => 'mes',
                             "id_retorno" => $retorno['id_retorno'],
                             "opcoes" => $jsonDados
                         );
 
-                        //& Está trazendo o menu corretamente
-                        //& Colocar agora para quando enviar para o envio de mensagem, enviar também o CORINGA com o status atual do menu
+                        //& Está trazendo o menu corretamente e salvando já com o subtipo
+                        //& Colocar agora o json com as opções na coluna opcoes_variaveis
                         //& A partir daí criar o CASE para DIA 
                         $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                     }
