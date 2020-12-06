@@ -135,6 +135,7 @@
             }
         }
 
+        //* Função de verificação de horário de atendimento 
         public function horarioAtendimento()
         {
             //Consulta o horário atual pra ver se está dentro do horário de atendimento.
@@ -149,7 +150,7 @@
 
             $resultDia = fctConsultaParaArray(
                 'ConsultaAtendimentoDia',
-                "SELECT * FROM tbl_atendimento WHERE dia = $diaSemana",
+                "SELECT * FROM tbl_atendimento WHERE dia = $hojeSemana",
                 array('dia', 'horarios', 'status')
             );
 
@@ -177,6 +178,7 @@
             }
         }
 
+        //* Função de resposta 
         public function resposta($numero, $mensagem)
         {
             include("dados_conexao.php");
