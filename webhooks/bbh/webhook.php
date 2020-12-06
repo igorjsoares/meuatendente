@@ -43,35 +43,7 @@
 
 
                 //( Busca informações da instância CHATPRO no banco de dados 
-                $sql = "SELECT * FROM tbl_instancias WHERE id_instancia = $idInstancia";
-                $query = mysqli_query($conn['link'], $sql);
-                $consultaInstancia = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                $numRow = mysqli_num_rows($query);
-                if (!$query) {
-                    echo "Erro ao tentar conectar no MYSQL " . mysqli_connect_error();
-                    $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error());
-
-                    exit(0);
-                }
-                if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
-                    $this->logSis('ERR', "Instância N/E: " . $id_instancia);
-                    exit(0);
-                } else {
-                    $this->APIurl  = $consultaInstancia['endpoint'] . '/api/v1/';
-                    $this->token  = $consultaInstancia['token'];
-                    $this->numerosuporte =  $consultaInstancia['numero_suporte'];
-                    $this->conf_cad_dados =  $consultaInstancia['conf_cad_dados'];
-                    $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
-                    $this->msg_inicial =  $consultaInstancia['msg_inicial'];
-                    $this->msg_erro =  $consultaInstancia['msg_erro'];
-                    $this->menuRaiz =  $consultaInstancia['menu_raiz'];
-                    $this->msg_fora_horario =  $consultaInstancia['msg_fora_horario'];
-                    $limite = $consultaInstancia['limite'];
-                    $status = $consultaInstancia['status'];
-                    $nome = $consultaInstancia['nome'];
-
-                }
-
+                $this->consultaInstancia($idInstancia);
 
                 //() Verifica se NÃO É uma mensagem recebida de um número ou GRUPO 
                 if ($tipoNumero == 's.whatsapp.net') {
@@ -114,23 +86,23 @@
                         //( Verifica se a hora atual está dentro do horário de atendimento
                         if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
 
+                            $mensagem = explode(' ', trim($decoded['Body']['Text']));
+                            $palavra = mb_strtolower($mensagem[0], 'UTF-8');
+
+                            if ($this->primeirocontato == true) { //( Se for o primeiro contato
+                                $this->envioMenuRaiz($numero, $this->msg_inicial);
+                                
+                            } else {
+
+                                //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
+                                $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
+                                $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
+
+                                $this->resposta($numero, $decoded);
+                            }
                         } else { //fora do horário de atendimento
                             $this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
                         }
-                        //& Isso aqui em baixo seja colocado depois da verificação de horário
-                        /* $mensagem = explode(' ', trim($decoded['Body']['Text']));
-                        $palavra = mb_strtolower($mensagem[0], 'UTF-8');
-
-                        if ($this->primeirocontato == true) { //( Se for o primeiro contato
-                            $this->envioMenuRaiz($numero, '');
-                        } else {
-
-                            //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
-                            $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
-                            $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
-
-                            $this->resposta($numero, $decoded);
-                        } */
                     }
                 }
             }
@@ -844,6 +816,38 @@
             $horas = $diff->h + ($diff->days * 24);
 
             return $horas;
+        }
+
+        //* Função que consulta a instância 
+        private function consultaInstancia($idInstancia)
+        {
+            include('dados_conexão.php');
+
+            $sql = "SELECT * FROM tbl_instancias WHERE id_instancia = $idInstancia";
+            $query = mysqli_query($conn['link'], $sql);
+            $consultaInstancia = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $numRow = mysqli_num_rows($query);
+            if (!$query) {
+                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error());
+                exit(0);
+            }
+            if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
+                $this->logSis('ERR', "Instância N/E: " . $idInstancia);
+                exit(0);
+            } else {
+                $this->APIurl  = $consultaInstancia['endpoint'] . '/api/v1/';
+                $this->token  = $consultaInstancia['token'];
+                $this->numerosuporte =  $consultaInstancia['numero_suporte'];
+                $this->conf_cad_dados =  $consultaInstancia['conf_cad_dados'];
+                $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
+                $this->msg_inicial =  $consultaInstancia['msg_inicial'];
+                $this->msg_erro =  $consultaInstancia['msg_erro'];
+                $this->menuRaiz =  $consultaInstancia['menu_raiz'];
+                $this->msg_fora_horario =  $consultaInstancia['msg_fora_horario'];
+                $this->limite = $consultaInstancia['limite'];
+                $this->status = $consultaInstancia['status'];
+                $this->nome = $consultaInstancia['nome'];
+            }
         }
 
         //* Função de LOG
