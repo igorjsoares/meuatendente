@@ -91,7 +91,7 @@
 
                             if ($this->primeirocontato == true) { //( Se for o primeiro contato
                                 $this->envioMenuRaiz($numero, $this->msg_inicial);
-                                
+
                             } else {
 
                                 //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
@@ -821,7 +821,7 @@
         //* Função que consulta a instância 
         private function consultaInstancia($idInstancia)
         {
-            include('dados_conexão.php');
+            include("dados_conexao.php");
 
             $sql = "SELECT * FROM tbl_instancias WHERE id_instancia = $idInstancia";
             $query = mysqli_query($conn['link'], $sql);
