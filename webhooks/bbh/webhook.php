@@ -50,6 +50,8 @@
 
                     //( Verifica se a hora atual está dentro do horário de atendimento
                     if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
+                        $this->logSis('DEB', "---> Dentro do horário");
+                        exit(0);
 
                         //( Consulta o contato no BD 
                         $sql = "SELECT * FROM tbl_contatos WHERE numero = $numero AND id_instancia = $idInstancia";
@@ -122,7 +124,7 @@
             //( Obtem a hora atual 
             $hojeHora = date('H:i');
             $this->logSis('DEB', 'Hora AGORA: ' . $hojeHora);
-            
+
 
             $resultDia = fctConsultaParaArray(
                 'ConsultaAtendimentoDia',
@@ -141,8 +143,8 @@
             } else {
                 //Verifica se a hora do atendimento ($hojeHora) está dentro dos horários de atendimento
                 $noHorario = 0;
-            $this->logSis('DEB', 'Status do dia é 1 e horário é: ' . $resultDia['horarios']);
-                
+                $this->logSis('DEB', 'Status do dia é 1 e horário é: ' . $resultDia['horarios']);
+
                 $arrayHorarios = explode(',', $resultDia['horarios']);
                 foreach ($arrayHorarios as $horario) {
                     $arrayHora = explode('-', $horario);
@@ -152,7 +154,7 @@
                         $noHorario = 1;
                     }
                 }
-            $this->logSis('DEB', 'No horário: ' . $noHorario);
+                $this->logSis('DEB', 'No horário: ' . $noHorario);
 
                 if ($noHorario == 0) { //Atendimento fora do horário
                     return false;
