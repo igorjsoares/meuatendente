@@ -101,7 +101,8 @@
                             }
                         }
                     } else { //fora do horário de atendimento
-                        $this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
+                        //$this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
+                        $this->logSis('DEB', "---> Mensagem de fora do horário");
                     }
                 }
             }

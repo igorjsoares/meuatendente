@@ -9,7 +9,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     //logSis('DEB', 'Entrou no fctConsultaParaArray');
 
     include("dados_conexao.php");
-    //logSis('DEB', "==SQL==" . $sql);
+    logSis('DEB', "==SQL==" . $sql);
 
     $query = mysqli_query($conn['link'], $sql);
     $numRow = mysqli_num_rows($query);
@@ -38,7 +38,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
             array_push($arrayResultado, $myArray);
         }
 
-        //logSis('DEB', $nomeConsulta . " - Array Resultado -> " . print_r($arrayResultado, true));
+        logSis('DEB', $nomeConsulta . " - Array Resultado -> " . print_r($arrayResultado, true));
 
         return $arrayResultado;
     }
