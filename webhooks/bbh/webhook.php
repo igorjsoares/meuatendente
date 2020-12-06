@@ -630,7 +630,7 @@
             include("dados_conexao.php");
 
             $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
-            $this->logSis('DEB', 'SQL : ' . $sql);
+            //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
             if (!$resultado) {
