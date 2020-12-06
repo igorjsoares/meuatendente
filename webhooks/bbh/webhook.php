@@ -140,7 +140,7 @@
                 return false;
             } else {
                 //Verifica se a hora do atendimento ($hojeHora) está dentro dos horários de atendimento
-                $noHorario = false;
+                $noHorario = 0;
             $this->logSis('DEB', 'Status do dia é 1 e horário é: ' . $resultDia['horarios']);
                 
                 $arrayHorarios = explode(',', $resultDia['horarios']);
@@ -149,13 +149,13 @@
                     $primeiraHora = $arrayHora[0];
                     $segundaHora = $arrayHora[1];
                     if ($horaAtual >= $primeiraHora && $horaAtual <= $segundaHora) {
-                        $noHorario = true;
+                        $noHorario = 1;
                         exit(0);
                     }
                 }
             $this->logSis('DEB', 'No horário: ' . $noHorario);
 
-                if ($noHorario == false) { //Atendimento fora do horário
+                if ($noHorario == 0) { //Atendimento fora do horário
                     return false;
                 } else { //Atendimento no horário
                     return true;
