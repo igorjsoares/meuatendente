@@ -116,9 +116,12 @@
             //( Obtem o dia da semana 
             $diaSemana = array('DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB');
             $hojeSemana = $diaSemana[date('w', strtotime(date('Y-m-d')))];
+            $this->logSis('DEB', 'Dia semana: ' . $hojeSemana);
 
             //( Obtem a hora atual 
             $hojeHora = date('H:i');
+            $this->logSis('DEB', 'Hora AGORA: ' . $hojeHora);
+            
 
             $resultDia = fctConsultaParaArray(
                 'ConsultaAtendimentoDia',
@@ -132,6 +135,8 @@
             } else {
                 //Verifica se a hora do atendimento ($hojeHora) está dentro dos horários de atendimento
                 $noHorario = false;
+            $this->logSis('DEB', 'Status do dia ºe 1 e horário é: ' . $resultDia['horarios']);
+                
                 $arrayHorarios = explode(',', $resultDia['horarios']);
                 foreach ($arrayHorarios as $horario) {
                     $arrayHora = explode('-', $horario);
@@ -142,6 +147,8 @@
                         exit(0);
                     }
                 }
+            $this->logSis('DEB', 'No horário: ' . $noHorario);
+
                 if ($noHorario == false) { //Atendimento fora do horário
                     return false;
                 } else { //Atendimento no horário
