@@ -114,7 +114,7 @@
                         if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
 
                         } else { //fora do horário de atendimento
-                            $this->sendMessage('ForaHorario', $numero, $msg_fora_horario, '');
+                            $this->sendMessage("ForaHorario", $numero, "Fora do horário", "");
                         }
                         //& Isso aqui em baixo seja colocado depois da verificação de horário
                         /* $mensagem = explode(' ', trim($decoded['Body']['Text']));
@@ -536,9 +536,6 @@
         public function sendRequest($motivo, $method, $data, $retorno)
         {
             include("dados_conexao.php");
-            $this->logSis('DEB', 'mothod: ' . $method);
-            $this->logSis('DEB', 'Data: ' . $data);
-
 
             $url = 'https://' . $this->APIurl . $method;
             if (is_array($data)) {
