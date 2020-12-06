@@ -150,7 +150,7 @@
 
             $resultDia = fctConsultaParaArray(
                 'ConsultaAtendimentoDia',
-                "SELECT * FROM tbl_atendimento WHERE dia = $hojeSemana",
+                "SELECT * FROM tbl_atendimento WHERE dia = '$hojeSemana'",
                 array('dia', 'horarios', 'status')
             );
 
