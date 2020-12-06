@@ -69,7 +69,6 @@
                     $limite = $consultaInstancia['limite'];
                     $status = $consultaInstancia['status'];
                     $nome = $consultaInstancia['nome'];
-                    $this->logSis('DEB', 'msg_fora_horario: ' . $this->msg_fora_horario);
 
                 }
 
@@ -491,6 +490,7 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $numero, $text, $retorno)
         {
+            $text = utf8_encode($text);
 
             $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data, $retorno);
