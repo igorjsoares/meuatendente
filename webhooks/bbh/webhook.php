@@ -148,7 +148,7 @@
                     $arrayHora = explode('-', $horario);
                     $primeiraHora = $arrayHora[0];
                     $segundaHora = $arrayHora[1];
-                    if ($horaAtual >= $primeiraHora && $horaAtual <= $segundaHora) {
+                    if ($hojeHora >= $primeiraHora && $hojeHora <= $segundaHora) {
                         $noHorario = 1;
                         exit(0);
                     }
