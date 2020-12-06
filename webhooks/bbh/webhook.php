@@ -143,9 +143,8 @@
 
             //( Obtem o dia da semana 
             $diaSemana = array('DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB');
-            $data = date('w', strtotime(date('Y-m-d')));
-            $hojeSemana = $diasemana[$data];
-$this->logSis('DEB', $hojeSemana);
+            $hojeSemana = $diaSemana[date('w', strtotime(date('Y-m-d')))];
+
             //( Obtem a hora atual 
             $hojeHora = date('H:i');
 
