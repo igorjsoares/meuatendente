@@ -129,9 +129,10 @@
                 "SELECT * FROM tbl_atendimento WHERE dia = '$hojeSemana'",
                 array('dia', 'horarios', 'status')
             );
-            $this->logSis('DEB', 'TBL dia: ' . $resultDia[0]['dia']);
-            $this->logSis('DEB', 'TBL horario: ' . $resultDia[0]['horarios']);
-            $this->logSis('DEB', 'TBL status: ' . $resultDia[0]['status']);
+            $resultDia = $resultDia[0];
+            $this->logSis('DEB', 'TBL dia: ' . $resultDia['dia']);
+            $this->logSis('DEB', 'TBL horario: ' . $resultDia['horarios']);
+            $this->logSis('DEB', 'TBL status: ' . $resultDia['status']);
 
 
             if ($resultDia['status'] == 0) {
