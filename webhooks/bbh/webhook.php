@@ -90,7 +90,8 @@
                             $palavra = mb_strtolower($mensagem[0], 'UTF-8');
 
                             if ($this->primeirocontato == true) { //( Se for o primeiro contato
-                                $this->envioMenuRaiz($numero, $this->msg_inicial);
+                                $this->envioMenuRaiz($numero, utf8_encode($this->msg_inicial));
+
                             } else {
 
                                 //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
@@ -101,8 +102,8 @@
                             }
                         }
                     } else { //fora do horário de atendimento
-                        //$this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
-                        $this->logSis('DEB', "---> Mensagem de fora do horário");
+                        
+                        $this->sendMessage("ForaHorario", $numero, utf8_encode($this->msg_fora_horario), "");
                     }
                 }
             }
@@ -117,7 +118,7 @@
             //( Obtem o dia da semana 
             $diaSemana = array('DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB');
             $hojeSemana = $diaSemana[date('w', strtotime(date('Y-m-d')))];
-            
+
             //( Obtem a hora atual 
             $hojeHora = date('H:i');
 
@@ -462,8 +463,6 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $numero, $text, $retorno)
         {
-            $text = utf8_encode($text);
-
             $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data, $retorno);
         }
