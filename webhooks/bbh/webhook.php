@@ -64,8 +64,8 @@
                     $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
                     $this->msg_inicial =  $consultaInstancia['msg_inicial'];
                     $this->msg_erro =  $consultaInstancia['msg_erro'];
-                    $msg_fora_horario =  $consultaInstancia['msg_fora_horario'];
                     $this->menuRaiz =  $consultaInstancia['menu_raiz'];
+                    $this->msg_fora_horario =  $consultaInstancia['msg_fora_horario'];
                     $limite = $consultaInstancia['limite'];
                     $status = $consultaInstancia['status'];
                     $nome = $consultaInstancia['nome'];
@@ -114,7 +114,7 @@
                         if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
 
                         } else { //fora do horário de atendimento
-                            $this->sendMessage("ForaHorario", $numero, "Fora do horário", "");
+                            $this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
                         }
                         //& Isso aqui em baixo seja colocado depois da verificação de horário
                         /* $mensagem = explode(' ', trim($decoded['Body']['Text']));
