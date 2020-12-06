@@ -69,6 +69,8 @@
                     $limite = $consultaInstancia['limite'];
                     $status = $consultaInstancia['status'];
                     $nome = $consultaInstancia['nome'];
+                    $this->logSis('DEB', 'msg_fora_horario: ' . $this->msg_fora_horario);
+
                 }
 
 
