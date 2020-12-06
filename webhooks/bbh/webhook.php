@@ -128,6 +128,10 @@
                 "SELECT * FROM tbl_atendimento WHERE dia = '$hojeSemana'",
                 array('dia', 'horarios', 'status')
             );
+            $this->logSis('DEB', 'TBL dia: ' . $resultDia['dia']);
+            $this->logSis('DEB', 'TBL horario: ' . $resultDia['horarios']);
+            $this->logSis('DEB', 'TBL status: ' . $resultDia['status']);
+
 
             if ($resultDia['status'] == 0) {
                 // Dia não disponível para atendimento
@@ -135,7 +139,7 @@
             } else {
                 //Verifica se a hora do atendimento ($hojeHora) está dentro dos horários de atendimento
                 $noHorario = false;
-            $this->logSis('DEB', 'Status do dia ºe 1 e horário é: ' . $resultDia['horarios']);
+            $this->logSis('DEB', 'Status do dia é 1 e horário é: ' . $resultDia['horarios']);
                 
                 $arrayHorarios = explode(',', $resultDia['horarios']);
                 foreach ($arrayHorarios as $horario) {
