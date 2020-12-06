@@ -536,8 +536,8 @@
         public function sendRequest($motivo, $method, $data, $retorno)
         {
             include("dados_conexao.php");
-            $this->logSis('DEB', 'EndPopint: ' . $this->APIurl);
-            $this->logSis('DEB', 'Token: ' . $this->token);
+            $this->logSis('DEB', 'mothod: ' . $method);
+            $this->logSis('DEB', 'Data: ' . $data);
 
 
             $url = 'https://' . $this->APIurl . $method;
