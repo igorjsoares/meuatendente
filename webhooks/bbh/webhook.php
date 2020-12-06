@@ -48,50 +48,49 @@
                 //() Verifica se NÃO É uma mensagem recebida de um número ou GRUPO 
                 if ($tipoNumero == 's.whatsapp.net') {
 
-                    //( Consulta o contato no BD 
-                    $sql = "SELECT * FROM tbl_contatos WHERE numero = $numero AND id_instancia = $idInstancia";
-                    $query = mysqli_query($conn['link'], $sql);
-                    $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                    $numRow = mysqli_num_rows($query);
+                    //( Verifica se a hora atual está dentro do horário de atendimento
+                    if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
 
-                    if (!$query) {
-                        $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
-                        exit(0);
-                    }
+                        //( Consulta o contato no BD 
+                        $sql = "SELECT * FROM tbl_contatos WHERE numero = $numero AND id_instancia = $idInstancia";
+                        $query = mysqli_query($conn['link'], $sql);
+                        $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                        $numRow = mysqli_num_rows($query);
 
-                    if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
-                        $this->id_contato = $consultaContato['id_contato'];
-                        $nome = $consultaContato['nome'];
-                        $email = $consultaContato['email'];
-                        $fase = $consultaContato['fase'];
-                        $teste = $consultaContato['teste'];
-                    } else { //( O CONTATO NÃO EXISTE 
-                        $this->primeirocontato = true;
-
-                        //CONTATO NÃO EXISTE 
-                        //( Insere o contato no banco de dados 
-                        $sql = "INSERT INTO tbl_contatos(id_instancia, numero, lista_0, teste, created_at) VALUES ('$idInstancia', '$numero', 1, 0, NOW())";
-                        $resultado = mysqli_query($conn['link'], $sql);
-                        $this->id_contato = mysqli_insert_id($conn['link']);
-                        if ($resultado != '1') {
-                            $this->logSis('ERR', 'Insert Contatos. Erro: ' . $resultado . mysqli_connect_error());
+                        if (!$query) {
+                            $this->logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
+                            exit(0);
                         }
-                    }
 
-                    //( Insere a interação que foi recebida no BD 
-                    $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', '', '', $idMensagemWhats, $mensagem, 1);
+                        if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
+                            $this->id_contato = $consultaContato['id_contato'];
+                            $nome = $consultaContato['nome'];
+                            $email = $consultaContato['email'];
+                            $fase = $consultaContato['fase'];
+                            $teste = $consultaContato['teste'];
+                        } else { //( O CONTATO NÃO EXISTE 
+                            $this->primeirocontato = true;
 
-                    if ($resultado == '1') {
+                            //CONTATO NÃO EXISTE 
+                            //( Insere o contato no banco de dados 
+                            $sql = "INSERT INTO tbl_contatos(id_instancia, numero, lista_0, teste, created_at) VALUES ('$idInstancia', '$numero', 1, 0, NOW())";
+                            $resultado = mysqli_query($conn['link'], $sql);
+                            $this->id_contato = mysqli_insert_id($conn['link']);
+                            if ($resultado != '1') {
+                                $this->logSis('ERR', 'Insert Contatos. Erro: ' . $resultado . mysqli_connect_error());
+                            }
+                        }
 
-                        //( Verifica se a hora atual está dentro do horário de atendimento
-                        if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
+                        //( Insere a interação que foi recebida no BD 
+                        $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', '', '', $idMensagemWhats, $mensagem, 1);
+
+                        if ($resultado == '1') {
 
                             $mensagem = explode(' ', trim($decoded['Body']['Text']));
                             $palavra = mb_strtolower($mensagem[0], 'UTF-8');
 
                             if ($this->primeirocontato == true) { //( Se for o primeiro contato
                                 $this->envioMenuRaiz($numero, $this->msg_inicial);
-
                             } else {
 
                                 //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
@@ -100,9 +99,9 @@
 
                                 $this->resposta($numero, $decoded);
                             }
-                        } else { //fora do horário de atendimento
-                            $this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
                         }
+                    } else { //fora do horário de atendimento
+                        $this->sendMessage("ForaHorario", $numero, $this->msg_fora_horario, "");
                     }
                 }
             }
