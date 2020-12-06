@@ -150,7 +150,6 @@
                     $segundaHora = $arrayHora[1];
                     if ($hojeHora >= $primeiraHora && $hojeHora <= $segundaHora) {
                         $noHorario = 1;
-                        exit(0);
                     }
                 }
             $this->logSis('DEB', 'No horário: ' . $noHorario);
