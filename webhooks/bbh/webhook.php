@@ -6,6 +6,7 @@
 
         public function __construct()
         {
+            date_default_timezone_set('Europe/Lisbon');
             include("dados_conexao.php");
 
             //& Alterar aqui depois os dados para a consulta no BD 
@@ -63,6 +64,7 @@
                     $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
                     $this->msg_inicial =  $consultaInstancia['msg_inicial'];
                     $this->msg_erro =  $consultaInstancia['msg_erro'];
+                    $msg_fora_horario =  $consultaInstancia['msg_fora_horario'];
                     $this->menuRaiz =  $consultaInstancia['menu_raiz'];
                     $limite = $consultaInstancia['limite'];
                     $status = $consultaInstancia['status'];
@@ -107,12 +109,19 @@
                     $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', '', '', $idMensagemWhats, $mensagem, 1);
 
                     if ($resultado == '1') {
-                        $mensagem = explode(' ', trim($decoded['Body']['Text']));
+
+                        //( Verifica se a hora atual está dentro do horário de atendimento
+                        if ($this->horarioAtendimento() == true) { //Dentro do horário de atendimento
+
+                        } else { //fora do horário de atendimento
+                            $this->sendMessage('ForaHorario', $numero, $msg_fora_horario, '');
+                        }
+                        //& Isso aqui em baixo seja colocado depois da verificação de horário
+                        /* $mensagem = explode(' ', trim($decoded['Body']['Text']));
                         $palavra = mb_strtolower($mensagem[0], 'UTF-8');
 
                         if ($this->primeirocontato == true) { //( Se for o primeiro contato
                             $this->envioMenuRaiz($numero, '');
-
                         } else {
 
                             //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
@@ -120,8 +129,50 @@
                             $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
 
                             $this->resposta($numero, $decoded);
-                        }
+                        } */
                     }
+                }
+            }
+        }
+
+        public function horarioAtendimento()
+        {
+            //Consulta o horário atual pra ver se está dentro do horário de atendimento.
+            include_once("servicos.php");
+
+            //( Obtem o dia da semana 
+            $diaSemana = array('DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB');
+            $hojeSemana = $diasemana[date('w', strtotime(date('Y-m-d')))];
+
+            //( Obtem a hora atual 
+            $hojeHora = date('H:i');
+
+            $resultDia = fctConsultaParaArray(
+                'ConsultaAtendimentoDia',
+                "SELECT * FROM tbl_atendimento WHERE dia = $diaSemana",
+                array('dia', 'horarios', 'status')
+            );
+
+            if ($resultDia['status'] == 0) {
+                // Dia não disponível para atendimento
+                return false;
+            } else {
+                //Verifica se a hora do atendimento ($hojeHora) está dentro dos horários de atendimento
+                $noHorario = false;
+                $arrayHorarios = explode(',', $resultDia['horarios']);
+                foreach ($arrayHorarios as $horario) {
+                    $arrayHora = explode('-', $horario);
+                    $primeiraHora = $arrayHora[0];
+                    $segundaHora = $arrayHora[1];
+                    if ($horaAtual >= $primeiraHora && $horaAtual <= $segundaHora) {
+                        $noHorario = true;
+                        exit(0);
+                    }
+                }
+                if ($noHorario == false) { //Atendimento fora do horário
+                    return false;
+                } else { //Atendimento no horário
+                    return true;
                 }
             }
         }
