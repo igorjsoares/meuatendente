@@ -260,7 +260,7 @@
         //* Envio Menu raiz
         public function envioMenuRaiz($numero, $textoComplementar)
         {
-            $this->logSis('DEB', 'Entrou no envioMenuRaiz');
+            //$this->logSis('DEB', 'Entrou no envioMenuRaiz');
 
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
             //& Entender aqui também se tem a opção do carrinho e do repetir último pedido
@@ -270,14 +270,22 @@
 
             //( Retornou alguma coisa da verificação de opções variáveis
             if ($arrayOpcoes != false) {
-                $textoOpcoes .= "\n";
-                foreach ($arrayOpcoes as $linha) {
-                    $textoOpcoes .= "\n" . $linha['id'] . ". " . $linha['nome'];
-                }
+                $textoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
             }
 
             $texto = $textoComplementar . $arrayRetorno['mensagem'] . $textoOpcoes;
             $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
+        }
+
+        //* Monta o texto com as opções e devolve tanto o texto quanto o json
+        public function montaTextoOpcoes($textoOpcoes, $arrayOpcoes)
+        {
+            $textoOpcoes .= "\n";
+            $indice = 0;
+            foreach ($arrayOpcoes as $linha) {
+                $textoOpcoes .= "\n" . ($indice + 1) . ". " . $linha['nome'];
+            }
+            return $textoOpcoes;
         }
 
         //* Envio de erro
