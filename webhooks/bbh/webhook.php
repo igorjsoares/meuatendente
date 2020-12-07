@@ -260,6 +260,8 @@
         //* Envio Menu raiz
         public function envioMenuRaiz($numero, $textoComplementar)
         {
+            $this->logSis('DEB', 'Entrou no envioMenuRaiz');
+
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
             //& Entender aqui também se tem a opção do carrinho e do repetir último pedido
             //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
@@ -366,6 +368,7 @@
         //* Função para retornar as oções variáveis 
         public function retornoOpcoesVariaveis($filtroTipo, $filtro, $arrayOpcoes)
         {
+            $this->logSis('DEB', 'Entrou no retornoOpcoesVar');
             //( Traz as opções variáveis do banco de dados 
             include("dados_conexao.php");
 
