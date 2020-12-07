@@ -90,8 +90,9 @@
                             $palavra = mb_strtolower($mensagem[0], 'UTF-8');
 
                             if ($this->primeirocontato == true) { //( Se for o primeiro contato
-                                $this->envioMenuRaiz($numero, utf8_encode($this->msg_inicial));
-
+                                $texto = utf8_encode($this->msg_inicial) . "\n";
+                                $this->envioMenuRaiz($numero, $texto);
+                                //& Partir daqui, precisa entender se o menu raiz é um menu de produtos.
                             } else {
 
                                 //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
@@ -102,7 +103,7 @@
                             }
                         }
                     } else { //fora do horário de atendimento
-                        
+
                         $this->sendMessage("ForaHorario", $numero, utf8_encode($this->msg_fora_horario), "");
                     }
                 }
@@ -176,6 +177,7 @@
 
 
             if ($numRow > 0 && $consultaUltima['segundos'] > $this->tempoMenu) {
+                //( Identifica que tem tempo acima do configurado desde a última mensagem 
                 $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $consultaUltima['segundos'] . ' segundos');
 
                 $this->envioMenuRaiz($numero, '');
@@ -259,7 +261,20 @@
         public function envioMenuRaiz($numero, $textoComplementar)
         {
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
-            $texto = $textoComplementar . $arrayRetorno['mensagem'];
+            //& Entender aqui também se tem a opção do carrinho e do repetir último pedido
+            //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
+            $arrayOpcoes = $this->retornoOpcoesVariaveis($arrayRetorno['filtro_tipo'], $arrayRetorno['filtro'], array());
+            $textoOpcoes = '';
+
+            //( Retornou alguma coisa da verificação de opções variáveis
+            if ($arrayOpcoes != false) {
+                $textoOpcoes .= "\n";
+                foreach ($arrayOpcoes as $linha) {
+                    $textoOpcoes .= "\n" . $linha['id'] . ". " . $linha['nome'];
+                }
+            }
+
+            $texto = $textoComplementar . $arrayRetorno['mensagem'] . $textoOpcoes;
             $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
         }
 
@@ -300,9 +315,14 @@
                 $this->logSis('ERR', 'Não encontrou a mensagem inicial Instância. Instância: ' . $this->idInstancia);
                 exit(0);
             } else {
-                //& VERIFICAR AQUI SE VAI TER AMBIGUIDADE COM A PRIMEIRA CONSULTA 
+
                 $id_retorno = $consultaRetorno['id_retorno'];  //ID da tabela retorno (chave)
                 $mensagem = utf8_encode($consultaRetorno['mensagem']);
+
+                if ($consultaRetorno['produtos'] == 1) { // é um retorno de PRODUTOS
+
+                }
+
                 //Consulta das opções
                 $sql = "SELECT * FROM tbl_opcoes WHERE listavel = 1 AND id_instancia = $this->idInstancia AND id_retorno = $id_retorno ORDER BY indice ASC";
                 $this->logSis('DEB', $sql);
@@ -327,6 +347,11 @@
                     'modo' => $consultaRetorno['modo'],
                     'tipo' => $consultaRetorno['tipo'],
                     'coringa' => $consultaRetorno['coringa'], //para tipo 6 (Inclusão lista) -> lista_X
+                    'carrinho' => $consultaRetorno['carrinho'],
+                    'repetir' => $consultaRetorno['repetir'],
+                    'produtos' => $consultaRetorno['produtos'],
+                    'filtro_tipo' => $consultaRetorno['filtro_tipo'],
+                    'filtro' => $consultaRetorno['filtro'],
                     'mensagem' => $mensagem,
                     'url' => $consultaRetorno['url'],
                     'lat' => $consultaRetorno['lat'],
@@ -335,6 +360,59 @@
                     'address' => $consultaRetorno['address']
                 );
                 return $retorno;
+            }
+        }
+
+        //* Função para retornar as oções variáveis 
+        public function retornoOpcoesVariaveis($filtroTipo, $filtro, $arrayOpcoes)
+        {
+            //( Traz as opções variáveis do banco de dados 
+            include("dados_conexao.php");
+
+            if ($filtroTipo == 1 || $filtroTipo == 2) { //SUBCATEGORIA E CATEGORIA
+                switch ($filtroTipo) {
+                    case 1: //categoria
+                        $sql = "SELECT * FROM tbl_categorias WHERE id_instancia = $this->idInstancia AND status = 1";
+                        break;
+                    case 2: //subcategoria
+                        $sql = "SELECT * FROM tbl_subcategorias WHERE id_instancia = $this->idInstancia AND id_categoria = $filtro AND status = 1";
+                        break;
+                }
+
+                $result = fctConsultaParaArray(
+                    'ConsultaCategoriaSubCategoria',
+                    $sql,
+                    array('id', 'nome', 'palavras', 'mensagem')
+                );
+
+                if ($result == false) {
+                    //& Problema, o que retornar ao usuário???
+                } else {
+                    $result = $result[0];
+                    foreach ($result as $linha) {
+                        array_push($arrayOpcoes, array('indice' => 2, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'palavras' => $linha['palavras'], 'mensagem' => $linha['mensage']));
+                    }
+
+                    return $arrayOpcoes;
+                }
+            } else if ($filtroTipo == 3) { //PRODUTOS
+                $result = fctConsultaParaArray(
+                    'ConsultaProdutos',
+                    "SELECT * FROM tbl_produtos WHERE id_instancia = $this->idInstancia AND id_subcategoria = $filtro AND status = 1",
+                    array('id', 'nome', 'descricao', 'tamanho', 'valor', 'valor_promo', 'ofertas')
+                );
+
+                if ($result == false) {
+                    //& Problema, o que retornar ao usuário???
+                } else {
+                    $result = $result[0];
+                    foreach ($result as $linha) {
+                        array_push($arrayOpcoes, array('indice' => 2, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'palavras' => $linha['palavras'], 'mensagem' => $linha['mensage']));
+                    }
+                    return $arrayOpcoes;
+                }
+            } else {
+                return false;
             }
         }
 
