@@ -368,7 +368,7 @@
         //* Função para retornar as oções variáveis 
         public function retornoOpcoesVariaveis($filtroTipo, $filtro, $arrayOpcoes)
         {
-            $this->logSis('DEB', 'Entrou no retornoOpcoesVar');
+            $this->logSis('DEB', 'Entrou no retornoOpcoesVar. FiltroTipo: ' . $filtroTipo . ' Filtro: ' . $filtro);
             //( Traz as opções variáveis do banco de dados 
             include("dados_conexao.php");
 
@@ -395,6 +395,7 @@
                     foreach ($result as $linha) {
                         array_push($arrayOpcoes, array('indice' => 2, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'palavras' => $linha['palavras'], 'mensagem' => $linha['mensage']));
                     }
+                    $this->logSis('DEB', 'ArrayOpçõesCategorias ' . print_r($arrayOpcoes));
 
                     return $arrayOpcoes;
                 }
@@ -412,6 +413,8 @@
                     foreach ($result as $linha) {
                         array_push($arrayOpcoes, array('indice' => 2, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'palavras' => $linha['palavras'], 'mensagem' => $linha['mensage']));
                     }
+                    $this->logSis('DEB', 'ArrayOpçõesProdutops: ' . print_r($arrayOpcoes));
+
                     return $arrayOpcoes;
                 }
             } else {
