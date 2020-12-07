@@ -283,7 +283,7 @@
             $textoOpcoes .= "\n";
             $indice = 0;
             foreach ($arrayOpcoes as $linha) {
-                $textoOpcoes .= "\n" . ($indice + 1) . ". " . $linha['nome'];
+                $textoOpcoes .= "\n" . ($indice += 1) . ". " . $linha['nome'];
             }
             return $textoOpcoes;
         }
