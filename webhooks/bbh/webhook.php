@@ -391,7 +391,7 @@
                 if ($result == false) {
                     //& Problema, o que retornar ao usuário???
                 } else {
-                    $result = $result[0];
+                    //$result = $result[0];
                     foreach ($result as $linha) {
                         array_push($arrayOpcoes, array('indice' => 2, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'palavras' => $linha['palavras'], 'mensagem' => $linha['mensage']));
                     }
