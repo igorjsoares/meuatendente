@@ -292,7 +292,7 @@
                 $indice += 1;
                 $textoOpcoes .= "\n" . $indice . ". " . $linha['nome'];
                 array_push($arrayParaJson, array(
-                    'indice' => $indice,
+                    'ind' => $indice,
                     'id' => $linha['id']
                 ));
             }
@@ -659,7 +659,7 @@
                     $opcoes_variaveis = '';
                 } else {
                     $tipo = $retorno['modo'];
-                    $subTipo = $retorno['subtipo'];
+                    $subTipo = $retorno['filtro_tipo'];
                     $idRetorno = $retorno['id_retorno'];
                     if($retorno['opcoes_variaveis'] != ''){
                         $opcoes_variaveis = $retorno['opcoes_variaveis'];
