@@ -265,12 +265,15 @@
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
             //& Entender aqui também se tem a opção do carrinho e do repetir último pedido
             //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
-            $arrayOpcoes = $this->retornoOpcoesVariaveis($arrayRetorno['filtro_tipo'], $arrayRetorno['filtro'], array());
+            $arrayOpcoes = $this->retornoOpcoesVariaveis($arrayRetorno['carrinho'], $arrayRetorno['repetir'], $arrayRetorno['filtro_tipo'], $arrayRetorno['filtro'], array());
             $textoOpcoes = '';
 
             //( Retornou alguma coisa da verificação de opções variáveis
             if ($arrayOpcoes != false) {
-                $textoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
+                $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];  //& O que fazer para mandar esse JSON para ser salvo na tbl_interacao
+                $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
             }
 
             $texto = $textoComplementar . $arrayRetorno['mensagem'] . $textoOpcoes;
@@ -281,11 +284,20 @@
         public function montaTextoOpcoes($textoOpcoes, $arrayOpcoes)
         {
             $textoOpcoes .= "\n";
+            $arrayParaJson = [];
             $indice = 0;
             foreach ($arrayOpcoes as $linha) {
-                $textoOpcoes .= "\n" . ($indice += 1) . ". " . $linha['nome'];
+                $indice += 1;
+                $textoOpcoes .= "\n" . $indice . ". " . $linha['nome'];
+                array_push($arrayParaJson, array(
+                    'indice' => $indice,
+                    'id' => $linha['id']
+                ));
             }
-            return $textoOpcoes;
+            return array(
+                'textoOpcoes' => $textoOpcoes,
+                'arrayParaJson' => $arrayParaJson
+            );
         }
 
         //* Envio de erro
@@ -374,11 +386,21 @@
         }
 
         //* Função para retornar as oções variáveis 
-        public function retornoOpcoesVariaveis($filtroTipo, $filtro, $arrayOpcoes)
+        public function retornoOpcoesVariaveis($carrinho, $repetir, $filtroTipo, $filtro, $arrayOpcoes)
         {
-            $this->logSis('DEB', 'Entrou no retornoOpcoesVar. FiltroTipo: ' . $filtroTipo . ' Filtro: ' . $filtro);
             //( Traz as opções variáveis do banco de dados 
+            $this->logSis('DEB', 'Entrou no retornoOpcoesVar. FiltroTipo: ' . $filtroTipo . ' Filtro: ' . $filtro);
             include("dados_conexao.php");
+
+            //( Verifica se tem que mostrar o carrinho
+            if ($carrinho == 1) {
+                //& inteligencia para entender se existe carrinho para mostrar
+            }
+
+            //( Verifica se está habilitado para mostrar a opção de repetição
+            if ($repetir == 1) {
+                //& inteligencia para entender se existe pedidos fechados para que possam se repetir
+            }
 
             if ($filtroTipo == 1 || $filtroTipo == 2) { //SUBCATEGORIA E CATEGORIA
                 switch ($filtroTipo) {
@@ -632,14 +654,18 @@
                     $tipo = '';
                     $subTipo = '';
                     $idRetorno = '';
+                    $opcoes_variaveis = '';
                 } else {
                     $tipo = $retorno['modo'];
                     $subTipo = $retorno['subtipo'];
                     $idRetorno = $retorno['id_retorno'];
+                    if($retorno['opcoes_variaveis'] != ''){
+                        $opcoes_variaveis = $retorno['opcoes_variaveis'];
+                    }
                 }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $subTipo, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $subTipo, $opcoes_variaveis, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 if ($motivo == 'Receptivo') {
                     return false;
@@ -692,11 +718,11 @@
         }
 
         //* Inserir interação 
-        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $opcoesVariaveis, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$opcoesVariaveis', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
