@@ -260,7 +260,7 @@
         //* Envio Menu raiz
         public function envioMenuRaiz($numero, $textoComplementar)
         {
-            //$this->logSis('DEB', 'Entrou no envioMenuRaiz');
+            $this->logSis('DEB', 'Entrou no envioMenuRaiz');
 
             $arrayRetorno = $this->consultaRetorno($this->menuRaiz, '', '');
             //& Entender aqui também se tem a opção do carrinho e do repetir último pedido
