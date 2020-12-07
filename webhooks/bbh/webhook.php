@@ -101,6 +101,8 @@
 
                                 $this->resposta($numero, $decoded);
                             }
+                        }else{
+                            $this->logSis('ERR', 'Erro ao tentar inserir a interação');
                         }
                     } else { //fora do horário de atendimento
 
