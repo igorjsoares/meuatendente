@@ -25,11 +25,13 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 
         $arrayResultado = [];
 
+        //( While pelo resultado da consulta
         while ($linha = mysqli_fetch_array($query)) {
             $myObj = (object)[];
-
+            //( ForEach pelo array das colunas enviadas como parâmetro 
             foreach ($colunas as $coluna) {
-                $myObj->$coluna = $linha[$coluna];
+                //( Cria um objeto com as coluna enviada como chave e a referência na consulta
+                $myObj->$coluna = utf8_encode($linha[$coluna]);
             }
 
             $myJSON = json_encode($myObj);
