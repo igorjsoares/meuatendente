@@ -94,14 +94,22 @@
                                 $this->envioMenuRaiz($numero, $texto);
                                 //& Partir daqui, precisa entender se o menu raiz é um menu de produtos.
                             } else {
-
                                 //( Consulta a última interação enviada pra ver se foi a solicitação de nome 
                                 $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                                 $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
 
-                                $this->resposta($numero, $decoded);
+                                //& ==================
+                                //& ==================
+                                //& ==================
+                                //& Consultar a interação enviada anteriormente
+                                //& Entender se é uma interação de menu, categoria, subcategoria ou produtos
+                                //& Pegar o opções_variáveis caso existam para entender o que foi respondido
+                                //& ==================
+                                //& ==================
+                                //& ==================
+                                $this->resposta($numero, $decoded, $ultimaInteracao);
                             }
-                        }else{
+                        } else {
                             $this->logSis('ERR', 'Erro ao tentar inserir a interação');
                         }
                     } else { //fora do horário de atendimento
@@ -156,13 +164,13 @@
         }
 
         //* Função de resposta 
-        public function resposta($numero, $mensagem)
+        public function resposta($numero, $mensagem, $ultimaInteracao)
         {
             include("dados_conexao.php");
 
             //( Procurar a última interação realizada para ver se tem tempo suficiente para envio do menu
             //( Caso o tempo da resposta seja maior que o tempo estipulado para $tempoMenu, ele chama o menu ao invez de qualquer coisa. 
-            $sql = "SELECT data_envio AS ultima_interacao, TIMESTAMPDIFF(SECOND,data_envio,NOW()) AS segundos FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            /* $sql = "SELECT *, data_envio AS ultima_interacao, TIMESTAMPDIFF(SECOND,data_envio,NOW()) AS segundos FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $this->logSis('DEB', 'SQL: ' . $sql);
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
@@ -174,25 +182,25 @@
             if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
                 $this->logSis('ERR', 'Não encontrou a interação na consulta da Resposta. Número: ' . $numero);
                 exit(0);
-            }
-            $this->logSis('DEB', 'Tempo da última: ' . $consultaUltima['segundos']);
+            } */
+            $this->logSis('DEB', 'Tempo da última: ' . $ultimaInteracao['segundos']);
 
 
-            if ($numRow > 0 && $consultaUltima['segundos'] > $this->tempoMenu) {
+            if (count($ultimaInteracao) > 0 && $ultimaInteracao['segundos'] > $this->tempoMenu) {
                 //( Identifica que tem tempo acima do configurado desde a última mensagem 
-                $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $consultaUltima['segundos'] . ' segundos');
+                $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $ultimaInteracao['segundos'] . ' segundos');
 
-                $this->envioMenuRaiz($numero, '');
+                $this->envioMenuRaiz($numero, 'Bem vindo novamente!');
                 exit(0);
             }
 
             //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            /* $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
-            $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            $this->menuAnterior = $consultaUltima['menu_anterior'];
-            $this->ultimoRetorno = $consultaUltima['id_retorno'];
+            $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC); */
+            $this->menuAnterior = $ultimaInteracao['menu_anterior'];
+            $this->ultimoRetorno = $ultimaInteracao['id_retorno'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
 
@@ -200,18 +208,12 @@
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
 
-            if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
+            //( Pedaço de código para testes com comandos
+            /* if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
-
                 $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, 1);
                 exit(0);
-            }
-            if (mb_strtolower($mensagem[0], 'UTF-8') == 'marcar') {
-                $this->logSis('DEB', 'Identificado o comando marcar');
-
-                $this->marcarHorario($numero, $this->id_contato);
-                exit(0);
-            }
+            } */
 
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
@@ -226,7 +228,7 @@
                         $this->logSis('DEB', 'É igual a 0 -> ' . $primeiraPalavraCliente);
 
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
-                        $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
+                        $sql = "SELECT id_interacao, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -238,6 +240,11 @@
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     } else {
                         $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
+
+                        //( Código para verificar as opções variáveis
+                        if ($consultaUltima['subtipo'] != '') {
+                            $this->respostaOpcoesVariaveis($consultaUltima['subtipo'], $consultaUltima['opcoes_variaveis'], $primeiraPalavraCliente);
+                        }
 
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
@@ -280,6 +287,61 @@
 
             $texto = $textoComplementar . $arrayRetorno['mensagem'] . $textoOpcoes;
             $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
+        }
+
+        //* Respode quando o tipo so último menu é Categoria, subcategoria ou produto
+        public function respostaOpcoesVariaveis($subtipo, $opcoesVariaveis, $mensagemCliente)
+        {
+            include_once("servicos.php");
+
+            //& Tratando primeiro como se fosse só número 
+            $arrayOpcoesVariaveis = json_decode($opcoesVariaveis);
+            $indice = array_search($mensagemCliente, array_column($arrayOpcoesVariaveis, 'ind'));
+            if ($indice == '') { //Não encontrou
+                return false;
+                exit(0);
+            } else {
+                $idEncontrado = $array[$indice]['id'];
+            }
+
+            switch ($subtipo) {
+                case '1': //Categoria
+                    $retornoConsultaCategorias = fctConsultaParaArray(
+                        'ConsultaCategoriaParaMensagem',
+                        'SELECT mensagem FROM tbl_categorias WHERE id = $idEncontrado',
+                        array('mensagem')
+                    );
+                    $mensageRetorno = $retornoConsultaCategorias['mensagem'];
+                    
+                    //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
+                    $arrayRetorno = array(
+                        'modo' => 1,
+                        'filtro_tipo' => 2,
+                        'id_retorno' => 0
+                    );
+                    //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
+                    $arrayOpcoes = $this->retornoOpcoesVariaveis(1, 0, 2, $idEncontrado, array());
+                    $textoOpcoes = '';
+
+                    //( Retornou alguma coisa da verificação de opções variáveis
+                    if ($arrayOpcoes != false) {
+                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                        $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
+                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];  //& O que fazer para mandar esse JSON para ser salvo na tbl_interacao
+                        $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
+                    }
+
+                    $texto = $mensageRetorno . $textoOpcoes;
+                    $this->sendMessage('SubCategorias', $this->numerocliente, $texto, $arrayRetorno);
+
+                    break;
+                case '2': //SubCategoria
+
+                    break;
+                case '3': //Produto
+
+                    break;
+            }
         }
 
         //* Monta o texto com as opções e devolve tanto o texto quanto o json
@@ -661,7 +723,7 @@
                     $tipo = $retorno['modo'];
                     $subTipo = $retorno['filtro_tipo'];
                     $idRetorno = $retorno['id_retorno'];
-                    if($retorno['opcoes_variaveis'] != ''){
+                    if ($retorno['opcoes_variaveis'] != '') {
                         $opcoes_variaveis = $retorno['opcoes_variaveis'];
                     }
                 }
@@ -683,24 +745,29 @@
             include('dados_conexao.php');
 
             //( Consulta da interação no BD 
-            $sql = "SELECT mensagem, data_envio FROM tbl_interacoes WHERE direcao= 1 AND id_instancia = $idInstancia AND id_contato = $idContato ORDER BY id_interacao DESC limit 1";
+            $sql = "SELECT *, data_envio AS ultima_interacao, TIMESTAMPDIFF(SECOND,data_envio,NOW()) AS segundos FROM tbl_interacoes WHERE direcao= 1 AND id_instancia = $idInstancia AND id_contato = $idContato ORDER BY id_interacao DESC limit 1";
             $query = mysqli_query($conn['link'], $sql);
             $consultaInteracao = mysqli_fetch_array($query, MYSQLI_ASSOC);
             $numRow = mysqli_num_rows($query);
 
             if (!$query) {
                 $this->logSis('ERR', "Mysql Connect idContato: " . $idContato . " Erro: " . mysqli_error($conn['link']));
-
                 exit(0);
             }
 
             if ($numRow != 0) {
                 //$this->logSis('DEB', "Resultado da última interação. Mensagem:  " . $consultaInteracao['mensagem'] . " Data: " . $consultaInteracao['data_envio']);
-
                 return array(
+                    "id_interacao" => $consultaInteracao['id_interacao'],
                     "mensagem" => $consultaInteracao['mensagem'],
                     "id_retorno" => $consultaInteracao['id_retorno'],
-                    "dataEnvio" => $consultaInteracao['data_envio']
+                    "dataEnvio" => $consultaInteracao['data_envio'],
+                    "tipo" => $consultaInteracao['tipo'],
+                    "subtipo" => $consultaInteracao['subtipo'],
+                    "opcoes_variaveis" => $consultaInteracao['opcoes_variaveis'],
+                    "menu_anterior" => $consultaInteracao['menu_anterior'],
+                    "ultima_interacao" => $consultaInteracao['ultima_interacao'],
+                    "segundos" => $consultaInteracao['segundos'],
                 );
             }
         }
