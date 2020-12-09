@@ -549,7 +549,7 @@
                 //& inteligencia para entender se existe pedidos fechados para que possam se repetir
             }
 
-            if ($filtroTipo == 1) { //SUBCATEGORIA E CATEGORIA
+            if ($filtroTipo == 1 || $filtroTipo == 2) { //SUBCATEGORIA E CATEGORIA
                 switch ($filtroTipo) {
                     case 1: //categoria
                         $sql = "SELECT * FROM tbl_categorias WHERE id_instancia = $this->idInstancia AND status = 1";
@@ -576,7 +576,7 @@
 
                     return $arrayOpcoes;
                 }
-            } else if ($filtroTipo == 2) { //PRODUTOS
+            } else if ($filtroTipo == 3) { //PRODUTOS
                 $result = fctConsultaParaArray(
                     'ConsultaProdutos',
                     "SELECT * FROM tbl_produtos WHERE id_instancia = $this->idInstancia AND id_subcategoria = $filtro AND status = 1",
