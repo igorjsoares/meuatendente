@@ -327,7 +327,7 @@
                         "SELECT * FROM tbl_categorias WHERE id = '$idEncontrado'",
                         array('mensagem')
                     );
-                    $mensageRetorno = $retornoConsultaCategorias['mensagem'];
+                    $mensageRetorno = $retornoConsultaCategorias[0]['mensagem'];
                     $this->logSis('DEB', 'mensageRetorno' . $mensageRetorno);
 
 
