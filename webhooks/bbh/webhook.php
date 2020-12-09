@@ -249,6 +249,7 @@
                         //( Código para verificar as opções variáveis
                         if ($ultimaInteracao['subtipo'] != '') {
                             $this->respostaOpcoesVariaveis($ultimaInteracao['subtipo'], $ultimaInteracao['opcoes_variaveis'], $primeiraPalavraCliente);
+                            exit(0);
                         }
 
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
@@ -312,7 +313,7 @@
             }
 
             switch ($subtipo) {
-                case '1': //Categoria
+                case 1: //Categoria
                     $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis. CATEGORIA');
 
                     $retornoConsultaCategorias = fctConsultaParaArray(
@@ -346,10 +347,10 @@
                     $this->sendMessage('SubCategorias', $this->numerocliente, $texto, $arrayRetorno);
 
                     break;
-                case '2': //SubCategoria
+                case 2: //SubCategoria
 
                     break;
-                case '3': //Produto
+                case 3: //Produto
 
                     break;
             }
