@@ -293,6 +293,8 @@
         public function respostaOpcoesVariaveis($subtipo, $opcoesVariaveis, $mensagemCliente)
         {
             include_once("servicos.php");
+            $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis.');
+
 
             //& Tratando primeiro como se fosse só número 
             $arrayOpcoesVariaveis = json_decode($opcoesVariaveis);
@@ -306,13 +308,17 @@
 
             switch ($subtipo) {
                 case '1': //Categoria
+                    $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis. CATEGORIA');
+
                     $retornoConsultaCategorias = fctConsultaParaArray(
                         'ConsultaCategoriaParaMensagem',
                         'SELECT mensagem FROM tbl_categorias WHERE id = $idEncontrado',
                         array('mensagem')
                     );
                     $mensageRetorno = $retornoConsultaCategorias['mensagem'];
-                    
+                    $this->logSis('DEB', 'mensageRetorno' . print_r($mensageRetorno));
+
+
                     //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
                     $arrayRetorno = array(
                         'modo' => 1,
