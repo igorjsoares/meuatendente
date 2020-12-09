@@ -330,7 +330,7 @@
                     $mensageRetorno = $retornoConsultaCategorias['mensagem'];
                     $this->logSis('DEB', 'mensageRetorno' . $mensageRetorno);
 
-                    
+
 
                     //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
                     $arrayRetorno = array(

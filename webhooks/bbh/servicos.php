@@ -44,7 +44,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
             array_push($arrayResultado, $myArray);
         }
 
-        //logSis('DEB', $nomeConsulta . " - Array Resultado -> " . print_r($arrayResultado, true));
+        logSis('DEB', $nomeConsulta . " - Array Resultado -> " . print_r($arrayResultado, true));
 
         return $arrayResultado;
     }
