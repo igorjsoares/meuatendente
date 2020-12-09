@@ -332,7 +332,7 @@
 
 
 
-                    //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
+                    //( Cria um arrayRetorno com os campos realmente úteis para salvar nas Interações. 
                     $arrayRetorno = array(
                         'modo' => 1,
                         'filtro_tipo' => 2,
@@ -368,7 +368,7 @@
 
 
 
-                    //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
+                    //( Cria um arrayRetorno com os campos realmente úteis para salvar nas Interações. 
                     $arrayRetorno = array(
                         'modo' => 1,
                         'filtro_tipo' => 3,
@@ -588,9 +588,9 @@
                 } else {
                     $result = $result[0];
                     foreach ($result as $linha) {
-                        array_push($arrayOpcoes, array('indice' => 2, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'palavras' => $linha['palavras'], 'mensagem' => $linha['mensage']));
+                        array_push($arrayOpcoes, array('indice' => 3, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'descricao' => $linha['descricao'], 'tamanho' => $linha['tamanho'], 'valor' => $linha['valor'], 'valor_promo' => $linha['valor_promo'], 'ofertas' => $linha['ofertas']));
                     }
-                    $this->logSis('DEB', 'ArrayOpçõesProdutops: ' . print_r($arrayOpcoes));
+                    $this->logSis('DEB', 'ArrayOpçõesProdutos: ' . print_r($arrayOpcoes));
 
                     return $arrayOpcoes;
                 }
