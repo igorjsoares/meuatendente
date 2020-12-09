@@ -355,7 +355,38 @@
 
                     break;
                 case 2: //SubCategoria
+                    $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis. SUBCATEGORIA');
 
+                    $retornoConsultaCategorias = fctConsultaParaArray(
+                        'ConsultaSubcategoriaParaMensagem',
+                        "SELECT * FROM tbl_subcategorias WHERE id = '$idEncontrado'",
+                        array('mensagem')
+                    );
+                    $mensageRetorno = $retornoConsultaCategorias[0]['mensagem'];
+                    $this->logSis('DEB', 'mensageRetorno' . $mensageRetorno);
+
+
+
+                    //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
+                    $arrayRetorno = array(
+                        'modo' => 1,
+                        'filtro_tipo' => 2,
+                        'id_retorno' => 0
+                    );
+                    //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
+                    $arrayOpcoes = $this->retornoOpcoesVariaveis(1, 0, 2, $idEncontrado, array());
+                    $textoOpcoes = '';
+
+                    //( Retornou alguma coisa da verificação de opções variáveis
+                    if ($arrayOpcoes != false) {
+                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                        $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
+                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
+                        $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
+                    }
+
+                    $texto = $mensageRetorno . $textoOpcoes;
+                    $this->sendMessage('SubCategorias', $this->numerocliente, $texto, $arrayRetorno);
                     break;
                 case 3: //Produto
 
