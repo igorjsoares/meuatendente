@@ -16,10 +16,14 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 
     if (!$query) {
         logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
+        logSis('DEB', "==SQL==" . $sql);
+
         exit(0);
     }
     if ($numRow == 0) {
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
+        logSis('DEB', "==SQL==" . $sql);
+
         return false;
     } else {
 
