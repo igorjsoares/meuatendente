@@ -303,7 +303,7 @@
 
 
             //& Tratando primeiro como se fosse só número 
-            $arrayOpcoesVariaveis = json_decode($opcoesVariaveis);
+            $arrayOpcoesVariaveis = json_decode($opcoesVariaveis, true);
             $this->logSis('DEB', 'Opções variáveis -> ' . print_r($arrayOpcoesVariaveis));
 
             $indice = array_search($mensagemCliente, array_column($arrayOpcoesVariaveis, 'ind'));
