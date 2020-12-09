@@ -230,7 +230,7 @@
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
                         $sql = "SELECT id_interacao, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
                         $this->logSis('DEB', 'sql - consultaUltima ' . $sql);
-                        
+
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -240,12 +240,11 @@
                         $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '');
                         $this->ultimoRetorno = 0;
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
-
                     } else {
 
                         $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
                         $this->logSis('DEB', 'Subtipo -> ' . $ultimaInteracao['subtipo']);
-                        
+
                         //( Código para verificar as opções variáveis
                         if ($ultimaInteracao['subtipo'] != '') {
                             $this->respostaOpcoesVariaveis($ultimaInteracao['subtipo'], $ultimaInteracao['opcoes_variaveis'], $primeiraPalavraCliente);
@@ -300,11 +299,16 @@
         {
             include_once("servicos.php");
             $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis.');
+            $this->logSis('DEB', 'Opções variáveis -> ' . $opcoesVariaveis);
 
 
             //& Tratando primeiro como se fosse só número 
             $arrayOpcoesVariaveis = json_decode($opcoesVariaveis);
+            $this->logSis('DEB', 'Opções variáveis -> ' . print_r($arrayOpcoesVariaveis));
+
             $indice = array_search($mensagemCliente, array_column($arrayOpcoesVariaveis, 'ind'));
+            $this->logSis('DEB', 'Indice -> ' . $indice);
+
             if ($indice == '') { //Não encontrou
                 return false;
                 exit(0);
