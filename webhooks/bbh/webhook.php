@@ -324,11 +324,11 @@
 
                     $retornoConsultaCategorias = fctConsultaParaArray(
                         'ConsultaCategoriaParaMensagem',
-                        "SELECT mensagem FROM tbl_categorias WHERE id = '$idEncontrado'",
+                        "SELECT * FROM tbl_categorias WHERE id = '$idEncontrado'",
                         array('mensagem')
                     );
                     $mensageRetorno = $retornoConsultaCategorias['mensagem'];
-                    $this->logSis('DEB', 'mensageRetorno' . print_r($mensageRetorno));
+                    $this->logSis('DEB', 'mensageRetorno' . $mensageRetorno);
 
 
                     //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
@@ -345,7 +345,7 @@
                     if ($arrayOpcoes != false) {
                         $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
                         $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
-                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];  //& O que fazer para mandar esse JSON para ser salvo na tbl_interacao
+                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
                         $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
                     }
 
