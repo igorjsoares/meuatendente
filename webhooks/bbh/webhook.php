@@ -240,14 +240,15 @@
                         $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '');
                         $this->ultimoRetorno = 0;
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
-                    } else {
-                        $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
-                        $this->logSis('DEB', 'Subtipo -> ' . $consultaUltima['subtipo']);
 
+                    } else {
+
+                        $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
+                        $this->logSis('DEB', 'Subtipo -> ' . $ultimaInteracao['subtipo']);
                         
                         //( Código para verificar as opções variáveis
-                        if ($consultaUltima['subtipo'] != '') {
-                            $this->respostaOpcoesVariaveis($consultaUltima['subtipo'], $consultaUltima['opcoes_variaveis'], $primeiraPalavraCliente);
+                        if ($ultimaInteracao['subtipo'] != '') {
+                            $this->respostaOpcoesVariaveis($ultimaInteracao['subtipo'], $ultimaInteracao['opcoes_variaveis'], $primeiraPalavraCliente);
                         }
 
                         $arrayRetorno = $this->consultaRetorno('', $primeiraPalavraCliente, $this->ultimoRetorno);
