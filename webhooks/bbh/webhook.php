@@ -314,7 +314,9 @@
                 return false;
                 exit(0);
             } else {
-                $idEncontrado = $array[$indice]['id'];
+                $arrayOpcoesVariaveis = $array[$indice]['id'];
+            $this->logSis('DEB', 'idEncontrado -> ' . $idEncontrado);
+
             }
 
             switch ($subtipo) {
