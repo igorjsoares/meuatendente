@@ -391,6 +391,38 @@
                     break;
                 case 3: //Produto
 
+                    $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis. PRODUTO');
+
+                    $retornoConsultaCategorias = fctConsultaParaArray(
+                        'ConsultaProdutoParaMensagem',
+                        "SELECT * FROM tbl_subcategorias WHERE id = '$idEncontrado'",
+                        array('mensagem')
+                    );
+                    $mensageRetorno = $retornoConsultaCategorias[0]['mensagem'];
+                    $this->logSis('DEB', 'mensageRetorno' . $mensageRetorno);
+
+
+
+                    //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
+                    $arrayRetorno = array(
+                        'modo' => 1,
+                        'filtro_tipo' => 3,
+                        'id_retorno' => 0
+                    );
+                    //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
+                    $arrayOpcoes = $this->retornoOpcoesVariaveis(1, 0, 3, $idEncontrado, array());
+                    $textoOpcoes = '';
+
+                    //( Retornou alguma coisa da verificação de opções variáveis
+                    if ($arrayOpcoes != false) {
+                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                        $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
+                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
+                        $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
+                    }
+
+                    $texto = $mensageRetorno . $textoOpcoes;
+                    $this->sendMessage('SubCategorias', $this->numerocliente, $texto, $arrayRetorno);
                     break;
             }
         }
@@ -517,7 +549,7 @@
                 //& inteligencia para entender se existe pedidos fechados para que possam se repetir
             }
 
-            if ($filtroTipo == 1 || $filtroTipo == 2) { //SUBCATEGORIA E CATEGORIA
+            if ($filtroTipo == 1) { //SUBCATEGORIA E CATEGORIA
                 switch ($filtroTipo) {
                     case 1: //categoria
                         $sql = "SELECT * FROM tbl_categorias WHERE id_instancia = $this->idInstancia AND status = 1";
@@ -544,7 +576,7 @@
 
                     return $arrayOpcoes;
                 }
-            } else if ($filtroTipo == 3) { //PRODUTOS
+            } else if ($filtroTipo == 2) { //PRODUTOS
                 $result = fctConsultaParaArray(
                     'ConsultaProdutos',
                     "SELECT * FROM tbl_produtos WHERE id_instancia = $this->idInstancia AND id_subcategoria = $filtro AND status = 1",
