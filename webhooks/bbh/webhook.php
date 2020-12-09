@@ -229,6 +229,8 @@
 
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
                         $sql = "SELECT id_interacao, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
+                        $this->logSis('DEB', 'sql - consultaUltima ' . $sql);
+                        
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -240,7 +242,9 @@
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     } else {
                         $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
+                        $this->logSis('DEB', 'Subtipo -> ' . $consultaUltima['subtipo']);
 
+                        
                         //( Código para verificar as opções variáveis
                         if ($consultaUltima['subtipo'] != '') {
                             $this->respostaOpcoesVariaveis($consultaUltima['subtipo'], $consultaUltima['opcoes_variaveis'], $primeiraPalavraCliente);
