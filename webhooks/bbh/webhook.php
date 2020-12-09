@@ -323,7 +323,7 @@
 
                     $retornoConsultaCategorias = fctConsultaParaArray(
                         'ConsultaCategoriaParaMensagem',
-                        'SELECT mensagem FROM tbl_categorias WHERE id = $idEncontrado',
+                        "SELECT mensagem FROM tbl_categorias WHERE id = $idEncontrado",
                         array('mensagem')
                     );
                     $mensageRetorno = $retornoConsultaCategorias['mensagem'];
