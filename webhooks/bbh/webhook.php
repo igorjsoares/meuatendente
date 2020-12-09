@@ -309,14 +309,13 @@
             $indice = array_search($mensagemCliente, array_column($arrayOpcoesVariaveis, 'ind'));
             $this->logSis('DEB', 'Indice -> ' . $indice);
 
-            
+
             if ($indice == '' && $indice !== 0) { //Não encontrou
                 return false;
                 exit(0);
             } else {
-                $arrayOpcoesVariaveis = $array[$indice]['id'];
-            $this->logSis('DEB', 'idEncontrado -> ' . $idEncontrado);
-
+                $idEncontrado = $arrayOpcoesVariaveis[$indice]['id'];
+                $this->logSis('DEB', 'idEncontrado -> ' . $idEncontrado);
             }
 
             switch ($subtipo) {
