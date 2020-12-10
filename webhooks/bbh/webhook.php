@@ -586,8 +586,21 @@
                 if ($result == false) {
                     //& Problema, o que retornar ao usuário???
                 } else {
-                    //$result = $result[0];
+                    $this->logSis('DEB', 'result: ' . print_r($result, true));
+
+                    $ = $result[0];
+                    $this->logSis('DEB', 'result[0]: ' . print_r($result, true));
+                    //&===========================================
+                    //&===========================================
+                    //&===========================================
+                    //&=========================================== Não está puxando aqui o nome nem nenhum outro campo
+                    //&===========================================
+                    //&===========================================
+                    //&===========================================
+
                     foreach ($result as $linha) {
+                    $this->logSis('DEB', 'linha: ' . print_r($linha, true));
+
                         array_push($arrayOpcoes, array('indice' => 3, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'descricao' => $linha['descricao'], 'tamanho' => $linha['tamanho'], 'valor' => $linha['valor'], 'valor_promo' => $linha['valor_promo'], 'ofertas' => $linha['ofertas']));
                     }
                     $this->logSis('DEB', 'ArrayOpçõesProdutos: ' . print_r($arrayOpcoes, true));
