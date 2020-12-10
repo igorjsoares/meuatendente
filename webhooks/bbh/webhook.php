@@ -436,7 +436,8 @@
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
                 if ($produtos == true) {
-                    $textoOpcoes .= "\n*" . $indice . ". " . strtoupper ($linha['nome']) . "* - ".$linha['valor']." \n```" . $linha['descricao'] . "```\n";
+                    //$textoOpcoes .= "\n*" . $indice . ". " . strtoupper ($linha['nome']) . "* - ".$linha['valor']." \n```" . $linha['descricao'] . "```\n";
+                    $textoOpcoes .= "\n*" . $indice . ". " . strtoupper ($linha['nome']) . "* - ".$linha['valor']." \n_" . $linha['descricao'] . "_\n";
                 } else {
                     $textoOpcoes .= "\n*" . $indice . "*. " . $linha['nome'];
                 }
