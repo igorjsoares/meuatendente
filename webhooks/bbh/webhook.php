@@ -587,9 +587,7 @@
                     //& Problema, o que retornar ao usuário???
                 } else {
                     $this->logSis('DEB', 'result: ' . print_r($result, true));
-
-                    $result = $result[0];
-                    $this->logSis('DEB', 'result[0]: ' . print_r($result, true));
+                    
                     //&===========================================
                     //&===========================================
                     //&===========================================
