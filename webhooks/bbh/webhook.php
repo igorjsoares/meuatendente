@@ -436,8 +436,12 @@
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
                 if ($produtos == true) {
+                    $textoOferta = '';
+                    if ($linha['nome_oferta'] != 'NULL') {
+                        $textoOferta = ' + oferta de ' . $linha['nome_oferta'];
+                    }
                     //$textoOpcoes .= "\n*" . $indice . ". " . strtoupper ($linha['nome']) . "* - ".$linha['valor']." \n```" . $linha['descricao'] . "```\n";
-                    $textoOpcoes .= "\n*" . $indice . ". " . strtoupper ($linha['nome']) . "* - ".$linha['valor']." \n _" . $linha['descricao'] . "_\n";
+                    $textoOpcoes .= "\n*" . $indice . ". " . strtoupper($linha['nome']) . "* - " . $linha['valor'] . "€ \n _" . $linha['descricao'] . $textoOferta . "_\n";
                 } else {
                     $textoOpcoes .= "\n*" . $indice . "*. " . $linha['nome'];
                 }
@@ -584,21 +588,14 @@
             } else if ($filtroTipo == 3) { //PRODUTOS
                 $result = fctConsultaParaArray(
                     'ConsultaProdutos',
-                    "SELECT * FROM tbl_produtos WHERE id_instancia = $this->idInstancia AND id_subcategoria = $filtro AND status = 1",
-                    array('id', 'nome', 'descricao', 'tamanho', 'valor', 'valor_promo', 'ofertas')
+                    //"SELECT * FROM tbl_produtos WHERE id_instancia = $this->idInstancia AND id_subcategoria = $filtro AND status = 1",
+                    "SELECT p.*, o.nome AS nome_oferta FROM tbl_produtos p LEFT JOIN tbl_ofertas o ON p.ofertas = o.id AND o.status=1 WHERE p.id_instancia = $this->idInstancia AND p.id_subcategoria = $filtro AND p.status = 1 ORDER BY p.valor ASC",
+                    array('id', 'nome', 'descricao', 'tamanho', 'valor', 'valor_promo', 'ofertas', 'nome_oferta')
                 );
 
                 if ($result == false) {
                     //& Problema, o que retornar ao usuário???
                 } else {
-
-                    //&===========================================
-                    //&===========================================
-                    //&===========================================
-                    //&=========================================== Não está puxando aqui o nome nem nenhum outro campo
-                    //&===========================================
-                    //&===========================================
-                    //&===========================================
 
                     foreach ($result as $linha) {
 
