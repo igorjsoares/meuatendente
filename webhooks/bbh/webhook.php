@@ -98,15 +98,6 @@
                                 $ultimaInteracao = $this->verificaInteracao($idInstancia, $this->id_contato);
                                 $tempoParaUltimaInteracao = $this->difDatasEmHoras($ultimaInteracao['dataEnvio'], date("Y-m-d H:i:s"));
 
-                                //& ==================
-                                //& ==================
-                                //& ==================
-                                //& Consultar a interação enviada anteriormente
-                                //& Entender se é uma interação de menu, categoria, subcategoria ou produtos
-                                //& Pegar o opções_variáveis caso existam para entender o que foi respondido
-                                //& ==================
-                                //& ==================
-                                //& ==================
                                 $this->resposta($numero, $decoded, $ultimaInteracao);
                             }
                         } else {
@@ -255,6 +246,9 @@
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
                     }
                 } else { //( A mensagem é um texto 
+                    //& ====================
+                    //& ====================
+                    //& Caso seja um texto, considerar
 
                     $this->logSis('DEB', 'É TEXTO');
 
@@ -389,40 +383,14 @@
                     $texto = $mensageRetorno . $textoOpcoes;
                     $this->sendMessage('SubCategorias', $this->numerocliente, $texto, $arrayRetorno);
                     break;
-                case 3: //Produto
+                case 3: //Produto -> Chama o cadastro de produtos
 
                     $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis. PRODUTO');
 
-                    $retornoConsultaCategorias = fctConsultaParaArray(
-                        'ConsultaProdutoParaMensagem',
-                        "SELECT * FROM tbl_subcategorias WHERE id = '$idEncontrado'",
-                        array('mensagem')
-                    );
-                    $mensageRetorno = $retornoConsultaCategorias[0]['mensagem'];
-                    $this->logSis('DEB', 'mensageRetorno' . $mensageRetorno);
+                    $this->adicionaAoCarrinho($idEncontrado);
+                    exit(0);
+                    //& Depois de cadastrar o produto e a oferta tem que ir para a verificação de pendências
 
-
-
-                    //( Cria um arrayRetorno comente com os campos realmente úteis para salvar nas Interações. 
-                    $arrayRetorno = array(
-                        'modo' => 1,
-                        'filtro_tipo' => 3,
-                        'id_retorno' => 0
-                    );
-                    //( Faz a verificação de opções variáveis (Carrinho, Ultima e produtos)
-                    $arrayOpcoes = $this->retornoOpcoesVariaveis(1, 0, 3, $idEncontrado, array());
-                    $textoOpcoes = '';
-
-                    //( Retornou alguma coisa da verificação de opções variáveis
-                    if ($arrayOpcoes != false) {
-                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes, true);
-                        $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
-                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
-                        $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
-                    }
-
-                    $texto = $mensageRetorno . $textoOpcoes;
-                    $this->sendMessage('SubCategorias', $this->numerocliente, $texto, $arrayRetorno);
                     break;
             }
         }
@@ -454,6 +422,62 @@
                 'textoOpcoes' => $textoOpcoes,
                 'arrayParaJson' => $arrayParaJson
             );
+        }
+
+        //* Cadastra produtos e ofertas no carrinho
+        public function adicionaAoCarrinho($idEncontrado)
+        {
+            include_once("servico.php");
+
+            //( Consulta o produto
+            $consultaProduto = fctConsultaParaArray(
+                'ConsultaProduto',
+                "SELECT id, ofertas tbl_produtos WHERE id = '$idEncontrado' AND status = 1",
+                array('id', 'valor', 'valor_promo', 'ofertas')
+            );
+            if ($consultaProduto == false) {
+                //& Retornar erro para o cliente
+                exit(0);
+            }
+            $consultaProduto = $consultaProduto[0];
+
+            //( Verifica se existe valor promocional
+            if ($consultaProduto['valor_promocional'] != 0) {
+                $valor = $consultaProduto['valor_promocional'];
+            } else {
+                $valor = $consultaProduto['valor'];
+            }
+
+            //( Insere o produto no 
+            $resultInsert = fctInserirNoBanco(
+                'InsertProduto',
+                "INSERT INTO tbl_carrinho(id_contato, id_produto, quantidade, valor, create_at) VALUES ($this->idContato, $idEncontrado, 1, $valor, NOW())"
+            );
+            if ($resultInsert == false) {
+                //& retorna erro para o cliente
+                exit(0);
+            }
+
+            //( Verifica se esse produto tem alguma oferta
+            if ($consultaProduto['ofertas'] != 0) {
+                $idOferta = $consultaProduto['ofertas'];
+                //( Caso tenha oferta vinculada, insere a oferta no carrinho
+                $resultInsert = fctInserirNoBanco(
+                    'InsertOferta',
+                    "INSERT INTO tbl_carrinho(id_contato, id_oferta, quantidade, create_at) VALUES ($this->idContato, $idOferta, 1, NOW())"
+                );
+                if ($resultInsert == false) {
+                    //& retorna erro para o cliente
+                    exit(0);
+                }
+            }
+
+            return true;
+        }
+
+        //* Verificação de pendências
+        public function verificarPendencias()
+        {
         }
 
         //* Envio de erro

@@ -17,12 +17,11 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     if (!$query) {
         logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
         logSis('DEB', "==SQL==" . $sql);
-
-        exit(0);
+        //exit(0);
+        return false;
     }
     if ($numRow == 0) {
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
-        logSis('DEB', "==SQL==" . $sql);
 
         return false;
     } else {
@@ -47,6 +46,26 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
         logSis('DEB', $nomeConsulta . " - Array Resultado -> " . print_r($arrayResultado, true));
 
         return $arrayResultado;
+    }
+}
+
+function fctInserirNoBanco($nomeConsulta, $sql)
+{
+    include("dados_conexao.php");
+    $query = mysqli_query($conn['link'], $sql);
+
+    if (!$query) {
+        logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
+        logSis('DEB', "==SQL==" . $sql);
+        return false;
+    }
+    if ($query != '1') {
+        logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
+        return false;
+    } else {
+        $idInserido = mysqli_insert_id($conn['link']);
+        return $idInserido;
+        logSis('SUC', $nomeConsulta . " - Insert interação IN. ID_Interação: " . $idInserido);
     }
 }
 
