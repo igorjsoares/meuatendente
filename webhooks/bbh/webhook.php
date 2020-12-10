@@ -588,7 +588,7 @@
                 } else {
                     $this->logSis('DEB', 'result: ' . print_r($result, true));
 
-                    $ = $result[0];
+                    $result = $result[0];
                     $this->logSis('DEB', 'result[0]: ' . print_r($result, true));
                     //&===========================================
                     //&===========================================
