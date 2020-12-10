@@ -284,7 +284,7 @@
 
             //( Retornou alguma coisa da verificação de opções variáveis
             if ($arrayOpcoes != false) {
-                $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes, false);
                 $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
                 $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];  //& O que fazer para mandar esse JSON para ser salvo na tbl_interacao
                 $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
@@ -344,7 +344,7 @@
 
                     //( Retornou alguma coisa da verificação de opções variáveis
                     if ($arrayOpcoes != false) {
-                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes, false);
                         $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
                         $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
                         $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
@@ -380,7 +380,7 @@
 
                     //( Retornou alguma coisa da verificação de opções variáveis
                     if ($arrayOpcoes != false) {
-                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes, true);
                         $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
                         $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
                         $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
@@ -415,7 +415,7 @@
 
                     //( Retornou alguma coisa da verificação de opções variáveis
                     if ($arrayOpcoes != false) {
-                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes);
+                        $montaTextoOpcoes = $this->montaTextoOpcoes('', $arrayOpcoes, true);
                         $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
                         $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
                         $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
@@ -428,14 +428,18 @@
         }
 
         //* Monta o texto com as opções e devolve tanto o texto quanto o json
-        public function montaTextoOpcoes($textoOpcoes, $arrayOpcoes)
+        public function montaTextoOpcoes($textoOpcoes, $arrayOpcoes, $produtos)
         {
             $textoOpcoes .= "\n";
             $arrayParaJson = [];
             $indice = 0;
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
-                $textoOpcoes .= "\n" . $indice . ". " . $linha['nome'];
+                if ($produtos == true) {
+                    $textoOpcoes .= "\n*" . $indice . "*. " . $linha['nome'] . '  - _' . $linha['descricao'] . '_';
+                } else {
+                    $textoOpcoes .= "\n*" . $indice . "*. " . $linha['nome'];
+                }
                 array_push($arrayParaJson, array(
                     'ind' => $indice,
                     'id' => $linha['id']
@@ -586,8 +590,7 @@
                 if ($result == false) {
                     //& Problema, o que retornar ao usuário???
                 } else {
-                    $this->logSis('DEB', 'result: ' . print_r($result, true));
-                    
+
                     //&===========================================
                     //&===========================================
                     //&===========================================
@@ -597,11 +600,10 @@
                     //&===========================================
 
                     foreach ($result as $linha) {
-                    $this->logSis('DEB', 'linha: ' . print_r($linha, true));
 
                         array_push($arrayOpcoes, array('indice' => 3, 'tipo' => $filtroTipo, 'id' => $linha['id'], 'nome' => $linha['nome'], 'descricao' => $linha['descricao'], 'tamanho' => $linha['tamanho'], 'valor' => $linha['valor'], 'valor_promo' => $linha['valor_promo'], 'ofertas' => $linha['ofertas']));
                     }
-                    $this->logSis('DEB', 'ArrayOpçõesProdutos: ' . print_r($arrayOpcoes, true));
+                    //$this->logSis('DEB', 'ArrayOpçõesProdutos: ' . print_r($arrayOpcoes, true));
 
                     return $arrayOpcoes;
                 }
