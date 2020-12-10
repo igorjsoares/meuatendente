@@ -437,7 +437,7 @@
                 $indice += 1;
                 if ($produtos == true) {
                     $textoOferta = '';
-                    if ($linha['nome_oferta'] != 'NULL') {
+                    if ($linha['nome_oferta'] != NULL) {
                         $textoOferta = ' + oferta de ' . $linha['nome_oferta'];
                     }
                     //$textoOpcoes .= "\n*" . $indice . ". " . strtoupper ($linha['nome']) . "* - ".$linha['valor']." \n```" . $linha['descricao'] . "```\n";
