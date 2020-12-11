@@ -64,6 +64,7 @@
 
                         if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
                             $this->id_contato = $consultaContato['id_contato'];
+                            $this->idContato = $consultaContato['id_contato'];
                             $nome = $consultaContato['nome'];
                             $email = $consultaContato['email'];
                             $fase = $consultaContato['fase'];
@@ -432,7 +433,7 @@
             //( Consulta o produto
             $consultaProduto = fctConsultaParaArray(
                 'ConsultaProduto',
-                "SELECT id, ofertas FROM tbl_produtos WHERE id = '$idEncontrado' AND status = 1",
+                "SELECT id, ofertas, valor, valor_promo FROM tbl_produtos WHERE id = '$idEncontrado' AND status = 1",
                 array('id', 'valor', 'valor_promo', 'ofertas')
             );
             if ($consultaProduto == false) {
