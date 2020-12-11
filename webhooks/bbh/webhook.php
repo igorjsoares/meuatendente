@@ -432,7 +432,7 @@
             //( Consulta o produto
             $consultaProduto = fctConsultaParaArray(
                 'ConsultaProduto',
-                "SELECT id, ofertas tbl_produtos WHERE id = '$idEncontrado' AND status = 1",
+                "SELECT id, ofertas FROM tbl_produtos WHERE id = '$idEncontrado' AND status = 1",
                 array('id', 'valor', 'valor_promo', 'ofertas')
             );
             if ($consultaProduto == false) {
@@ -478,6 +478,11 @@
         //* Verificação de pendências
         public function verificarPendencias()
         {
+            //& =========================
+            //& =========================
+            //& =========================
+            //& =========================
+            //& VERIFICAR PENDÊNCIAS
         }
 
         //* Envio de erro
