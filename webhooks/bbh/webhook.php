@@ -537,7 +537,6 @@
                 );
                 //$this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
                 $texto = utf8_encode("Teste 2");
-
                 $this->sendMessage('MenuPendencias', $this->numeroCliente, $texto, $arrayRetorno);
 
                 exit(0);
@@ -846,6 +845,8 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $numero, $text, $retorno)
         {
+            $this->logSis('DEB', 'Requisição de envio de TEXTO. Motivo: ' . $motivo . ' Número: ' . $numero . ' Texto: ' . $text);
+            $this->logSis('DEB', 'Requisição de envio de TEXTO. retorno: ' . print_r($retorno, true));
             $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data, $retorno);
         }
@@ -891,6 +892,9 @@
         //Envia a requisição
         public function sendRequest($motivo, $method, $data, $retorno)
         {
+            $this->logSis('DEB', 'Envio da requisição. Motivo: ' . $motivo . ' Método: ' . $method);
+            $this->logSis('DEB', 'Envio da requisição. Data: ' . print_r($data, true));
+            $this->logSis('DEB', 'Envio da requisição. Retorno: ' . print_r($retorno, true));
             include("dados_conexao.php");
 
             $url = 'https://' . $this->APIurl . $method;
@@ -906,9 +910,9 @@
 
             $response = file_get_contents($url, false, $options);
 
-            
+
             //return $response;
-            
+
             $resposta = json_decode($response, true);
             $this->logSis('REQ', 'Resp Requisição: ' . print_r($resposta, true));
             $statusEnvio = $resposta['message'];
