@@ -452,11 +452,10 @@
             //( Insere o produto no 
             $resultInsert = fctInserirNoBanco(
                 'InsertProduto',
-                "INSERT INTO tbl_carrinho(id_contato, id_produto, quantidade, valor, create_at) VALUES ($this->idContato, $idEncontrado, 1, $valor, NOW())"
+                "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_produto, quantidade, valor, status, create_at) VALUES ($this->$idInstancia, $this->idContato, $idEncontrado, 1, $valor, 1, NOW())"
             );
             if ($resultInsert == false) {
-                //& retorna erro para o cliente
-                exit(0);
+                $this->retornoErro('');
             }
 
             //( Verifica se esse produto tem alguma oferta
@@ -465,25 +464,101 @@
                 //( Caso tenha oferta vinculada, insere a oferta no carrinho
                 $resultInsert = fctInserirNoBanco(
                     'InsertOferta',
-                    "INSERT INTO tbl_carrinho(id_contato, id_oferta, quantidade, create_at) VALUES ($this->idContato, $idOferta, 1, NOW())"
+                    "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_oferta, quantidade, status, create_at) VALUES ($this->$idInstancia, $this->idContato, $idOferta, 1, 1, NOW())"
                 );
                 if ($resultInsert == false) {
-                    //& retorna erro para o cliente
-                    exit(0);
+                    $this->retornoErro('');
                 }
+                $this->consultaPendencias();
             }
 
             return true;
         }
 
         //* Verificação de pendências
-        public function verificarPendencias()
+        public function consultaPendencias()
         {
+            include_once("servicos.php");
             //& =========================
             //& =========================
             //& =========================
             //& =========================
             //& VERIFICAR PENDÊNCIAS
+            //& Retorno do cadastro no carrinho
+
+            //( Identificar no banco se tem alguma pendência em nome do cliente 
+            // Primeiro ver produtos adquiridos
+            // Ver a quantidade desses produtos -> Status 1
+            // Ver o que quer adicionar -> Status 2
+            // ver o que quer retirar -> Status 3
+            // ver se tem alguma observação -> status 4
+            // Segundo, ver se tem alguma oferta
+            // Ver se tem mais de uma linha no oferta_prod para a escolha da oferta -> Status 5
+
+            $resultPendencias = fctConsultaParaArray(
+                'ConsultaPendencias',
+                "SELECT c.*, p.nome, p.descricao FROM tbl_carrinho c LEFT JOIN tbl_produtos p ON c.id_produto = p.id WHERE c.id_instancia = $this->idInstancia AND c.id_contato = $this->idContato AND c.status != 0 ORDER BY c.id_oferta ASC LIMIT 1",
+                array('id_produto', 'nome', 'descricao', 'id_oferta', 'quantidade', 'observacao', 'status')
+            );
+            if ($resultPendencias == false) {
+                $this->retornoErro('');
+            }
+            $resultPendencias = $resultPendencias[0];
+
+            //( Se não tiver pendência, retorna o menu raiz
+            if ($resultPendencias == null) { //Ou seja, vazio
+                $this->envioMenuRaiz($this->numeroCliente, 'Escolha um produto ou visualize o carrinho para finalizar o pedido.');
+                exit(0);
+            }
+
+            if ($resultPendencias['id_oferta'] == 0) { //( É uma pendência de produto
+                $texto = "*" . $resultPendencias['nome'] . "*\n";
+                $texto += "_" . $resultPendencias['descricao'] . "*\n";
+                $texto += "Quantidade: " . $resultPendencias['quantidade'] . "\n";
+                $texto += "Acrescentar: " . $resultPendencias['quantidade'] . "\n";
+                $texto += "Retirar: " . $resultPendencias['quantidade'] . "\n";
+                $texto += "Obs.: " . $resultPendencias['observacao'] . "\n";
+                $texto += "\n\n";
+                $texto += "*1*. Alterar a quantidade (apenas caso queira outro produto idêntico)";
+                $texto += "*2*. Acrescentar um item";
+                $texto += "*3*. Retirar algum item";
+                $texto += "*4*. Escrever uma mensagem sobre esse produto";
+                $texto += "*5*. Excluir esse produto do carrinho";
+                $texto += "*6. Confirmar esse produto dessa forma*";
+
+
+                $arrayRetorno = array(
+                    'modo' => 5,
+                    'filtro_tipo' => 0,
+                    'id_retorno' => 0
+                );
+                $this->sendMessage('MenuPendencias', $this->numeroCliente, $texto, $arrayRetorno);
+
+                exit(0);
+
+                switch ($resultPendencias['status']) {
+                    case 1: //( Confirmação de quantidade
+                        $texto = "Quantidade: 1\n";
+                        break;
+                    case 2: //( Ver o que quer adicionar
+
+                        break;
+                    case 3: //( Ver o que quer retirar
+
+                        break;
+                    case 4: //( Ver se tem alguma observação
+
+                        break;
+                }
+            } else { //( É uma pendência de oferta
+
+                //( Vê se na tbl_ofertas_prod tem mais de uma linha vinculada a esse produto, caso sim manda para o cliente escolher
+                switch ($resultPendencias['status']) {
+                    case 5: //( Escolher produto
+
+                        break;
+                }
+            }
         }
 
         //* Envio de erro
@@ -1158,6 +1233,18 @@
                 $this->status = $consultaInstancia['status'];
                 $this->nome = $consultaInstancia['nome'];
             }
+        }
+
+        //* Função de LOG
+        public function retornoErro($texto)
+        {
+            $textoRetorno = "Houve um erro na comunicação, favor responder novamente a última pergunta.";
+            if ($texto != '') {
+                $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
+                $textoRetorno += "_" . $texto . "_";
+            }
+            $this->sendMessage("ForaHorario", $this->numeroCliente, utf8_encode($textoRetorno), "");
+            exit(0);
         }
 
         //* Função de LOG
