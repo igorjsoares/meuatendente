@@ -49,6 +49,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     }
 }
 
+//* Função para fazer uma INSERÇÃO no banco de dados
 function fctInserirNoBanco($nomeOperacao, $sql)
 {
     logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
@@ -58,17 +59,17 @@ function fctInserirNoBanco($nomeOperacao, $sql)
     $query = mysqli_query($conn['link'], $sql);
 
     if (!$query) {
-        logSis('ERR', $nomeConsulta . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
+        logSis('ERR', $nomeOperacao . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
         logSis('DEB', "==SQL==" . $sql);
         return false;
     }
     if ($query != '1') {
-        logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
+        logSis('ERR', $nomeOperacao . " - Não retornou nada " . $sql);
         return false;
     } else {
         $idInserido = mysqli_insert_id($conn['link']);
         return $idInserido;
-        logSis('SUC', $nomeConsulta . " - Insert interação IN. ID_Interação: " . $idInserido);
+        logSis('SUC', $nomeOperacao . " - Insert interação IN. ID_Interação: " . $idInserido);
     }
 }
 
