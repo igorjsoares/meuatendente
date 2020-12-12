@@ -439,6 +439,8 @@
                 $this->retornoErro('');
             }
             $consultaProduto = $consultaProduto[0];
+        logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
+
 
             //( Verifica se existe valor promocional
             if ($consultaProduto['valor_promocional'] != 0) {
