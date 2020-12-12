@@ -502,7 +502,7 @@
             $resultPendencias = fctConsultaParaArray(
                 'ConsultaPendencias',
                 "SELECT c.*, p.nome, p.descricao FROM tbl_carrinho c LEFT JOIN tbl_produtos p ON c.id_produto = p.id WHERE c.id_instancia = $this->idInstancia AND c.id_contato = $this->idContato AND c.status != 0 ORDER BY c.id_oferta ASC LIMIT 1",
-                array('id_produto', 'nome', 'descricao', 'id_oferta', 'quantidade', 'observacao', 'status')
+                array('id', 'id_produto', 'nome', 'descricao', 'id_oferta', 'quantidade', 'observacao', 'status')
             );
             if ($resultPendencias == false) {
                 $this->retornoErro('');
@@ -515,20 +515,54 @@
                 exit(0);
             }
 
+            //( Se tiver pendência envia o menu de pendências
+            //( Mas antes consulta as adições e retiradas até o momento
+            $idCarrinho = $resultPendencias['id'];
+            $resultInsumos = fctConsultaParaArray(
+                'ConsultaInsumos',
+                "SELECT ic.*, i.nome, i.valor_retirada, i.valor_adicao FROM tbl_insumos_carrinho ic, tbl_insumos i WHERE ic.id_insumo = i.id AND ic.id_carrinho = $idCarrinho",
+                array('id', 'id_carrinho', 'id_insumo', 'adicao', 'nome', 'valor_retirada', 'valor_adicao')
+            );
+
+            $stringRetiradas = "";
+            $tringAdicao = "";
+            foreach ($resultInsumos as $linha) {
+                switch ($linha['adicao']) {
+                    case 0: //( Retirada
+                        if ($linha['valor_retirada'] == 0) {
+                            $valor_retirada = '';
+                        } else {
+                            $valor_retirada = '(' . $linha['valor_retirada'] . ')';
+                        }
+                        $stringRetiradas .= $linhas['nome'] . $valor_retirada;
+                        break;
+
+                    case 1: //( Adição
+                        if ($linha['valor_adicao'] == 0) {
+                            $valor_adicao = '';
+                        } else {
+                            $valor_adicao = '(' . $linha['valor_adicao'] . ')';
+                        }
+                        $stringAdicao .= $linhas['nome'] . $valor_adicao;
+                        break;
+                }
+            }
+
+
             if ($resultPendencias['id_oferta'] == 0) { //( É uma pendência de produto
-                $texto = "*" . utf8_encode($resultPendencias['nome']) . "*\n";
-                $texto .= "_" . utf8_encode($resultPendencias['descricao']) . "_\n";
+                $texto = "*" . $resultPendencias['nome'] . "*\n";
+                $texto .= "_" . $resultPendencias['descricao'] . "_\n";
                 $texto .= "Quantidade: " . $resultPendencias['quantidade'] . "\n";
-                $texto .= "Acrescentar: " . $resultPendencias['quantidade'] . "\n";
-                $texto .= "Retirar: " . $resultPendencias['quantidade'] . "\n";
+                $texto .= "Acrescentar: " . $stringAdicao . "\n";
+                $texto .= "Retirar: " . $stringRetirada . "\n";
                 $texto .= "Obs.: " . $resultPendencias['observacao'] . "\n";
                 $texto .= "\n";
-                $texto .= "*1*. Alterar a quantidade (apenas caso queira outro produto idêntico)\n";
+                $texto .= "*1. Confirmar esse produto dessa forma*";
                 $texto .= "*2*. Acrescentar um item\n";
                 $texto .= "*3*. Retirar algum item\n";
                 $texto .= "*4*. Escrever uma mensagem sobre esse produto\n";
                 $texto .= "*5*. Excluir esse produto do carrinho\n";
-                $texto .= "*6. Confirmar esse produto dessa forma*";
+                $texto .= "*6*. Alterar a quantidade (apenas caso queira outro produto idêntico)\n";
 
 
                 $arrayRetorno = array(
