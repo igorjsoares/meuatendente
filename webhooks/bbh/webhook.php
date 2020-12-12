@@ -389,8 +389,7 @@
                     $this->logSis('DEB', 'Entrou para a verificação das Opções variáveis. PRODUTO');
 
                     $this->adicionaAoCarrinho($idEncontrado);
-                    exit(0);
-                    //& Depois de cadastrar o produto e a oferta tem que ir para a verificação de pendências
+                    $this->consultaPendencias();
 
                     break;
             }
@@ -469,7 +468,6 @@
                 if ($resultInsert == false) {
                     $this->retornoErro('');
                 }
-                $this->consultaPendencias();
             }
 
             return true;
