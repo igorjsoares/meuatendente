@@ -439,15 +439,15 @@
                 $this->retornoErro('');
             }
             $consultaProduto = $consultaProduto[0];
-        logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
-
-
+            
+            
             //( Verifica se existe valor promocional
             if ($consultaProduto['valor_promocional'] != 0) {
                 $valor = $consultaProduto['valor_promocional'];
             } else {
                 $valor = $consultaProduto['valor'];
             }
+            logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
 
             //( Insere o produto no 
             $resultInsert = fctInserirNoBanco(
