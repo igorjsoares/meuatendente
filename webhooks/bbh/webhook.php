@@ -535,7 +535,8 @@
                     'filtro_tipo' => 0,
                     'id_retorno' => 0
                 );
-                $this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
+                //$this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
+                $this->sendMessage('MenuPendencias', $this->numeroCliente, "Teste", $arrayRetorno);
 
                 exit(0);
 
