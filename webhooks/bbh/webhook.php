@@ -476,6 +476,7 @@
         //* Verificação de pendências
         public function consultaPendencias()
         {
+            $this->logSis('DEB', 'Entrou no consulta pendências.');
             include_once("servicos.php");
             //& =========================
             //& =========================
