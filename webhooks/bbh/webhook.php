@@ -516,18 +516,18 @@
             }
 
             if ($resultPendencias['id_oferta'] == 0) { //( É uma pendência de produto
-                $texto = "*" . $resultPendencias['nome'] . "*\n";
-                $texto .= "_" . $resultPendencias['descricao'] . "*\n";
+                $texto = "*" . utf8_encode($resultPendencias['nome']) . "*\n";
+                $texto .= "_" . utf8_encode($resultPendencias['descricao']) . "_\n";
                 $texto .= "Quantidade: " . $resultPendencias['quantidade'] . "\n";
                 $texto .= "Acrescentar: " . $resultPendencias['quantidade'] . "\n";
                 $texto .= "Retirar: " . $resultPendencias['quantidade'] . "\n";
                 $texto .= "Obs.: " . $resultPendencias['observacao'] . "\n";
-                $texto .= "\n\n";
-                $texto .= "*1*. Alterar a quantidade (apenas caso queira outro produto idêntico)";
-                $texto .= "*2*. Acrescentar um item";
-                $texto .= "*3*. Retirar algum item";
-                $texto .= "*4*. Escrever uma mensagem sobre esse produto";
-                $texto .= "*5*. Excluir esse produto do carrinho";
+                $texto .= "\n";
+                $texto .= "*1*. Alterar a quantidade (apenas caso queira outro produto idêntico)\n";
+                $texto .= "*2*. Acrescentar um item\n";
+                $texto .= "*3*. Retirar algum item\n";
+                $texto .= "*4*. Escrever uma mensagem sobre esse produto\n";
+                $texto .= "*5*. Excluir esse produto do carrinho\n";
                 $texto .= "*6. Confirmar esse produto dessa forma*";
 
 
@@ -537,7 +537,7 @@
                     'id_retorno' => 0
                 );
                 $texto = utf8_encode($texto);
-                $this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
+                $this->sendMessage('MenuPendencias', $this->numeroCliente, $texto, $arrayRetorno);
 
                 exit(0);
 
