@@ -36,7 +36,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     //logSis('DEB', 'Entrou no fctConsultaParaArray');
 
     include("dados_conexao.php");
-    //logSis('DEB', "==SQL==" . $sql);
+    logSis('DEB', "==SQL==" . $sql);
 
     $query = mysqli_query($conn['link'], $sql);
     $numRow = mysqli_num_rows($query);
@@ -49,7 +49,6 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     }
     if ($numRow == 0) {
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
-
         return 0;
     } else {
 
