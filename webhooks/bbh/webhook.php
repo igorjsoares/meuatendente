@@ -507,16 +507,18 @@
                 "SELECT c.*, p.nome, p.descricao FROM tbl_carrinho c LEFT JOIN tbl_produtos p ON c.id_produto = p.id WHERE c.id_instancia = $this->idInstancia AND c.id_contato = $this->idContato AND c.status != 0 ORDER BY c.id_oferta ASC LIMIT 1",
                 array('id', 'id_produto', 'nome', 'descricao', 'id_oferta', 'quantidade', 'observacao', 'status')
             );
+
+            //( Se não tiver pendência, retorna o menu raiz
+            if ($resultPendencias === null) { //Ou seja, vazio
+                $this->envioMenuRaiz($this->numeroCliente, 'Escolha um produto ou visualize o carrinho para finalizar o pedido.');
+                exit(0);
+            }
+
             if ($resultPendencias === false) {
                 $this->retornoErro('');
             }
             $resultPendencias = $resultPendencias[0];
 
-            //( Se não tiver pendência, retorna o menu raiz
-            if ($resultPendencias == null) { //Ou seja, vazio
-                $this->envioMenuRaiz($this->numeroCliente, 'Escolha um produto ou visualize o carrinho para finalizar o pedido.');
-                exit(0);
-            }
 
             //( Se tiver pendência envia o menu de pendências
             //( Mas antes consulta as adições e retiradas até o momento
@@ -1357,7 +1359,7 @@
                 $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
                 $textoRetorno += "_" . $texto . "_";
             }
-            $this->sendMessage("ForaHorario", $this->numeroCliente, $textoRetorno, "");
+            $this->sendMessage("MensageErro", $this->numeroCliente, $textoRetorno, "");
             exit(0);
         }
 
