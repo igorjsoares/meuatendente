@@ -642,7 +642,7 @@
                     case 6: //( Retirar o item do carrinho
                         $resultDelete = fctDelete(
                             'DeletarProdutoCarrinho',
-                            "DELETE FROM tbl_carrinho WHERE id=$idItem OR oferta_de_produto =$idItem"
+                            "DELETE FROM tbl_carrinho WHERE id = $idItem OR oferta_de_produto = $idItem"
                         );
                         if ($resultDelete == false) {
                             $this->retornoErro('');

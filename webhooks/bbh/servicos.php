@@ -98,6 +98,8 @@ function fctUpdate($nomeOperacao, $sql)
 //* Função para fazer uma update
 function fctDelete($nomeOperacao, $sql)
 {
+    logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
+
     include("dados_conexao.php");
 
     $query = mysqli_query($conn['link'], $sql);
