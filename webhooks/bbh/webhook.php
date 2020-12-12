@@ -35,6 +35,7 @@
                 $RemoteJidArray = explode("@", $RemoteJid);
                 $numero = $RemoteJidArray[0];
                 $this->numerocliente = $numero;
+                $this->numeroCliente = $numero;
                 $tipoNumero = $RemoteJidArray[1];
                 $idMensagemWhats = $decoded['Body']['Info']['Id'];
                 $timestamp = $decoded['Body']['Info']['Timestamp'];
@@ -535,10 +536,7 @@
                     'filtro_tipo' => 0,
                     'id_retorno' => 0
                 );
-                //$this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
-                $texto = utf8_encode("Teste 2");
-                $numero = $this->numeroCliente;
-                $this->sendMessage('MenuPendencias', $numero, $texto, $arrayRetorno);
+                $this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
 
                 exit(0);
 
