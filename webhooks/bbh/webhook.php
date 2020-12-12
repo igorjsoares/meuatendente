@@ -907,7 +907,7 @@
             //return $response;
             
             $resposta = json_decode($response, true);
-            $this->logSis('REQ', 'Resp Requisição: ' . print_r($response, true));
+            $this->logSis('REQ', 'Resp Requisição: ' . print_r($resposta, true));
             $statusEnvio = $resposta['message'];
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
                 //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
