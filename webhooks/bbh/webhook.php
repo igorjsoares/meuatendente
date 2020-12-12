@@ -509,7 +509,7 @@
             );
 
             //( Se não tiver pendência, retorna o menu raiz
-            if ($resultPendencias === null) { //Ou seja, vazio
+            if ($resultPendencias === NULL) { //Ou seja, vazio
                 $this->envioMenuRaiz($this->numeroCliente, 'Escolha um produto ou visualize o carrinho para finalizar o pedido.');
                 exit(0);
             }

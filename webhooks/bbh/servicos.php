@@ -50,7 +50,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
     if ($numRow == 0) {
         logSis('ERR', $nomeConsulta . " - Não retornou nada " . $sql);
 
-        return null;
+        return NULL;
     } else {
 
         $arrayResultado = [];
