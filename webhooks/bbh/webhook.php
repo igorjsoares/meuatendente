@@ -536,7 +536,7 @@
                     'filtro_tipo' => 0,
                     'id_retorno' => 0
                 );
-                $texto = utf8_encode($texto);
+                //$texto = utf8_encode($texto);
                 $this->sendMessage('MenuPendencias', $this->numeroCliente, $texto, $arrayRetorno);
 
                 exit(0);
