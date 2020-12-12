@@ -537,7 +537,8 @@
                 );
                 //$this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
                 $texto = utf8_encode("Teste 2");
-                $this->sendMessage('MenuPendencias', $this->numeroCliente, $texto, $arrayRetorno);
+                $numero = $this->numeroCliente;
+                $this->sendMessage('MenuPendencias', $numero, $texto, $arrayRetorno);
 
                 exit(0);
 
