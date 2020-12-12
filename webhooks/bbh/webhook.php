@@ -507,7 +507,7 @@
                 "SELECT c.*, p.nome, p.descricao FROM tbl_carrinho c LEFT JOIN tbl_produtos p ON c.id_produto = p.id WHERE c.id_instancia = $this->idInstancia AND c.id_contato = $this->idContato AND c.status != 0 ORDER BY c.id_oferta ASC LIMIT 1",
                 array('id', 'id_produto', 'nome', 'descricao', 'id_oferta', 'quantidade', 'observacao', 'status')
             );
-            if ($resultPendencias == false) {
+            if ($resultPendencias === false) {
                 $this->retornoErro('');
             }
             $resultPendencias = $resultPendencias[0];
@@ -527,7 +527,7 @@
                 array('id', 'id_carrinho', 'id_insumo', 'adicao', 'nome', 'valor_retirada', 'valor_adicao')
             );
 
-            $stringRetiradas = "";
+            $stringRetirada = "";
             $tringAdicao = "";
             foreach ($resultInsumos as $linha) {
                 switch ($linha['adicao']) {
@@ -537,7 +537,7 @@
                         } else {
                             $valor_retirada = '(' . $linha['valor_retirada'] . ')';
                         }
-                        $stringRetiradas .= $linha['nome'] . ' ' . $valor_retirada . '  ';
+                        $stringRetirada .= $linha['nome'] . ' ' . $valor_retirada . '  ';
                         break;
 
                     case 1: //( Adição
@@ -1357,7 +1357,7 @@
                 $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
                 $textoRetorno += "_" . $texto . "_";
             }
-            $this->sendMessage("ForaHorario", $this->numeroCliente, utf8_encode($textoRetorno), "");
+            $this->sendMessage("ForaHorario", $this->numeroCliente, $textoRetorno, "");
             exit(0);
         }
 
