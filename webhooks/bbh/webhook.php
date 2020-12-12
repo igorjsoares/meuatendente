@@ -454,7 +454,7 @@
             //( Insere o produto no 
             $resultInsert = fctInsert(
                 'InsertProduto',
-                "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_produto, quantidade, valor, status, create_at) VALUES ($this->idInstancia, $this->idContato, $idEncontrado, 1, $valor, 1, NOW())"
+                "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_produto, quantidade, valor, status, create_at) VALUES ($this->$idInstancia, $this->idContato, $idEncontrado, 1, $valor, 1, NOW())"
             );
             logSis('DEB', " consultaProduto no retorno 2 -> " . print_r($consultaProduto, true));
             if ($resultInsert == false) {
@@ -467,7 +467,7 @@
                 //( Caso tenha oferta vinculada, insere a oferta no carrinho
                 $resultInsert = fctInsert(
                     'InsertOferta',
-                    "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_oferta, quantidade, status, create_at) VALUES ($this->$idInstancia, $this->idContato, $idOferta, 1, 1, NOW())"
+                    "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_oferta, quantidade, status, create_at) VALUES ($this->idInstancia, $this->idContato, $idOferta, 1, 1, NOW())"
                 );
                 if ($resultInsert == false) {
                     $this->retornoErro('');
