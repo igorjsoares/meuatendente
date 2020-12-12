@@ -194,6 +194,8 @@
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC); */
             $this->menuAnterior = $ultimaInteracao['menu_anterior'];
             $this->ultimoRetorno = $ultimaInteracao['id_retorno'];
+            $this->ultimaInteracaoTipo = $ultimaInteracao['tipo'];
+            $this->ultimaInteracaoSubTipo = $ultimaInteracao['subtipo'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
 
@@ -212,6 +214,13 @@
             if (!$decoded['Body']['Info']['FromMe']) {
                 $primeiraPalavraCliente = mb_strtolower($mensagem[0], 'UTF-8');
                 $this->logSis('DEB', 'PRIMEIRA PALAVRA: ' . $primeiraPalavraCliente);
+
+                //( Verifica se é um tratamento de pendencias
+                if ($this->ultimaInteracaoTipo == 5) {
+                    //( Caso sim, chama a função de resposta específica do tratamento de pendências.
+                    $this->respostaTratamentoPendencias($this->ultimaInteracaoSubTipo, $mensagem, $this->stringMensagemAtual);
+                    exit(0);
+                }
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente) || count($mensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
@@ -461,14 +470,14 @@
             if ($resultInsert == false) {
                 $this->retornoErro('');
             }
-
+            $idProduto = $resultInsert;
             //( Verifica se esse produto tem alguma oferta
             if ($consultaProduto['ofertas'] != 0) {
                 $idOferta = $consultaProduto['ofertas'];
                 //( Caso tenha oferta vinculada, insere a oferta no carrinho
                 $resultInsert = fctInsert(
                     'InsertOferta',
-                    "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_oferta, quantidade, status, create_at) VALUES ($this->idInstancia, $this->idContato, $idOferta, 1, 1, NOW())"
+                    "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_oferta, oferta_de_produto, quantidade, status, create_at) VALUES ($this->idInstancia, $this->idContato, $idOferta, $idProduto, 1, 1, NOW())"
                 );
                 if ($resultInsert == false) {
                     $this->retornoErro('');
@@ -483,12 +492,6 @@
         {
             $this->logSis('DEB', 'Entrou no consulta pendências.');
             include_once("servicos.php");
-            //& =========================
-            //& =========================
-            //& =========================
-            //& =========================
-            //& VERIFICAR PENDÊNCIAS
-            //& Retorno do cadastro no carrinho
 
             //( Identificar no banco se tem alguma pendência em nome do cliente 
             // Primeiro ver produtos adquiridos
@@ -534,7 +537,7 @@
                         } else {
                             $valor_retirada = '(' . $linha['valor_retirada'] . ')';
                         }
-                        $stringRetiradas .= $linhas['nome'] . $valor_retirada;
+                        $stringRetiradas .= $linha['nome'] . ' ' . $valor_retirada . '  ';
                         break;
 
                     case 1: //( Adição
@@ -543,7 +546,7 @@
                         } else {
                             $valor_adicao = '(' . $linha['valor_adicao'] . ')';
                         }
-                        $stringAdicao .= $linhas['nome'] . $valor_adicao;
+                        $stringAdicao .= $linha['nome'] . ' ' . $valor_adicao . '  ';
                         break;
                 }
             }
@@ -557,17 +560,17 @@
                 $texto .= "Retirar: " . $stringRetirada . "\n";
                 $texto .= "Obs.: " . $resultPendencias['observacao'] . "\n";
                 $texto .= "\n";
-                $texto .= "*1. Confirmar esse produto dessa forma*";
-                $texto .= "*2*. Acrescentar um item\n";
-                $texto .= "*3*. Retirar algum item\n";
-                $texto .= "*4*. Escrever uma mensagem sobre esse produto\n";
-                $texto .= "*5*. Excluir esse produto do carrinho\n";
-                $texto .= "*6*. Alterar a quantidade (apenas caso queira outro produto idêntico)\n";
+                $texto .= "*1. Confirmar esse produto dessa forma*\n";
+                $texto .= "*2*. Alterar a quantidade (apenas caso queira outro produto idêntico)\n";
+                $texto .= "*3*. Acrescentar um item\n";
+                $texto .= "*4*. Retirar algum item\n";
+                $texto .= "*5*. Escrever uma mensagem sobre esse produto\n";
+                $texto .= "*6*. Excluir esse produto do carrinho\n";
 
 
                 $arrayRetorno = array(
                     'modo' => 5,
-                    'filtro_tipo' => 0,
+                    'filtro_tipo' => $resultPendencias['id'],
                     'id_retorno' => 0
                 );
                 //$texto = utf8_encode($texto);
@@ -596,6 +599,73 @@
                     case 5: //( Escolher produto
 
                         break;
+                }
+            }
+        }
+
+        //* Resposta para o tratamento de Pendencias (tipo 5)
+        public function respostaTratamentoPendencias($idItem, $arrayMensagem, $stringMensagem)
+        {
+            include_once("servicos.php");
+            $primeiraPalavraCliente = mb_strtolower($arrayMensagem[0], 'UTF-8');
+
+            //( Verifica se é um número 
+            if (is_numeric($primeiraPalavraCliente) || count($arrayMensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
+                $this->logSis('DEB', 'É NÚMERO, ou APENAS uma palavra' . $primeiraPalavraCliente);
+
+                switch ($primeiraPalavraCliente) {
+                    case 1:  //( Confirmação do item
+                        $resultAtualização = fctUpdate(
+                            'UpdateConfirmarItemCarrinho',
+                            "UPDATE tbl_carrinho SET status = 0 WHERE id = $idItem"
+                        );
+                        if ($resultAtualização == false) {
+                            $this->retornoErro('');
+                        }
+                        $this->consultaPendencias();
+                        break;
+
+                    case 2: //( Alterar Quantidade
+
+                        break;
+                    case 3: //( Adicionar algum insumo
+
+                        break;
+                    case 4: //( Retirar algum insumo
+
+                        break;
+                    case 5: //( Escrever mensagem
+
+                        break;
+                    case 6: //( Retirar o item do carrinho
+                        fctDelete(
+                            'DeletarProdutoCarrinho',
+                            "DELETE FROM tbl_carrinho WHERE id=$idItem OR oferta_de_produto =$idItem"
+                        );
+                        if ($resultAtualização == false) {
+                            $this->retornoErro('');
+                        }
+                        $this->consultaPendencias();
+                        break;
+
+                    default: //( Qualquer outro número
+                        break;
+                }
+            } else { //( A mensagem é um texto 
+                //& ====================
+                //& ====================
+                //& Caso seja um texto, considerar
+
+                $this->logSis('DEB', 'É TEXTO');
+
+                $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $arrayMensagem);
+                $this->logSis('DEB', 'Retorno Palavras: ' . $opcaoEscolhida);
+
+                if ($opcaoEscolhida == 0) {
+                    $this->envioErro($this->numeroCliente, '');
+                } else {
+                    $arrayRetorno = $this->consultaRetorno($opcaoEscolhida, '', $this->ultimoRetorno);
+                    $this->direcaoEnvio($arrayRetorno['tipo'], $this->numeroCliente, $arrayRetorno);
                 }
             }
         }

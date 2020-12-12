@@ -77,7 +77,7 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 }
 
 //* Função para fazer uma update
-function fctUpdate($nomeUpdate, $sql)
+function fctUpdate($nomeOperacao, $sql)
 {
     include("dados_conexao.php");
 
@@ -85,12 +85,31 @@ function fctUpdate($nomeUpdate, $sql)
     $linhasAfetadas = mysqli_affected_rows($conn['link']);
 
     if (!$query) {
-        logSis('ERR', $nomeUpdate . ' - Mysql Connect: ' . mysqli_error($conn['link']));
+        logSis('ERR', $nomeOperacao . ' - Mysql Connect: ' . mysqli_error($conn['link']));
         exit(0);
     }
     if ($query != true && $linhasAfetadas == 0) {
         return false;
-        logSis('ERR', $nomeUpdate . ' - Não alterou nada no BD . Sql: ' . $sql);
+        logSis('ERR', $nomeOperacao . ' - Não alterou nada no BD . Sql: ' . $sql);
+    } else {
+        return true;
+    }
+}
+
+//* Função para fazer uma update
+function fctDelete($nomeOperacao, $sql)
+{
+    include("dados_conexao.php");
+
+    $query = mysqli_query($conn['link'], $sql);
+
+    if (!$query) {
+        logSis('ERR', $nomeOperacao . ' - Mysql Connect: ' . mysqli_error($conn['link']));
+        exit(0);
+    }
+    if ($query != true) {
+        return false;
+        logSis('ERR', $nomeOperacao . ' - Não excluiu nada no BD . Sql: ' . $sql);
     } else {
         return true;
     }
