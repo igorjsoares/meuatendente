@@ -428,6 +428,8 @@
         public function adicionaAoCarrinho($idEncontrado)
         {
             include_once("servicos.php");
+            logSis('DEB', "Entrou na Adição do carrinho. IdEncontrado: " . $idEncontrado);
+
 
             //( Consulta o produto
             $consultaProduto = fctConsultaParaArray(
@@ -439,25 +441,25 @@
                 $this->retornoErro('');
             }
             $consultaProduto = $consultaProduto[0];
-            
-            
+
+
             //( Verifica se existe valor promocional
             if ($consultaProduto['valor_promocional'] != 0) {
                 $valor = $consultaProduto['valor_promocional'];
             } else {
                 $valor = $consultaProduto['valor'];
             }
-            logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
-            
+            logSis('DEB', " consultaProduto no retorno 1 -> " . print_r($consultaProduto, true));
+
             //( Insere o produto no 
             $resultInsert = fctInserirNoBanco(
                 'InsertProduto',
                 "INSERT INTO tbl_carrinho(id_instancia, id_contato, id_produto, quantidade, valor, status, create_at) VALUES ($this->$idInstancia, $this->idContato, $idEncontrado, 1, $valor, 1, NOW())"
             );
+            logSis('DEB', " consultaProduto no retorno 2 -> " . print_r($consultaProduto, true));
             if ($resultInsert == false) {
                 $this->retornoErro('');
             }
-            logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
 
             //( Verifica se esse produto tem alguma oferta
             if ($consultaProduto['ofertas'] != 0) {
