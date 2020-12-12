@@ -903,11 +903,11 @@
 
             $response = file_get_contents($url, false, $options);
 
-            $this->logSis('REQ', 'Resp Requisição: ' . $response);
-
+            
             //return $response;
-
+            
             $resposta = json_decode($response, true);
+            $this->logSis('REQ', 'Resp Requisição: ' . print_r($response, true));
             $statusEnvio = $resposta['message'];
             if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
                 //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
@@ -937,7 +937,7 @@
                     return false;
                     exit(0);
                 }
-                $this->logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
+                $this->logSis('ERR', 'Não teve resposta da requisição a tempo. Resposta: ' . $resposta['message']);
             }
         } //# FCT Envio Requisição
 
