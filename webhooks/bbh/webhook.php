@@ -224,7 +224,7 @@
 
                 //( Verifica se é um número 
                 if (is_numeric($primeiraPalavraCliente) || count($mensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
-                    $this->logSis('DEB', 'É NÚMERO, ou APENAS uma palavra' . $primeiraPalavraCliente);
+                    $this->logSis('DEB', 'É NÚMERO, ou APENAS uma palavra ' . $primeiraPalavraCliente);
 
                     if ($primeiraPalavraCliente == '0') { //Se o cliente escolher 0, tem que retornar
                         $this->logSis('DEB', 'É igual a 0 -> ' . $primeiraPalavraCliente);
@@ -613,7 +613,7 @@
 
             //( Verifica se é um número 
             if (is_numeric($primeiraPalavraCliente) || count($arrayMensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
-                $this->logSis('DEB', 'É NÚMERO, ou APENAS uma palavra' . $primeiraPalavraCliente);
+                $this->logSis('DEB', 'Tratamento Pendencias - É NÚMERO, ou APENAS uma palavra ' . $primeiraPalavraCliente);
 
                 switch ($primeiraPalavraCliente) {
                     case 1:  //( Confirmação do item
@@ -640,11 +640,11 @@
 
                         break;
                     case 6: //( Retirar o item do carrinho
-                        fctDelete(
+                        $resultDelete = fctDelete(
                             'DeletarProdutoCarrinho',
                             "DELETE FROM tbl_carrinho WHERE id=$idItem OR oferta_de_produto =$idItem"
                         );
-                        if ($resultAtualização == false) {
+                        if ($resultDelete == false) {
                             $this->retornoErro('');
                         }
                         $this->consultaPendencias();
