@@ -436,8 +436,7 @@
                 array('id', 'valor', 'valor_promo', 'ofertas')
             );
             if ($consultaProduto == false) {
-                //& Retornar erro para o cliente
-                exit(0);
+                $this->retornoErro('');
             }
             $consultaProduto = $consultaProduto[0];
 
