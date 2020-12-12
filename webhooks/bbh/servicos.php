@@ -53,7 +53,8 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 function fctInserirNoBanco($nomeOperacao, $sql)
 {
     logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
-    include("dados_conexao.php");
+    return 1;
+   /*  include("dados_conexao.php");
 
 
     $query = mysqli_query($conn['link'], $sql);
@@ -70,7 +71,7 @@ function fctInserirNoBanco($nomeOperacao, $sql)
         $idInserido = mysqli_insert_id($conn['link']);
         return $idInserido;
         logSis('SUC', $nomeOperacao . " - Insert interação IN. ID_Interação: " . $idInserido);
-    }
+    } */
 }
 
 //* Função para fazer uma update
