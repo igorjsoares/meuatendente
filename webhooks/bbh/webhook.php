@@ -517,18 +517,18 @@
 
             if ($resultPendencias['id_oferta'] == 0) { //( É uma pendência de produto
                 $texto = "*" . $resultPendencias['nome'] . "*\n";
-                $texto += "_" . $resultPendencias['descricao'] . "*\n";
-                $texto += "Quantidade: " . $resultPendencias['quantidade'] . "\n";
-                $texto += "Acrescentar: " . $resultPendencias['quantidade'] . "\n";
-                $texto += "Retirar: " . $resultPendencias['quantidade'] . "\n";
-                $texto += "Obs.: " . $resultPendencias['observacao'] . "\n";
-                $texto += "\n\n";
-                $texto += "*1*. Alterar a quantidade (apenas caso queira outro produto idêntico)";
-                $texto += "*2*. Acrescentar um item";
-                $texto += "*3*. Retirar algum item";
-                $texto += "*4*. Escrever uma mensagem sobre esse produto";
-                $texto += "*5*. Excluir esse produto do carrinho";
-                $texto += "*6. Confirmar esse produto dessa forma*";
+                $texto .= "_" . $resultPendencias['descricao'] . "*\n";
+                $texto .= "Quantidade: " . $resultPendencias['quantidade'] . "\n";
+                $texto .= "Acrescentar: " . $resultPendencias['quantidade'] . "\n";
+                $texto .= "Retirar: " . $resultPendencias['quantidade'] . "\n";
+                $texto .= "Obs.: " . $resultPendencias['observacao'] . "\n";
+                $texto .= "\n\n";
+                $texto .= "*1*. Alterar a quantidade (apenas caso queira outro produto idêntico)";
+                $texto .= "*2*. Acrescentar um item";
+                $texto .= "*3*. Retirar algum item";
+                $texto .= "*4*. Escrever uma mensagem sobre esse produto";
+                $texto .= "*5*. Excluir esse produto do carrinho";
+                $texto .= "*6. Confirmar esse produto dessa forma*";
 
 
                 $arrayRetorno = array(
@@ -536,6 +536,7 @@
                     'filtro_tipo' => 0,
                     'id_retorno' => 0
                 );
+                $texto = utf8_encode($texto);
                 $this->sendMessage('MenuPendencias', $this->numeroCliente, utf8_encode($texto), $arrayRetorno);
 
                 exit(0);
