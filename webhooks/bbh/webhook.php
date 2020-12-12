@@ -427,7 +427,7 @@
         //* Cadastra produtos e ofertas no carrinho
         public function adicionaAoCarrinho($idEncontrado)
         {
-            include_once("servico.php");
+            include_once("servicos.php");
 
             //( Consulta o produto
             $consultaProduto = fctConsultaParaArray(
