@@ -570,7 +570,7 @@
 
                 $arrayRetorno = array(
                     'modo' => 5,
-                    'filtro_tipo' => $resultPendencias['id'],
+                    'filtro_tipo' => $idCarrinho,
                     'id_retorno' => 0
                 );
                 //$texto = utf8_encode($texto);
