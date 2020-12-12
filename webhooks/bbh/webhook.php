@@ -448,7 +448,7 @@
                 $valor = $consultaProduto['valor'];
             }
             logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
-
+            
             //( Insere o produto no 
             $resultInsert = fctInserirNoBanco(
                 'InsertProduto',
@@ -457,6 +457,7 @@
             if ($resultInsert == false) {
                 $this->retornoErro('');
             }
+            logSis('DEB', " consultaProduto no retorno -> " . print_r($consultaProduto, true));
 
             //( Verifica se esse produto tem alguma oferta
             if ($consultaProduto['ofertas'] != 0) {

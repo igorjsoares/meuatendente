@@ -51,8 +51,9 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 
 function fctInserirNoBanco($nomeOperacao, $sql)
 {
-    include("dados_conexao.php");
     logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
+    include("dados_conexao.php");
+
 
     $query = mysqli_query($conn['link'], $sql);
 
