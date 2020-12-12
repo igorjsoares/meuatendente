@@ -5,11 +5,11 @@
 
 
 //* Função para fazer uma INSERÇÃO no banco de dados
-function fctInserirNoBanco($nomeOperacao, $sql)
+function fctInsert($nomeOperacao, $sql)
 {
     logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
-    return 1;
-   /*  include("dados_conexao.php");
+    
+    include("dados_conexao.php");
 
 
     $query = mysqli_query($conn['link'], $sql);
@@ -26,7 +26,7 @@ function fctInserirNoBanco($nomeOperacao, $sql)
         $idInserido = mysqli_insert_id($conn['link']);
         return $idInserido;
         logSis('SUC', $nomeOperacao . " - Insert interação IN. ID_Interação: " . $idInserido);
-    } */
+    }
 }
 
 
