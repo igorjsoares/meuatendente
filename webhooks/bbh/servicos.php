@@ -3,6 +3,33 @@
 // Arquivo para serviços gerais 
 // By Igor Soares
 
+
+//* Função para fazer uma INSERÇÃO no banco de dados
+function fctInserirNoBanco($nomeOperacao, $sql)
+{
+    logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
+    return 1;
+   /*  include("dados_conexao.php");
+
+
+    $query = mysqli_query($conn['link'], $sql);
+
+    if (!$query) {
+        logSis('ERR', $nomeOperacao . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
+        logSis('DEB', "==SQL==" . $sql);
+        return false;
+    }
+    if ($query != '1') {
+        logSis('ERR', $nomeOperacao . " - Não retornou nada " . $sql);
+        return false;
+    } else {
+        $idInserido = mysqli_insert_id($conn['link']);
+        return $idInserido;
+        logSis('SUC', $nomeOperacao . " - Insert interação IN. ID_Interação: " . $idInserido);
+    } */
+}
+
+
 //* Função para fazer uma CONSULTA SQL COM RETORNO EM ARRAY 
 function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 {
@@ -47,31 +74,6 @@ function fctConsultaParaArray($nomeConsulta, $sql, $colunas)
 
         return $arrayResultado;
     }
-}
-
-//* Função para fazer uma INSERÇÃO no banco de dados
-function fctInserirNoBanco($nomeOperacao, $sql)
-{
-    logSis('DEB', $nomeOperacao . ' - Sql: ' . $sql);
-    return 1;
-   /*  include("dados_conexao.php");
-
-
-    $query = mysqli_query($conn['link'], $sql);
-
-    if (!$query) {
-        logSis('ERR', $nomeOperacao . " - Mysql Connect Erro: " . mysqli_error($conn['link']));
-        logSis('DEB', "==SQL==" . $sql);
-        return false;
-    }
-    if ($query != '1') {
-        logSis('ERR', $nomeOperacao . " - Não retornou nada " . $sql);
-        return false;
-    } else {
-        $idInserido = mysqli_insert_id($conn['link']);
-        return $idInserido;
-        logSis('SUC', $nomeOperacao . " - Insert interação IN. ID_Interação: " . $idInserido);
-    } */
 }
 
 //* Função para fazer uma update
