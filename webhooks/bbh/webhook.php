@@ -641,7 +641,7 @@
                             "subtipo" => $idItem,
                             "acao" => 'quant'
                         );
-                        $this->sendMessage('PerguntaQuantidade', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
+                        $this->sendMessage('PerguntaQuantidade', $this->numeroCliente, 'Favor enviar apenas a quantidade desejada desse produto.', $arrayRetorno);
                         break;
                     case 3: //( Adicionar algum insumo
 

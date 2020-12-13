@@ -85,6 +85,7 @@ function fctUpdate($nomeOperacao, $sql)
 
     if (!$query) {
         logSis('ERR', $nomeOperacao . ' - Mysql Connect: ' . mysqli_error($conn['link']));
+        logSis('ERR', $nomeOperacao . ' - Mysql SQL: ' . $sql);
         exit(0);
     }
     if ($query != true && $linhasAfetadas == 0) {
