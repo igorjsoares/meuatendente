@@ -670,7 +670,7 @@
                             "filtro_tipo" => $idItem,
                             "acao" => 'obs'
                         );
-                        $this->sendMessage('PerguntaObservação', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
+                        $this->sendMessage('PerguntaObservação', $this->numeroCliente, 'A sua próxima mensagem enviada será anexada a esse produto no seu pedido.', $arrayRetorno);
                         break;
                     case 6: //( Retirar o item do carrinho
                         $resultDelete = fctDelete(
@@ -744,7 +744,7 @@
                     case 'obs':  //( Inserir observação
                         $resultObs = fctUpdate(
                             'AlteraçãoObservação',
-                            "UPDATE tbl_carrinho SET observacao = $stringMensagem WHERE id= $idItem"
+                            "UPDATE tbl_carrinho SET observacao = '$stringMensagem' WHERE id= $idItem"
                         );
                         if ($resultObs == false) {
                             $this->retornoErro('');
