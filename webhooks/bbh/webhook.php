@@ -727,7 +727,7 @@
                         } else {
                             $resultQuant = fctUpdate(
                                 'AlteraçãoQuantidade',
-                                "UPDATE tbl_carrinho SET quantidade = $primeiraPalavraCliente WHERE id= $idItem OR oferta_de_produto = $idItem"
+                                "UPDATE tbl_carrinho SET quantidade = $primeiraPalavraCliente WHERE id = $idItem OR oferta_de_produto = $idItem"
                             );
                             if ($resultQuant == false) {
                                 $this->retornoErro('');
