@@ -712,7 +712,7 @@
             $primeiraPalavraCliente = mb_strtolower($arrayMensagem[0], 'UTF-8');
 
             //( Verifica se é um número 
-            if (is_numeric($primeiraPalavraCliente) || count($arrayMensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
+            if (is_numeric($primeiraPalavraCliente) || count($arrayMensagem) == 1 || $acao == 'obs') { //Caso seja um número, faz verificação se existe algum menu pra esse número 
                 $this->logSis('DEB', 'Tratamento Pendencias Ações - É NÚMERO, ou APENAS uma palavra ' . $primeiraPalavraCliente);
 
                 switch ($acao) {
