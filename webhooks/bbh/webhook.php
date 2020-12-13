@@ -638,7 +638,7 @@
                     case 2: //( Alterar Quantidade
                         $arrayRetorno = array(
                             "modo" => 5,
-                            "subtipo" => $idItem,
+                            "filtro_tipo" => $idItem,
                             "acao" => 'quant'
                         );
                         $this->sendMessage('PerguntaQuantidade', $this->numeroCliente, 'Favor enviar apenas a quantidade desejada desse produto.', $arrayRetorno);
@@ -648,7 +648,7 @@
                         //( Obter a lista de insumos que podem ser adicionados
                         $arrayRetorno = array(
                             "modo" => 5,
-                            "subtipo" => $idItem,
+                            "filtro_tipo" => $idItem,
                             "acao" => 'add'
                         );
                         $this->sendMessage('PerguntaAdicionar', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
@@ -659,7 +659,7 @@
 
                         $arrayRetorno = array(
                             "modo" => 5,
-                            "subtipo" => $idItem,
+                            "filtro_tipo" => $idItem,
                             "acao" => 'reti'
                         );
                         $this->sendMessage('PerguntaRetirar', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
@@ -667,7 +667,7 @@
                     case 5: //( Escrever mensagem
                         $arrayRetorno = array(
                             "modo" => 5,
-                            "subtipo" => $idItem,
+                            "filtro_tipo" => $idItem,
                             "acao" => 'obs'
                         );
                         $this->sendMessage('PerguntaObservação', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
@@ -720,7 +720,7 @@
                         if ($primeiraPalavraCliente == 0) {
                             $arrayRetorno = array(
                                 "modo" => 5,
-                                "subtipo" => $idItem,
+                                "filtro_tipo" => $idItem,
                                 "acao" => 'quant'
                             );
                             $this->sendMessage('PerguntaQuantidadeErroZero', $this->numeroCliente, "A quantidade não pode ser zero, favor insira uma quantidade válida.\n_Caso queira excluir o item, envie 1 e no carrinho escolha e opção de exclusão do produto._", $arrayRetorno);
