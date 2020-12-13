@@ -84,7 +84,7 @@
                         }
 
                         //( Insere a interação que foi recebida no BD 
-                        $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', '', '', '', $idMensagemWhats, $mensagem, 1);
+                        $resultado = $this->inserirInteracao($this->idInstancia, 0, $this->id_contato, '', '', '', '', '', '', '', $idMensagemWhats, $mensagem, 1);
 
                         if ($resultado == '1') {
 
@@ -196,6 +196,7 @@
             $this->ultimoRetorno = $ultimaInteracao['id_retorno'];
             $this->ultimaInteracaoTipo = $ultimaInteracao['tipo'];
             $this->ultimaInteracaoSubTipo = $ultimaInteracao['subtipo'];
+            $this->ultimaInteracaoAcao = $ultimaInteracao['acao'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
 
@@ -217,9 +218,15 @@
 
                 //( Verifica se é um tratamento de pendencias
                 if ($this->ultimaInteracaoTipo == 5) {
-                    //( Caso sim, chama a função de resposta específica do tratamento de pendências.
-                    $this->respostaTratamentoPendencias($this->ultimaInteracaoSubTipo, $mensagem, $this->stringMensagemAtual);
-                    exit(0);
+                    //( Verifica primeiro se é uma ação de resposta de pergunta ou o início 
+                    if ($this->ultimaInteracaoAcao != '') { //( Ou seja, já existe uma ação, já foi solicitado alguma informação.
+                        $this->respostaTratamentoPendenciasAcoes($this->ultimaInteracaoSubTipo, $mensagem, $this->stringMensagemAtual);
+                        exit(0);
+                    } else {
+                        //( Caso sim, chama a função de resposta específica do tratamento de pendências.
+                        $this->respostaTratamentoPendencias($this->ultimaInteracaoSubTipo, $mensagem, $this->stringMensagemAtual);
+                        exit(0);
+                    }
                 }
 
                 //( Verifica se é um número 
@@ -230,7 +237,7 @@
                         $this->logSis('DEB', 'É igual a 0 -> ' . $primeiraPalavraCliente);
 
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
-                        $sql = "SELECT id_interacao, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
+                        $sql = "SELECT id_interacao, tipo, subtipo, acao, opcoes_variaveis, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
                         $this->logSis('DEB', 'sql - consultaUltima ' . $sql);
 
                         $query = mysqli_query($conn['link'], $sql);
@@ -238,6 +245,7 @@
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
                         $this->menuAnterior = $consultaUltima['menu_anterior'];
                         $this->ultimoRetorno = $consultaUltima['id_retorno'];
+                        $this->acao = $consultaUltima['acao'];
 
                         $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '');
                         $this->ultimoRetorno = 0;
@@ -628,16 +636,41 @@
                         break;
 
                     case 2: //( Alterar Quantidade
-
+                        $arrayRetorno = array(
+                            "modo" => 5,
+                            "subtipo" => $idItem,
+                            "acao" => 'quant'
+                        );
+                        $this->sendMessage('PerguntaQuantidade', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
                         break;
                     case 3: //( Adicionar algum insumo
 
+                        //( Obter a lista de insumos que podem ser adicionados
+                        $arrayRetorno = array(
+                            "modo" => 5,
+                            "subtipo" => $idItem,
+                            "acao" => 'add'
+                        );
+                        $this->sendMessage('PerguntaAdicionar', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
                         break;
                     case 4: //( Retirar algum insumo
 
+                        //( Obter a lista de insumos que podem ser retirados
+
+                        $arrayRetorno = array(
+                            "modo" => 5,
+                            "subtipo" => $idItem,
+                            "acao" => 'reti'
+                        );
+                        $this->sendMessage('PerguntaRetirar', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
                         break;
                     case 5: //( Escrever mensagem
-
+                        $arrayRetorno = array(
+                            "modo" => 5,
+                            "subtipo" => $idItem,
+                            "acao" => 'obs'
+                        );
+                        $this->sendMessage('PerguntaObservação', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
                         break;
                     case 6: //( Retirar o item do carrinho
                         $resultDelete = fctDelete(
@@ -651,6 +684,72 @@
                         break;
 
                     default: //( Qualquer outro número
+                        break;
+                }
+            } else { //( A mensagem é um texto 
+                //& ====================
+                //& ====================
+                //& Caso seja um texto, considerar
+
+                $this->logSis('DEB', 'É TEXTO');
+
+                $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $arrayMensagem);
+                $this->logSis('DEB', 'Retorno Palavras: ' . $opcaoEscolhida);
+
+                if ($opcaoEscolhida == 0) {
+                    $this->envioErro($this->numeroCliente, '');
+                } else {
+                    $arrayRetorno = $this->consultaRetorno($opcaoEscolhida, '', $this->ultimoRetorno);
+                    $this->direcaoEnvio($arrayRetorno['tipo'], $this->numeroCliente, $arrayRetorno);
+                }
+            }
+        }
+
+        //* Resposta para o tratamento de Pendencias (tipo 5)
+        public function respostaTratamentoPendenciasAcoes($acao, $idItem, $arrayMensagem, $stringMensagem)
+        {
+            include_once("servicos.php");
+            $primeiraPalavraCliente = mb_strtolower($arrayMensagem[0], 'UTF-8');
+
+            //( Verifica se é um número 
+            if (is_numeric($primeiraPalavraCliente) || count($arrayMensagem) == 1) { //Caso seja um número, faz verificação se existe algum menu pra esse número 
+                $this->logSis('DEB', 'Tratamento Pendencias Ações - É NÚMERO, ou APENAS uma palavra ' . $primeiraPalavraCliente);
+
+                switch ($acao) {
+                    case 'quant':  //( Alteração de quantidade
+                        if ($primeiraPalavraCliente == 0) {
+                            $arrayRetorno = array(
+                                "modo" => 5,
+                                "subtipo" => $idItem,
+                                "acao" => 'quant'
+                            );
+                            $this->sendMessage('PerguntaQuantidadeErroZero', $this->numeroCliente, "A quantidade não pode ser zero, favor insira uma quantidade válida.\n_Caso queira excluir o item, envie 1 e no carrinho escolha e opção de exclusão do produto._", $arrayRetorno);
+                        } else {
+                            $resultQuant = fctUpdate(
+                                'AlteraçãoQuantidade',
+                                "UPDATE tbl_carrinho SET quantidade = $primeiraPalavraCliente WHERE id= $idItem"
+                            );
+                            if ($resultQuant == false) {
+                                $this->retornoErro('');
+                            }
+                            $this->consultaPendencias();
+                        }
+                        break;
+                    case 'add':  //( Adição de itens
+
+                        break;
+                    case 'reti':  //( Retirada de intens
+                        
+                        break;
+                    case 'obs':  //( Inserir observação
+                        $resultObs = fctUpdate(
+                            'AlteraçãoObservação',
+                            "UPDATE tbl_carrinho SET observacao = $stringMensagem WHERE id= $idItem"
+                        );
+                        if ($resultObs == false) {
+                            $this->retornoErro('');
+                        }
+                        $this->consultaPendencias();
                         break;
                 }
             } else { //( A mensagem é um texto 
@@ -1044,7 +1143,7 @@
                 }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $subTipo, $opcoes_variaveis, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
+                $this->inserirInteracao($this->idInstancia, 1, $this->id_contato, $tipo, $subTipo, '', $opcoes_variaveis, $this->ultimoRetorno, $idRetorno, $this->id_interacao_cliente, $id_resposta, $motivo, 1);
             } else {
                 if ($motivo == 'Receptivo') {
                     return false;
@@ -1079,6 +1178,7 @@
                     "dataEnvio" => $consultaInteracao['data_envio'],
                     "tipo" => $consultaInteracao['tipo'],
                     "subtipo" => $consultaInteracao['subtipo'],
+                    "acao" => $consultaInteracao['acao'],
                     "opcoes_variaveis" => $consultaInteracao['opcoes_variaveis'],
                     "menu_anterior" => $consultaInteracao['menu_anterior'],
                     "ultima_interacao" => $consultaInteracao['ultima_interacao'],
@@ -1102,11 +1202,11 @@
         }
 
         //* Inserir interação 
-        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $opcoesVariaveis, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
+        public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $acao, $opcoesVariaveis, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
             include("dados_conexao.php");
 
-            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$opcoesVariaveis', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+            $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, acao, opcoes_variaveis, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$acao', '$opcoesVariaveis', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
             //$this->logSis('DEB', 'SQL : ' . $sql);
 
             $resultado = mysqli_query($conn['link'], $sql);
