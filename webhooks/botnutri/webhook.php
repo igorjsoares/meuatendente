@@ -190,7 +190,7 @@
             }
 
             //( ULTIMA INTERAÇÃO DE MENU (TIPO 1) OU DE MARCAÇÃO DE HORÁRIO (TIPO 8) - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo, menu_anterior FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -204,11 +204,11 @@
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
 
             //( Se o retorno da última interação for Marcação (tipo 8), já é encaminhado para a Função de marcação.
-            if ($consultaUltima['tipo'] == 8) {
+            /* if ($consultaUltima['tipo'] == 8) {
 
                 $this->marcarHorario($numero, false, $consultaUltima);
                 exit(0);
-            }
+            } */
 
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
@@ -841,7 +841,7 @@
                         $arrayRetorno = array(
                             "modo" => 8, //tipo
                             "subtipo" => 'dia',
-                            "id_retorno" => $retorno['id_retorno'],
+                            "id_retorno" => 27, //& Está setando o ID retorno que está no banco de dados, isso aqui teria que ser variável
                             "opcoes" => ''
                         );
                         $this->sendMessage($retorno['nome'], $numero, "Consulta de dias", $arrayRetorno);
