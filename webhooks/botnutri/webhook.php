@@ -189,8 +189,8 @@
                 $this->envioMenuRaiz($numero, '');
             }
 
-            //( ULTIMA INTERAÇÃO DE MENU - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            //( ULTIMA INTERAÇÃO DE MENU (TIPO 1) OU DE MARCAÇÃO DE HORÁRIO (TIPO 8) - O que provavelmente o cliente está respondendo 
+            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -202,6 +202,13 @@
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
+
+            //( Se o retorno da última interação for Marcação (tipo 8), já é encaminhado para a Função de marcação.
+            if ($consultaUltima['tipo'] == 8) {
+
+                $this->marcarHorario($numero, false, $consultaUltima);
+                exit(0);
+            }
 
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
@@ -365,7 +372,7 @@
             } elseif ($tipo == 7) { //Exclusão em lista
                 $this->InOutListas($retorno['nome'], $numero, $retorno, 0);
             } elseif ($tipo == 8) { //Marcação horário
-                $this->marcarHorario($numero, $retorno);
+                $this->marcarHorario($numero, true, $retorno);
             }
         }
 
@@ -451,7 +458,7 @@
                     if ($statusEnvioEmail == true) { //( Conseguiu enviar
                         //( Atualiza a TBL_CONTATOS com a fase 1, ou seja já enviou o e-mail 
                         $atualizacaoBD = $this->atualizaCampo('tbl_contatos', 'fase', 1, "id_contato='$idContato'");
-                        $this->sendMessage("okEmail", $numero, "Enviei um e-mail com o conteúdo para $email, entre na sua caixa de e-mail e aproveite esse conteúo feito com todo carinho pra você.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
+                        $this->sendMessage("okEmail", $numero, "Enviei um e-mail com o conteúdo para $email, entre na sua caixa de e-mail e aproveite esse conteúdo feito com todo carinho pra você.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, envindo um oi.\n\nNutri Mari Martins.\n\n_Caso não receba o e-mail, verifique na caixa de SPAM do seu e-mail_", '');
                     } else { //( Não enviou
                         $this->sendMessage("okEmail", $numero, "Em breve você receberá o nosso conteúdo no e-mail $email.\n\nEsse Whatsap aqui é o nosso canal oficial, sempre que quiser falar comigo, pode me chamar por aqui, enviando um oi.\n\nNutri Mari Martins.\n\n_Caso não receba, verifique na caixa de SPAM do seu e-mail_", '');
                     }
@@ -792,7 +799,7 @@
         }
 
         //* Funcção que solicita um link de pagamento
-        private function marcarHorario($numero, $retorno)
+        private function marcarHorario($numero, $primeiro, $retorno)
         {
             $this->logSis('DEB', 'Entrou na marcação de horário');
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
@@ -801,39 +808,50 @@
             include("horarios.php");
             include("servicos.php");
 
-            switch ($retorno['coringa']) {
-                case 'mes':
-                    $this->logSis('DEB', 'Entrou no case mes');
-                    $arrayMeses = fctConsultaMeses();
+            if ($primeiro == true) {
+                $this->logSis('DEB', 'Entrou no case mes');
+                $arrayMeses = fctConsultaMeses();
 
-                    if ($arrayMeses == false) {
-                        logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível. Usuário: ' . $idContato);
-                    } else {
-                        $this->logSis('DEB', 'Entrou nos meses');
+                if ($arrayMeses == false) {
+                    logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível. Usuário: ' . $idContato);
+                } else {
+                    $this->logSis('DEB', 'Entrou nos meses');
 
-                        $texto = $retorno['mensagem'];
-                        foreach ($arrayMeses as $value) {
-                            $texto .= $value['mes'] . ' - ' . $value['nome_mes'] . "\n";
-                            $this->logSis('DEB', 'mês pra dentro->' . $value['nome_mes']);
-                        }
-                        $jsonDados = json_encode($arrayMeses);
-                        $arrayRetorno = array(
-                            "modo" => $retorno['tipo'], //tipo
-                            "subtipo" => 'mes',
-                            "id_retorno" => $retorno['id_retorno'],
-                            "opcoes" => $jsonDados
-                        );
-
-                        //& Está trazendo o menu corretamente e salvando já com o subtipo
-                        //& Colocar agora o json com as opções na coluna opcoes_variaveis
-                        //& A partir daí criar o CASE para DIA 
-                        $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
+                    $texto = $retorno['mensagem'];
+                    foreach ($arrayMeses as $value) {
+                        $texto .= $value['mes'] . ' - ' . $value['nome_mes'] . "\n";
+                        $this->logSis('DEB', 'mês pra dentro->' . $value['nome_mes']);
                     }
-                    break;
+                    $jsonDados = json_encode($arrayMeses);
+                    $arrayRetorno = array(
+                        "modo" => $retorno['tipo'], //tipo
+                        "subtipo" => 'mes',
+                        "id_retorno" => $retorno['id_retorno'],
+                        "opcoes" => $jsonDados
+                    );
 
-                default:
-                    # code...
-                    break;
+                    //& Está trazendo o menu corretamente e salvando já com o subtipo
+                    //& Colocar agora o json com as opções na coluna opcoes_variaveis
+                    //& A partir daí criar o CASE para DIA 
+                    $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
+                }
+            } else {
+                switch ($retorno['subtipo']) {
+                    case 'mes':
+                        $arrayRetorno = array(
+                            "modo" => 8, //tipo
+                            "subtipo" => 'dia',
+                            "id_retorno" => $retorno['id_retorno'],
+                            "opcoes" => ''
+                        );
+                        $this->sendMessage($retorno['nome'], $numero, "Consulta de dias", $arrayRetorno);
+
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
             }
         }
 

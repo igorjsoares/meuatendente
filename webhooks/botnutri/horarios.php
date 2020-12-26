@@ -11,7 +11,7 @@ function fctConsultaMeses()
 
     $resultado = fctConsultaParaArray(
         'ConsultaMês',
-        "SELECT MONTH(horario) AS mes FROM tbl_horarios WHERE status = 1 GROUP BY MONTH(horario)",
+        "SELECT MONTH(horario) AS mes FROM tbl_horarios WHERE status = 1 AND horario >= NOW() GROUP BY MONTH(horario)",
         array('mes')
     );
 

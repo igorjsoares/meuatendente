@@ -641,10 +641,14 @@
                             "filtro_tipo" => $idItem,
                             "acao" => 'quant'
                         );
-                        $this->sendMessage('PerguntaQuantidade', $this->numeroCliente, 'Favor enviar apenas a quantidde desejada desse produto.', $arrayRetorno);
+                        $this->sendMessage('PerguntaQuantidade', $this->numeroCliente, 'Favor enviar apenas a quantide desejada desse produto.', $arrayRetorno);
                         break;
                     case 3: //( Adicionar algum insumo
-
+                        $resultRetiradas = fctConsultaParaArray(
+                            'ConsultaRetiráveis',
+                            "SELECT ip.*, i.nome, i.valor_adicao FROM tbl_insumos_prod ip, tbl_insumos i WHERE ip.id_insumo = i.id AND ip.adiciona = 1 AND ip.status=1 AND ip.id_produto = $idItem",
+                            array('id', 'nome', 'quantidade', 'valor_adicao')
+                        );
                         //( Obter a lista de insumos que podem ser adicionados
                         $arrayRetorno = array(
                             "modo" => 5,
@@ -656,7 +660,28 @@
                     case 4: //( Retirar algum insumo
 
                         //( Obter a lista de insumos que podem ser retirados
+                        $resultRetiradas = fctConsultaParaArray(
+                            'ConsultaRetiráveis',
+                            "SELECT ip.*, i.nome, i.valor_retirada FROM tbl_insumos_prod ip, tbl_insumos i WHERE ip.id_insumo = i.id AND ip.retira = 1 AND ip.status=1 AND ip.id_produto = $idItem",
+                            array('id', 'nome', 'quantidade', 'valor_retirada')
+                        );
 
+                        //& ===========================
+                        //& ===========================
+                        //& ===========================
+                        //& ===========================
+                        //& ===========================
+                        //& FAZER ISSO AQUI FUNCIONAR
+
+                        $montaTextoOpcoes = $this->montaTextoOpcoes($textoOpcoes, $resultRetiradas, false);
+                        $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
+                        $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];  //& O que fazer para mandar esse JSON para ser salvo na tbl_interacao
+                        $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
+
+
+                        $texto = $textoComplementar . $arrayRetorno['mensagem'] . $textoOpcoes;
+                        $this->sendMessage($arrayRetorno['nome'], $numero, $texto, $arrayRetorno);
+                        //& Criar as opções com a mesma inteligência do Array de opções.
                         $arrayRetorno = array(
                             "modo" => 5,
                             "filtro_tipo" => $idItem,
@@ -737,8 +762,11 @@
                         break;
                     case 'add':  //( Adição de itens
 
+                        //& Criar aqui uma solução de análise da mensagem do cliente, onde analisa se ele mandou mais de uma opção separado por , espaço ou traço.
+
                         break;
                     case 'reti':  //( Retirada de intens
+                        //& Criar aqui uma solução de análise da mensagem do cliente, onde analisa se ele mandou mais de uma opção separado por , espaço ou traço.
 
                         break;
                     case 'obs':  //( Inserir observação
@@ -890,7 +918,7 @@
                 );
 
                 if ($result == false) {
-                    //& Problema, o que retornar ao usuário???
+                    $this->retornoErro('');
                 } else {
                     //$result = $result[0];
                     foreach ($result as $linha) {
@@ -909,7 +937,7 @@
                 );
 
                 if ($result == false) {
-                    //& Problema, o que retornar ao usuário???
+                    $this->retornoErro('');
                 } else {
 
                     foreach ($result as $linha) {
@@ -996,28 +1024,6 @@
                     $aberturaString = $this->msg_inicial;
                 }
                 $this->sendMessage("Inicial", $remoteJID, $aberturaString, '');
-            }
-        }
-
-        //* Atualização de campo genérico em tabela genérica
-        private function atualizaCampo($tabela, $campo, $valor, $where)
-        {
-            include("dados_conexao.php");
-            $sql = "UPDATE $tabela SET $campo = '$valor' WHERE $where";
-            //$this->logSis("DEB", $sql);
-
-            $query = mysqli_query($conn['link'], $sql);
-            $linhasAfetadas = mysqli_affected_rows($conn['link']);
-
-            if (!$query) {
-                $this->logSis('ERR', 'Mysql Connect: ' . mysqli_error($conn['link']));
-                exit(0);
-            }
-            if ($query != true && $linhasAfetadas == 0) {
-                return false;
-                $this->logSis('ERR', 'Não alterou no BD . Tbl: ' . $tabela . ' Campo: ' . $campo . ' Valor: ' . $valor);
-            } else {
-                return true;
             }
         }
 
@@ -1141,9 +1147,9 @@
                         $opcoes_variaveis = $retorno['opcoes_variaveis'];
                     }
                 }
-                if(isset($retorno['acao'])){
+                if (isset($retorno['acao'])) {
                     $acao = $retorno['acao'];
-                }else{
+                } else {
                     $acao = '';
                 }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
@@ -1343,7 +1349,7 @@
             }
         }
 
-        //* Funcção que solicita um link de pagamento
+        //* Função que solicita um link de pagamento
         private function marcarHorario($numero, $retorno)
         {
             $this->logSis('DEB', 'Entrou na marcação de horário');
