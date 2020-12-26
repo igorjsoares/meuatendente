@@ -820,7 +820,7 @@
 
 
 
-            switch ($retorno['subtipo']) {
+            switch ($retorno['coringa']) {
                 case 'mes':
                     $this->logSis('DEB', 'Entrou no case mes');
                     $arrayMeses = fctConsultaMeses();
