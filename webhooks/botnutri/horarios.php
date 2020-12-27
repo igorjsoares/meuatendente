@@ -52,6 +52,8 @@ function fctConsultaDias($mes)
                 'nome_dia' => fctNomeSemana($linha['dia_semana'])
             ));
         }
+        logSis('DEB', "Array Resultado nos horários -> " . print_r($arrayResultado, true));
+
         return $arrayResultado;
     }
 }
