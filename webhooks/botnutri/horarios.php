@@ -47,7 +47,7 @@ function fctConsultaDias($mes)
         return false;
     } else {
         $arrayResultado = [];
-        while ($linha = $resultado) {
+        foreach ($resultado as $linha) {
             array_push($arrayResultado, array(
                 'dia' => $linha['dia'],
                 'nome_dia' => fctNomeSemana($linha['dia_semana'])
