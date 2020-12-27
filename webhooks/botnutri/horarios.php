@@ -41,6 +41,7 @@ function fctConsultaDias($mes)
         "SELECT day(horario) AS dia, WEEKDAY(horario) AS dia_semana FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes AND horario >= NOW() GROUP BY day(horario)",
         array('dia', 'dia_semana')
     );
+    logSis('DEB', "Array Resultado nos horários 1 -> " . print_r($resultado, true));
 
     if ($resultado == false) {
         return false;
@@ -52,7 +53,7 @@ function fctConsultaDias($mes)
                 'nome_dia' => fctNomeSemana($linha['dia_semana'])
             ));
         }
-        logSis('DEB', "Array Resultado nos horários -> " . print_r($arrayResultado, true));
+        logSis('DEB', "Array Resultado nos horários 2 -> " . print_r($arrayResultado, true));
 
         return $arrayResultado;
     }
