@@ -108,28 +108,28 @@ function fctNomeMes($mes)
 }
 
 //* Função para retornar o nome do DIA DA SEMANA em português 
-function fctNomeSemana($mes)
+function fctNomeSemana($dia)
 {
-    switch ($$mes) {
-        case '0':
+    switch ($dia) {
+        case '1':
             return "Segunda";
             break;
-        case '1':
+        case '3':
             return "Terça";
             break;
-        case '2':
+        case '4':
             return "Quarta";
             break;
-        case '3':
+        case '5':
             return "Quinta";
             break;
-        case '4':
+        case '6':
             return "Sexta";
             break;
-        case '5':
+        case '7':
             return "Sábado";
             break;
-        case '6':
+        case '0':
             return "Domingo";
             break;
     }

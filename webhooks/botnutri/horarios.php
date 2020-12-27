@@ -38,8 +38,8 @@ function fctConsultaDias($mes)
 
     $resultado = fctConsultaParaArray(
         'ConsultaDias',
-        "SELECT id_horario, day(horario) AS dia FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes AND horario >= NOW() GROUP BY day(horario)",
-        array('id_horario', 'dia')
+        "SELECT day(horario), WEEKDAY(horario) AS dia_semana AS dia FROM tbl_horarios WHERE status = 1 AND month(horario) = $mes AND horario >= NOW() GROUP BY day(horario)",
+        array('dia', 'dia_semana')
     );
 
     if ($resultado == false) {
@@ -48,9 +48,8 @@ function fctConsultaDias($mes)
         $arrayResultado = [];
         while ($linha = $resultado) {
             array_push($arrayResultado, array(
-                'id_horario' => $linha['id_horario'],
                 'dia' => $linha['dia'],
-                'nome_dia' => fctNomeSemana($linha['dia'])
+                'nome_dia' => fctNomeSemana($linha['dia_semana'])
             ));
         }
         return $arrayResultado;
