@@ -78,7 +78,7 @@ function fctConsultaHorarios($dia, $mes)
             array_push($arrayResultado, array(
                 'id_horario' => $linha['dia'],
                 'dia' => $linha['dia'],
-                'dia_semana' => fctNomeSemana($linha['dia_semana']),
+                'dia_semana' => fctNomeSemanaAqui($linha['dia_semana']),
                 'hora' => $linha['hora']
             ));
         }
@@ -110,6 +110,34 @@ function fctConsultaMeusHorarios($idContato)
             ));
         }
         return $arrayResultado;
+    }
+}
+
+//* Função para retornar o nome do DIA DA SEMANA em português 
+function fctNomeSemanaAqui($dia)
+{
+    switch ($dia) {
+        case '1':
+            return "Segunda";
+            break;
+        case '3':
+            return "Terça";
+            break;
+        case '4':
+            return "Quarta";
+            break;
+        case '5':
+            return "Quinta";
+            break;
+        case '6':
+            return "Sexta";
+            break;
+        case '7':
+            return "Sábado";
+            break;
+        case '0':
+            return "Domingo";
+            break;
     }
 }
 
