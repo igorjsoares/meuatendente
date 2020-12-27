@@ -202,13 +202,7 @@
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
-
-            //( Se o retorno da última interação for Marcação (tipo 8), já é encaminhado para a Função de marcação.
-            /* if ($consultaUltima['tipo'] == 8) {
-
-                $this->marcarHorario($numero, false, $consultaUltima);
-                exit(0);
-            } */
+            $this->mensagem = explode(' ', trim($this->stringMensagemAtual));
 
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
@@ -818,9 +812,9 @@
             include("horarios.php");
             include("servicos.php");
 
-
-
             switch ($retorno['coringa']) {
+
+                    //( Caso o próximo retorno seja a pesquisa de meses
                 case 'mes':
                     $this->logSis('DEB', 'Entrou no case mes');
                     $arrayMeses = fctConsultaMeses();
@@ -849,14 +843,45 @@
                         $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                     }
                     break;
+
+                    //( Caso o próximo retorno seja a pesquisa de dias    
                 case 'dia':
-                    $arrayRetorno = array(
-                        "modo" => 8, //tipo
-                        "subtipo" => 'dia',
-                        "id_retorno" => 27, //& Está setando o ID retorno que está no banco de dados, isso aqui teria que ser variável
-                        "opcoes" => ''
-                    );
-                    $this->sendMessage($retorno['nome'], $numero, "Consulta de dias", $arrayRetorno);
+                    $this->logSis('DEB', 'Entrou no case dia');
+
+                    //( Analisa a mensagem do cliente para ver e tem alguma referência do mês
+                    $mes = fctAnaliseMensagemMes($this->mensagem);
+
+                    if ($mes == false) { //( Na mensagem do cliente não tem nada relacionado a mês
+                        //& Verificar esse retorno de erro
+                        $this->retornoErro('Não foi identificado na sua mensagem nenhum mês, favor enviar apenas o número referente ao mês desejado');
+                    } else {
+
+                        //( Faz a consulta dos dias disponíveis
+                        $arrayDias = fctConsultaDias($mes);
+
+                        if ($arrayDias == false) {
+                            logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível na consulta de dias. Usuário: ' . $this->idContato);
+                        } else {
+                            $this->logSis('DEB', 'Entrou nos dias');
+
+                            $texto = $retorno['mensagem'];
+                            foreach ($arrayDias as $value) {
+                                $texto .= $value['dia'] . ' - ' . $value['nome_dia'] . "\n";
+                                $this->logSis('DEB', 'dia pra dentro->' . $value['nome_dia']);
+                            }
+
+                            $arrayRetorno = array(
+                                "modo" => $retorno['tipo'], //tipo
+                                "subtipo" => 'dia',
+                                "id_retorno" => $retorno['id_retorno'],
+                                "opcoes" => $mes
+                            );
+
+                            $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
+                        }
+                    }
+
+
 
                     break;
 
