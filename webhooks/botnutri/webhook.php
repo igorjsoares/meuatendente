@@ -912,7 +912,7 @@
 
                             $texto = $retorno['mensagem'];
                             //$textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . "*\n";
-                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($value[0]['dia_semana']) . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($arrayHora[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
@@ -954,7 +954,7 @@
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
 
-                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor] . "\n";
+                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor];
 
                 array_push($arrayParaJson, array(
                     'ind' => $indice,
