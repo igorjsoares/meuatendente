@@ -293,12 +293,52 @@
 
 
             if ($consultaUltima['tipo'] == 8) { //( Verifica se o retorno trata-se de uma marcação de horário
+
                 //( Verifica qual o último subtipo para pesquisar o próximo retorno de acordo com o próximo subtipo
                 if ($consultaUltima['subtipo'] == 'mes') {
                     $proximoSubtipo = 'dia';
                 } else if ($consultaUltima['subtipo'] == 'dia') {
                     $proximoSubtipo = 'hora';
+                } else if ($consultaUltima['subtipo'] == 'hora') { //( Envia a pergunta de confirmação
+                    if (is_numeric($this->mensagem[0])) {
+                        //( Decodifica o Json que foi salvo no BD
+                        $opcoes = json_decode($this->opcoesVariaveis, true);
+                        $indice = array_search($this->mensagem[0], array_column($opcoes, 'ind'));
+                        $idHorario = $opcoes[$indice]['id'];
+
+                        //( Consulta o horário encontrado pra ver se está disponível ainda
+                        include_once("horarios.php");
+                        $result = fctConsultaParaArray(
+                            'ConsultaHorario',
+                            "SELECT *, DATE_FORMAT(horario, '%d/%m/%Y %H:%i') AS hora_formatada FROM tbl_horarios WHERE status = 1 AND horario >= NOW() AND id_horario = $idhorario",
+                            array('hora_formatada')
+                        );
+
+                        if($result == false){
+                            //& VEr se realmente vai ser possível escolher um outro horário
+                            //& Sugestão aqui seria voltar ao menu anterior
+                            $this->retornoErro("Esse horário não está mais disponível, favor escolher uma outra data.");
+                        }else{
+                            $texto = "CONFIRME O HORÁRIO\n";
+                            $texto .= "*$result[0]*\n\n";
+                            $texto .= "Você confirma esse horário?";
+
+                            $arrayRetorno = array(
+                                "modo" => 9, //tipo confirmação
+                                "subtipo" => 'horario',
+                                "id_retorno" => '',
+                                "opcoes" => $result[0]
+                            );
+                            
+                            //& Organizar o array retorno
+                            $this->confirmacao($texto, $arrayRetorno);
+                        }
+
+                    } else {
+                        $this->retornoErro("Responda somente com o número referente à opção desejada.");
+                    }
                 }
+
                 //( Faz a pesquisa do retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE tipo = 8 AND coringa = '$proximoSubtipo'";
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
@@ -939,11 +979,19 @@
 
                     break;
 
-                    //& Fazer agora caso o próximo retorno seja os horários disponíveis e o retorno anterior se ja dias claro
+                    //& Fazer agora a escolha de fato do horário, com mensagem de confirmação se é realmente o horário desejado.
+                    //& Trabalhar o envio do 0 para voltar ao menu anterior
                 default:
                     # code...
                     break;
             }
+        }
+
+        //* Função utilizada para confirmar alguma informação 
+        public function confirmacao($texto, $arrayRetorno)
+        {
+            $texto .= "\nResponda SIM ou NÃO";
+            $this->sendMessage('CONFIRM', $this->numero, $texto, $arrayRetorno);
         }
 
         //* Monta o texto com as opções e devolve tanto o texto quanto o json
