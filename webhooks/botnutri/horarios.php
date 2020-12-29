@@ -67,7 +67,7 @@ function fctConsultaHorarios($dia, $mes)
     $resultado = fctConsultaParaArray(
         'ConsultaHorarios',
         "SELECT id_horario, day(horario) AS dia, WEEKDAY(horario) AS dia_semana, DATE_FORMAT(horario, '%H:%i') AS hora FROM tbl_horarios WHERE horario >= NOW() AND status = 1 AND month(horario) = $mes AND day(horario) = $dia",
-        ''
+        array('id_horario', 'dia', 'dia_semana', 'hora')
     );
 
     if ($resultado == false) {
