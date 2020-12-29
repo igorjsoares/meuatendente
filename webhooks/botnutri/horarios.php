@@ -74,7 +74,7 @@ function fctConsultaHorarios($dia, $mes)
         return false;
     } else {
         $arrayResultado = [];
-        while ($linha = $resultado) {
+        foreach ($resultado as $linha) {
             array_push($arrayResultado, array(
                 'id_horario' => $linha['dia'],
                 'dia' => $linha['dia'],
