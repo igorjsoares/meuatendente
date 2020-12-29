@@ -173,7 +173,7 @@ function fctAnaliseMensagemMes($mensagem)
         );
 
         $result = array_intersect($arrayMeses, $mensagem);
-        
+
         if (count($result) > 0) { //Encontrou
             $result = array_values($result);
             return array_search($result[0], $arrayMeses);

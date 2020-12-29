@@ -911,7 +911,7 @@
                             $this->logSis('DEB', 'Entrou nas horas');
 
                             $texto = $retorno['mensagem'];
-                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . fctNomeSemana($value[0]['dia_semana']) . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($value[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
@@ -999,6 +999,34 @@
             $horas = $diff->h + ($diff->days * 24);
 
             return $horas;
+        }
+
+        //* Função para retornar o nome do DIA DA SEMANA em português 
+        public function fctNomeSemana($dia)
+        {
+            switch ($dia) {
+                case '0':
+                    return "Segunda";
+                    break;
+                case '1':
+                    return "Terça";
+                    break;
+                case '2':
+                    return "Quarta";
+                    break;
+                case '3':
+                    return "Quinta";
+                    break;
+                case '4':
+                    return "Sexta";
+                    break;
+                case '5':
+                    return "Sábado";
+                    break;
+                case '6':
+                    return "Domingo";
+                    break;
+            }
         }
 
         //* Função de LOG
