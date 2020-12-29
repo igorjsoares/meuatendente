@@ -863,8 +863,8 @@
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
 
             //include("dados_conexao.php");
-            include("horarios.php");
-            include("servicos.php");
+            include_once("horarios.php");
+            include_once("servicos.php");
 
             switch ($retorno['coringa']) {
 
