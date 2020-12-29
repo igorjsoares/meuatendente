@@ -205,7 +205,13 @@
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
             $this->mensagem = explode(' ', trim($this->stringMensagemAtual));
+            
+            if (mb_strtolower($mensagem[0], 'UTF-8') == 'menu') {
+                $this->logSis('DEB', 'Identificado o comando menu');
 
+                $this->envioMenuRaiz($this->numero, '');
+                exit(0);
+            }
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
