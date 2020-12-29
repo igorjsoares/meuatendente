@@ -819,10 +819,10 @@
             //include("dados_conexao.php");
             include("horarios.php");
             include("servicos.php");
-            
+
             switch ($retorno['coringa']) {
-                
-                //( Caso o próximo retorno seja a pesquisa de meses
+
+                    //( Caso o próximo retorno seja a pesquisa de meses
                 case 'mes':
                     $this->logSis('DEB', 'Entrou no case mes');
                     $arrayMeses = fctConsultaMeses();
@@ -909,11 +909,11 @@
                             logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível na consulta de dias. Usuário: ' . $this->idContato);
                         } else {
                             $this->logSis('DEB', 'Entrou nas horas');
-                            $this->logSis('DEB', 'Dia semana: '.$arrayHora[0]['dia_semana']);
+                            $this->logSis('DEB', 'Dia semana: ' . $arrayHora[0]['dia_semana']);
 
                             $texto = $retorno['mensagem'];
                             //$textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . "*\n";
-                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . fctNomeSemanaHorarios($arrayHora[0]['dia_semana']) . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $arrayHora[0]['dia_semana'] . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
@@ -949,7 +949,7 @@
         //* Monta o texto com as opções e devolve tanto o texto quanto o json
         public function montaTextoOpcoes($arrayOpcoes, $nomeIndice, $nomeValor)
         {
-            $this->logSis('DEB', 'Monta texto. NomeIndice: '.$nomeIndice. ' Nome valor: '. $nomeValor.' arrayOpcoes-> '.print_r($arrayOpcoes, true));
+            $this->logSis('DEB', 'Monta texto. NomeIndice: ' . $nomeIndice . ' Nome valor: ' . $nomeValor . ' arrayOpcoes-> ' . print_r($arrayOpcoes, true));
 
             $textoOpcoes = "";
             $arrayParaJson = [];
@@ -1003,34 +1003,6 @@
             $horas = $diff->h + ($diff->days * 24);
 
             return $horas;
-        }
-
-        //* Função para retornar o nome do DIA DA SEMANA em português 
-        public function fctNomeSemana($dia)
-        {
-            switch ($dia) {
-                case '0':
-                    return "Segunda";
-                    break;
-                case '1':
-                    return "Terça";
-                    break;
-                case '2':
-                    return "Quarta";
-                    break;
-                case '3':
-                    return "Quinta";
-                    break;
-                case '4':
-                    return "Sexta";
-                    break;
-                case '5':
-                    return "Sábado";
-                    break;
-                case '6':
-                    return "Domingo";
-                    break;
-            }
         }
 
         //* Função de LOG
