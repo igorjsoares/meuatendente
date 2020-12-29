@@ -892,16 +892,17 @@
 
                     //( Caso o próximo retorno seja a pesquisa de horários  
                 case 'hora':
-                    $this->logSis('DEB', 'Entrou no case hora. Mensagem: '.$this->mensagem[0]);
+                    $primeiraPalavra = $this->mensagem[0]
+                    $this->logSis('DEB', 'Entrou no case hora. Mensagem: ' . $primeiraPalavra);
 
-                    if (is_numeric($this->mensagem[0])) { //( A mensagem enviada é um número
+                    if (is_numeric($primeiraPalavra)) { //( A mensagem enviada é um número
                         $this->logSis('DEB', 'A mensagem enviada é um número');
 
                         $mes = $this->opcoesVariaveis; //no caso das interações de marcação para HORA, traz o mês 
                         $this->logSis('DEB', 'Mensagem é numérica. Mês de referência: ' . $mes);
 
                         //( Faz a consulta dos horários disponíveis
-                        $arrayHora = fctConsultaHorarios($this->mensagem[0], $mes);
+                        $arrayHora = fctConsultaHorarios($primeiraPalavra, $mes);
 
                         if ($arrayHora == false) {
                             logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível na consulta de dias. Usuário: ' . $this->idContato);
@@ -909,7 +910,7 @@
                             $this->logSis('DEB', 'Entrou nas horas');
 
                             $texto = $retorno['mensagem'];
-                            $textoComplementar = "*Dia " . $this->mensagem[0] . '/' . $mes . ' - ' . fctNomeSemana($value[0]['dia_semana']) . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . fctNomeSemana($value[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
