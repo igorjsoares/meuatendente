@@ -322,6 +322,7 @@
                             "SELECT *, DATE_FORMAT(horario, '%d/%m/%Y %H:%i') AS hora_formatada FROM tbl_horarios WHERE status = 1 AND horario >= NOW() AND id_horario = $idHorario",
                             array('hora_formatada')
                         );
+                        $this->logSis('DEB', 'result->' . print_r($result, true));
 
                         if ($result == false) {
                             //& VEr se realmente vai ser possível escolher um outro horário
