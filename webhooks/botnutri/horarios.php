@@ -106,7 +106,7 @@ function fctConsultaMeusHorarios($idContato)
         $arrayResultado = [];
         while ($linha = $resultado) {
             array_push($arrayResultado, array(
-                'id_horario' => $linha['dia'],
+                'id_horario' => $linha['id_horario'],
                 'dia' => $linha['dia'],
                 'dia_semana' => fctNomeSemanaHorarios($linha['dia_semana']),
                 'hora' => $linha['hora']

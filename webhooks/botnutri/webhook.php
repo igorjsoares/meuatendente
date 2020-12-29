@@ -909,10 +909,11 @@
                             logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível na consulta de dias. Usuário: ' . $this->idContato);
                         } else {
                             $this->logSis('DEB', 'Entrou nas horas');
+                            $this->logSis('DEB', 'Dia semana: '.$arrayHora[0]['dia_semana']);
 
                             $texto = $retorno['mensagem'];
                             //$textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . "*\n";
-                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($arrayHora[0]['dia_semana']) . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . fctNomeSemanaHorarios($arrayHora[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
