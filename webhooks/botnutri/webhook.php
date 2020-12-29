@@ -331,7 +331,7 @@
                             $this->retornoErro("Esse horário não está mais disponível, favor escolher uma outra data.");
                         } else {
                             $texto = "CONFIRME O HORÁRIO\n";
-                            $texto .= "*$result[0]*\n\n";
+                            $texto .= "*$result[0]['hora_formatada']*\n\n";
                             $texto .= "Você confirma esse horário?";
 
                             $arrayRetorno = array(
@@ -1000,6 +1000,7 @@
         //* Função utilizada para confirmar alguma informação 
         public function confirmacao($texto, $arrayRetorno)
         {
+            $this->logSis('DEB', 'Entrou no confirmação');
             $texto .= "\nResponda SIM ou NÃO";
             $this->sendMessage('CONFIRM', $this->numero, $texto, $arrayRetorno);
         }
