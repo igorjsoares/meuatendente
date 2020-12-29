@@ -300,17 +300,18 @@
                 } else if ($consultaUltima['subtipo'] == 'dia') {
                     $proximoSubtipo = 'hora';
                 } else if ($consultaUltima['subtipo'] == 'hora') { //( Envia a pergunta de confirmação
-                    if (is_numeric($this->mensagem[0])) {
+                    $this->logSis('DEB', 'Entrou no subtipo Hora');
+                    if (is_numeric($primeiraPalavraCliente)) {
                         //( Decodifica o Json que foi salvo no BD
                         $opcoes = json_decode($this->opcoesVariaveis, true);
-                        $indice = array_search($this->mensagem[0], array_column($opcoes, 'ind'));
+                        $indice = array_search($primeiraPalavraCliente, array_column($opcoes, 'ind'));
                         $idHorario = $opcoes[$indice]['id'];
 
                         //( Consulta o horário encontrado pra ver se está disponível ainda
                         include_once("horarios.php");
                         $result = fctConsultaParaArray(
                             'ConsultaHorario',
-                            "SELECT *, DATE_FORMAT(horario, '%d/%m/%Y %H:%i') AS hora_formatada FROM tbl_horarios WHERE status = 1 AND horario >= NOW() AND id_horario = $idhorario",
+                            "SELECT *, DATE_FORMAT(horario, '%d/%m/%Y %H:%i') AS hora_formatada FROM tbl_horarios WHERE status = 1 AND horario >= NOW() AND id_horario = $idHorario",
                             array('hora_formatada')
                         );
 
