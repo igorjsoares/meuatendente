@@ -895,9 +895,10 @@
                     $this->logSis('DEB', 'Entrou no case hora');
 
                     if (is_numeric($this->mensagem)) { //( A mensagem enviada é um número
-                        
+                        $this->logSis('DEB', 'A mensagem enviada é um número');
+
                         $mes = $this->opcoesVariaveis; //no caso das interações de marcação para HORA, traz o mês 
-                        $this->logSis('DEB', 'Mensagem é numérica. Mês de referência: '.$mes);
+                        $this->logSis('DEB', 'Mensagem é numérica. Mês de referência: ' . $mes);
 
                         //( Faz a consulta dos horários disponíveis
                         $arrayHora = fctConsultaHorarios($this->mensagem, $mes);
@@ -922,11 +923,13 @@
                                 "opcoes" => json_encode($arrayParaJson)
                             );
 
-                        $texto = $textoComplementar . $texto . $textoOpcoes;
+                            $texto = $textoComplementar . $texto . $textoOpcoes;
 
                             $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                         }
                     } else { //( A mensagem enviada não é um número
+                        $this->logSis('DEB', 'A mensagem enviada não é um número');
+
                         $this->retornoErro("Favor enviar somento número referente ao dia escolhido.");
                     }
 
