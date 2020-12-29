@@ -909,12 +909,12 @@
                             $this->logSis('DEB', 'Entrou nas horas');
 
                             $texto = $retorno['mensagem'];
-                            $textoComplementar = "Dia " . $this->mensagem[0] . '/' . $mes . ' - ' . fctNomeSemanaAqui($value[0]['dia_semana']) . "\n";
+                            $textoComplementar = "*Dia " . $this->mensagem[0] . '/' . $mes . ' - ' . fctNomeSemana($value[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
                             $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
-                            $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
+                            //$arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
 
                             $arrayRetorno = array(
                                 "modo" => $retorno['tipo'], //tipo
@@ -951,7 +951,7 @@
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
 
-                $textoOpcoes .= "\n*" . $indice . ". " . $linha[$nomeValor] . "_\n";
+                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor] . "\n";
 
                 array_push($arrayParaJson, array(
                     'ind' => $indice,

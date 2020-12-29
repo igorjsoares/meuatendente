@@ -117,7 +117,7 @@ function fctConsultaMeusHorarios($idContato)
 }
 
 //* Função para retornar o nome do DIA DA SEMANA em português 
-function fctNomeSemanaAqui($dia)
+function fctNomeSemana($dia)
 {
     switch ($dia) {
         case '0':
