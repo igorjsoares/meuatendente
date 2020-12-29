@@ -911,7 +911,8 @@
                             $this->logSis('DEB', 'Entrou nas horas');
 
                             $texto = $retorno['mensagem'];
-                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($value[0]['dia_semana']) . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . "*\n";
+                            //$textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($value[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
