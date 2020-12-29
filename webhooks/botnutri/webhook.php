@@ -951,7 +951,7 @@
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
 
-                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor] . "\n";
+                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor] . "_\n";
 
                 array_push($arrayParaJson, array(
                     'ind' => $indice,
