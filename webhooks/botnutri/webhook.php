@@ -817,6 +817,7 @@
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
 
             //include("dados_conexao.php");
+            include("servicos.php");
             
             switch ($retorno['coringa']) {
                 
@@ -824,7 +825,6 @@
                 case 'mes':
                     $this->logSis('DEB', 'Entrou no case mes');
                     include("horarios.php");
-                    include("servicos.php");
                     $arrayMeses = fctConsultaMeses();
 
                     if ($arrayMeses == false) {
