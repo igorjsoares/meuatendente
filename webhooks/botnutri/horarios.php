@@ -82,6 +82,9 @@ function fctConsultaHorarios($dia, $mes)
                 'hora' => $linha['hora']
             ));
         }
+
+        logSis('DEB', "Array Resultado nos horários -> " . print_r($arrayResultado, true));
+
         return $arrayResultado;
     }
 }
@@ -117,25 +120,25 @@ function fctConsultaMeusHorarios($idContato)
 function fctNomeSemanaAqui($dia)
 {
     switch ($dia) {
-        case '1':
+        case '0':
             return "Segunda";
             break;
-        case '3':
+        case '1':
             return "Terça";
             break;
-        case '4':
+        case '2':
             return "Quarta";
             break;
-        case '5':
+        case '3':
             return "Quinta";
             break;
-        case '6':
+        case '4':
             return "Sexta";
             break;
-        case '7':
+        case '5':
             return "Sábado";
             break;
-        case '0':
+        case '6':
             return "Domingo";
             break;
     }
