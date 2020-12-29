@@ -850,7 +850,7 @@
                     break;
 
                     //( Caso o próximo retorno seja a pesquisa de dias    
-                /* case 'dia':
+                case 'dia':
                     $this->logSis('DEB', 'Entrou no case dia');
 
                     //( Analisa a mensagem do cliente para ver e tem alguma referência do mês
@@ -888,10 +888,10 @@
 
 
 
-                    break; */
+                    break;
 
                     //( Caso o próximo retorno seja a pesquisa de horários  
-                /* case 'hora':
+                case 'hora':
                     $this->logSis('DEB', 'Entrou no case hora.');
                     $primeiraPalavra = $this->mensagem[0];
                     $this->logSis('DEB', 'Entrou no case hora. Mensagem: ' . $primeiraPalavra);
@@ -911,8 +911,8 @@
                             $this->logSis('DEB', 'Entrou nas horas');
 
                             $texto = $retorno['mensagem'];
-                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . "*\n";
-                            //$textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($value[0]['dia_semana']) . "*\n";
+                            //$textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . "*\n";
+                            $textoComplementar = "*Dia " . $primeiraPalavra . '/' . $mes . ' - ' . $this->fctNomeSemana($value[0]['dia_semana']) . "*\n";
                             $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
 
                             $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
@@ -936,7 +936,7 @@
                         $this->retornoErro("Favor enviar somento número referente ao dia escolhido.");
                     }
 
-                    break; */
+                    break;
 
                     //& Fazer agora caso o próximo retorno seja os horários disponíveis e o retorno anterior se ja dias claro
                 default:
@@ -954,7 +954,7 @@
             foreach ($arrayOpcoes as $linha) {
                 $indice += 1;
 
-                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor] . "_\n";
+                $textoOpcoes .= "\n*" . $indice . "*. Às " . $linha[$nomeValor] . "\n";
 
                 array_push($arrayParaJson, array(
                     'ind' => $indice,
