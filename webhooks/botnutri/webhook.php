@@ -948,6 +948,8 @@
         //* Monta o texto com as opções e devolve tanto o texto quanto o json
         public function montaTextoOpcoes($arrayOpcoes, $nomeIndice, $nomeValor)
         {
+            $this->logSis('DEB', 'Monta texto. NomeIndice: '.$nomeIndice. ' Nome valor: '. $nomeValor.' arrayOpcoes-> '.print_r($arrayOpcoes, true));
+
             $textoOpcoes = "";
             $arrayParaJson = [];
             $indice = 0;
