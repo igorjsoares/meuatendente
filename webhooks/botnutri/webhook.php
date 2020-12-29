@@ -892,7 +892,7 @@
 
                     //( Caso o próximo retorno seja a pesquisa de horários  
                 case 'hora':
-                    $this->logSis('DEB', 'Entrou no case hora');
+                    $this->logSis('DEB', 'Entrou no case hora. Mensagem: '.$this->mensagem);
 
                     if (is_numeric($this->mensagem)) { //( A mensagem enviada é um número
                         $this->logSis('DEB', 'A mensagem enviada é um número');
