@@ -291,6 +291,7 @@
 
             include("dados_conexao.php");
             include_once("horarios.php");
+            include_once("servicos.php");
 
 
 
