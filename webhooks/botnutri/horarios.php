@@ -50,7 +50,7 @@ function fctConsultaDias($mes)
         foreach ($resultado as $linha) {
             array_push($arrayResultado, array(
                 'dia' => $linha['dia'],
-                'nome_dia' => fctNomeSemana($linha['dia_semana'])
+                'nome_dia' => fctNomeSemanaHorarios($linha['dia_semana'])
             ));
         }
         logSis('DEB', "Array Resultado nos horários 2 -> " . print_r($arrayResultado, true));
@@ -78,7 +78,7 @@ function fctConsultaHorarios($dia, $mes)
             array_push($arrayResultado, array(
                 'id_horario' => $linha['dia'],
                 'dia' => $linha['dia'],
-                'dia_semana' => fctNomeSemana($linha['dia_semana']),
+                'dia_semana' => fctNomeSemanaHorarios($linha['dia_semana']),
                 'hora' => $linha['hora']
             ));
         }
@@ -108,7 +108,7 @@ function fctConsultaMeusHorarios($idContato)
             array_push($arrayResultado, array(
                 'id_horario' => $linha['dia'],
                 'dia' => $linha['dia'],
-                'dia_semana' => fctNomeSemana($linha['dia_semana']),
+                'dia_semana' => fctNomeSemanaHorarios($linha['dia_semana']),
                 'hora' => $linha['hora']
             ));
         }
@@ -117,7 +117,7 @@ function fctConsultaMeusHorarios($idContato)
 }
 
 //* Função para retornar o nome do DIA DA SEMANA em português 
-function fctNomeSemana($dia)
+function fctNomeSemanaHorarios($dia)
 {
     switch ($dia) {
         case '0':
