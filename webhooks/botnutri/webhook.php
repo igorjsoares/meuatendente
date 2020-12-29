@@ -817,14 +817,14 @@
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
 
             //include("dados_conexao.php");
-            include("horarios.php");
-            include("servicos.php");
-
+            
             switch ($retorno['coringa']) {
-
-                    //( Caso o próximo retorno seja a pesquisa de meses
+                
+                //( Caso o próximo retorno seja a pesquisa de meses
                 case 'mes':
                     $this->logSis('DEB', 'Entrou no case mes');
+                    include("horarios.php");
+                    include("servicos.php");
                     $arrayMeses = fctConsultaMeses();
 
                     if ($arrayMeses == false) {
@@ -850,7 +850,7 @@
                     break;
 
                     //( Caso o próximo retorno seja a pesquisa de dias    
-                case 'dia':
+                /* case 'dia':
                     $this->logSis('DEB', 'Entrou no case dia');
 
                     //( Analisa a mensagem do cliente para ver e tem alguma referência do mês
@@ -888,7 +888,7 @@
 
 
 
-                    break;
+                    break; */
 
                     //( Caso o próximo retorno seja a pesquisa de horários  
                 /* case 'hora':
