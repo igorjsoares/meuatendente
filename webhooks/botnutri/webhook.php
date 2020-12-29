@@ -891,7 +891,7 @@
                     break;
 
                     //( Caso o próximo retorno seja a pesquisa de horários  
-                case 'hora':
+                /* case 'hora':
                     $this->logSis('DEB', 'Entrou no case hora.');
                     $primeiraPalavra = $this->mensagem[0];
                     $this->logSis('DEB', 'Entrou no case hora. Mensagem: ' . $primeiraPalavra);
@@ -936,7 +936,7 @@
                         $this->retornoErro("Favor enviar somento número referente ao dia escolhido.");
                     }
 
-                    break;
+                    break; */
 
                     //& Fazer agora caso o próximo retorno seja os horários disponíveis e o retorno anterior se ja dias claro
                 default:
