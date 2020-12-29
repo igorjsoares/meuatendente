@@ -34,6 +34,7 @@
                 $RemoteJidArray = explode("@", $RemoteJid);
                 $numero = $RemoteJidArray[0];
                 $this->numerocliente = $numero;
+                $this->numero = $numero;
                 $tipoNumero = $RemoteJidArray[1];
                 $idMensagemWhats = $decoded['Body']['Info']['Id'];
                 $timestamp = $decoded['Body']['Info']['Timestamp'];
@@ -1000,8 +1001,8 @@
         //* Função utilizada para confirmar alguma informação 
         public function confirmacao($texto, $arrayRetorno)
         {
-            $this->logSis('DEB', 'Entrou no confirmação');
-            $texto .= "\nResponda SIM ou NÃO";
+            $this->logSis('DEB', 'Entrou no confirmação. Texto: '.$texto.' ArrayRetorno-> '.print_r($arrayRetorno));
+            $texto .= "\nResponda SIM ou NÃO.";
             $this->sendMessage('CONFIRM', $this->numero, $texto, $arrayRetorno);
         }
 
