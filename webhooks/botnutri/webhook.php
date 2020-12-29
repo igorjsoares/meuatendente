@@ -338,7 +338,7 @@
                                 "modo" => 9, //tipo confirmação
                                 "subtipo" => 'horario',
                                 "id_retorno" => '',
-                                "opcoes" => $result[0]
+                                "opcoes" => $idHorario
                             );
 
                             //& Organizar o array retorno
