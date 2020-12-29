@@ -331,8 +331,9 @@
                             //& Sugestão aqui seria voltar ao menu anterior
                             $this->retornoErro("Esse horário não está mais disponível, favor escolher uma outra data.");
                         } else {
+                            $horaFormatada = $result[0]['hora_formatada'];
                             $texto = "CONFIRME O HORÁRIO\n";
-                            $texto .= "*$result[0]['hora_formatada']*\n\n";
+                            $texto .= "*$horaFormatada*\n\n";
                             $texto .= "Você confirma esse horário?";
 
                             $arrayRetorno = array(
