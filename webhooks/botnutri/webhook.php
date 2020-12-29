@@ -290,6 +290,8 @@
             $this->logSis('DEB', 'Entrou no Retorno. idRetorno: ' . $id_retorno . ' Palavra: ' . $primeiraPalavraCliente . ' UltimoRetorno: ' . $ultimoRetorno);
 
             include("dados_conexao.php");
+            include_once("horarios.php");
+
 
 
             if ($consultaUltima['tipo'] == 8) { //( Verifica se o retorno trata-se de uma marcação de horário
@@ -310,11 +312,11 @@
 
                         $indice = array_search($primeiraPalavraCliente, array_column($opcoes, 'ind'));
                         $idHorario = $opcoes[$indice]['id'];
-                        $this->logSis('DEB', '\idHorario->' . $idHorario);
+                        $this->logSis('DEB', 'idHorario->' . $idHorario);
 
 
                         //( Consulta o horário encontrado pra ver se está disponível ainda
-                        include_once("horarios.php");
+
                         $result = fctConsultaParaArray(
                             'ConsultaHorario',
                             "SELECT *, DATE_FORMAT(horario, '%d/%m/%Y %H:%i') AS hora_formatada FROM tbl_horarios WHERE status = 1 AND horario >= NOW() AND id_horario = $idHorario",
