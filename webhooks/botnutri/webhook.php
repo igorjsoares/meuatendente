@@ -353,6 +353,11 @@
 
                 //( Faz a pesquisa do retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE tipo = 8 AND coringa = '$proximoSubtipo'";
+            } elseif ($consultaUltima['tipo'] == 9) { //( Uma solicitação de confirmação
+
+                if ($consultaUltima['subtipo'] == 'horario') {
+                    $this->reservaHorario($this->opcoesVariaveis);
+                }
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
             } else { //Sei qual o retorno atual
@@ -725,6 +730,45 @@
             return ucfirst($nome);
         }
 
+        //* Reserva o horário desejado e retorna uma confirmação ou negação e o menu raiz
+        private function reservaHorario($idHorario)
+        {
+            include_once("servicos.php");
+
+            $result = fctConsultaParaArray(
+                'ConsultaPagamentoDisponível',
+                "SELECT s.id_fin_status FROM tbl_fin_status s, tbl_fin_links l WHERE s.payment_link_id = l.id AND s.status = 'paid' AND l.id_produto = 1 AND l.id_contato = $this->idContato AND s.status_uso = 0 LIMIT 1",
+                array('id_fin_status')
+            );
+            if ($result == false) {
+                //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
+                $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
+            } else {
+                $idFinanceiro = $resul[0]['id_fin_status'];
+                $result = fctUpdate(
+                    'ReservandoHorário',
+                    "UPDATE tbl_horarios SET id_contato = $this->idContato, status = 2, id_order = $idFinanceiro WHERE id_horario = $idHorario"
+                );
+
+                if ($result == false) {
+                    $this->logSis('ERRO', 'Cliente tentou fazer a reserva e não conseguiu. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
+                    $this->retornoErro("Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.");
+                }else{
+                $result = fctUpdate(
+                    'AtualizandoOrder',
+                    "UPDATE tbl_fin_status SET status_uso = 1 WHERE id_fin_status = $idFinanceiro"
+                );
+
+                if ($result == false) {
+                    $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
+                    $this->retornoErro("Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.");
+                }else{
+                    $this->envioMenuRaiz($this->numero, "Seu horário foi *RESERVADO COM SUCESSO*, no dia e hora marcados entrarei em contato nesse número para a realização da consulta. Obrigada!")
+                }
+                }
+            }
+        }
+
         //* Inserir interação 
         public function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $opcoesVariaveis, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
         {
@@ -834,10 +878,9 @@
                     $expires_at = $arrayResult['expires_at'];
                     $create_at = $arrayResult['create_at'];
 
-
-
                     //( INSERE OS DADOS DO LINK NO BANCO DE DADOS 
-                    $sql = "INSERT INTO tbl_fin_links(id_instancia, id_contato, object, id, company_id, amount, item_external_id, item_title, item_unit_price, item_quantity, short_id, url, date_created, date_updated, expires_at, create_at) VALUES ($this->idInstancia, $this->id_contato, '$object', '$id', '$company_id', '$amount', '$item_external_id', '$item_title', '$item_unit_price', '$item_quantity', '$short_id', '$url', '$date_created', '$date_updated', '$expires_at', NOW())";
+                    $id_produto = 1; // 1 = Consulta | 2 = Mentoria
+                    $sql = "INSERT INTO tbl_fin_links(id_instancia, id_contato, id_produto, object, id, company_id, amount, item_external_id, item_title, item_unit_price, item_quantity, short_id, url, date_created, date_updated, expires_at, create_at) VALUES ($this->idInstancia, $this->id_contato, $id_produto, '$object', '$id', '$company_id', '$amount', '$item_external_id', '$item_title', '$item_unit_price', '$item_quantity', '$short_id', '$url', '$date_created', '$date_updated', '$expires_at', NOW())";
 
                     $resultado = mysqli_query($conn['link'], $sql);
                     if (!$resultado) {
@@ -1002,7 +1045,7 @@
         //* Função utilizada para confirmar alguma informação 
         public function confirmacao($texto, $arrayRetorno)
         {
-            $this->logSis('DEB', 'Entrou no confirmação. Texto: '.$texto.' ArrayRetorno-> '.print_r($arrayRetorno));
+            $this->logSis('DEB', 'Entrou no confirmação. Texto: ' . $texto . ' ArrayRetorno-> ' . print_r($arrayRetorno));
             $texto .= "\nResponda SIM ou NÃO.";
             $this->sendMessage('CONFIRM', $this->numero, $texto, $arrayRetorno);
         }
