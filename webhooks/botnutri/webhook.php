@@ -190,12 +190,13 @@
             }
 
             //( ULTIMA INTERAÇÃO DE MENU (TIPO 1) OU DE MARCAÇÃO DE HORÁRIO (TIPO 8) - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo, menu_anterior FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo, opcoes_variaveis, menu_anterior FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
             $this->menuAnterior = $consultaUltima['menu_anterior'];
             $this->ultimoRetorno = $consultaUltima['id_retorno'];
+            $this->opcoesVariaveis = $consultaUltima['opcoes_variaveis'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
 
@@ -240,6 +241,8 @@
                         $arrayRetorno = $this->consultaRetorno($this->menuAnterior, '', '', '');
                         $this->ultimoRetorno = 0;
                         $this->direcaoEnvio($arrayRetorno['tipo'], $numero, $arrayRetorno);
+
+                        //( É número mas não é igual a 0
                     } else {
                         $this->logSis('DEB', 'Não é igual a 0 -> ' . $primeiraPalavraCliente);
 
@@ -294,7 +297,7 @@
                 if ($consultaUltima['subtipo'] == 'mes') {
                     $proximoSubtipo = 'dia';
                 } else if ($consultaUltima['subtipo'] == 'dia') {
-                    $proximoSubtipo = 'horario';
+                    $proximoSubtipo = 'hora';
                 }
                 //( Faz a pesquisa do retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE tipo = 8 AND coringa = '$proximoSubtipo'";
@@ -613,7 +616,7 @@
                 }
                 if (isset($retorno['opcoes']) && $retorno['opcoes'] != '') {
                     $opcoes = $retorno['opcoes'];
-                }else{
+                } else {
                     $opcoes = $retorno['opcoes'];
                 }
                 //$this->logSis('REQ', 'Chegou aqui - Instância: ' . $this->idInstancia . ' IdContato: ' . $this->id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $this->id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
@@ -842,9 +845,6 @@
                             "opcoes" => $jsonDados
                         );
 
-                        //& Está trazendo o menu corretamente e salvando já com o subtipo
-                        //& Colocar agora o json com as opções na coluna opcoes_variaveis
-                        //& A partir daí criar o CASE para DIA 
                         $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
                     }
                     break;
@@ -890,10 +890,74 @@
 
                     break;
 
+                    //( Caso o próximo retorno seja a pesquisa de horários  
+                case 'hora':
+                    $this->logSis('DEB', 'Entrou no case hora');
+
+                    if (is_numeric($this->mensagem)) { //( A mensagem enviada é um número
+
+                        $mes = $this->opcoesVariaveis; //no caso das interações de marcação para HORA, traz o mês 
+
+                        //( Faz a consulta dos horários disponíveis
+                        $arrayHora = fctConsultaHorarios($this->mensagem, $mes);
+
+                        if ($arrayHora == false) {
+                            logSis('ERR', 'Usuário consultando e não encontrando nenhum horário disponível na consulta de dias. Usuário: ' . $this->idContato);
+                        } else {
+                            $this->logSis('DEB', 'Entrou nas horas');
+
+                            $texto = $retorno['mensagem'];
+                            $textoComplementar = "Dia " . $this->mensagem . '/' . $mes . ' - ' . fctNomeSemanaAqui($value[0]['dia_semana']) . "\n";
+                            $montaTextoOpcoes = $this->montaTextoOpcoes($arrayHora, 'id_horario', 'hora');
+
+                            $textoOpcoes = $montaTextoOpcoes['textoOpcoes'];
+                            $arrayParaJson = $montaTextoOpcoes['arrayParaJson'];
+                            $arrayRetorno['opcoes_variaveis'] = json_encode($arrayParaJson);
+
+                            $arrayRetorno = array(
+                                "modo" => $retorno['tipo'], //tipo
+                                "subtipo" => 'hora',
+                                "id_retorno" => $retorno['id_retorno'],
+                                "opcoes" => json_encode($arrayParaJson)
+                            );
+
+                        $texto = $textoComplementar . $texto . $textoOpcoes;
+
+                            $this->sendMessage($retorno['nome'], $numero, $texto, $arrayRetorno);
+                        }
+                    } else { //( A mensagem enviada não é um número
+                        $this->retornoErro("Favor enviar somento número referente ao dia escolhido.");
+                    }
+
+                    break;
+
+                    //& Fazer agora caso o próximo retorno seja os horários disponíveis e o retorno anterior se ja dias claro
                 default:
                     # code...
                     break;
             }
+        }
+
+        //* Monta o texto com as opções e devolve tanto o texto quanto o json
+        public function montaTextoOpcoes($arrayOpcoes, $nomeIndice, $nomeValor)
+        {
+            $textoOpcoes = "";
+            $arrayParaJson = [];
+            $indice = 0;
+            foreach ($arrayOpcoes as $linha) {
+                $indice += 1;
+
+                $textoOpcoes .= "\n*" . $indice . ". " . $linha[$nomeValor] . "_\n";
+
+                array_push($arrayParaJson, array(
+                    'ind' => $indice,
+                    'id' => $linha[$nomeIndice]
+                ));
+            }
+            return array(
+                'textoOpcoes' => $textoOpcoes,
+                'arrayParaJson' => $arrayParaJson
+            );
         }
 
         //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
