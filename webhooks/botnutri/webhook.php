@@ -302,10 +302,16 @@
                 } else if ($consultaUltima['subtipo'] == 'hora') { //( Envia a pergunta de confirmação
                     $this->logSis('DEB', 'Entrou no subtipo Hora');
                     if (is_numeric($primeiraPalavraCliente)) {
+                        $this->logSis('DEB', 'É número');
+
                         //( Decodifica o Json que foi salvo no BD
                         $opcoes = json_decode($this->opcoesVariaveis, true);
+                        $this->logSis('DEB', 'opcoes->' . print_r($opcoes, true));
+
                         $indice = array_search($primeiraPalavraCliente, array_column($opcoes, 'ind'));
                         $idHorario = $opcoes[$indice]['id'];
+                        $this->logSis('DEB', '\idHorario->' . $idHorario);
+
 
                         //( Consulta o horário encontrado pra ver se está disponível ainda
                         include_once("horarios.php");
@@ -315,11 +321,11 @@
                             array('hora_formatada')
                         );
 
-                        if($result == false){
+                        if ($result == false) {
                             //& VEr se realmente vai ser possível escolher um outro horário
                             //& Sugestão aqui seria voltar ao menu anterior
                             $this->retornoErro("Esse horário não está mais disponível, favor escolher uma outra data.");
-                        }else{
+                        } else {
                             $texto = "CONFIRME O HORÁRIO\n";
                             $texto .= "*$result[0]*\n\n";
                             $texto .= "Você confirma esse horário?";
@@ -330,11 +336,10 @@
                                 "id_retorno" => '',
                                 "opcoes" => $result[0]
                             );
-                            
+
                             //& Organizar o array retorno
                             $this->confirmacao($texto, $arrayRetorno);
                         }
-
                     } else {
                         $this->retornoErro("Responda somente com o número referente à opção desejada.");
                     }
