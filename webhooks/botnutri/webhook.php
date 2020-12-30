@@ -87,6 +87,7 @@
 
                     if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
                         $this->id_contato = $consultaContato['id_contato'];
+                        $this->idContato = $consultaContato['id_contato'];
                         $nome = $consultaContato['nome'];
                         $email = $consultaContato['email'];
                         $fase = $consultaContato['fase'];
@@ -99,6 +100,7 @@
                         $sql = "INSERT INTO tbl_contatos(id_instancia, numero, lista_0, teste, created_at) VALUES ('$idInstancia', '$numero', 1, 0, NOW())";
                         $resultado = mysqli_query($conn['link'], $sql);
                         $this->id_contato = mysqli_insert_id($conn['link']);
+                        $this->idContato = mysqli_insert_id($conn['link']);
                         if ($resultado != '1') {
                             $this->logSis('ERR', 'Insert Contatos. Erro: ' . $resultado . mysqli_connect_error());
                         }
@@ -372,7 +374,7 @@
 
 
                     if ($nao == 1) { //( Se tiver NÃO, é enviada o MENU RAIZ 
-                        $this->envioMenuRaiz($this->numero, "*OPERAÇÃO CANCELADA*");
+                        $this->envioMenuRaiz($this->numero, "*OPERAÇÃO CANCELADA*\n\n");
                     } else if ($sim == 1) { //( Se tiver SIM, é reservado o horário
                         $this->reservaHorario($this->opcoesVariaveis);
                     } else { //( Se na mensagem não tem nem SIM nem Não, é enviado a mensagem de erro dizendo que não entendeu
