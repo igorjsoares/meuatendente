@@ -443,6 +443,8 @@
                     'name' => $consultaRetorno['name'],
                     'address' => $consultaRetorno['address']
                 );
+            $this->logSis('DEB', 'Retorno->' . print_r($retorno, true));
+
                 return $retorno;
             }
         }
