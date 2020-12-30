@@ -381,6 +381,10 @@
                         $this->sendMessage('MensageErro', $this->numero, "Não compreendi a sua resposta, favor responder exatamente como foi solicitado.", "");
                     }
                 }
+            }else if($consultaUltima['tipo'] == 10){ //( Solicitação de link
+
+                $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, $consultaUltima['subtipo']);
+
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
             } else { //Sei qual o retorno atual
@@ -769,13 +773,7 @@
                 $this->logSis('DEB', 'Cliente tentou fazer a marcação só que já não tinha Ordem disponível. id_cliente: ' . $this->idContato);
 
                 //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
-                $this->sendMessage(
-                    'MensageErro', 
-                    $this->numero, 
-                    "Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.", 
-                    ""
-                );
-            
+                $this->envioMenuRaiz($this->numero, "Não foi encontrado pagamento confirmado para esse produto, certifique-se que foi gerado um link de pagamento e que o pagamento foi mesmo efetuado.\n\n");
             } else {
                 $idFinanceiro = $result[0]['id_fin_status'];
                 $idContato = $this->idContato;
