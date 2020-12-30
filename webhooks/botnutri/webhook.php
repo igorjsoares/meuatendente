@@ -765,6 +765,8 @@
             );
             $this->logSis('DEB', 'Resultado Retornado: ' . json_encode($result));
             if ($result === false) {
+                $this->logSis('DEB', 'Cliente tentou fazer a marcação só que já não tinha Ordem disponível. id_cliente: ' . $this->idContato);
+
                 //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
                 $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
             } else {
@@ -1141,6 +1143,19 @@
 
             return $horas;
         }
+
+         //* Função de LOG
+         public function retornoErro($texto)
+         {
+             $this->logSis('DEB', 'Entrou no retornoErro');
+             $textoRetorno = "Houve um erro na comunicação, favor responder novamente a última pergunta.";
+             if ($texto != '') {
+                 $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
+                 $textoRetorno += "_" . $texto . "_";
+             }
+             $this->sendMessage("MensageErro", $this->numeroCliente, $textoRetorno, "");
+             exit(0);
+         }
 
         //* Função de LOG
         public function logSis($tipo, $texto)

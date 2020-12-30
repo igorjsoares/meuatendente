@@ -1465,6 +1465,7 @@
         //* Função de LOG
         public function retornoErro($texto)
         {
+            $this->logSis('DEB', 'Entrou no retornoErro');
             $textoRetorno = "Houve um erro na comunicação, favor responder novamente a última pergunta.";
             if ($texto != '') {
                 $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
