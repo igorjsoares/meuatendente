@@ -763,6 +763,7 @@
                 "SELECT s.id_fin_status FROM tbl_fin_status s, tbl_fin_links l WHERE s.payment_link_id = l.id AND s.status = 'paid' AND l.id_produto = 1 AND l.id_contato = $this->idContato AND s.status_uso = 0 LIMIT 1",
                 array('id_fin_status')
             );
+            $this->logSis('DEB', 'Resultado Retornado: ' . $result);
             if ($result === false) {
                 //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
                 $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
