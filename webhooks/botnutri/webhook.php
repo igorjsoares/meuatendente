@@ -205,7 +205,7 @@
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
             $mensagem = explode(' ', trim($this->stringMensagemAtual));
             $this->mensagem = explode(' ', trim($this->stringMensagemAtual));
-            
+
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'menu') {
                 $this->logSis('DEB', 'Identificado o comando menu');
 
@@ -759,18 +759,18 @@
                 if ($result == false) {
                     $this->logSis('ERRO', 'Cliente tentou fazer a reserva e não conseguiu. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
                     $this->retornoErro("Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.");
-                }else{
-                $result = fctUpdate(
-                    'AtualizandoOrder',
-                    "UPDATE tbl_fin_status SET status_uso = 1 WHERE id_fin_status = $idFinanceiro"
-                );
+                } else {
+                    $result = fctUpdate(
+                        'AtualizandoOrder',
+                        "UPDATE tbl_fin_status SET status_uso = 1 WHERE id_fin_status = $idFinanceiro"
+                    );
 
-                if ($result == false) {
-                    $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
-                    $this->retornoErro("Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.");
-                }else{
-                    $this->envioMenuRaiz($this->numero, "Seu horário foi *RESERVADO COM SUCESSO*, no dia e hora marcados entrarei em contato nesse número para a realização da consulta. Obrigada!")
-                }
+                    if ($result == false) {
+                        $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
+                        $this->retornoErro("Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.");
+                    } else {
+                        $this->envioMenuRaiz($this->numero, "Seu horário foi *RESERVADO COM SUCESSO*, no dia e hora marcados entrarei em contato nesse número para a realização da consulta. Obrigada!");
+                    }
                 }
             }
         }
