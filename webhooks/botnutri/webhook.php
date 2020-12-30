@@ -339,7 +339,7 @@
                         if ($result == false) {
                             //& VEr se realmente vai ser possível escolher um outro horário
                             //& Sugestão aqui seria voltar ao menu anterior
-                            $this->retornoErro("Esse horário não está mais disponível, favor escolher uma outra data.");
+                            $this->sendMessage('MensageErro', $this->numero, "Esse horário não está mais disponível, favor escolher uma outra data.", "");
                         } else {
                             $horaFormatada = $result[0]['hora_formatada'];
                             $texto = "CONFIRME O HORÁRIO\n";
@@ -357,7 +357,7 @@
                             $this->confirmacao($texto, $arrayRetorno);
                         }
                     } else {
-                        $this->retornoErro("Responda somente com o número referente à opção desejada.");
+                        $this->sendMessage('MensageErro', $this->numero, "Responda somente com o número referente à opção desejada.", "");
                     }
                 }
 
@@ -378,7 +378,7 @@
                     } else if ($sim == 1) { //( Se tiver SIM, é reservado o horário
                         $this->reservaHorario($this->opcoesVariaveis);
                     } else { //( Se na mensagem não tem nem SIM nem Não, é enviado a mensagem de erro dizendo que não entendeu
-                        $this->retornoErro("Não compreendi a sua resposta, favor responder exatamente como foi solicitado.");
+                        $this->sendMessage('MensageErro', $this->numero, "Não compreendi a sua resposta, favor responder exatamente como foi solicitado.", "");
                     }
                 }
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
@@ -769,7 +769,13 @@
                 $this->logSis('DEB', 'Cliente tentou fazer a marcação só que já não tinha Ordem disponível. id_cliente: ' . $this->idContato);
 
                 //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
-                $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
+                $this->sendMessage(
+                    'MensageErro', 
+                    $this->numero, 
+                    "Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.", 
+                    ""
+                );
+            
             } else {
                 $idFinanceiro = $result[0]['id_fin_status'];
                 $idContato = $this->idContato;
@@ -780,7 +786,12 @@
 
                 if ($result === false) {
                     $this->logSis('ERRO', 'Cliente tentou fazer a reserva e não conseguiu. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
-                    $this->retornoErro("Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.");
+                    $this->sendMessage(
+                        'MensageErro', 
+                        $this->numero, 
+                        "Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.", 
+                        ""
+                    );
                 } else {
                     $result = fctUpdate(
                         'AtualizandoOrder',
@@ -789,7 +800,12 @@
 
                     if ($result === false) {
                         $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
-                        $this->retornoErro("Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.");
+                        $this->sendMessage(
+                            'MensageErro', 
+                            $this->numero, 
+                            "Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.", 
+                            ""
+                        );
                     } else {
                         $this->envioMenuRaiz($this->numero, "Seu horário foi *RESERVADO COM SUCESSO!*\nNo dia e hora marcados entrarei em contato nesse número para a realização da consulta. Obrigada!\n\n");
                     }
@@ -981,7 +997,8 @@
 
                     if ($mes == false) { //( Na mensagem do cliente não tem nada relacionado a mês
                         //& Verificar esse retorno de erro
-                        $this->retornoErro('Não foi identificado na sua mensagem nenhum mês, favor enviar apenas o número referente ao mês desejado');
+            $this->sendMessage('MensageErro', $this->numero, 'Não foi identificado na sua mensagem nenhum mês, favor enviar apenas o número referente ao mês desejado', "");
+                        
                     } else {
 
                         //( Faz a consulta dos dias disponíveis
@@ -1057,7 +1074,12 @@
                     } else { //( A mensagem enviada não é um número
                         $this->logSis('DEB', 'A mensagem enviada não é um número');
 
-                        $this->retornoErro("Favor enviar somento número referente ao dia escolhido.");
+                        $this->sendMessage(
+                            'MensageErro', 
+                            $this->numero, 
+                            "Favor enviar somento número referente ao dia escolhido.", 
+                            ""
+                        );
                     }
 
                     break;
@@ -1145,19 +1167,19 @@
             return $horas;
         }
 
-         //* Função de LOG
-         public function retornoErro($texto)
-         {
-             $this->logSis('DEB', 'Entrou no retornoErro');
-             $textoRetorno = "Houve um erro na comunicação, favor responder novamente a última pergunta.";
-             if ($texto != '') {
-                 $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
-                 $textoRetorno += "_" . $texto . "_";
-             }
-             $this->sendMessage('MensageErro', $this->numero, $textoRetorno, "");
+        //* Função de LOG
+        public function retornoErro($texto)
+        {
+            $this->logSis('DEB', 'Entrou no retornoErro');
+            $textoRetorno = "Houve um erro na comunicação, favor responder novamente a última pergunta.";
+            if ($texto != '') {
+                $textoRetorno .= "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
+                $textoRetorno .= "_" . $texto . "_";
+            }
+            $this->sendMessage('MensageErro', $this->numero, $textoRetorno, "");
 
-             exit(0);
-         }
+            exit(0);
+        }
 
         //* Função de LOG
         public function logSis($tipo, $texto)
