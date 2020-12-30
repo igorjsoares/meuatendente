@@ -218,7 +218,7 @@
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
-                $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, 1);
+                $this->solicitaLink($numero, 1, 10000, '1', 'Consulta Online', 10000, 1);
                 exit(0);
             }
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'marcar') {
@@ -382,10 +382,6 @@
                         $this->sendMessage('MensageErro', $this->numero, "Não compreendi a sua resposta, favor responder exatamente como foi solicitado.", "");
                     }
                 }
-            } else if ($consultaUltima['tipo'] == 10) { //( Solicitação de link
-
-                $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, $consultaUltima['subtipo']);
-
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
             } else { //Sei qual o retorno atual
@@ -470,6 +466,8 @@
                 $this->InOutListas($retorno['nome'], $numero, $retorno, 0);
             } elseif ($tipo == 8) { //Marcação horário
                 $this->marcarHorario($numero, $retorno);
+            }elseif($tipo == 10){
+                $this->solicitaLink($numero, 1, 10000, '1', 'Consulta Online', 10000, 1);
             }
         }
 
@@ -846,7 +844,7 @@
         }
 
         //* Funcção que solicita um link de pagamento
-        private function solicitaLink($numero, $valorTotal, $itemId, $itemNome, $itemValor, $itemQuantidade)
+        private function solicitaLink($numero, $idProduto, $valorTotal, $itemId, $itemNome, $itemValor, $itemQuantidade)
         {
             $this->logSis('DEB', 'Entrou na solicitação do link');
 
@@ -928,7 +926,7 @@
 
                     //( INSERE OS DADOS DO LINK NO BANCO DE DADOS 
                     $id_produto = 1; // 1 = Consulta | 2 = Mentoria
-                    $sql = "INSERT INTO tbl_fin_links(id_instancia, id_contato, id_produto, object, id, company_id, amount, item_external_id, item_title, item_unit_price, item_quantity, short_id, url, date_created, date_updated, expires_at, create_at) VALUES ($this->idInstancia, $this->id_contato, $id_produto, '$object', '$id', '$company_id', '$amount', '$item_external_id', '$item_title', '$item_unit_price', '$item_quantity', '$short_id', '$url', '$date_created', '$date_updated', '$expires_at', NOW())";
+                    $sql = "INSERT INTO tbl_fin_links(id_instancia, id_contato, id_produto, object, id, company_id, amount, item_external_id, item_title, item_unit_price, item_quantity, short_id, url, date_created, date_updated, expires_at, create_at) VALUES ($this->idInstancia, $this->id_contato, $idProduto, '$object', '$id', '$company_id', '$amount', '$item_external_id', '$item_title', '$item_unit_price', '$item_quantity', '$short_id', '$url', '$date_created', '$date_updated', '$expires_at', NOW())";
 
                     $resultado = mysqli_query($conn['link'], $sql);
                     if (!$resultado) {
