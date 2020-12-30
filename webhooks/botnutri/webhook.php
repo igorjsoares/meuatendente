@@ -770,7 +770,7 @@
                 $idFinanceiro = $resul[0]['id_fin_status'];
                 $result = fctUpdate(
                     'ReservandoHorário',
-                    "UPDATE tbl_horarios SET id_contato = $this->idContato, status = 2, id_order = $idFinanceiro WHERE id_horario = $idHorario"
+                    "UPDATE tbl_horarios SET id_contato = $this->idContato, status = 2, id_order = '$idFinanceiro' WHERE id_horario = $idHorario"
                 );
 
                 if ($result == false) {
