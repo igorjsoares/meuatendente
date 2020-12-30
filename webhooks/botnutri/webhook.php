@@ -439,7 +439,7 @@
                     'name' => $consultaRetorno['name'],
                     'address' => $consultaRetorno['address']
                 );
-            $this->logSis('DEB', 'Retorno->' . print_r($retorno, true));
+                $this->logSis('DEB', 'Retorno->' . print_r($retorno, true));
 
                 return $retorno;
             }
@@ -466,8 +466,15 @@
                 $this->InOutListas($retorno['nome'], $numero, $retorno, 0);
             } elseif ($tipo == 8) { //Marcação horário
                 $this->marcarHorario($numero, $retorno);
-            }elseif($tipo == 10){
-                $this->solicitaLink($numero, 1, 10000, '1', 'Consulta Online', 10000, 1);
+            } elseif ($tipo == 10) {
+                if ($retorno['coringa'] == 1) {
+                    $valor = 99;
+                    $nome = 'CONSULTA NUTRICIONAL ONLINE';
+                } else if ($retorno['coringa'] == 2) {
+                    $valor = 20;
+                    $nome = 'MENTORIA NUTRICIONAL ONLINE';
+                }
+                $this->solicitaLink($numero, $retorno['coringa'], $valor, $retorno['coringa'], $nome, $valor, 1);
             }
         }
 
