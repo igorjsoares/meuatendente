@@ -611,7 +611,8 @@
         //Prepara para envio da mensagem de texto
         public function sendMessage($motivo, $numero, $text, $retorno)
         {
-
+            $this->logSis('DEB', 'Requisição de envio de TEXTO. Motivo: ' . $motivo . ' Número: ' . $numero . ' Texto: ' . $text);
+            $this->logSis('DEB', 'Requisição de envio de TEXTO. retorno: ' . print_r($retorno, true));
             $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $text);
             $this->sendRequest($motivo, 'send_message', $data, $retorno);
         }
@@ -1153,7 +1154,8 @@
                  $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
                  $textoRetorno += "_" . $texto . "_";
              }
-             $this->sendMessage("MensageErro", $this->numero, $textoRetorno, "");
+             $this->sendMessage('MensageErro', $this->numero, $textoRetorno, "");
+
              exit(0);
          }
 
