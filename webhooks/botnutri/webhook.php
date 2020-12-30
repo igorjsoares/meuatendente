@@ -385,6 +385,7 @@
             } else if ($consultaUltima['tipo'] == 10) { //( Solicitação de link
 
                 $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, $consultaUltima['subtipo']);
+
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
             } else { //Sei qual o retorno atual
@@ -396,6 +397,8 @@
 
             $query = mysqli_query($conn['link'], $sql);
             $consultaRetorno = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            $this->logSis('DEB', 'Sql: ' . $sql . ' consultaRetorno->' . print_r($consultaRetorno, true));
+
             $numRow = mysqli_num_rows($query);
             if (!$query) {
                 $this->logSis('ERR', 'Mysql Connect: ' . mysqli_error($conn['link']));
@@ -405,6 +408,7 @@
                 $this->logSis('ERR', 'Não encontrou a mensagem inicial Instância. Instância: ' . $this->idInstancia);
                 exit(0);
             } else {
+
                 //& VERIFICAR AQUI SE VAI TER AMBIGUIDADE COM A PRIMEIRA CONSULTA 
                 $id_retorno = $consultaRetorno['id_retorno'];  //ID da tabela retorno (chave)
                 $mensagem = utf8_encode($consultaRetorno['mensagem']);
