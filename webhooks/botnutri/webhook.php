@@ -764,7 +764,7 @@
                 array('id_fin_status')
             );
             $this->logSis('DEB', 'Resultado Retornado: ' . $result);
-            if ($result === false) {
+            if ($result === 'false') {
                 //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
                 $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
             } else {
@@ -775,7 +775,7 @@
                     "UPDATE tbl_horarios SET id_contato = $idContato, status = 2, id_order = '$idFinanceiro' WHERE id_horario = $idHorario"
                 );
 
-                if ($result === false) {
+                if ($result === 'false') {
                     $this->logSis('ERRO', 'Cliente tentou fazer a reserva e não conseguiu. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
                     $this->retornoErro("Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.");
                 } else {
@@ -784,7 +784,7 @@
                         "UPDATE tbl_fin_status SET status_uso = 1 WHERE id_fin_status = '$idFinanceiro'"
                     );
 
-                    if ($result === false) {
+                    if ($result === 'false') {
                         $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
                         $this->retornoErro("Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.");
                     } else {
