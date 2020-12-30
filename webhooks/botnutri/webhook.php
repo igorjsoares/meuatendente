@@ -244,7 +244,7 @@
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                    $this->logSis('DEB', 'Consulta Ultima ->' . print_r($consultaUltima, true));
+                        $this->logSis('DEB', 'Consulta Ultima ->' . print_r($consultaUltima, true));
 
                         $this->menuAnterior = $consultaUltima['menu_anterior'];
                         $this->ultimoRetorno = $consultaUltima['id_retorno'];
@@ -768,9 +768,10 @@
                 $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
             } else {
                 $idFinanceiro = $resul[0]['id_fin_status'];
+                $idContato = $this->idContato;
                 $result = fctUpdate(
                     'ReservandoHorário',
-                    "UPDATE tbl_horarios SET id_contato = $this->idContato, status = 2, id_order = '$idFinanceiro' WHERE id_horario = $idHorario"
+                    "UPDATE tbl_horarios SET id_contato = $idContato, status = 2, id_order = '$idFinanceiro' WHERE id_horario = $idHorario"
                 );
 
                 if ($result == false) {
@@ -779,7 +780,7 @@
                 } else {
                     $result = fctUpdate(
                         'AtualizandoOrder',
-                        "UPDATE tbl_fin_status SET status_uso = 1 WHERE id_fin_status = $idFinanceiro"
+                        "UPDATE tbl_fin_status SET status_uso = 1 WHERE id_fin_status = '$idFinanceiro'"
                     );
 
                     if ($result == false) {
