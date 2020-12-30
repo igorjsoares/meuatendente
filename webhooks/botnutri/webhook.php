@@ -202,7 +202,7 @@
             $this->opcoesVariaveis = $consultaUltima['opcoes_variaveis'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
-            $this->logSis('DEB', 'consultaUltima->' . print_r($consultaUltima, true));
+            $this->logSis('DEB', 'Sql: ' . $sql . ' consultaUltima->' . print_r($consultaUltima, true));
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
@@ -299,7 +299,7 @@
         //* C O N S U L T A  R E T O R N O
         public function consultaRetorno($id_retorno, $primeiraPalavraCliente, $ultimoRetorno, $consultaUltima)
         {
-            $this->logSis('DEB', 'Entrou no Retorno. idRetorno: ' . $id_retorno . ' Palavra: ' . $primeiraPalavraCliente . ' UltimoRetorno: ' . $ultimoRetorno. ' Tipo da consulta: '.$consultaUltima['tipo']);
+            $this->logSis('DEB', 'Entrou no Retorno. idRetorno: ' . $id_retorno . ' Palavra: ' . $primeiraPalavraCliente . ' UltimoRetorno: ' . $ultimoRetorno . ' Tipo da consulta: ' . $consultaUltima['tipo']);
 
             include("dados_conexao.php");
             include_once("horarios.php");
@@ -382,10 +382,9 @@
                         $this->sendMessage('MensageErro', $this->numero, "Não compreendi a sua resposta, favor responder exatamente como foi solicitado.", "");
                     }
                 }
-            }else if($consultaUltima['tipo'] == 10){ //( Solicitação de link
+            } else if ($consultaUltima['tipo'] == 10) { //( Solicitação de link
 
                 $this->solicitaLink($numero, 10000, '1', 'Consulta Online', 10000, $consultaUltima['subtipo']);
-
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
             } else { //Sei qual o retorno atual
@@ -786,9 +785,9 @@
                 if ($result === false) {
                     $this->logSis('ERRO', 'Cliente tentou fazer a reserva e não conseguiu. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
                     $this->sendMessage(
-                        'MensageErro', 
-                        $this->numero, 
-                        "Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.", 
+                        'MensageErro',
+                        $this->numero,
+                        "Não foi possível reservar o horário, favor enviar a palavra *'HORÁRIOS'* pra saber se está confirmado, caso não esteja, tente novamente fazer a reserva do horário, enviando a palavra *MENU* para reiniciar o processo.\nCaso o problema persista, envie a palavra *SUPORTE* para falar com nossos atendentes.",
                         ""
                     );
                 } else {
@@ -800,9 +799,9 @@
                     if ($result === false) {
                         $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
                         $this->sendMessage(
-                            'MensageErro', 
-                            $this->numero, 
-                            "Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.", 
+                            'MensageErro',
+                            $this->numero,
+                            "Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.",
                             ""
                         );
                     } else {
@@ -996,8 +995,7 @@
 
                     if ($mes == false) { //( Na mensagem do cliente não tem nada relacionado a mês
                         //& Verificar esse retorno de erro
-            $this->sendMessage('MensageErro', $this->numero, 'Não foi identificado na sua mensagem nenhum mês, favor enviar apenas o número referente ao mês desejado', "");
-                        
+                        $this->sendMessage('MensageErro', $this->numero, 'Não foi identificado na sua mensagem nenhum mês, favor enviar apenas o número referente ao mês desejado', "");
                     } else {
 
                         //( Faz a consulta dos dias disponíveis
@@ -1074,9 +1072,9 @@
                         $this->logSis('DEB', 'A mensagem enviada não é um número');
 
                         $this->sendMessage(
-                            'MensageErro', 
-                            $this->numero, 
-                            "Favor enviar somento número referente ao dia escolhido.", 
+                            'MensageErro',
+                            $this->numero,
+                            "Favor enviar somento número referente ao dia escolhido.",
                             ""
                         );
                     }
