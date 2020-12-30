@@ -202,7 +202,7 @@
             $this->opcoesVariaveis = $consultaUltima['opcoes_variaveis'];
 
             $this->logSis('DEB', 'ultimoRetorno: ' . $this->ultimoRetorno);
-            $this->logSis('DEB', 'consultaUltima->' . print_r($this->ultimoRetorno, true));
+            $this->logSis('DEB', 'consultaUltima->' . print_r($consultaUltima, true));
 
             //excluir espaços em excesso e dividir a mensagem em espaços.
             //A primeira palavra na mensagem é um comando, outras palavras são parâmetros
