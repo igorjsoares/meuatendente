@@ -191,7 +191,7 @@
             }
 
             //( ULTIMA INTERAÇÃO DE MENU (TIPO 1) OU DE MARCAÇÃO DE HORÁRIO (TIPO 8) - O que provavelmente o cliente está respondendo 
-            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo, opcoes_variaveis, menu_anterior FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
+            $sql = "SELECT id_interacao, menu_anterior, id_retorno, tipo, subtipo, opcoes_variaveis, menu_anterior FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8 OR tipo = 9) AND direcao = 1 AND id_contato = $this->id_contato ORDER BY data_envio DESC LIMIT 1";
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
             $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -260,7 +260,7 @@
 
                     $this->logSis('DEB', 'É TEXTO');
 
-                    $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem);
+                    $opcaoEscolhida = $this->verficaPalavras($this->ultimoRetorno, $mensagem, '');
                     $this->logSis('DEB', 'Retorno Palavras: ' . $opcaoEscolhida);
 
                     if ($opcaoEscolhida == 0) {
@@ -361,8 +361,21 @@
                 $sql = "SELECT * FROM tbl_retornos WHERE tipo = 8 AND coringa = '$proximoSubtipo'";
             } elseif ($consultaUltima['tipo'] == 9) { //( Uma solicitação de confirmação
 
+                //( Verifica que é uma confirmação de horário 
                 if ($consultaUltima['subtipo'] == 'horario') {
-                    $this->reservaHorario($this->opcoesVariaveis);
+
+                    //( Verifica se tem SIM ou NÃO na mensagem do cliente
+                    $nao = $this->verficaPalavras('', $this->mensagem, array('não', 'nao', 'NÃO', 'Nao', 'NAO', 'NO', 'no'));
+                    $sim = $this->verficaPalavras('', $this->mensagem, array('sim', 'Sim', 'Si', 'si', 'SI', 'sin', 'Sin', 'SIN', 'SIM'));
+
+
+                    if ($nao == 1) { //( Se tiver NÃO, é enviada o MENU RAIZ 
+                        $this->envioMenuRaiz($this->numero, "*OPERAÇÃO CANCELADA*");
+                    } else if ($sim == 1) { //( Se tiver SIM, é reservado o horário
+                        $this->reservaHorario($this->opcoesVariaveis);
+                    } else { //( Se na mensagem não tem nem SIM nem Não, é enviado a mensagem de erro dizendo que não entendeu
+                        $this->retornoErro("Não compreendi a sua resposta, favor responder exatamente como foi solicitado.");
+                    }
                 }
             } else if ($id_retorno == '') { //ou seja, não sei qual o retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE id_retorno = (SELECT resposta FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND indice = '$primeiraPalavraCliente' AND id_retorno = $ultimoRetorno)";
@@ -1081,26 +1094,34 @@
         }
 
         //* Função que faz a análise das palavras dentro da mensagem e as palavras de cada opção em questão
-        public function verficaPalavras($ultimoRetorno, $mensagem)
+        public function verficaPalavras($ultimoRetorno, $mensagem, $palavrasProprias)
         {
-
-            include("dados_conexao.php");
-            $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
-            $query = mysqli_query($conn['link'], $sql);
-
-            while ($opcao = mysqli_fetch_array($query)) {
-
-                $palavras = explode(',', trim($opcao['palavras']));
-                $palavrasEncontradas = count(array_intersect($mensagem, $palavras));
-
+            if ($ultimoRetorno == '') {
+                $palavrasEncontradas = count(array_intersect($mensagem, $palavrasProprias));
                 if ($palavrasEncontradas > 0) {
 
-                    return $opcao['resposta'];
+                    return 1;
                     exit(0);
                 }
-            }
+            } else {
+                include("dados_conexao.php");
+                $sql = "SELECT id_opcao, resposta, palavras FROM tbl_opcoes WHERE id_instancia = $this->idInstancia AND id_retorno = $ultimoRetorno";
+                $query = mysqli_query($conn['link'], $sql);
 
-            return 0;
+                while ($opcao = mysqli_fetch_array($query)) {
+
+                    $palavras = explode(',', trim($opcao['palavras']));
+                    $palavrasEncontradas = count(array_intersect($mensagem, $palavras));
+
+                    if ($palavrasEncontradas > 0) {
+
+                        return $opcao['resposta'];
+                        exit(0);
+                    }
+                }
+
+                return 0;
+            }
         }
 
         //* Verifica a diferença entre datas e retorna em horas 
