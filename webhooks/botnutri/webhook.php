@@ -468,10 +468,10 @@
                 $this->marcarHorario($numero, $retorno);
             } elseif ($tipo == 10) {
                 if ($retorno['coringa'] == 1) {
-                    $valor = 99;
+                    $valor = 9900;
                     $nome = 'CONSULTA NUTRICIONAL ONLINE';
                 } else if ($retorno['coringa'] == 2) {
-                    $valor = 20;
+                    $valor = 2000;
                     $nome = 'MENTORIA NUTRICIONAL ONLINE';
                 }
                 $this->solicitaLink($numero, $retorno['coringa'], $valor, $retorno['coringa'], $nome, $valor, 1);
