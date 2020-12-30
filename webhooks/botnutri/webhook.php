@@ -298,7 +298,7 @@
         //* C O N S U L T A  R E T O R N O
         public function consultaRetorno($id_retorno, $primeiraPalavraCliente, $ultimoRetorno, $consultaUltima)
         {
-            $this->logSis('DEB', 'Entrou no Retorno. idRetorno: ' . $id_retorno . ' Palavra: ' . $primeiraPalavraCliente . ' UltimoRetorno: ' . $ultimoRetorno);
+            $this->logSis('DEB', 'Entrou no Retorno. idRetorno: ' . $id_retorno . ' Palavra: ' . $primeiraPalavraCliente . ' UltimoRetorno: ' . $ultimoRetorno. ' Tipo da consulta: '.$consultaUltima['tipo']);
 
             include("dados_conexao.php");
             include_once("horarios.php");
