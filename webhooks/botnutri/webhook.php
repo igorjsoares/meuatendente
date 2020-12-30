@@ -1153,7 +1153,7 @@
                  $textoRetorno += "\nCaso persista, envie a palavra *SUPORTE* e informa o erro abaixo:\n";
                  $textoRetorno += "_" . $texto . "_";
              }
-             $this->sendMessage("MensageErro", $this->numeroCliente, $textoRetorno, "");
+             $this->sendMessage("MensageErro", $this->numero, $textoRetorno, "");
              exit(0);
          }
 
