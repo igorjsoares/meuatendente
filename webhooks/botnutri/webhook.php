@@ -767,7 +767,7 @@
                 //& Dar opção do cliente solicitar o link de pagamento, visualizar os pagamentos pendentes ou entrar em contato com o suporte.
                 $this->retornoErro("Não foi encontrado pagamento concluído para esse produto, certifique-se que foi gerado um link de pagamento e que o mesmo foi efetuado.");
             } else {
-                $idFinanceiro = $resul[0]['id_fin_status'];
+                $idFinanceiro = $result[0]['id_fin_status'];
                 $idContato = $this->idContato;
                 $result = fctUpdate(
                     'ReservandoHorário',
@@ -787,7 +787,7 @@
                         $this->logSis('ERRO', 'Cliente marcou o horário mas não atualizou a tabela tbl_fin_status, no campo status_uso. idCliente: ' . $this->idContato . ' id_horario: ' . $idHorario . ' id_order: ' . $idFinanceiro);
                         $this->retornoErro("Favor contacte o suporte, envie a palavra *SUPORTE* para falar com nossos atendentes.");
                     } else {
-                        $this->envioMenuRaiz($this->numero, "Seu horário foi *RESERVADO COM SUCESSO*, no dia e hora marcados entrarei em contato nesse número para a realização da consulta. Obrigada!");
+                        $this->envioMenuRaiz($this->numero, "Seu horário foi *RESERVADO COM SUCESSO!*\nNo dia e hora marcados entrarei em contato nesse número para a realização da consulta. Obrigada!\n\n");
                     }
                 }
             }
