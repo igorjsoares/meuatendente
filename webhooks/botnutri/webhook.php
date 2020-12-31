@@ -242,7 +242,7 @@
                         $this->logSis('DEB', 'É igual a 0 -> ' . $primeiraPalavraCliente);
 
                         //( Verifica aqui a última interação que nao seja 0 para retornar o menu_anterior a esse atual 
-                        $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND tipo = 1 AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
+                        $sql = "SELECT id_interacao, menu_anterior, id_retorno FROM tbl_interacoes WHERE id_instancia = $this->idInstancia AND (tipo = 1 OR tipo = 8) AND direcao = 1 AND id_contato = $this->id_contato AND menu_anterior != 0 AND id_retorno = $this->ultimoRetorno ORDER BY data_envio DESC LIMIT 2";
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
