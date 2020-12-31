@@ -985,7 +985,7 @@
                     if ($result === false) {
                         $this->logSis('DEB', 'Cliente tentou iniciar a marcação só que já não tinha Ordem disponível. id_cliente: ' . $this->idContato);
                        
-                        $this->sendMessage('ErroMarcaçãoSemPagamento', $numero, "Não existe pagamantos confirmados para marcação.\nAntes de marcar você deve efetuar o pagamento solicitando um link de pagamento.\nPara solicitar um link de pagamento veriique a mensagem anterior e envie o número correspondente.", '');
+                        $this->sendMessage('ErroMarcaçãoSemPagamento', $numero, "Não existe pagamantos confirmados para marcação.\nAntes de marcar você deve efetuar o pagamento solicitando um link de pagamento.\nPara solicitar um link de pagamento verifique a mensagem anterior e envie o número correspondente.", '');
         
                         exit(0);
                     }

@@ -53,7 +53,8 @@
                 $this->logSis('SUC', 'Insert STATUS FINANCEIRO. ID_GATEWAY: ' . $id);
 
                 //( Consulta o contato no BD o endPoint e o token
-                $sql = "SELECT c.numero, i.id_instancia, endpoint, token FROM tbl_contatos c, tbl_instancias i WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia";
+                $sql = "SELECT c.numero, i.id_instancia, endpoint, token, l.id_produto FROM tbl_contatos c, tbl_instancias i, tbl_fin_links l WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia AND l.id ='$payment_link_id''";
+                //$sql = "SELECT c.numero, i.id_instancia, endpoint, token FROM tbl_contatos c, tbl_instancias i WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia";
                 $query = mysqli_query($conn['link'], $sql);
                 $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
                 $numRow = mysqli_num_rows($query);
@@ -69,32 +70,37 @@
                     $this->idInstancia = $consultaContato['id_instancia'];
                     $this->APIurl = $consultaContato['endpoint'] . '/api/v1/';
                     $this->token = $consultaContato['token'];
-                    
+
                     $this->logSis('DEB', 'Consulta Contato: ' . $this->numero . '    ' . $this->APIurl . '    ' . $this->token);
                 } else { //( O CONTATO NÃO EXISTE 
                     $this->logSis('ERR', "Nao encontrado nenhum contato na FATURA: " . $idContato);
                 }
-                
-                if($current_status == 'paid'){
+
+                if ($current_status == 'paid') {
+                    if ($consultaContato['id_instancia'] == 1) {
+                        $textoAcao = "Agora você já pode marcar o seu horário. Basta enviar a palavra *MENU* para navegar até a marcação de horário desejada.";
+                    }
+                    if ($consultaContato['id_instancia'] == 2) {
+                        $textoAcao = "Em breve você receberá um link com o Whatsapp próprio para a Mentoria.";
+                    }
                     $texto = "Seu pagamento foi confirmado\n" .
-                        "Número da ordem: " . $id ."\n".
-                        "Status: 🟢 *PAGAMENTO CONFIRMADO*\n\n".
-                        "A seguir enviaremos as datas disponíveis para agendamento.";
+                        "Número da ordem: " . $id . "\n" .
+                        "Status: 🟢 *PAGAMENTO CONFIRMADO*\n\n" .
+                        $textoAcao;
 
                     $this->logSis('DEB', 'Texto: ' . $texto);
 
                     $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
-                }else if($current_status == 'refused'){
+                } else if ($current_status == 'refused') {
                     $texto = "Infelizmente seu pagamento foi recusado\n" .
-                        "Número da ordem: " . $id ."\n".
-                        "Status: 🔴 *PAGAMENTO RECUSADO*\n\n".
-                        "A seguir enviaremos outro link de pagamento para uma nova tentativa, caso persista, solicite suporte enviando a palavra SUPORTE.";
-
+                        "Número da ordem: " . $id . "\n" .
+                        "Status: 🔴 *PAGAMENTO RECUSADO*\n\n" .
+                        "Solicite outro link de pagamento para uma nova tentativa, caso persista, solicite suporte enviando a palavra SUPORTE.";
+                    //& Aqui tem que enviar automaticamente
                     $this->logSis('DEB', 'Texto: ' . $texto);
 
                     $this->sendMessage('criacaoBoleto', $this->numero, $texto, '');
                 }
-
             }
         }
 
