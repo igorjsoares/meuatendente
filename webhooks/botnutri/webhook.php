@@ -190,6 +190,7 @@
                 $this->logSis('DEB', 'Indetificou que faz tempo desde a última ' . $consultaUltima['segundos'] . ' segundos');
 
                 $this->envioMenuRaiz($numero, '');
+                exit(0);
             }
 
             //( ULTIMA INTERAÇÃO DE MENU (TIPO 1) OU DE MARCAÇÃO DE HORÁRIO (TIPO 8) - O que provavelmente o cliente está respondendo 
