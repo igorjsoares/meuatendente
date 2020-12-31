@@ -216,7 +216,7 @@
                 $this->envioMenuRaiz($this->numero, '');
                 exit(0);
             }
-            if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
+            /* if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
                 $this->solicitaLink($numero, 1, 10000, '1', 'Consulta Online', 10000, 1);
@@ -227,7 +227,7 @@
 
                 $this->marcarHorario($numero, $this->id_contato);
                 exit(0);
-            }
+            } */
 
             //Confirma se a mensagem realmente não foi enviada do Bot
             if (!$decoded['Body']['Info']['FromMe']) {
@@ -974,6 +974,23 @@
                     //( Caso o próximo retorno seja a pesquisa de meses
                 case 'mes':
                     $this->logSis('DEB', 'Entrou no case mes');
+
+
+                    $result = fctConsultaParaArray(
+                        'ConsultaPagamentoDisponível',
+                        "SELECT s.id_fin_status FROM tbl_fin_status s, tbl_fin_links l WHERE s.payment_link_id = l.id AND s.status = 'paid' AND l.id_produto = 1 AND l.id_contato = $this->idContato AND s.status_uso = 0 LIMIT 1",
+                        array('id_fin_status')
+                    );
+                    $this->logSis('DEB', 'Resultado Retornado: ' . json_encode($result));
+                    if ($result === false) {
+                        $this->logSis('DEB', 'Cliente tentou iniciar a marcação só que já não tinha Ordem disponível. id_cliente: ' . $this->idContato);
+                       
+                        $this->sendMessage('ErroMarcaçãoSemPagamento', $numero, "Não existe pagamantos confirmados para marcação.\nAntes de marcar você deve efetuar o pagamento solicitando um link de pagamento.\nPara solicitar um link de pagamento veriique a mensagem anterior e envie o número correspondente.", '');
+        
+                        exit(0);
+                    }
+
+
                     $arrayMeses = fctConsultaMeses();
 
                     if ($arrayMeses == false) {
