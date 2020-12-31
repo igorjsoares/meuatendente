@@ -310,6 +310,7 @@
 
             if ($consultaUltima['tipo'] == 8) { //( Verifica se o retorno trata-se de uma marcação de horário
 
+
                 //( Verifica qual o último subtipo para pesquisar o próximo retorno de acordo com o próximo subtipo
                 if ($consultaUltima['subtipo'] == 'mes') {
                     $proximoSubtipo = 'dia';
@@ -964,6 +965,9 @@
         {
             $this->logSis('DEB', 'Entrou na marcação de horário');
             $this->logSis('DEB', 'Coringa: ' . $retorno['coringa']);
+
+            $this->ultimoRetorno = $this->menuAnterior;
+
 
             //include("dados_conexao.php");
             include_once("horarios.php");
