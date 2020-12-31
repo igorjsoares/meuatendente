@@ -53,7 +53,7 @@
                 $this->logSis('SUC', 'Insert STATUS FINANCEIRO. ID_GATEWAY: ' . $id);
 
                 //( Consulta o contato no BD o endPoint e o token
-                $sql = "SELECT c.numero, i.id_instancia, endpoint, token, l.id_produto FROM tbl_contatos c, tbl_instancias i, tbl_fin_links l WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia AND l.id ='$payment_link_id''";
+                $sql = "SELECT c.numero, i.id_instancia, endpoint, token, l.id_produto FROM tbl_contatos c, tbl_instancias i, tbl_fin_links l WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia AND l.id ='$payment_link_id'";
                 //$sql = "SELECT c.numero, i.id_instancia, endpoint, token FROM tbl_contatos c, tbl_instancias i WHERE c.id_contato = $idContato AND c.id_instancia = i.id_instancia";
                 $query = mysqli_query($conn['link'], $sql);
                 $consultaContato = mysqli_fetch_array($query, MYSQLI_ASSOC);
