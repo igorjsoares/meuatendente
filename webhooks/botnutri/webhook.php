@@ -246,7 +246,7 @@
                         $query = mysqli_query($conn['link'], $sql);
                         $numRow = mysqli_num_rows($query);
                         $consultaUltima = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                        $this->logSis('DEB', 'Consulta Ultima ->' . print_r($consultaUltima, true));
+                        $this->logSis('DEB', 'Consulta Ultima. SQL: ' . $sql . ' ->' . print_r($consultaUltima, true));
 
                         $this->menuAnterior = $consultaUltima['menu_anterior'];
                         $this->ultimoRetorno = $consultaUltima['id_retorno'];
