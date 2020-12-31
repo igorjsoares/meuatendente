@@ -218,8 +218,12 @@
             }
             if (mb_strtolower($mensagem[0], 'UTF-8') == 'suporte') {
                 $this->logSis('DEB', 'Identificado o comando suporte');
+                $arrayRetorno = array(
+                    'nome' => 'Suporte',
+                    'mensagem' => "O suporte foi solicitado, em breve nossa equipe entrará em contato no seu Whatsapp."
+                );
 
-                $this->receptivo($this->numero, '');
+                $this->receptivo($this->numero, $arrayRetorno);
                 exit(0);
             }
             /* if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
