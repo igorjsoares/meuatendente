@@ -366,7 +366,7 @@
 
                 //( Faz a pesquisa do retorno
                 $sql = "SELECT * FROM tbl_retornos WHERE tipo = 8 AND coringa = '$proximoSubtipo'";
-            } elseif ($consultaUltima['tipo'] == 9) { //( Uma solicitação de confirmação
+            } else if ($consultaUltima['tipo'] == 9) { //( Uma solicitação de confirmação
 
                 //( Verifica que é uma confirmação de horário 
                 if ($consultaUltima['subtipo'] == 'horario') {
