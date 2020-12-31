@@ -216,6 +216,12 @@
                 $this->envioMenuRaiz($this->numero, '');
                 exit(0);
             }
+            if (mb_strtolower($mensagem[0], 'UTF-8') == 'suporte') {
+                $this->logSis('DEB', 'Identificado o comando suporte');
+
+                $this->receptivo($this->numero, '');
+                exit(0);
+            }
             /* if (mb_strtolower($mensagem[0], 'UTF-8') == 'link') {
                 $this->logSis('DEB', 'Identificado o comando link');
 
