@@ -77,10 +77,9 @@
                 }
 
                 if ($current_status == 'paid') {
-                    if ($consultaContato['id_instancia'] == 1) {
+                    if ($consultaContato['id_produto'] == 1) {
                         $textoAcao = "Agora você já pode marcar o seu horário. Basta enviar a palavra *MENU* para navegar até a marcação de horário desejada.";
-                    }
-                    if ($consultaContato['id_instancia'] == 2) {
+                    }else if ($consultaContato['id_produto'] == 2) {
                         $textoAcao = "Em breve você receberá um link com o Whatsapp próprio para a Mentoria.";
                     }
                     $texto = "Seu pagamento foi confirmado\n" .
