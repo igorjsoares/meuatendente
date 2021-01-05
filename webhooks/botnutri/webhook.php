@@ -507,7 +507,7 @@
                 $this->marcarHorario($numero, $retorno);
             } elseif ($tipo == 10) {
                 if ($retorno['coringa'] == 1) {
-                    $valor = 500;
+                    $valor = 9900;
                     $nome = 'CONSULTA NUTRICIONAL ONLINE';
                 } else if ($retorno['coringa'] == 2) {
                     $valor = 2000;
