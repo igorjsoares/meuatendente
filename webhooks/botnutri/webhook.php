@@ -114,10 +114,11 @@
                             array_push($arrayMensagem, $linha['mensagem']);
                             $this->logSis('ERR', 'BOTXBOT PAROU. idContato: ' . $this->idContato);
                             exit(0); 
-                        }else{
+                        }
+                        /*else{
                             $this->logSis('ERR', 'BOTXBOT PASSOU. Contagem: ' . count($contagem).' Contagem0: '.$contagem[0].' Mensagem Enviada: '.$mensagemEnviada.' Mensagem do Cliente: '.$mensagem.' ArrayMensagem->'.print_r($arrayMensagem, true));
                             exit(0);
-                        }
+                        }*/
                     } else { //( O CONTATO NÃO EXISTE 
                         $this->primeirocontato = true;
 
