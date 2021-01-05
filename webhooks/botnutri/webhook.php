@@ -507,7 +507,7 @@
                 $this->marcarHorario($numero, $retorno);
             } elseif ($tipo == 10) {
                 if ($retorno['coringa'] == 1) {
-                    $valor = 9900;
+                    $valor = 500;
                     $nome = 'CONSULTA NUTRICIONAL ONLINE';
                 } else if ($retorno['coringa'] == 2) {
                     $valor = 2000;
@@ -897,7 +897,7 @@
             include("dados_conexao.php");
 
             $arrayDados = array(
-                "api_key" => "ak_test_EfQ4KKaduJJHqYYDpPJvDjsuH5D1GG",
+                "api_key" => "ak_live_o44xwEuGQmAITbHmrpQkdDrB4wgWgH",
                 "amount" => $valorTotal,
                 "items" => array(array(
                     "id" => $itemId,
