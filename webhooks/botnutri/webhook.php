@@ -104,7 +104,7 @@
                         $arrayMensagem = [];
                         $mensagemEnviada = '';
                         foreach ($result as $linha) { //traz as mensagens para um array simples
-                            if ($mensagemEnviada != '' && $linha['direcao'] == 0) {
+                            if ($mensagemEnviada == '' && $linha['direcao'] == 0) {
                                 $mensagemEnviada = $linha['mensagem'];
                             }
                             array_push($arrayMensagem, $linha['mensagem']);
@@ -112,10 +112,10 @@
                         $contagem = array_values(array_count_values($arrayMensagem)); //conta os itens e redefine os indices do array
                         if (count($contagem) == 2 && $contagem[0] == 2 && $mensagemEnviada == $mensagem) { // Se tiver somente duas mensagens e cada uma tiver 2 mensagens é redundante
                             array_push($arrayMensagem, $linha['mensagem']);
-                            $this->logSis('ERR', 'BOTXBOT PAROU. Contagem: ' . $this->idContato);
+                            $this->logSis('ERR', 'BOTXBOT PAROU. idContato: ' . $this->idContato);
                             exit(0); 
                         }else{
-                            $this->logSis('ERR', 'BOTXBOT PASSOU. idContato: ' . count($contagem).' Contagem0: '.$contagem[0].' Mensagem Enviada: '.$mensagemEnviada.' Mensagem do Cliente: '.$mensagem.' ArrayMensagem->'.print_r($arrayMensagem, true));
+                            $this->logSis('ERR', 'BOTXBOT PASSOU. Contagem: ' . count($contagem).' Contagem0: '.$contagem[0].' Mensagem Enviada: '.$mensagemEnviada.' Mensagem do Cliente: '.$mensagem.' ArrayMensagem->'.print_r($arrayMensagem, true));
                             exit(0);
                         }
                     } else { //( O CONTATO NÃO EXISTE 
