@@ -98,19 +98,22 @@
                         //( Isso é pra tentar evitar BOT x BOT
                         $result = fctConsultaParaArray(
                             'ConsultaBotXBot',
-                            "SELECT mensagem FROM tbl_interacoes WHERE id_contato = $this->idContato ORDER BY id_interacao DESC LIMIT 4",
-                            array('mensagem')
+                            "SELECT direcao, mensagem FROM tbl_interacoes WHERE id_contato = $this->idContato ORDER BY id_interacao DESC LIMIT 4",
+                            array('direcao', 'mensagem')
                         );
                         $arrayMensagem = [];
+                        $mensagemEnviada = '';
                         foreach ($result as $linha) { //traz as mensagens para um array simples
+                            if ($mensagemEnviada != '' && $linha['direcao'] == 0) {
+                                $mensagemEnviada = $linha['mensagem'];
+                            }
                             array_push($arrayMensagem, $linha['mensagem']);
                         }
                         $contagem = array_values(array_count_values($arrayMensagem)); //conta os itens e redefine os indices do array
-                        if (count($contagem) == 2 && $contagem[0] == 2) { // Se tiver somente duas mensagens e cada uma tiver 2 mensagens é redundante
-                            $this->logSis('ERR', 'BOTXBOT. idContato: '. $this->idContato);
+                        if (count($contagem) == 2 && $contagem[0] == 2 && $mensagemEnviada == $mensagem) { // Se tiver somente duas mensagens e cada uma tiver 2 mensagens é redundante
+                            $this->logSis('ERR', 'BOTXBOT. idContato: ' . $this->idContato);
                             exit(0);
                         }
-
                     } else { //( O CONTATO NÃO EXISTE 
                         $this->primeirocontato = true;
 
