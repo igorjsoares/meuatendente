@@ -7,6 +7,7 @@
         public function __construct()
         {
             include("dados_conexao.php");
+            include("servicos.php");
 
             //& Alterar aqui depois os dados para a consulta no BD 
             $this->tempoMenu = 7200; //Tempo entre a última mensagem e a possibilidade de enviar o menu novamente
@@ -92,6 +93,18 @@
                         $email = $consultaContato['email'];
                         $fase = $consultaContato['fase'];
                         $teste = $consultaContato['teste'];
+
+                        //( Verifica as ultimas 4 mensagens trocadas, se tanto as respostas quanto os envios tiverem sido duplicados para o código
+                        //( Isso é pra tentar evitar BOT x BOT
+                        $result = fctConsultaParaArray(
+                            'ConsultaBotXBot',
+                            "SELECT mensagem AS quantidade FROM tbl_interacoes WHERE id_contato = $this->idContato ORDER BY id_interacao DESC LIMIT 4",
+                            array('mensagem')
+                        );
+
+
+
+
                     } else { //( O CONTATO NÃO EXISTE 
                         $this->primeirocontato = true;
 
