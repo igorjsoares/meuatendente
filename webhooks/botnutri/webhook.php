@@ -662,6 +662,8 @@
             $myEmail = "contato@meuatendente.com.br"; //é necessário informar um e-mail do próprio domínio
             $headers = "From: contato@meuatendente.com.br\r\n";
             $headers .= "Reply-To: contato@meuatendente.com.br\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
             $corpo = $mensagem . "\n";
 
