@@ -656,7 +656,7 @@
             $mensagem .= "<h3>N&atilde;o se esque&ccedil;a que no v&iacute;deo explicarei a import&acirc;ncia de cada um.&nbsp;</h3>";
             $mensagem .= '<p><a href="https://nutrimarimartins.com.br/ferramentas/emagrecimentodefinitivo.html">Clique aqui para o conte&uacute;do gratuito.</a></p>';
             $mensagem .= "<p>Um beijo da nutri.</p>";
-            $mensagem = "</html></body>";
+            $mensagem .= "</html></body>";
 
 
             $myEmail = "contato@meuatendente.com.br"; //é necessário informar um e-mail do próprio domínio
