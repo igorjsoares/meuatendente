@@ -113,7 +113,7 @@
                         if (count($contagem) == 2 && $contagem[0] == 2 && $mensagemEnviada == $mensagem) { // Se tiver somente duas mensagens e cada uma tiver 2 mensagens é redundante
                             array_push($arrayMensagem, $linha['mensagem']);
                             $this->logSis('ERR', 'BOTXBOT PAROU. idContato: ' . $this->idContato);
-                            exit(0); 
+                            exit(0);
                         }
                         /*else{
                             $this->logSis('ERR', 'BOTXBOT PASSOU. Contagem: ' . count($contagem).' Contagem0: '.$contagem[0].' Mensagem Enviada: '.$mensagemEnviada.' Mensagem do Cliente: '.$mensagem.' ArrayMensagem->'.print_r($arrayMensagem, true));
@@ -592,8 +592,8 @@
 
                 if ($atualizacaoBD == true) { //( Conseguiu atualizar 
                     //( Envio do e-mail 
-                    $textoEmail = "Olá! \n\nComo prometi, segue o link para acessar o conteúdo.\n\nQualquer dúvida pode nos responder esse e-mail ou chamar nosso atendimento no Whatsapp.\n\nhttps://nutrimarimartins.com.br/comoemagrecer.html\n\nEquipe Nutri Mari Martins";
-                    $statusEnvioEmail = $this->enviarEmail($email, $textoEmail);
+                    //$textoEmail = "Olá! \n\nComo prometi, segue o link para acessar o conteúdo.\n\nQualquer dúvida pode nos responder esse e-mail ou chamar nosso atendimento no Whatsapp.\n\nhttps://nutrimarimartins.com.br/comoemagrecer.html\n\nEquipe Nutri Mari Martins";
+                    $statusEnvioEmail = $this->enviarEmail($email, "");
 
                     //& Colocar aqui uma inteligência pra que o cliente reveja o e-mail e possa alterar o mesmo
                     if ($statusEnvioEmail == true) { //( Conseguiu enviar
@@ -641,7 +641,23 @@
         {
             $subject = 'NUTRI MARI MARTINS - Conteúdo';
 
-            $mensagem = $texto;
+            //$mensagem = $texto;
+            $mensagem = "<html><body>";
+            /*
+            $mensagem .= "Olá! Que bom que você está disposto a cuidar da sua saúde e emagrecimento! ";
+            $mensagem .= "Fico muito feliz de te receber aqui. Quero que saiba que estou te enviando materiais e ferramentas muito importantes para o emagrecimento e acompanhamento de resultados!";
+            $mensagem .= "Acompanhe o vídeo para aprender como montar uma alimentação saudável, prazerosa e emagrecedora! E o link para o cálculo de imc, quantidade de água e plano alimentar estarão logo abaixo! Não se esqueça que no vídeo explicarei a importância de cada um. ";
+            $mensagem .= "Um beijo da nutri";
+            $mensagem .= "Qualquer dúvida pode nos responder esse e-mail ou chamar nosso atendimento no Whatsapp.\n\n";
+            */
+            $mensagem .= "<h2><sup><strong>Ol&aacute;! Que bom que voc&ecirc; est&aacute; disposto a cuidar da sua sa&uacute;de e emagrecimento!&nbsp;</strong></sup></h2>";
+            $mensagem .= "<p>Fico muito feliz de te receber aqui. Quero que saiba que estou te enviando <strong>materiais e ferramentas muito importantes para o emagrecimento</strong> e acompanhamento de resultados!</p>";
+            $mensagem .= "<p>Clique no link abaixo e assista ao&nbsp;v&iacute;deo para aprender como <strong>montar uma alimenta&ccedil;&atilde;o saud&aacute;vel</strong>, prazerosa e emagrecedora! Os&nbsp;links para o <strong>c&aacute;lculo de imc</strong>, <strong>quantidade de &aacute;gua e plano alimentar</strong>&nbsp;tamb&eacute;m estar&atilde;o no link abaixo!</p>";
+            $mensagem .= "<h3>N&atilde;o se esque&ccedil;a que no v&iacute;deo explicarei a import&acirc;ncia de cada um.&nbsp;</h3>";
+            $mensagem .= '<p><a href="https://nutrimarimartins.com.br/ferramentas/emagrecimentodefinitivo.html">Clique aqui para o conte&uacute;do gratuito.</a></p>';
+            $mensagem .= "<p>Um beijo da nutri.</p>";
+            $mensagem = "</html></body>";
+
 
             $myEmail = "contato@meuatendente.com.br"; //é necessário informar um e-mail do próprio domínio
             $headers = "From: contato@meuatendente.com.br\r\n";
