@@ -94,7 +94,7 @@ $(function () {
     })
 
 
-
+/*
     $.ajax({
         url: 'ajaxs/campanhasAjax.php',
         type: 'POST',
@@ -188,6 +188,7 @@ $(function () {
             document.getElementById('tbodyCampanhas').innerHTML = $conteudo
         }
     })
+    */
 
 
 
