@@ -35,8 +35,8 @@ $aleatorio = rand(1000, 10000);
                             <div class="row align-items-center" style="height: 100vh">
                                 <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #D6CBDF; background-position: bottom;">
 
-                                    <ul>
-                                        <li>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
                                             <div class="row">
                                                 <div class="col-3">
                                                     <div style="padding: 0px;" class="image">
@@ -52,7 +52,7 @@ $aleatorio = rand(1000, 10000);
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="nav-item">
                                             <div class="row">
                                                 <div class="col-3">
                                                     <div style="padding: 0px;" class="image">
