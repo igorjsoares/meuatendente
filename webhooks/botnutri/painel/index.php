@@ -32,7 +32,7 @@ header("Content-Type: text/html; charset=UTF-8", true);
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
 
-<body style="background: #017f92" class="hold-transition login-page">
+<body style="background: #246056" class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
       <img src="assets/LogoTextoBranco.png" alt=""><br>

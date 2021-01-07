@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside id="asideBar" style="background-color: #017f92" class="main-sidebar sidebar-light-primary elevation-4 border-bottom-0">
+<aside id="asideBar" style="background-color: #246056" class="main-sidebar sidebar-light-primary elevation-4 border-bottom-0">
   <!-- Brand Logo -->
   <a style="height: 60px" href="home.php" class="brand-link">
     <img style="margin-top: 5px" src="assets/logo_sozinha_branca.png" class="brand-image">
