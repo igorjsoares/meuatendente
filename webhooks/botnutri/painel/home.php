@@ -83,11 +83,6 @@ echo "<script>window.tipoEmpresa = '" . $_SESSION['NP_tipo_empresa'] . "'</scrip
           </div>
         </li>
         <li class="nav-item">
-          <div style="color: #858585; border-radius: 10px; background-color: #f4f6f9; padding-top: 5px; padding-bottom: 5px; padding-left: 15px; padding-right: 15px">
-            <strong id="strongCreditos"></strong> créditos
-          </div>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" id="btn-deslogar">
             <i style="color: #017f92" class="fas fa-sign-out-alt"></i>
           </a>

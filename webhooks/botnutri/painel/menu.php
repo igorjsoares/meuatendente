@@ -37,13 +37,13 @@
 
         <li class="nav-item">
           <a id="btnListas" style="color: white;" href="#" class="nav-link">
-            <i class="far fa-address-book nav-icon"></i>
+            <i class="fas fa-columns nav-icon"></i>
             <p>Painel</p>
           </a>
         </li>
         <li class="nav-item">
           <a id="btnListas" style="color: white;" href="#" class="nav-link">
-            <i class="far fa-address-book nav-icon"></i>
+            <i class="fab fa-whatsapp nav-icon"></i>
             <p>Atendimento</p>
           </a>
         </li>

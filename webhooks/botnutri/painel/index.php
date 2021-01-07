@@ -11,7 +11,7 @@ header("Content-Type: text/html; charset=UTF-8", true);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>NEW PROSPECT</title>
+  <title>BOT NUTRI</title>
   <link rel="shortcut icon" href="assets/fav.ico" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
