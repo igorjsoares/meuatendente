@@ -32,32 +32,6 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-
-
-        <li class="nav-item">
-          <a style="color: white" href="#" class="nav-link">
-            <i class="fas fa-comments nav-icon"></i>
-            <p>
-              Envios Whatssapp
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a id="btnContas" style="color: white; margin-left: 5px" href="#" class="nav-link">
-                <i class="far fa-user-circle nav-icon"></i>
-                <p>Contas</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a id="btnCampanhas" style="color: white; margin-left: 5px" href="#" class="nav-link">
-                <i class="far fa-comment nav-icon"></i>
-                <p>Campanhas</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
         <?php
         if ($_SESSION['NP_perfil_usuario'] == 'MASTER') {
         ?>
@@ -125,15 +99,6 @@
               <i class="fas fa-chart-line nav-icon"></i>
               <p>
                 Relatórios
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a id="btnCreditos" style="color: white" href="#" class="nav-link">
-              <i class="fas fa-donate nav-icon"></i>
-              <p>
-                Créditos
               </p>
             </a>
           </li>
