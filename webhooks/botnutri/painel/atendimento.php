@@ -37,7 +37,7 @@ $aleatorio = rand(1000, 10000);
 
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <div style="padding: 10px" class="row">
+                                            <div style="padding: 10px" class="row align-items-center">
                                                 <div class="col-3">
                                                     <div style="padding: 0px;" class="image">
                                                         <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
@@ -53,15 +53,15 @@ $aleatorio = rand(1000, 10000);
                                             </div>
                                         </li>
                                         <li class="nav-item">
-                                            <div style="padding: 20px" class="row">
+                                            <div style="padding: 10px" class="row align-items-center">
                                                 <div class="col-3">
                                                     <div style="padding: 0px;" class="image">
                                                         <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="col-7">
-                                                    <h4>Igor Soares</h4><br>
-                                                    <h6>Mensagem enviada</h6>
+                                                    <font style="font-size: 20px;">Igor Soares</font><br>
+                                                    <font style="font-size: 13px; color: gray">Mensagem enviada</font>
                                                 </div>
                                                 <div class="col-2">
                                                     <span class="float-right badge bg-success">2</span>
