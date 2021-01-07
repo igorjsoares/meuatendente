@@ -91,11 +91,6 @@ $aleatorio = rand(1000, 10000);
                         <div class="direct-chat-messages">
                             <!-- Message. Default to the left -->
                             <div class="direct-chat-msg">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-img -->
                                 <div class="direct-chat-text">
                                     Is this template really for free? That's unbelievable!
                                 </div>
@@ -105,10 +100,6 @@ $aleatorio = rand(1000, 10000);
 
                             <!-- Message to the right -->
                             <div class="direct-chat-msg right">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
-                                    <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-                                </div>
                                 <!-- /.direct-chat-img -->
                                 <div class="direct-chat-text">
                                     You better believe it!
