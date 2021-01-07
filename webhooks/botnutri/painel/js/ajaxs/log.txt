@@ -1,0 +1,262 @@
+> TEST 10/09/2020 12:42:37
+> TEST 10/09/2020 12:43:06
+> TEST 10/09/2020 01:01:15
+> TEST 10/09/2020 01:01:54
+> TEST 10/09/2020 01:03:36
+> TEST 10/09/2020 01:03:58
+> ERR 16/09/2020 06:00:31 Não Conseguiu gerar a lista Array
+> ERR 16/09/2020 06:03:36 Conseguiu gerar a lista mas não salvar 802151,Teste NP 10,
+> SUC 16/09/2020 06:04:59 Conseguiu gerar a lista e salvar 802152,Teste NP 11,
+> SUC 16/09/2020 06:05:57 Conseguiu gerar a lista e salvar 802153,Teste NP 12,
+> SUC 16/09/2020 06:15:22 Conseguiu gerar a lista e salvar 802159,Teste NP 13,
+> SUC 16/09/2020 06:16:39 Conseguiu gerar a lista e salvar 802160,Teste NP 14,
+> ERR 16/09/2020 08:48:23 Conseguiu gerar a lista mas não salvar 802204,Teste NP 20,
+> ERR 16/09/2020 08:53:44 Conseguiu gerar a lista mas não salvar 802205,Teste NP 22,
+> ERR 16/09/2020 08:54:30 Conseguiu gerar a lista mas não salvar 802206,Teste NP 23,
+> ERR 16/09/2020 08:55:16 Conseguiu gerar a lista mas não salvar 802207,Teste NP 23,
+> SUC 16/09/2020 08:56:39 Conseguiu gerar a lista e salvar 802208,Teste NP 24,
+> ERR 16/09/2020 11:22:10 Não Conseguiu gerar a lista Os dados enviados devem ser um JSON válido.
+> ERR 16/09/2020 11:25:11 Não Conseguiu gerar a lista Os dados enviados devem ser um JSON válido.
+> ERR 16/09/2020 11:28:13 Não Conseguiu gerar a lista Os dados enviados devem ser um JSON válido.
+> ERR 16/09/2020 11:34:03 Não Conseguiu gerar a lista Os dados enviados devem ser um JSON válido.
+> ERR 16/09/2020 11:39:39 Não Conseguiu gerar a lista Os dados enviados devem ser um JSON válido.
+> ERR 16/09/2020 11:40:29 Não Conseguiu gerar a lista Invalid send date: 16/09/2020 18:45
+> ERR 16/09/2020 11:45:33 Não Conseguiu gerar a lista Invalid send date: 16-09-2020 18:50
+> ERR 16/09/2020 11:47:45 Não Conseguiu gerar a lista you can't provide a list with less then 100 contacts in a zap campaign
+> ERR 17/09/2020 06:23:15 Não Conseguiu gerar a lista Array
+> SUC 17/09/2020 06:27:58 Conseguiu gerar a lista e salvar 802412,Teste 100 contatos 2,
+> ERR 17/09/2020 06:38:55 Não Conseguiu gerar a lista Array
+> ERR 17/09/2020 06:44:08 Não Conseguiu gerar a lista Array
+> ERR 17/09/2020 06:44:55 Não Conseguiu gerar a campanha Array
+> ERR 17/09/2020 06:47:05 Não Conseguiu gerar a campanha Array
+> ERR 17/09/2020 06:48:33 Não Conseguiu gerar a campanha Array
+> ERR 17/09/2020 06:49:06 Não Conseguiu gerar a campanha Array
+> ERR 17/09/2020 07:10:58 Não Conseguiu gerar a campanha 
+> ERR 17/09/2020 07:12:32 Não Conseguiu gerar a campanha {"profile":{"photo":["Resolução mínima deve ser: 192px X 192px A imagem enviada tem 128px X 128px"]}}
+> ERR 17/09/2020 07:16:25 Não Conseguiu gerar a campanha {"profile":{"photo":["Imagem de perfil aceita somente .jpg"]}}
+> ERR 17/09/2020 07:18:56 Conseguiu gerar a campanha mas não salvar {"id_campaign":810098}
+> ERR 17/09/2020 07:55:58 Conseguiu gerar a campanha mas não salvar {"id_campaign":810112}
+> ERR 17/09/2020 08:00:44 Conseguiu gerar a campanha mas não salvar {"id_campaign":810113}
+> SUC 17/09/2020 08:05:27 Conseguiu gerar a campanha e salvar {"id_campaign":810114}
+> SUC 17/09/2020 08:07:03 Conseguiu gerar a campanha e salvar {"id_campaign":810115}
+> ERR 17/09/2020 08:25:20 Não Conseguiu gerar a campanha ["we could not find this list with id 9"]
+> SUC 17/09/2020 11:21:25 Conseguiu gerar a lista e salvar 802469,Lista contatos com Xandu00e3o,
+> SUC 17/09/2020 11:24:20 Conseguiu gerar a campanha e salvar {"id_campaign":810164}
+> ERR 19/09/2020 01:43:04 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 01:44:11 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 01:45:08 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 01:54:41 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 01:55:08 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 01:55:35 Não Conseguiu gerar a campanha {"profile":{"photo":["Imagem de perfil aceita somente .jpg"]}}
+> ERR 19/09/2020 01:57:55 Não Conseguiu gerar a campanha {"profile":{"photo":["Imagem de perfil aceita somente .jpg"]}}
+> ERR 19/09/2020 02:06:07 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 02:06:46 Não Conseguiu gerar a campanha {"profile":{"photo":["Imagem de perfil aceita somente .jpg"]}}
+> ERR 19/09/2020 03:00:13 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> SUC 19/09/2020 03:00:44 Conseguiu gerar a campanha e salvar {"id_campaign":810408}
+> ERR 19/09/2020 03:28:24 Não Conseguiu gerar a campanha {"message":["Este campo não pode ser em branco."]}
+> SUC 19/09/2020 03:35:11 Conseguiu gerar a campanha e salvar {"id_campaign":810415}
+> ERR 19/09/2020 03:41:48 Não Conseguiu gerar a campanha {"message":["Este campo não pode ser em branco."]}
+> SUC 19/09/2020 03:42:52 Conseguiu gerar a campanha e salvar {"id_campaign":810416}
+> SUC 19/09/2020 03:52:44 Conseguiu gerar a campanha e salvar {"id_campaign":810417}
+> ERR 19/09/2020 03:55:54 Não Conseguiu gerar a campanha ["A data selecionada está indisponível, motivo:Manutenção programada, por favor selecione uma datadiferente"]
+> ERR 19/09/2020 03:56:16 Não Conseguiu gerar a campanha {"media":{"media_file":["A extensão do arquivo não é permitida formatos aceitos: ('mp4', 'mp3', 'jpg', 'png', 'gif')"]}}
+> ERR 19/09/2020 04:06:00 Não Conseguiu gerar a campanha {"media":{"media_type":["Este campo não pode ser nulo."],"media_file":["O arquivo é obrigatório."]}}
+> SUC 19/09/2020 04:31:01 Conseguiu gerar a campanha e salvar {"id_campaign":810420}
+> SUC 19/09/2020 04:37:38 Conseguiu gerar a campanha e salvar {"id_campaign":810423}
+> SUC 19/09/2020 04:41:12 Conseguiu gerar a campanha e salvar {"id_campaign":810424}
+> SUC 19/09/2020 04:42:46 Conseguiu gerar a campanha e salvar {"id_campaign":810425}
+> SUC 19/09/2020 04:44:20 Conseguiu gerar a campanha e salvar {"id_campaign":810427}
+> SUC 19/09/2020 11:43:13 Não foi possível fazer o upload do arquivo. {"id_campaign":810431}
+> SUC 19/09/2020 11:43:13 Conseguiu gerar a campanha e salvar {"id_campaign":810431}
+> SUC 19/09/2020 11:48:03 Não foi possível fazer o upload do arquivo. {"id_campaign":810432}
+> SUC 19/09/2020 11:48:03 Conseguiu gerar a campanha e salvar {"id_campaign":810432}
+> SUC 19/09/2020 11:51:45 Não foi possível fazer o upload do arquivo. {"id_campaign":810433}
+> SUC 19/09/2020 11:51:45 Conseguiu gerar a campanha e salvar {"id_campaign":810433}
+> SUC 19/09/2020 11:52:31 Não foi possível fazer o upload do arquivo. {"id_campaign":810434}
+> SUC 19/09/2020 11:52:31 Conseguiu gerar a campanha e salvar {"id_campaign":810434}
+> SUC 19/09/2020 11:53:02 Arquivo salvo com sucesso! {"id_campaign":810435}
+> SUC 19/09/2020 11:53:02 Conseguiu gerar a campanha e salvar {"id_campaign":810435}
+> SUC 19/09/2020 11:59:35 Arquivo salvo com sucesso! {"id_campaign":810436}
+> SUC 19/09/2020 11:59:35 Conseguiu gerar a campanha e salvar {"id_campaign":810436}
+> SUC 20/09/2020 12:39:15 Arquivo salvo com sucesso! {"id_campaign":810437}
+> SUC 20/09/2020 12:39:15 Conseguiu gerar a campanha e salvar {"id_campaign":810437}
+> SUC 20/09/2020 12:57:44 Arquivo salvo com sucesso! {"id_campaign":810438}
+> SUC 20/09/2020 12:57:44 Conseguiu gerar a campanha e salvar {"id_campaign":810438}
+> SUC 20/09/2020 02:26:33 Não foi possível fazer o upload do arquivo. {"id_campaign":810439}
+> SUC 20/09/2020 02:26:33 Conseguiu gerar a campanha e salvar {"id_campaign":810439}
+> SUC 20/09/2020 02:26:34 Salvou o crédito 810439
+> SUC 20/09/2020 02:27:52 Não foi possível fazer o upload do arquivo. {"id_campaign":810440}
+> SUC 20/09/2020 02:27:52 Conseguiu gerar a campanha e salvar {"id_campaign":810440}
+> SUC 20/09/2020 02:27:54 Salvou o crédito 810440
+> SUC 20/09/2020 02:33:00 Arquivo salvo com sucesso! {"id_campaign":810441}
+> SUC 20/09/2020 02:33:00 Conseguiu gerar a campanha e salvar {"id_campaign":810441}
+> SUC 20/09/2020 02:33:01 Salvou o crédito 810441
+> SUC 20/09/2020 02:39:06 Arquivo salvo com sucesso! {"id_campaign":810442}
+> SUC 20/09/2020 02:39:06 Conseguiu gerar a campanha e salvar {"id_campaign":810442}
+> SUC 20/09/2020 02:39:07 DEBUG 
+> SUC 20/09/2020 02:39:08 Salvou o crédito 810442
+> SUC 20/09/2020 02:40:24 Arquivo salvo com sucesso! {"id_campaign":810443}
+> SUC 20/09/2020 02:40:24 Conseguiu gerar a campanha e salvar {"id_campaign":810443}
+> SUC 20/09/2020 02:40:25 DEBUG 
+> SUC 20/09/2020 02:40:26 Salvou o crédito 810443
+> SUC 20/09/2020 02:45:04 Arquivo salvo com sucesso! {"id_campaign":810444}
+> SUC 20/09/2020 02:45:04 Conseguiu gerar a campanha e salvar {"id_campaign":810444}
+> SUC 20/09/2020 02:45:05 DEBUG {"id":802469,"name":"Lista contatos com Xandu00e3o","processing_status":"finished","total_contacts":3,"invalid_contacts":0,"upload_date":"2020-09-17 21:21:29.088270+00:00"}
+> SUC 20/09/2020 02:45:05 Salvou o crédito 810444
+> SUC 20/09/2020 02:45:42 Não foi possível fazer o upload do arquivo. {"id_campaign":810445}
+> SUC 20/09/2020 02:45:42 Conseguiu gerar a campanha e salvar {"id_campaign":810445}
+> SUC 20/09/2020 02:45:43 DEBUG {"id":802469,"name":"Lista contatos com Xandu00e3o","processing_status":"finished","total_contacts":3,"invalid_contacts":0,"upload_date":"2020-09-17 21:21:29.088270+00:00"}
+> SUC 20/09/2020 02:45:43 Salvou o crédito 810445
+> SUC 20/09/2020 11:27:52 DEBUG 
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Not Found</title>
+</head>
+<body>
+  <h1>Not Found</h1><p>The requested resource was not found on this server.</p>
+</body>
+</html>
+
+> SUC 20/09/2020 12:38:40 Não foi possível fazer o upload do arquivo. {"id_campaign":810446}
+> SUC 20/09/2020 12:38:40 Conseguiu gerar a campanha e salvar {"id_campaign":810446}
+> SUC 20/09/2020 12:38:41 Salvou o crédito 810446
+> SUC 20/09/2020 12:42:13 Arquivo salvo com sucesso! {"id_campaign":810447}
+> SUC 20/09/2020 12:42:13 Conseguiu gerar a campanha e salvar {"id_campaign":810447}
+> SUC 20/09/2020 12:42:14 Salvou o crédito 810447
+> SUC 20/09/2020 12:48:34 Não foi possível fazer o upload do arquivo. {"id_campaign":810448}
+> SUC 20/09/2020 12:48:34 Conseguiu gerar a campanha e salvar {"id_campaign":810448}
+> SUC 20/09/2020 12:48:35 Salvou o crédito 810448
+> ERR 20/09/2020 08:58:23 Não conseguiu realizar a recarga. Usuario: 1
+> ERR 20/09/2020 09:04:24 Não conseguiu realizar a recarga. Usuario: 1
+> ERR 20/09/2020 09:06:10 Não conseguiu realizar a recarga. Usuario: 1
+> SUC 20/09/2020 09:06:45 Conseguiu realizar a recarga. Usuario: 1
+> ERR 20/09/2020 10:00:54 Não Conseguiu gerar a lista Array
+> ERR 20/09/2020 10:01:51 Não Conseguiu gerar a lista Array
+> ERR 20/09/2020 10:06:23 Não Conseguiu gerar a lista {"recipients":{"101":{"phone":["Este campo não pode ser em branco."]}}}
+> SUC 20/09/2020 10:07:29 Conseguiu gerar a lista e salvar {"list_id":802731,"name":"Lista teste","callback_url":null}
+> SUC 20/09/2020 10:39:52 Conseguiu realizar a recarga. Usuario: 1
+> SUC 20/09/2020 10:43:42 Não foi possível fazer o upload do arquivo. {"id_campaign":810462}
+> SUC 20/09/2020 10:43:42 Conseguiu gerar a campanha e salvar {"id_campaign":810462}
+> SUC 20/09/2020 10:43:43 Salvou o crédito 810462
+> ERR 21/09/2020 03:53:18 A extensão escolhida não é válida. Usuario: 1
+> ERR 21/09/2020 04:04:03 A extensão escolhida não é válida. Usuario: 1
+> ERR 21/09/2020 04:05:44 Não conseguiu salvar conta. Usuario: 1
+> SUC 21/09/2020 04:06:58 Salvou arquivo da conta: 1
+> ERR 21/09/2020 04:08:42 Não foi possível fazer o upload do arquivo. Conta: 2
+> SUC 21/09/2020 04:11:39 Salvou arquivo da conta: 3
+> SUC 21/09/2020 05:56:26 Arquivo salvo com sucesso! {"id_campaign":810565}
+> SUC 21/09/2020 05:56:26 Conseguiu gerar a campanha e salvar {"id_campaign":810565}
+> SUC 21/09/2020 05:56:28 Salvou o crédito 810565
+> SUC 21/09/2020 05:57:25 Arquivo salvo com sucesso! {"id_campaign":810567}
+> SUC 21/09/2020 05:57:25 Conseguiu gerar a campanha e salvar {"id_campaign":810567}
+> SUC 21/09/2020 05:57:26 Salvou o crédito 810567
+> SUC 21/09/2020 05:59:00 Arquivo salvo com sucesso! {"id_campaign":810569}
+> SUC 21/09/2020 05:59:00 Conseguiu gerar a campanha e salvar {"id_campaign":810569}
+> SUC 21/09/2020 05:59:02 Salvou o crédito 810569
+> SUC 21/09/2020 06:44:07 Entrou no salvar  lista 
+> SUC 21/09/2020 06:44:07 Salvou o arquivo 
+> SUC 21/09/2020 06:44:07 Entrou no getCSV 
+> SUC 21/09/2020 06:44:07 Passou pelo arquivo 
+> SUC 21/09/2020 06:44:12 Conseguiu gerar a lista e salvar {"list_id":802856,"name":"Lista teste 3 contatos","callback_url":null}
+> SUC 21/09/2020 06:52:16 Conseguiu realizar a recarga. Usuario: 1
+> SUC 22/09/2020 11:58:56 Início do algorítimo
+> SUC 22/09/2020 12:00:28 Início do algorítimo
+> SUC 22/09/2020 12:03:01 Início do algorítimo
+> SUC 22/09/2020 12:03:01 Entrou no closed
+> SUC 22/09/2020 12:05:25 Início do algorítimo
+> SUC 22/09/2020 12:05:25 Entrou no closed
+> SUC 22/09/2020 12:07:14 Encontrado dados da campanha. Campanha: Teste de envio de audio
+> SUC 22/09/2020 12:08:39 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:08:40 Status da atualização. Status: 
+> SUC 22/09/2020 12:49:59 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:49:59 Entrou na atualização 
+> SUC 22/09/2020 12:50:00UPDATE tbl_creditos SET status = 1, valor = -6 WHERE cod = 810593 AND status = 2
+> SUC 22/09/2020 12:50:00 Status da atualização. Status: 
+> SUC 22/09/2020 12:52:21 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:52:21 Entrou na atualização 
+> SUC 22/09/2020 12:52:22UPDATE tbl_creditos SET status = 1, valor = -6 WHERE referencia = 810593 AND status = 2
+> SUC 22/09/2020 12:52:22 Status da atualização. Status: 1
+> ERR 22/09/2020 12:52:24 Não nviou o e-mail da Finalização. Campanha: 810593
+> SUC 22/09/2020 12:53:19 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:53:19 Entrou na atualização 
+> SUC 22/09/2020 12:53:20UPDATE tbl_creditos SET status = 1, valor = -6 WHERE referencia = 810593 AND status = 2
+> SUC 22/09/2020 12:53:20 Status da atualização. Status: 1
+> ERR 22/09/2020 12:53:22 Não nviou o e-mail da Finalização. Campanha: 810593
+> SUC 22/09/2020 12:53:37 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:53:37 Entrou na atualização 
+> SUC 22/09/2020 12:53:38UPDATE tbl_creditos SET status = 1, valor = -6 WHERE referencia = 810593 AND status = 2
+> SUC 22/09/2020 12:53:38 Status da atualização. Status: 1
+> ERR 22/09/2020 12:53:40 Não nviou o e-mail da Finalização. Campanha: 810593
+> SUC 22/09/2020 12:55:43 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:55:43 Entrou na atualização 
+> SUC 22/09/2020 12:55:44UPDATE tbl_creditos SET status = 1, valor = -6 WHERE referencia = 810593 AND status = 2
+> SUC 22/09/2020 12:55:44 Status da atualização. Status: 1
+> ERR 22/09/2020 12:55:46 Não nviou o e-mail da Finalização. Campanha: 810593
+> SUC 22/09/2020 12:58:54 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:58:54 Entrou na atualização 
+> SUC 22/09/2020 12:58:55UPDATE tbl_creditos SET status = 1, valor = -6 WHERE referencia = 810593 AND status = 2
+> SUC 22/09/2020 12:58:55 Status da atualização. Status: 
+> SUC 22/09/2020 12:59:25 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 12:59:25 Entrou na atualização 
+> SUC 22/09/2020 12:59:27 Status da atualização. Status: 
+> SUC 22/09/2020 01:00:27 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 01:00:27 Entrou na atualização 
+> SUC 22/09/2020 01:00:28 Status da atualização. Status: false
+> SUC 22/09/2020 01:03:04 Encontrado dados da campanha. Campanha: 10
+> SUC 22/09/2020 01:03:04 Entrou na atualização 
+> SUC 22/09/2020 01:03:05 Campanha Fechada - Créditos atualizados. Campanha: 810593
+> SUC 22/09/2020 01:03:05 Status da atualização. Status: true
+> ERR 22/09/2020 01:03:07 Não nviou o e-mail da Finalização. Campanha: 810593
+> ERR 27/09/2020 03:26:57 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 03:27:05 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 03:27:13 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 03:28:09 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:10:35 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:11:08 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:12:51 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 04:15:27 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 04:55:33 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:57:36 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:59:10 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:59:23 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 04:59:50 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 05:00:16 A extensão escolhida não é válida. Usuario: 1
+> ERR 27/09/2020 05:01:12 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:02:36 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:03:03 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:06:58 Não conseguiu salvar áudio no DB. Usuario: 
+> ERR 27/09/2020 05:10:38 Não conseguiu salvar áudio no DB. Usuario: 
+> ERR 27/09/2020 05:11:47 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:12:50 A extensão escolhida não é válida. Usuario: 1
+> SUC 27/09/2020 05:13:55 Salvou arquivo de áudio: TesteVelip.mp3
+> ERR 27/09/2020 05:13:55 Não conseguiu salvar áudio no DB. Usuario: 1
+> SUC 27/09/2020 05:15:09 Salvou arquivo de áudio: mp3
+> ERR 27/09/2020 05:15:09 Não conseguiu salvar áudio no DB. Usuario: 1
+> SUC 27/09/2020 05:18:47 Salvou arquivo de áudio: 1
+> ERR 27/09/2020 05:18:48 Não conseguiu salvar áudio no DB. Usuario: 1
+> SUC 27/09/2020 05:20:09 Salvou arquivo de áudio: 1
+> ERR 27/09/2020 05:20:10 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:23:51 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:25:19 Não conseguiu salvar áudio no DB. Usuario: 1
+> ERR 27/09/2020 05:26:19 Não conseguiu salvar áudio no DB. Usuario: 1
+> SUC 27/09/2020 05:31:38 Salvou arquivo de áudio: 1
+> SUC 27/09/2020 05:43:58 Salvou arquivo de áudio: 2
+> SUC 28/09/2020 03:08:15 Salvou arquivo de áudio: 3
+> SUC 28/09/2020 03:12:53 Salvou arquivo de áudio: 4
+> SUC 28/09/2020 03:17:56 Salvou arquivo de áudio: 5
+> SUC 28/09/2020 04:12:50 Salvou arquivo de áudio: 6
+> SUC 28/09/2020 05:00:55 Salvou arquivo de áudio: 7
+> SUC 28/09/2020 05:01:58 Salvou arquivo de áudio: 8
+> SUC 28/09/2020 05:03:18 Salvou arquivo de áudio: 9
+> SUC 28/09/2020 05:24:22 Salvou arquivo de áudio: 10
+> SUC 28/09/2020 05:25:05 Salvou arquivo de áudio: 11
+> SUC 28/09/2020 06:09:14 Salvou arquivo de áudio: 12
+> ERR 30/09/2020 03:30:44 Não foi possível fazer o upload do arquivo. Conta: 13
+> SUC 30/09/2020 03:34:38 Salvou arquivo da conta: 14
+> SUC 30/09/2020 04:45:54 Entrou no salvar  lista 
+> SUC 30/09/2020 04:45:54 Salvou o arquivo 
+> SUC 30/09/2020 04:45:54 Entrou no getCSV 
+> SUC 30/09/2020 04:45:54 Passou pelo arquivo 
+> ERR 30/09/2020 04:45:56 Não Conseguiu gerar a lista {"recipients":{"103":{"phone":["Este campo não pode ser em branco."]}}}
+> SUC 30/09/2020 04:52:17 Conseguiu realizar a recarga. Usuario: 1

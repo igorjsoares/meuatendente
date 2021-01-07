@@ -1,0 +1,2361 @@
+21/08/2020 11:27:20 - ERRO - Notificação não criada - 
+21/08/2020 11:41:04 - ERRO - Notificação não criada - 
+21/08/2020 11:42:34 - SUCE - Notificação criada - 55
+21/08/2020 11:43:25 - SUCE - Notificação criada - 56
+21/08/2020 11:44:05 - Solicitação criada - 57
+21/08/2020 11:44:08 - SUCE - Notificação criada - 57
+21/08/2020 11:59:03 - Solicitação criada - 1
+21/08/2020 11:59:06 - SUCE - Notificação criada - 1
+21/08/2020 11:59:13 - SUCE - Notificação criada - 
+22/08/2020 12:07:24 - Solicitação criada - 2
+22/08/2020 12:07:28 - SUCE - Notificação criada - 2
+22/08/2020 12:07:35 - SUCE - Notificação criada - 
+22/08/2020 12:12:02 - Solicitação criada - 3
+22/08/2020 12:12:05 - SUCE - Notificação criada - 3
+22/08/2020 12:12:12 - SUCE - Visualização criada - 0
+22/08/2020 12:15:58 Consulta de notificação realizada
+22/08/2020 12:16:29 Consulta de notificação realizada
+22/08/2020 12:16:38 Consulta de notificação realizada
+22/08/2020 12:16:56 - SUCE - Visualização criada - 1
+22/08/2020 12:17:01 Consulta de notificação realizada
+22/08/2020 12:17:22 Consulta de notificação realizada
+22/08/2020 12:18:13 - SUCE - Visualização criada - 0
+22/08/2020 12:18:27 - SUCE - Notificação atualizada - 3
+22/08/2020 12:18:27 - SUCE - Notificação criada - 3
+22/08/2020 12:18:33 - SUCE - Visualização criada - 0
+22/08/2020 12:18:47 Consulta de notificação realizada
+22/08/2020 12:20:17 Consulta de notificação realizada
+22/08/2020 12:20:40 - SUCE - Visualização criada - 4
+22/08/2020 12:20:58 - SUCE - Notificação atualizada - 1
+22/08/2020 12:20:58 - SUCE - Notificação criada - 1
+22/08/2020 12:21:05 - SUCE - Visualização criada - 0
+22/08/2020 12:21:19 Consulta de notificação realizada
+22/08/2020 12:23:31 - SUCE - Visualização criada, usuario 13
+22/08/2020 12:23:43 Consulta de notificação realizada
+22/08/2020 12:23:49 Consulta de notificação realizada
+22/08/2020 12:25:47 - Solicitação criada - 4
+22/08/2020 12:25:50 - SUCE - Notificação criada - 4
+22/08/2020 12:25:56 - SUCE - Visualização criada, usuario 13
+22/08/2020 12:26:18 Consulta de notificação realizada
+22/08/2020 12:26:24 Consulta de notificação realizada
+22/08/2020 12:29:32 Consulta de notificação realizada
+22/08/2020 12:47:47 Consulta de notificação realizada
+22/08/2020 12:47:57 Consulta de notificação realizada
+22/08/2020 12:48:07 Consulta de notificação realizada
+22/08/2020 12:48:17 Consulta de notificação realizada
+22/08/2020 12:48:27 Consulta de notificação realizada
+22/08/2020 12:48:37 Consulta de notificação realizada
+22/08/2020 12:48:47 Consulta de notificação realizada
+22/08/2020 12:48:57 Consulta de notificação realizada
+22/08/2020 12:49:07 Consulta de notificação realizada
+22/08/2020 12:49:17 Consulta de notificação realizada
+22/08/2020 12:49:20 Consulta de notificação realizada
+22/08/2020 12:49:33 Consulta de notificação realizada
+22/08/2020 12:49:45 Consulta de notificação realizada
+22/08/2020 12:49:57 Consulta de notificação realizada
+22/08/2020 12:50:10 Consulta de notificação realizada
+22/08/2020 12:50:16 Consulta de notificação realizada
+22/08/2020 12:51:09 - SUCE - Visualização criada, usuario 11
+22/08/2020 12:51:18 Consulta de notificação realizada
+22/08/2020 12:51:22 - SUCE - Notificação atualizada - 4
+22/08/2020 12:51:22 - SUCE - Notificação criada - 4
+22/08/2020 12:51:30 - SUCE - Visualização criada, usuario 11
+22/08/2020 12:52:21 Consulta de notificação realizada
+22/08/2020 12:53:23 Consulta de notificação realizada
+22/08/2020 12:53:33 - Solicitação criada - 5
+22/08/2020 12:53:37 - SUCE - Notificação criada - 5
+22/08/2020 12:53:42 - SUCE - Visualização criada, usuario 13
+22/08/2020 12:53:54 Consulta de notificação realizada
+22/08/2020 12:54:15 Consulta de notificação realizada
+22/08/2020 12:54:25 Consulta de notificação realizada
+22/08/2020 12:54:49 Consulta de notificação realizada
+22/08/2020 12:54:56 Consulta de notificação realizada
+22/08/2020 12:55:29 - SUCE - Visualização criada, usuario 11
+22/08/2020 12:55:45 - SUCE - Notificação atualizada - 5
+22/08/2020 12:55:45 - SUCE - Notificação criada - 5
+22/08/2020 12:55:51 Consulta de notificação realizada
+22/08/2020 12:55:52 - SUCE - Visualização criada, usuario 11
+22/08/2020 12:55:59 Consulta de notificação realizada
+22/08/2020 12:56:05 - SUCE - Visualização criada, usuario 13
+22/08/2020 12:56:53 Consulta de notificação realizada
+22/08/2020 12:57:01 Consulta de notificação realizada
+22/08/2020 12:57:56 Consulta de notificação realizada
+22/08/2020 12:58:04 Consulta de notificação realizada
+22/08/2020 12:58:58 Consulta de notificação realizada
+22/08/2020 12:59:06 Consulta de notificação realizada
+22/08/2020 01:00:00 Consulta de notificação realizada
+22/08/2020 01:00:09 Consulta de notificação realizada
+22/08/2020 01:01:03 Consulta de notificação realizada
+22/08/2020 01:01:11 Consulta de notificação realizada
+22/08/2020 01:01:23 Consulta de notificação realizada
+22/08/2020 01:01:44 Consulta de notificação realizada
+22/08/2020 01:02:33 - Solicitação criada - 6
+22/08/2020 01:02:36 - SUCE - Notificação criada - 6
+22/08/2020 01:02:42 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:04:29 Consulta de notificação realizada
+22/08/2020 01:05:13 Consulta de notificação realizada
+22/08/2020 01:05:18 Consulta de notificação realizada
+22/08/2020 01:05:26 Consulta de notificação realizada
+22/08/2020 01:06:28 Consulta de notificação realizada
+22/08/2020 01:06:55 Consulta de notificação realizada
+22/08/2020 01:07:01 Consulta de notificação realizada
+22/08/2020 01:07:18 Consulta de notificação realizada
+22/08/2020 01:07:21 Consulta de notificação realizada
+22/08/2020 01:08:02 Consulta de notificação realizada
+22/08/2020 01:08:03 Consulta de notificação realizada
+22/08/2020 01:08:20 Consulta de notificação realizada
+22/08/2020 01:08:44 Consulta de notificação realizada
+22/08/2020 01:09:07 Consulta de notificação realizada
+22/08/2020 01:09:46 Consulta de notificação realizada
+22/08/2020 01:10:09 Consulta de notificação realizada
+22/08/2020 01:10:48 Consulta de notificação realizada
+22/08/2020 01:10:48 Consulta de notificação realizada
+22/08/2020 01:11:27 Consulta de notificação realizada
+22/08/2020 01:11:50 Consulta de notificação realizada
+22/08/2020 01:12:29 Consulta de notificação realizada
+22/08/2020 01:12:53 Consulta de notificação realizada
+22/08/2020 01:13:32 Consulta de notificação realizada
+22/08/2020 01:13:58 Consulta de notificação realizada
+22/08/2020 01:14:34 Consulta de notificação realizada
+22/08/2020 01:15:02 Consulta de notificação realizada
+22/08/2020 01:15:36 Consulta de notificação realizada
+22/08/2020 01:16:04 Consulta de notificação realizada
+22/08/2020 01:16:38 Consulta de notificação realizada
+22/08/2020 01:17:06 Consulta de notificação realizada
+22/08/2020 01:17:40 Consulta de notificação realizada
+22/08/2020 01:18:09 Consulta de notificação realizada
+22/08/2020 01:18:41 Consulta de notificação realizada
+22/08/2020 01:18:42 Consulta de notificação realizada
+22/08/2020 01:19:44 Consulta de notificação realizada
+22/08/2020 01:20:46 Consulta de notificação realizada
+22/08/2020 01:21:48 Consulta de notificação realizada
+22/08/2020 01:22:50 Consulta de notificação realizada
+22/08/2020 01:23:53 Consulta de notificação realizada
+22/08/2020 01:24:55 Consulta de notificação realizada
+22/08/2020 01:25:57 Consulta de notificação realizada
+22/08/2020 01:26:59 Consulta de notificação realizada
+22/08/2020 01:28:01 Consulta de notificação realizada
+22/08/2020 01:29:03 Consulta de notificação realizada
+22/08/2020 01:30:05 Consulta de notificação realizada
+22/08/2020 01:31:09 Consulta de notificação realizada
+22/08/2020 01:32:11 Consulta de notificação realizada
+22/08/2020 01:33:13 Consulta de notificação realizada
+22/08/2020 01:33:38 Consulta de notificação realizada
+22/08/2020 01:34:40 Consulta de notificação realizada
+22/08/2020 01:35:09 - Solicitação criada - 7
+22/08/2020 01:35:12 - SUCE - Notificação criada - 7
+22/08/2020 01:35:18 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:35:42 Consulta de notificação realizada
+22/08/2020 01:36:19 Consulta de notificação realizada
+22/08/2020 01:36:40 - SUCE - Visualização criada, usuario 11
+22/08/2020 01:36:44 Consulta de notificação realizada
+22/08/2020 01:36:48 - SUCE - Notificação atualizada - 6
+22/08/2020 01:36:48 - SUCE - Notificação criada - 6
+22/08/2020 01:36:55 - SUCE - Visualização criada, usuario 11
+22/08/2020 01:37:21 Consulta de notificação realizada
+22/08/2020 01:37:46 Consulta de notificação realizada
+22/08/2020 01:38:38 Consulta de notificação realizada
+22/08/2020 01:38:48 Consulta de notificação realizada
+22/08/2020 01:39:40 Consulta de notificação realizada
+22/08/2020 01:39:42 - Solicitação criada - 8
+22/08/2020 01:39:45 - SUCE - Notificação criada - 8
+22/08/2020 01:39:50 Consulta de notificação realizada
+22/08/2020 01:39:51 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:40:18 Consulta de notificação realizada
+22/08/2020 01:40:35 - SUCE - Visualização criada, usuario 11
+22/08/2020 01:40:42 Consulta de notificação realizada
+22/08/2020 01:40:43 - SUCE - Notificação atualizada - 8
+22/08/2020 01:40:43 - SUCE - Notificação criada - 8
+22/08/2020 01:40:50 - SUCE - Visualização criada, usuario 11
+22/08/2020 01:41:44 Consulta de notificação realizada
+22/08/2020 01:42:47 Consulta de notificação realizada
+22/08/2020 01:43:03 Consulta de notificação realizada
+22/08/2020 01:43:27 Consulta de notificação realizada
+22/08/2020 01:43:49 Consulta de notificação realizada
+22/08/2020 01:44:29 Consulta de notificação realizada
+22/08/2020 01:44:51 Consulta de notificação realizada
+22/08/2020 01:45:31 Consulta de notificação realizada
+22/08/2020 01:45:53 Consulta de notificação realizada
+22/08/2020 01:46:33 Consulta de notificação realizada
+22/08/2020 01:46:56 Consulta de notificação realizada
+22/08/2020 01:47:35 Consulta de notificação realizada
+22/08/2020 01:47:59 Consulta de notificação realizada
+22/08/2020 01:48:37 Consulta de notificação realizada
+22/08/2020 01:49:02 Consulta de notificação realizada
+22/08/2020 01:49:39 Consulta de notificação realizada
+22/08/2020 01:50:05 Consulta de notificação realizada
+22/08/2020 01:50:20 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:50:41 - SUCE - Notificação atualizada - 7
+22/08/2020 01:50:41 - SUCE - Notificação criada - 7
+22/08/2020 01:50:42 Consulta de notificação realizada
+22/08/2020 01:50:47 - SUCE - Visualização criada, usuario 11
+22/08/2020 01:50:55 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:51:04 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:51:07 Consulta de notificação realizada
+22/08/2020 01:51:44 Consulta de notificação realizada
+22/08/2020 01:52:20 Consulta de notificação realizada
+22/08/2020 01:52:27 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:52:28 Consulta de notificação realizada
+22/08/2020 01:52:35 - SUCE - Visualização criada, usuario 13
+22/08/2020 01:53:03 - SUCE - Visualização criada, usuario 11
+23/08/2020 02:10:19 Consulta de notificação realizada
+23/08/2020 07:29:39 Consulta de notificação realizada
+23/08/2020 07:30:24 Consulta de notificação realizada
+23/08/2020 07:56:34 Consulta de notificação realizada
+23/08/2020 08:00:58 Consulta de notificação realizada
+23/08/2020 08:02:43 Consulta de notificação realizada
+23/08/2020 08:22:21 - SUCE - Visualização criada, usuario 1
+23/08/2020 08:22:24 Consulta de notificação realizada
+23/08/2020 08:22:30 - SUCE - Visualização criada, usuario 1
+23/08/2020 08:40:24 Consulta de notificação realizada
+23/08/2020 11:05:56 - SUCE - Visualização criada, usuario 1
+23/08/2020 11:06:17 Consulta de notificação realizada
+23/08/2020 11:07:19 Consulta de notificação realizada
+23/08/2020 11:08:21 Consulta de notificação realizada
+23/08/2020 11:08:33 Consulta de notificação realizada
+23/08/2020 11:09:35 Consulta de notificação realizada
+23/08/2020 11:10:37 Consulta de notificação realizada
+23/08/2020 11:11:39 Consulta de notificação realizada
+23/08/2020 11:12:23 Consulta de notificação realizada
+23/08/2020 11:13:25 Consulta de notificação realizada
+23/08/2020 11:14:27 Consulta de notificação realizada
+23/08/2020 11:15:31 Consulta de notificação realizada
+23/08/2020 11:16:33 Consulta de notificação realizada
+23/08/2020 11:17:35 Consulta de notificação realizada
+23/08/2020 11:18:37 Consulta de notificação realizada
+23/08/2020 11:19:39 Consulta de notificação realizada
+23/08/2020 11:20:41 Consulta de notificação realizada
+24/08/2020 12:03:52 Consulta de notificação realizada
+24/08/2020 12:54:15 Consulta de notificação realizada
+24/08/2020 12:55:18 Consulta de notificação realizada
+24/08/2020 12:56:21 Consulta de notificação realizada
+24/08/2020 12:56:25 - Solicitação criada - 9
+24/08/2020 12:56:28 - SUCE - Notificação criada - 9
+24/08/2020 12:57:23 Consulta de notificação realizada
+24/08/2020 12:58:25 Consulta de notificação realizada
+24/08/2020 12:59:27 Consulta de notificação realizada
+24/08/2020 01:00:29 Consulta de notificação realizada
+24/08/2020 01:01:31 Consulta de notificação realizada
+24/08/2020 01:02:33 Consulta de notificação realizada
+24/08/2020 01:03:35 Consulta de notificação realizada
+24/08/2020 01:04:38 Consulta de notificação realizada
+24/08/2020 01:05:14 - Solicitação criada - 10
+24/08/2020 01:05:17 - SUCE - Notificação criada - 10
+24/08/2020 01:05:25 - SUCE - Visualização criada, usuario 1
+24/08/2020 01:05:40 Consulta de notificação realizada
+24/08/2020 01:57:15 Consulta de notificação realizada
+24/08/2020 02:00:02 Consulta de notificação realizada
+24/08/2020 02:00:09 Consulta de notificação realizada
+24/08/2020 02:01:19 - Solicitação criada - 11
+24/08/2020 02:01:24 - SUCE - Notificação criada - 11
+24/08/2020 02:01:34 - SUCE - Visualização criada, usuario 1
+24/08/2020 02:24:49 Consulta de notificação realizada
+24/08/2020 02:25:51 Consulta de notificação realizada
+24/08/2020 02:26:53 Consulta de notificação realizada
+24/08/2020 02:27:55 Consulta de notificação realizada
+24/08/2020 02:28:58 Consulta de notificação realizada
+24/08/2020 02:30:00 Consulta de notificação realizada
+24/08/2020 02:31:03 Consulta de notificação realizada
+24/08/2020 02:41:31 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:11:08 Consulta de notificação realizada
+24/08/2020 03:11:52 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:12:28 - SUCE - Notificação atualizada - 10
+24/08/2020 03:12:28 - SUCE - Notificação criada - 10
+24/08/2020 03:12:35 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:17:12 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:17:12 Consulta de notificação realizada
+24/08/2020 03:23:48 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:24:08 - SUCE - Notificação atualizada - 10
+24/08/2020 03:24:08 - SUCE - Notificação criada - 10
+24/08/2020 03:24:16 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:34:28 Consulta de notificação realizada
+24/08/2020 03:34:33 Consulta de notificação realizada
+24/08/2020 03:34:47 Consulta de notificação realizada
+24/08/2020 03:34:59 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:35:17 - SUCE - Notificação atualizada - 10
+24/08/2020 03:35:17 - SUCE - Notificação criada - 10
+24/08/2020 03:35:25 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:41:58 Consulta de notificação realizada
+24/08/2020 03:42:07 Consulta de notificação realizada
+24/08/2020 03:42:19 - SUCE - Visualização criada, usuario 1
+24/08/2020 03:47:04 - SUCE - Visualização criada, usuario 1
+24/08/2020 04:01:39 - SUCE - Visualização criada, usuario 1
+24/08/2020 04:11:16 - SUCE - Visualização criada, usuario 1
+24/08/2020 04:11:50 - SUCE - Notificação atualizada - 10
+24/08/2020 04:11:50 - SUCE - Notificação criada - 10
+24/08/2020 04:12:00 - SUCE - Visualização criada, usuario 1
+24/08/2020 04:43:55 Consulta de notificação realizada
+24/08/2020 04:44:01 Consulta de notificação realizada
+24/08/2020 04:44:21 - SUCE - Visualização criada, usuario 1
+24/08/2020 04:44:36 - SUCE - Notificação atualizada - 11
+24/08/2020 04:44:36 - SUCE - Notificação criada - 11
+24/08/2020 04:44:44 - SUCE - Visualização criada, usuario 1
+24/08/2020 04:58:47 Consulta de notificação realizada
+24/08/2020 05:39:18 Consulta de notificação realizada
+24/08/2020 05:39:59 Consulta de notificação realizada
+24/08/2020 05:41:24 Consulta de notificação realizada
+24/08/2020 05:41:39 Consulta de notificação realizada
+24/08/2020 05:41:44 Consulta de notificação realizada
+24/08/2020 05:41:49 Consulta de notificação realizada
+24/08/2020 05:42:35 Consulta de notificação realizada
+24/08/2020 05:43:38 Consulta de notificação realizada
+24/08/2020 05:44:06 Consulta de notificação realizada
+24/08/2020 05:44:20 Consulta de notificação realizada
+24/08/2020 05:47:30 Consulta de notificação realizada
+24/08/2020 05:49:02 Consulta de notificação realizada
+24/08/2020 05:50:02 Consulta de notificação realizada
+24/08/2020 05:50:54 Consulta de notificação realizada
+24/08/2020 05:51:05 Consulta de notificação realizada
+24/08/2020 05:51:38 Consulta de notificação realizada
+24/08/2020 05:51:54 Consulta de notificação realizada
+24/08/2020 05:52:14 Consulta de notificação realizada
+24/08/2020 05:53:02 Consulta de notificação realizada
+24/08/2020 05:53:26 Consulta de notificação realizada
+24/08/2020 05:55:44 Consulta de notificação realizada
+24/08/2020 06:27:13 Consulta de notificação realizada
+24/08/2020 06:27:47 Consulta de notificação realizada
+24/08/2020 06:27:59 Consulta de notificação realizada
+24/08/2020 06:28:21 Consulta de notificação realizada
+24/08/2020 06:28:56 Consulta de notificação realizada
+24/08/2020 06:29:13 Consulta de notificação realizada
+24/08/2020 06:29:53 Consulta de notificação realizada
+24/08/2020 06:30:25 Consulta de notificação realizada
+24/08/2020 06:46:55 Consulta de notificação realizada
+24/08/2020 06:48:08 Consulta de notificação realizada
+24/08/2020 06:49:10 Consulta de notificação realizada
+24/08/2020 06:50:13 Consulta de notificação realizada
+24/08/2020 06:51:00 Consulta de notificação realizada
+24/08/2020 06:52:02 Consulta de notificação realizada
+24/08/2020 06:52:16 Consulta de notificação realizada
+24/08/2020 06:53:02 Consulta de notificação realizada
+24/08/2020 06:53:29 Consulta de notificação realizada
+24/08/2020 06:54:31 Consulta de notificação realizada
+24/08/2020 06:55:33 Consulta de notificação realizada
+24/08/2020 06:56:37 Consulta de notificação realizada
+24/08/2020 06:56:42 Consulta de notificação realizada
+24/08/2020 06:57:45 Consulta de notificação realizada
+24/08/2020 06:58:48 Consulta de notificação realizada
+24/08/2020 06:59:50 Consulta de notificação realizada
+24/08/2020 07:00:53 Consulta de notificação realizada
+24/08/2020 07:01:55 Consulta de notificação realizada
+24/08/2020 07:02:58 Consulta de notificação realizada
+24/08/2020 07:04:01 Consulta de notificação realizada
+24/08/2020 07:05:04 Consulta de notificação realizada
+24/08/2020 07:06:06 Consulta de notificação realizada
+24/08/2020 07:07:08 Consulta de notificação realizada
+24/08/2020 07:08:10 Consulta de notificação realizada
+24/08/2020 07:08:20 Consulta de notificação realizada
+24/08/2020 07:09:23 Consulta de notificação realizada
+24/08/2020 07:09:54 Consulta de notificação realizada
+24/08/2020 07:09:57 Consulta de notificação realizada
+24/08/2020 07:10:59 Consulta de notificação realizada
+24/08/2020 07:11:29 Consulta de notificação realizada
+24/08/2020 07:12:32 Consulta de notificação realizada
+24/08/2020 07:13:34 Consulta de notificação realizada
+24/08/2020 07:14:36 Consulta de notificação realizada
+24/08/2020 07:15:38 Consulta de notificação realizada
+24/08/2020 07:16:37 Consulta de notificação realizada
+24/08/2020 07:17:16 Consulta de notificação realizada
+24/08/2020 07:17:29 Consulta de notificação realizada
+24/08/2020 07:18:00 Consulta de notificação realizada
+24/08/2020 07:18:07 Consulta de notificação realizada
+24/08/2020 07:18:20 Consulta de notificação realizada
+24/08/2020 07:18:44 Consulta de notificação realizada
+24/08/2020 07:19:46 Consulta de notificação realizada
+24/08/2020 07:20:35 Consulta de notificação realizada
+24/08/2020 07:21:26 Consulta de notificação realizada
+24/08/2020 07:22:03 Consulta de notificação realizada
+24/08/2020 07:23:06 Consulta de notificação realizada
+24/08/2020 07:24:08 Consulta de notificação realizada
+24/08/2020 07:25:11 Consulta de notificação realizada
+24/08/2020 07:26:13 Consulta de notificação realizada
+24/08/2020 07:27:15 Consulta de notificação realizada
+24/08/2020 07:28:18 Consulta de notificação realizada
+24/08/2020 07:29:22 Consulta de notificação realizada
+24/08/2020 07:29:43 Consulta de notificação realizada
+24/08/2020 07:30:46 Consulta de notificação realizada
+24/08/2020 07:31:49 Consulta de notificação realizada
+24/08/2020 07:32:51 Consulta de notificação realizada
+24/08/2020 07:33:53 Consulta de notificação realizada
+24/08/2020 07:34:56 Consulta de notificação realizada
+24/08/2020 07:35:58 Consulta de notificação realizada
+24/08/2020 07:37:01 Consulta de notificação realizada
+24/08/2020 07:38:04 Consulta de notificação realizada
+24/08/2020 07:39:08 Consulta de notificação realizada
+24/08/2020 07:40:10 Consulta de notificação realizada
+24/08/2020 07:41:12 Consulta de notificação realizada
+24/08/2020 07:42:14 Consulta de notificação realizada
+24/08/2020 07:43:16 Consulta de notificação realizada
+24/08/2020 07:44:18 Consulta de notificação realizada
+24/08/2020 07:45:21 Consulta de notificação realizada
+24/08/2020 07:46:23 Consulta de notificação realizada
+24/08/2020 07:47:25 Consulta de notificação realizada
+24/08/2020 07:48:28 Consulta de notificação realizada
+24/08/2020 07:49:30 Consulta de notificação realizada
+24/08/2020 07:50:32 Consulta de notificação realizada
+24/08/2020 07:51:34 Consulta de notificação realizada
+24/08/2020 07:52:37 Consulta de notificação realizada
+24/08/2020 07:53:42 Consulta de notificação realizada
+24/08/2020 07:54:45 Consulta de notificação realizada
+24/08/2020 07:55:48 Consulta de notificação realizada
+24/08/2020 07:56:50 Consulta de notificação realizada
+24/08/2020 07:57:11 Consulta de notificação realizada
+24/08/2020 07:57:55 Consulta de notificação realizada
+24/08/2020 07:57:59 Consulta de notificação realizada
+24/08/2020 07:59:01 Consulta de notificação realizada
+24/08/2020 07:59:58 Consulta de notificação realizada
+24/08/2020 08:01:01 Consulta de notificação realizada
+24/08/2020 08:01:35 Consulta de notificação realizada
+24/08/2020 08:02:37 Consulta de notificação realizada
+24/08/2020 08:03:40 Consulta de notificação realizada
+24/08/2020 08:05:31 Consulta de notificação realizada
+24/08/2020 08:06:11 Consulta de notificação realizada
+24/08/2020 08:06:21 Consulta de notificação realizada
+24/08/2020 08:06:43 Consulta de notificação realizada
+24/08/2020 08:08:29 Consulta de notificação realizada
+24/08/2020 08:08:38 Consulta de notificação realizada
+24/08/2020 08:10:20 Consulta de notificação realizada
+24/08/2020 08:10:44 Consulta de notificação realizada
+24/08/2020 08:11:33 Consulta de notificação realizada
+24/08/2020 08:11:37 Consulta de notificação realizada
+24/08/2020 08:11:41 Consulta de notificação realizada
+24/08/2020 08:11:46 Consulta de notificação realizada
+24/08/2020 08:11:50 Consulta de notificação realizada
+24/08/2020 08:11:54 Consulta de notificação realizada
+24/08/2020 08:12:56 Consulta de notificação realizada
+24/08/2020 08:13:58 Consulta de notificação realizada
+24/08/2020 08:15:00 Consulta de notificação realizada
+24/08/2020 08:16:03 Consulta de notificação realizada
+24/08/2020 08:17:05 Consulta de notificação realizada
+24/08/2020 08:18:09 Consulta de notificação realizada
+24/08/2020 08:19:11 Consulta de notificação realizada
+24/08/2020 08:20:14 Consulta de notificação realizada
+24/08/2020 08:21:17 Consulta de notificação realizada
+24/08/2020 08:22:19 Consulta de notificação realizada
+24/08/2020 08:23:22 Consulta de notificação realizada
+24/08/2020 08:24:26 Consulta de notificação realizada
+24/08/2020 08:25:30 Consulta de notificação realizada
+24/08/2020 08:26:32 Consulta de notificação realizada
+24/08/2020 08:27:34 Consulta de notificação realizada
+24/08/2020 08:28:37 Consulta de notificação realizada
+24/08/2020 08:29:39 Consulta de notificação realizada
+24/08/2020 08:30:42 Consulta de notificação realizada
+24/08/2020 08:31:44 Consulta de notificação realizada
+24/08/2020 08:32:57 Consulta de notificação realizada
+24/08/2020 08:34:00 Consulta de notificação realizada
+24/08/2020 08:35:03 Consulta de notificação realizada
+24/08/2020 08:36:06 Consulta de notificação realizada
+24/08/2020 08:37:08 Consulta de notificação realizada
+24/08/2020 08:38:10 Consulta de notificação realizada
+24/08/2020 08:39:12 Consulta de notificação realizada
+24/08/2020 08:40:15 Consulta de notificação realizada
+24/08/2020 08:41:18 Consulta de notificação realizada
+24/08/2020 08:42:20 Consulta de notificação realizada
+24/08/2020 08:43:24 Consulta de notificação realizada
+24/08/2020 08:44:27 Consulta de notificação realizada
+24/08/2020 08:45:29 Consulta de notificação realizada
+24/08/2020 08:46:31 Consulta de notificação realizada
+24/08/2020 08:47:34 Consulta de notificação realizada
+24/08/2020 08:48:37 Consulta de notificação realizada
+24/08/2020 08:49:40 Consulta de notificação realizada
+24/08/2020 08:50:43 Consulta de notificação realizada
+24/08/2020 08:51:46 Consulta de notificação realizada
+24/08/2020 08:52:49 Consulta de notificação realizada
+24/08/2020 08:53:52 Consulta de notificação realizada
+24/08/2020 08:54:54 Consulta de notificação realizada
+24/08/2020 08:55:56 Consulta de notificação realizada
+24/08/2020 08:56:59 Consulta de notificação realizada
+24/08/2020 08:58:03 Consulta de notificação realizada
+24/08/2020 08:59:05 Consulta de notificação realizada
+24/08/2020 09:00:08 Consulta de notificação realizada
+24/08/2020 09:01:11 Consulta de notificação realizada
+24/08/2020 09:02:15 Consulta de notificação realizada
+24/08/2020 09:03:17 Consulta de notificação realizada
+24/08/2020 09:04:20 Consulta de notificação realizada
+24/08/2020 09:05:23 Consulta de notificação realizada
+24/08/2020 09:06:25 Consulta de notificação realizada
+24/08/2020 09:07:27 Consulta de notificação realizada
+24/08/2020 09:08:31 Consulta de notificação realizada
+24/08/2020 09:09:34 Consulta de notificação realizada
+24/08/2020 09:10:37 Consulta de notificação realizada
+24/08/2020 09:11:40 Consulta de notificação realizada
+24/08/2020 09:12:42 Consulta de notificação realizada
+24/08/2020 09:13:46 Consulta de notificação realizada
+24/08/2020 09:14:48 Consulta de notificação realizada
+24/08/2020 09:15:51 Consulta de notificação realizada
+24/08/2020 09:16:54 Consulta de notificação realizada
+24/08/2020 09:17:56 Consulta de notificação realizada
+24/08/2020 09:18:58 Consulta de notificação realizada
+24/08/2020 09:20:01 Consulta de notificação realizada
+24/08/2020 09:21:03 Consulta de notificação realizada
+24/08/2020 09:22:05 Consulta de notificação realizada
+24/08/2020 09:23:07 Consulta de notificação realizada
+24/08/2020 09:24:09 Consulta de notificação realizada
+24/08/2020 09:25:12 Consulta de notificação realizada
+24/08/2020 09:26:15 Consulta de notificação realizada
+24/08/2020 09:27:18 Consulta de notificação realizada
+24/08/2020 09:28:22 Consulta de notificação realizada
+24/08/2020 09:29:25 Consulta de notificação realizada
+24/08/2020 09:30:28 Consulta de notificação realizada
+24/08/2020 09:31:30 Consulta de notificação realizada
+24/08/2020 09:32:32 Consulta de notificação realizada
+24/08/2020 09:33:34 Consulta de notificação realizada
+24/08/2020 09:34:37 Consulta de notificação realizada
+24/08/2020 09:35:39 Consulta de notificação realizada
+24/08/2020 09:36:43 Consulta de notificação realizada
+24/08/2020 09:37:45 Consulta de notificação realizada
+24/08/2020 09:38:47 Consulta de notificação realizada
+24/08/2020 09:39:50 Consulta de notificação realizada
+24/08/2020 09:40:52 Consulta de notificação realizada
+24/08/2020 09:41:56 Consulta de notificação realizada
+24/08/2020 09:42:58 Consulta de notificação realizada
+24/08/2020 09:44:01 Consulta de notificação realizada
+24/08/2020 09:45:03 Consulta de notificação realizada
+24/08/2020 09:46:08 Consulta de notificação realizada
+24/08/2020 09:47:11 Consulta de notificação realizada
+24/08/2020 09:48:14 Consulta de notificação realizada
+24/08/2020 09:49:16 Consulta de notificação realizada
+24/08/2020 09:50:19 Consulta de notificação realizada
+24/08/2020 09:51:21 Consulta de notificação realizada
+24/08/2020 09:52:24 Consulta de notificação realizada
+24/08/2020 09:53:27 Consulta de notificação realizada
+24/08/2020 09:54:29 Consulta de notificação realizada
+24/08/2020 09:55:31 Consulta de notificação realizada
+24/08/2020 09:56:34 Consulta de notificação realizada
+24/08/2020 09:57:37 Consulta de notificação realizada
+24/08/2020 09:58:40 Consulta de notificação realizada
+24/08/2020 09:59:42 Consulta de notificação realizada
+24/08/2020 10:00:47 Consulta de notificação realizada
+24/08/2020 10:01:50 Consulta de notificação realizada
+24/08/2020 10:02:52 Consulta de notificação realizada
+24/08/2020 10:03:55 Consulta de notificação realizada
+24/08/2020 10:04:57 Consulta de notificação realizada
+24/08/2020 10:06:00 Consulta de notificação realizada
+24/08/2020 10:07:03 Consulta de notificação realizada
+24/08/2020 10:08:06 Consulta de notificação realizada
+24/08/2020 10:09:08 Consulta de notificação realizada
+24/08/2020 10:10:11 Consulta de notificação realizada
+24/08/2020 10:11:14 Consulta de notificação realizada
+24/08/2020 10:12:17 Consulta de notificação realizada
+24/08/2020 10:13:19 Consulta de notificação realizada
+24/08/2020 10:14:22 Consulta de notificação realizada
+24/08/2020 10:15:24 Consulta de notificação realizada
+24/08/2020 10:16:27 Consulta de notificação realizada
+24/08/2020 10:17:29 Consulta de notificação realizada
+24/08/2020 10:18:33 Consulta de notificação realizada
+24/08/2020 10:19:35 Consulta de notificação realizada
+24/08/2020 10:20:37 Consulta de notificação realizada
+24/08/2020 10:21:39 Consulta de notificação realizada
+24/08/2020 10:22:41 Consulta de notificação realizada
+26/08/2020 05:52:21 Consulta de notificação realizada
+26/08/2020 05:53:44 Consulta de notificação realizada
+26/08/2020 06:00:35 Consulta de notificação realizada
+26/08/2020 07:45:48 Consulta de notificação realizada
+26/08/2020 07:46:09 - SUCE - Visualização criada, usuario 1
+26/08/2020 08:02:17 Consulta de notificação realizada
+26/08/2020 08:03:55 - SUCE - Visualização criada, usuario 1
+26/08/2020 08:04:04 Consulta de notificação realizada
+26/08/2020 08:04:15 - SUCE - Visualização criada, usuario 1
+26/08/2020 08:05:07 Consulta de notificação realizada
+26/08/2020 08:06:42 Consulta de notificação realizada
+26/08/2020 08:07:46 Consulta de notificação realizada
+26/08/2020 08:08:20 Consulta de notificação realizada
+26/08/2020 08:09:22 Consulta de notificação realizada
+26/08/2020 08:10:24 Consulta de notificação realizada
+26/08/2020 08:11:27 Consulta de notificação realizada
+26/08/2020 08:12:30 Consulta de notificação realizada
+26/08/2020 08:13:33 Consulta de notificação realizada
+26/08/2020 08:14:36 Consulta de notificação realizada
+26/08/2020 08:15:39 Consulta de notificação realizada
+26/08/2020 08:16:41 Consulta de notificação realizada
+26/08/2020 08:17:44 Consulta de notificação realizada
+26/08/2020 08:18:46 Consulta de notificação realizada
+26/08/2020 08:19:49 Consulta de notificação realizada
+26/08/2020 08:20:52 Consulta de notificação realizada
+26/08/2020 08:21:54 Consulta de notificação realizada
+26/08/2020 08:22:56 Consulta de notificação realizada
+26/08/2020 08:23:59 Consulta de notificação realizada
+26/08/2020 08:25:01 Consulta de notificação realizada
+26/08/2020 08:26:03 Consulta de notificação realizada
+26/08/2020 08:27:06 Consulta de notificação realizada
+26/08/2020 08:28:08 Consulta de notificação realizada
+26/08/2020 08:29:10 Consulta de notificação realizada
+26/08/2020 08:30:12 Consulta de notificação realizada
+26/08/2020 08:31:14 Consulta de notificação realizada
+26/08/2020 08:32:17 Consulta de notificação realizada
+26/08/2020 08:33:19 Consulta de notificação realizada
+26/08/2020 08:34:22 Consulta de notificação realizada
+26/08/2020 08:35:28 Consulta de notificação realizada
+26/08/2020 08:36:30 Consulta de notificação realizada
+26/08/2020 08:37:34 Consulta de notificação realizada
+26/08/2020 08:38:37 Consulta de notificação realizada
+26/08/2020 08:39:41 Consulta de notificação realizada
+26/08/2020 08:40:44 Consulta de notificação realizada
+26/08/2020 08:41:47 Consulta de notificação realizada
+26/08/2020 08:42:50 Consulta de notificação realizada
+26/08/2020 08:43:53 Consulta de notificação realizada
+26/08/2020 08:44:55 Consulta de notificação realizada
+26/08/2020 08:45:58 Consulta de notificação realizada
+26/08/2020 08:47:01 Consulta de notificação realizada
+26/08/2020 08:48:03 Consulta de notificação realizada
+26/08/2020 08:49:05 Consulta de notificação realizada
+26/08/2020 08:50:08 Consulta de notificação realizada
+26/08/2020 08:51:11 Consulta de notificação realizada
+26/08/2020 08:52:13 Consulta de notificação realizada
+26/08/2020 08:53:15 Consulta de notificação realizada
+26/08/2020 08:54:18 Consulta de notificação realizada
+26/08/2020 08:55:20 Consulta de notificação realizada
+26/08/2020 08:56:23 Consulta de notificação realizada
+26/08/2020 08:57:25 Consulta de notificação realizada
+26/08/2020 08:58:28 Consulta de notificação realizada
+26/08/2020 08:59:30 Consulta de notificação realizada
+26/08/2020 09:00:32 Consulta de notificação realizada
+26/08/2020 09:01:34 Consulta de notificação realizada
+26/08/2020 09:02:37 Consulta de notificação realizada
+26/08/2020 09:03:39 Consulta de notificação realizada
+26/08/2020 09:04:41 Consulta de notificação realizada
+26/08/2020 09:05:43 Consulta de notificação realizada
+26/08/2020 09:06:46 Consulta de notificação realizada
+26/08/2020 09:07:48 Consulta de notificação realizada
+26/08/2020 09:08:50 Consulta de notificação realizada
+26/08/2020 09:09:52 Consulta de notificação realizada
+26/08/2020 09:10:56 Consulta de notificação realizada
+26/08/2020 09:11:58 Consulta de notificação realizada
+26/08/2020 09:13:00 Consulta de notificação realizada
+26/08/2020 09:14:02 Consulta de notificação realizada
+26/08/2020 09:15:05 Consulta de notificação realizada
+26/08/2020 09:16:08 Consulta de notificação realizada
+26/08/2020 09:17:11 Consulta de notificação realizada
+26/08/2020 09:18:13 Consulta de notificação realizada
+26/08/2020 09:19:15 Consulta de notificação realizada
+26/08/2020 09:20:17 Consulta de notificação realizada
+26/08/2020 09:21:19 Consulta de notificação realizada
+26/08/2020 09:22:22 Consulta de notificação realizada
+26/08/2020 09:23:27 Consulta de notificação realizada
+26/08/2020 09:24:31 Consulta de notificação realizada
+26/08/2020 09:25:35 Consulta de notificação realizada
+26/08/2020 09:26:39 Consulta de notificação realizada
+26/08/2020 09:27:43 Consulta de notificação realizada
+26/08/2020 09:28:47 Consulta de notificação realizada
+26/08/2020 09:29:49 Consulta de notificação realizada
+26/08/2020 09:30:53 Consulta de notificação realizada
+26/08/2020 09:31:55 Consulta de notificação realizada
+26/08/2020 09:32:58 Consulta de notificação realizada
+26/08/2020 09:34:01 Consulta de notificação realizada
+26/08/2020 09:35:04 Consulta de notificação realizada
+26/08/2020 09:36:07 Consulta de notificação realizada
+26/08/2020 09:37:09 Consulta de notificação realizada
+26/08/2020 09:38:11 Consulta de notificação realizada
+26/08/2020 09:39:13 Consulta de notificação realizada
+26/08/2020 09:40:16 Consulta de notificação realizada
+26/08/2020 09:41:19 Consulta de notificação realizada
+26/08/2020 09:42:21 Consulta de notificação realizada
+26/08/2020 09:43:23 Consulta de notificação realizada
+26/08/2020 09:44:26 Consulta de notificação realizada
+26/08/2020 09:45:29 Consulta de notificação realizada
+26/08/2020 09:46:31 Consulta de notificação realizada
+26/08/2020 09:47:33 Consulta de notificação realizada
+26/08/2020 09:48:36 Consulta de notificação realizada
+26/08/2020 09:49:38 Consulta de notificação realizada
+26/08/2020 09:50:41 Consulta de notificação realizada
+26/08/2020 09:51:44 Consulta de notificação realizada
+26/08/2020 09:52:46 Consulta de notificação realizada
+26/08/2020 09:53:48 Consulta de notificação realizada
+26/08/2020 09:54:50 Consulta de notificação realizada
+26/08/2020 09:55:52 Consulta de notificação realizada
+26/08/2020 09:56:54 Consulta de notificação realizada
+26/08/2020 09:57:56 Consulta de notificação realizada
+26/08/2020 09:58:59 Consulta de notificação realizada
+26/08/2020 10:00:01 Consulta de notificação realizada
+26/08/2020 10:01:03 Consulta de notificação realizada
+26/08/2020 10:02:06 Consulta de notificação realizada
+26/08/2020 10:03:08 Consulta de notificação realizada
+26/08/2020 10:04:10 Consulta de notificação realizada
+26/08/2020 10:05:13 Consulta de notificação realizada
+26/08/2020 10:06:16 Consulta de notificação realizada
+26/08/2020 10:07:18 Consulta de notificação realizada
+26/08/2020 10:08:20 Consulta de notificação realizada
+26/08/2020 10:09:23 Consulta de notificação realizada
+26/08/2020 10:10:25 Consulta de notificação realizada
+26/08/2020 10:11:27 Consulta de notificação realizada
+26/08/2020 10:12:30 Consulta de notificação realizada
+26/08/2020 10:13:32 Consulta de notificação realizada
+26/08/2020 10:14:34 Consulta de notificação realizada
+26/08/2020 10:15:37 Consulta de notificação realizada
+26/08/2020 10:16:40 Consulta de notificação realizada
+26/08/2020 10:17:42 Consulta de notificação realizada
+26/08/2020 10:18:44 Consulta de notificação realizada
+26/08/2020 10:19:47 Consulta de notificação realizada
+26/08/2020 10:20:49 Consulta de notificação realizada
+26/08/2020 10:21:51 Consulta de notificação realizada
+26/08/2020 10:22:53 Consulta de notificação realizada
+26/08/2020 10:23:56 Consulta de notificação realizada
+26/08/2020 10:24:58 Consulta de notificação realizada
+26/08/2020 10:26:01 Consulta de notificação realizada
+26/08/2020 10:27:03 Consulta de notificação realizada
+26/08/2020 10:28:05 Consulta de notificação realizada
+26/08/2020 10:29:07 Consulta de notificação realizada
+26/08/2020 10:30:09 Consulta de notificação realizada
+26/08/2020 10:31:11 Consulta de notificação realizada
+26/08/2020 10:32:14 Consulta de notificação realizada
+26/08/2020 10:33:16 Consulta de notificação realizada
+26/08/2020 10:34:19 Consulta de notificação realizada
+26/08/2020 10:35:21 Consulta de notificação realizada
+26/08/2020 10:36:23 Consulta de notificação realizada
+26/08/2020 10:37:25 Consulta de notificação realizada
+26/08/2020 10:38:28 Consulta de notificação realizada
+26/08/2020 10:39:30 Consulta de notificação realizada
+26/08/2020 10:40:33 Consulta de notificação realizada
+26/08/2020 10:41:35 Consulta de notificação realizada
+26/08/2020 10:42:37 Consulta de notificação realizada
+26/08/2020 10:43:40 Consulta de notificação realizada
+26/08/2020 10:44:43 Consulta de notificação realizada
+26/08/2020 10:45:45 Consulta de notificação realizada
+26/08/2020 10:46:47 Consulta de notificação realizada
+26/08/2020 10:47:49 Consulta de notificação realizada
+26/08/2020 10:48:52 Consulta de notificação realizada
+26/08/2020 10:49:55 Consulta de notificação realizada
+26/08/2020 10:50:57 Consulta de notificação realizada
+26/08/2020 10:51:59 Consulta de notificação realizada
+26/08/2020 10:53:02 Consulta de notificação realizada
+26/08/2020 10:54:04 Consulta de notificação realizada
+26/08/2020 10:55:06 Consulta de notificação realizada
+26/08/2020 10:56:09 Consulta de notificação realizada
+26/08/2020 10:57:11 Consulta de notificação realizada
+26/08/2020 10:58:13 Consulta de notificação realizada
+26/08/2020 10:59:15 Consulta de notificação realizada
+26/08/2020 11:00:17 Consulta de notificação realizada
+26/08/2020 11:01:20 Consulta de notificação realizada
+26/08/2020 11:02:22 Consulta de notificação realizada
+26/08/2020 11:03:24 Consulta de notificação realizada
+26/08/2020 11:04:26 Consulta de notificação realizada
+26/08/2020 11:05:29 Consulta de notificação realizada
+26/08/2020 11:06:31 Consulta de notificação realizada
+26/08/2020 11:07:34 Consulta de notificação realizada
+26/08/2020 11:08:36 Consulta de notificação realizada
+26/08/2020 11:09:38 Consulta de notificação realizada
+26/08/2020 11:10:40 Consulta de notificação realizada
+26/08/2020 11:11:42 Consulta de notificação realizada
+26/08/2020 11:12:45 Consulta de notificação realizada
+26/08/2020 11:13:47 Consulta de notificação realizada
+26/08/2020 11:14:50 Consulta de notificação realizada
+26/08/2020 11:15:52 Consulta de notificação realizada
+26/08/2020 11:16:54 Consulta de notificação realizada
+26/08/2020 11:17:57 Consulta de notificação realizada
+26/08/2020 11:18:59 Consulta de notificação realizada
+26/08/2020 11:20:01 Consulta de notificação realizada
+26/08/2020 11:21:03 Consulta de notificação realizada
+26/08/2020 11:22:05 Consulta de notificação realizada
+26/08/2020 11:23:07 Consulta de notificação realizada
+26/08/2020 11:24:10 Consulta de notificação realizada
+26/08/2020 11:25:12 Consulta de notificação realizada
+26/08/2020 11:26:14 Consulta de notificação realizada
+26/08/2020 11:27:16 Consulta de notificação realizada
+26/08/2020 11:28:18 Consulta de notificação realizada
+26/08/2020 11:29:20 Consulta de notificação realizada
+26/08/2020 11:30:22 Consulta de notificação realizada
+26/08/2020 11:31:24 Consulta de notificação realizada
+26/08/2020 11:32:27 Consulta de notificação realizada
+26/08/2020 11:33:30 Consulta de notificação realizada
+26/08/2020 11:34:32 Consulta de notificação realizada
+26/08/2020 11:35:34 Consulta de notificação realizada
+26/08/2020 11:36:36 Consulta de notificação realizada
+26/08/2020 11:37:38 Consulta de notificação realizada
+26/08/2020 11:38:41 Consulta de notificação realizada
+26/08/2020 11:39:43 Consulta de notificação realizada
+26/08/2020 11:40:42 Consulta de notificação realizada
+26/08/2020 11:41:50 - Solicitação criada - 17
+26/08/2020 11:41:53 - SUCE - Notificação criada - 17
+26/08/2020 11:42:04 - SUCE - Visualização criada, usuario 13
+26/08/2020 11:43:03 - SUCE - Visualização criada, usuario 13
+26/08/2020 11:43:44 Consulta de notificação realizada
+26/08/2020 11:43:55 - SUCE - Visualização criada, usuario 13
+26/08/2020 11:44:44 - Solicitação criada - 18
+26/08/2020 11:44:47 - SUCE - Notificação criada - 18
+26/08/2020 11:44:54 - SUCE - Visualização criada, usuario 13
+26/08/2020 11:57:32 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:23:26 Consulta de notificação realizada
+28/08/2020 12:24:50 Consulta de notificação realizada
+28/08/2020 12:25:43 - Solicitação criada - 19
+28/08/2020 12:25:46 - SUCE - Notificação criada - 19
+28/08/2020 12:25:55 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:48:45 - Solicitação criada - 20
+28/08/2020 12:48:48 - SUCE - Notificação criada - 20
+28/08/2020 12:48:55 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:49:20 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:51:28 - Solicitação criada - 21
+28/08/2020 12:51:31 - SUCE - Notificação criada - 21
+28/08/2020 12:51:38 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:52:20 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:54:35 - Solicitação criada - 22
+28/08/2020 12:54:38 - SUCE - Notificação criada - 22
+28/08/2020 12:54:45 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:55:11 - SUCE - Visualização criada, usuario 13
+28/08/2020 12:59:12 - Solicitação criada - 23
+28/08/2020 12:59:16 - SUCE - Notificação criada - 23
+28/08/2020 12:59:25 - SUCE - Visualização criada, usuario 13
+28/08/2020 01:28:15 - Solicitação criada - 24
+28/08/2020 01:28:20 - SUCE - Notificação criada - 24
+28/08/2020 01:28:28 - SUCE - Visualização criada, usuario 13
+28/08/2020 01:34:50 - Solicitação criada - 25
+28/08/2020 01:34:54 - SUCE - Notificação criada - 25
+28/08/2020 01:35:00 - SUCE - Visualização criada, usuario 13
+28/08/2020 01:35:38 - SUCE - Visualização criada, usuario 13
+28/08/2020 01:41:18 - Solicitação criada - 26
+28/08/2020 01:41:22 - SUCE - Notificação criada - 26
+28/08/2020 01:41:28 - SUCE - Visualização criada, usuario 13
+28/08/2020 01:45:57 - Solicitação criada - 27
+28/08/2020 01:46:00 - SUCE - Notificação criada - 27
+28/08/2020 01:46:07 - SUCE - Visualização criada, usuario 13
+28/08/2020 02:00:42 - Solicitação criada - 28
+28/08/2020 02:00:46 - SUCE - Notificação criada - 28
+28/08/2020 02:00:56 - SUCE - Visualização criada, usuario 13
+28/08/2020 02:06:04 - Solicitação criada - 29
+28/08/2020 02:07:14 Consulta de notificação realizada
+28/08/2020 02:08:10 - Solicitação criada - 30
+28/08/2020 02:12:51 Consulta de notificação realizada
+28/08/2020 02:13:28 - Solicitação criada - 31
+28/08/2020 02:13:31 - SUCE - Notificação criada - 31
+28/08/2020 02:13:39 - SUCE - Visualização criada, usuario 13
+28/08/2020 02:18:21 - Solicitação criada - 32
+28/08/2020 02:18:24 - SUCE - Notificação criada - 32
+28/08/2020 02:18:31 - SUCE - Visualização criada, usuario 13
+28/08/2020 02:18:56 Consulta de notificação realizada
+28/08/2020 02:19:15 - SUCE - Visualização criada, usuario 15
+28/08/2020 02:19:26 - SUCE - Notificação atualizada - 32
+28/08/2020 02:19:26 - SUCE - Notificação criada - 32
+28/08/2020 02:19:33 - SUCE - Visualização criada, usuario 15
+28/08/2020 02:19:47 Consulta de notificação realizada
+28/08/2020 02:20:50 Consulta de notificação realizada
+28/08/2020 02:21:52 Consulta de notificação realizada
+28/08/2020 02:22:54 Consulta de notificação realizada
+28/08/2020 02:23:56 Consulta de notificação realizada
+28/08/2020 02:24:58 Consulta de notificação realizada
+28/08/2020 02:26:00 Consulta de notificação realizada
+28/08/2020 02:27:02 Consulta de notificação realizada
+28/08/2020 02:28:04 Consulta de notificação realizada
+28/08/2020 02:29:06 Consulta de notificação realizada
+28/08/2020 02:30:09 Consulta de notificação realizada
+28/08/2020 02:31:11 Consulta de notificação realizada
+28/08/2020 02:32:13 Consulta de notificação realizada
+28/08/2020 02:33:15 Consulta de notificação realizada
+28/08/2020 02:34:18 Consulta de notificação realizada
+28/08/2020 02:35:20 Consulta de notificação realizada
+28/08/2020 02:36:22 Consulta de notificação realizada
+28/08/2020 02:37:24 Consulta de notificação realizada
+28/08/2020 02:38:26 Consulta de notificação realizada
+28/08/2020 02:39:29 Consulta de notificação realizada
+28/08/2020 02:40:31 Consulta de notificação realizada
+28/08/2020 02:41:33 Consulta de notificação realizada
+28/08/2020 02:42:35 Consulta de notificação realizada
+28/08/2020 02:43:39 Consulta de notificação realizada
+28/08/2020 02:44:41 Consulta de notificação realizada
+28/08/2020 02:45:43 Consulta de notificação realizada
+28/08/2020 02:46:45 Consulta de notificação realizada
+28/08/2020 02:47:47 Consulta de notificação realizada
+28/08/2020 02:48:50 Consulta de notificação realizada
+28/08/2020 02:49:52 Consulta de notificação realizada
+28/08/2020 02:50:54 Consulta de notificação realizada
+28/08/2020 02:51:56 Consulta de notificação realizada
+28/08/2020 02:52:59 Consulta de notificação realizada
+28/08/2020 02:54:01 Consulta de notificação realizada
+28/08/2020 02:55:03 Consulta de notificação realizada
+28/08/2020 02:56:06 Consulta de notificação realizada
+28/08/2020 02:57:08 Consulta de notificação realizada
+28/08/2020 02:58:10 Consulta de notificação realizada
+28/08/2020 02:59:12 Consulta de notificação realizada
+28/08/2020 03:00:14 Consulta de notificação realizada
+28/08/2020 03:01:16 Consulta de notificação realizada
+28/08/2020 03:02:19 Consulta de notificação realizada
+28/08/2020 03:03:21 Consulta de notificação realizada
+28/08/2020 03:04:23 Consulta de notificação realizada
+28/08/2020 03:05:25 Consulta de notificação realizada
+28/08/2020 03:06:28 Consulta de notificação realizada
+28/08/2020 03:07:30 Consulta de notificação realizada
+28/08/2020 03:08:34 Consulta de notificação realizada
+28/08/2020 03:09:36 Consulta de notificação realizada
+28/08/2020 03:10:39 Consulta de notificação realizada
+28/08/2020 03:11:41 Consulta de notificação realizada
+28/08/2020 03:12:43 Consulta de notificação realizada
+28/08/2020 03:13:46 Consulta de notificação realizada
+28/08/2020 03:14:49 Consulta de notificação realizada
+28/08/2020 03:15:52 Consulta de notificação realizada
+28/08/2020 03:16:06 - Solicitação criada - 33
+28/08/2020 03:16:09 - SUCE - Notificação criada - 33
+28/08/2020 03:16:17 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:16:55 Consulta de notificação realizada
+28/08/2020 03:17:58 Consulta de notificação realizada
+28/08/2020 03:19:00 Consulta de notificação realizada
+28/08/2020 03:20:02 Consulta de notificação realizada
+28/08/2020 03:21:05 Consulta de notificação realizada
+28/08/2020 03:22:07 Consulta de notificação realizada
+28/08/2020 03:23:09 Consulta de notificação realizada
+28/08/2020 03:24:11 Consulta de notificação realizada
+28/08/2020 03:25:13 Consulta de notificação realizada
+28/08/2020 03:25:41 - Solicitação criada - 34
+28/08/2020 03:25:45 - SUCE - Notificação criada - 34
+28/08/2020 03:25:56 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:26:16 Consulta de notificação realizada
+28/08/2020 03:29:11 - Solicitação criada - 35
+28/08/2020 03:29:14 - SUCE - Notificação criada - 35
+28/08/2020 03:29:20 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:30:09 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:37:59 - Solicitação criada - 36
+28/08/2020 03:38:02 - SUCE - Notificação criada - 36
+28/08/2020 03:38:10 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:40:50 - Solicitação criada - 37
+28/08/2020 03:40:53 - SUCE - Notificação criada - 37
+28/08/2020 03:41:00 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:46:49 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:54:46 - Solicitação criada - 38
+28/08/2020 03:54:50 - SUCE - Notificação criada - 38
+28/08/2020 03:54:57 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:56:36 Consulta de notificação realizada
+28/08/2020 03:56:53 - SUCE - Visualização criada, usuario 15
+28/08/2020 03:57:03 - SUCE - Visualização criada, usuario 15
+28/08/2020 03:57:12 - SUCE - Visualização criada, usuario 15
+28/08/2020 03:57:22 - SUCE - Visualização criada, usuario 15
+28/08/2020 03:59:15 Consulta de notificação realizada
+28/08/2020 04:00:05 Consulta de notificação realizada
+28/08/2020 04:00:10 Consulta de notificação realizada
+28/08/2020 04:00:14 Consulta de notificação realizada
+28/08/2020 04:00:41 Consulta de notificação realizada
+28/08/2020 04:00:45 Consulta de notificação realizada
+28/08/2020 04:00:48 Consulta de notificação realizada
+28/08/2020 04:01:23 Consulta de notificação realizada
+28/08/2020 04:01:27 Consulta de notificação realizada
+28/08/2020 04:01:31 Consulta de notificação realizada
+28/08/2020 04:02:45 - SUCE - Visualização criada, usuario 15
+28/08/2020 04:02:52 Consulta de notificação realizada
+28/08/2020 04:03:54 Consulta de notificação realizada
+28/08/2020 04:04:45 - Solicitação criada - 39
+28/08/2020 04:04:49 - SUCE - Notificação criada - 39
+28/08/2020 04:04:58 - SUCE - Visualização criada, usuario 13
+28/08/2020 04:04:58 Consulta de notificação realizada
+28/08/2020 04:17:13 - Solicitação criada - 40
+28/08/2020 04:17:17 - SUCE - Notificação criada - 40
+28/08/2020 04:17:24 - SUCE - Visualização criada, usuario 13
+28/08/2020 04:18:16 - SUCE - Visualização criada, usuario 13
+28/08/2020 04:21:58 Consulta de notificação realizada
+28/08/2020 04:22:16 - SUCE - Visualização criada, usuario 15
+28/08/2020 04:22:31 Consulta de notificação realizada
+28/08/2020 04:23:08 - Solicitação criada - 41
+28/08/2020 04:23:13 - SUCE - Notificação criada - 41
+28/08/2020 04:23:20 - SUCE - Visualização criada, usuario 13
+28/08/2020 04:23:33 Consulta de notificação realizada
+28/08/2020 04:24:35 Consulta de notificação realizada
+28/08/2020 04:25:37 Consulta de notificação realizada
+28/08/2020 01:54:24 Consulta de notificação realizada
+28/08/2020 01:54:29 Consulta de notificação realizada
+28/08/2020 01:55:12 Consulta de notificação realizada
+28/08/2020 01:55:45 Consulta de notificação realizada
+28/08/2020 01:55:49 Consulta de notificação realizada
+28/08/2020 01:55:53 Consulta de notificação realizada
+28/08/2020 01:57:03 Consulta de notificação realizada
+28/08/2020 02:01:53 Consulta de notificação realizada
+28/08/2020 02:01:59 Consulta de notificação realizada
+28/08/2020 02:02:13 Consulta de notificação realizada
+28/08/2020 02:02:56 - Solicitação criada - 42
+28/08/2020 02:02:59 - SUCE - Notificação criada - 42
+28/08/2020 02:03:09 - SUCE - Visualização criada, usuario 13
+28/08/2020 03:16:30 Consulta de notificação realizada
+28/08/2020 03:17:32 Consulta de notificação realizada
+28/08/2020 03:18:35 Consulta de notificação realizada
+28/08/2020 03:19:37 Consulta de notificação realizada
+28/08/2020 03:20:40 Consulta de notificação realizada
+28/08/2020 03:21:42 Consulta de notificação realizada
+28/08/2020 03:22:46 Consulta de notificação realizada
+28/08/2020 03:23:48 Consulta de notificação realizada
+28/08/2020 03:24:51 Consulta de notificação realizada
+28/08/2020 03:25:53 Consulta de notificação realizada
+28/08/2020 03:26:55 Consulta de notificação realizada
+28/08/2020 03:27:59 Consulta de notificação realizada
+28/08/2020 03:29:01 Consulta de notificação realizada
+28/08/2020 03:30:03 Consulta de notificação realizada
+28/08/2020 03:31:06 Consulta de notificação realizada
+28/08/2020 03:32:08 Consulta de notificação realizada
+28/08/2020 03:33:11 Consulta de notificação realizada
+28/08/2020 05:46:53 Consulta de notificação realizada
+28/08/2020 05:47:17 Consulta de notificação realizada
+28/08/2020 05:47:34 Consulta de notificação realizada
+28/08/2020 05:48:12 - Solicitação criada - 46
+28/08/2020 05:48:17 - SUCE - Notificação criada - 46
+28/08/2020 05:48:26 - SUCE - Visualização criada, usuario 13
+28/08/2020 05:48:36 Consulta de notificação realizada
+28/08/2020 06:13:37 Consulta de notificação realizada
+28/08/2020 06:14:39 Consulta de notificação realizada
+28/08/2020 06:15:41 Consulta de notificação realizada
+28/08/2020 06:16:43 Consulta de notificação realizada
+28/08/2020 06:17:46 Consulta de notificação realizada
+28/08/2020 06:18:48 Consulta de notificação realizada
+28/08/2020 06:19:51 Consulta de notificação realizada
+28/08/2020 06:20:54 Consulta de notificação realizada
+28/08/2020 06:21:56 Consulta de notificação realizada
+28/08/2020 06:22:58 Consulta de notificação realizada
+28/08/2020 06:24:00 Consulta de notificação realizada
+28/08/2020 06:25:02 Consulta de notificação realizada
+28/08/2020 06:26:05 Consulta de notificação realizada
+28/08/2020 06:27:07 Consulta de notificação realizada
+28/08/2020 06:28:09 Consulta de notificação realizada
+28/08/2020 06:29:11 Consulta de notificação realizada
+28/08/2020 06:30:14 Consulta de notificação realizada
+28/08/2020 06:31:17 Consulta de notificação realizada
+28/08/2020 06:31:46 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:32:19 Consulta de notificação realizada
+28/08/2020 06:39:00 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:39:29 Consulta de notificação realizada
+28/08/2020 06:39:39 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:40:29 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:41:33 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:42:21 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:44:47 - SUCE - Visualização criada, usuario 13
+28/08/2020 06:45:47 - SUCE - Visualização criada, usuario 13
+28/08/2020 07:04:09 - SUCE - Visualização criada, usuario 13
+28/08/2020 07:05:05 - SUCE - Visualização criada, usuario 13
+28/08/2020 07:05:57 Consulta de notificação realizada
+28/08/2020 07:06:06 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:06:56 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:06:59 Consulta de notificação realizada
+28/08/2020 07:11:14 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:12:28 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:14:27 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:20:00 Consulta de notificação realizada
+28/08/2020 07:20:21 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:20:44 - SUCE - Notificação atualizada - 42
+28/08/2020 07:20:44 - SUCE - Notificação criada - 42
+28/08/2020 07:20:51 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:25:10 Consulta de notificação realizada
+28/08/2020 07:25:19 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:25:51 - SUCE - Notificação atualizada - 31
+28/08/2020 07:25:51 - SUCE - Notificação criada - 31
+28/08/2020 07:25:58 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:26:12 Consulta de notificação realizada
+28/08/2020 07:26:23 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:30:07 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:30:26 - SUCE - Notificação atualizada - 30
+28/08/2020 07:30:26 - SUCE - Notificação criada - 30
+28/08/2020 07:30:33 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:30:41 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:31:02 - SUCE - Notificação atualizada - 16
+28/08/2020 07:31:02 - SUCE - Notificação criada - 16
+28/08/2020 07:31:08 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:31:41 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:32:32 - SUCE - Notificação atualizada - 29
+28/08/2020 07:32:32 - SUCE - Notificação criada - 29
+28/08/2020 07:32:40 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:32:46 - SUCE - Notificação atualizada - 29
+28/08/2020 07:32:46 - SUCE - Notificação criada - 29
+28/08/2020 07:32:53 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:33:00 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:38:17 Consulta de notificação realizada
+28/08/2020 07:39:46 Consulta de notificação realizada
+28/08/2020 07:40:23 - Solicitação criada - 47
+28/08/2020 07:40:26 - SUCE - Notificação criada - 47
+28/08/2020 07:40:35 - SUCE - Visualização criada, usuario 1
+28/08/2020 07:40:48 Consulta de notificação realizada
+28/08/2020 07:41:42 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:41:52 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:42:11 - SUCE - Notificação atualizada - 47
+28/08/2020 07:42:11 - SUCE - Notificação criada - 47
+28/08/2020 07:42:20 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:42:29 - SUCE - Notificação atualizada - 47
+28/08/2020 07:42:29 - SUCE - Notificação criada - 47
+28/08/2020 07:42:37 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:56:19 - Solicitação criada - 48
+28/08/2020 07:56:23 - SUCE - Notificação criada - 48
+28/08/2020 07:56:33 - SUCE - Visualização criada, usuario 1
+28/08/2020 07:56:34 - SUCE - Visualização criada, usuario 15
+28/08/2020 07:56:40 - SUCE - Visualização criada, usuario 11
+28/08/2020 07:56:51 - SUCE - Notificação atualizada - 48
+28/08/2020 07:56:51 - SUCE - Notificação criada - 48
+28/08/2020 07:56:59 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:01:44 - Solicitação criada - 49
+28/08/2020 08:01:47 - SUCE - Notificação criada - 49
+28/08/2020 08:01:55 - SUCE - Visualização criada, usuario 1
+28/08/2020 08:01:59 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:02:04 - SUCE - Visualização criada, usuario 11
+28/08/2020 08:02:11 - SUCE - Notificação atualizada - 49
+28/08/2020 08:02:11 - SUCE - Notificação criada - 49
+28/08/2020 08:02:17 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:02:26 - SUCE - Visualização criada, usuario 11
+28/08/2020 08:02:47 Consulta de notificação realizada
+28/08/2020 08:05:34 - Solicitação criada - 50
+28/08/2020 08:05:37 - SUCE - Notificação criada - 50
+28/08/2020 08:05:46 - SUCE - Visualização criada, usuario 1
+28/08/2020 08:05:54 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:05:58 - SUCE - Visualização criada, usuario 11
+28/08/2020 08:06:08 - SUCE - Notificação atualizada - 50
+28/08/2020 08:06:08 - SUCE - Notificação criada - 50
+28/08/2020 08:06:16 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:06:24 - SUCE - Visualização criada, usuario 11
+28/08/2020 08:07:03 - Solicitação criada - 51
+28/08/2020 08:07:07 - SUCE - Notificação criada - 51
+28/08/2020 08:07:14 - SUCE - Visualização criada, usuario 1
+28/08/2020 08:07:16 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:07:18 - SUCE - Visualização criada, usuario 11
+28/08/2020 08:07:29 - SUCE - Notificação atualizada - 51
+28/08/2020 08:07:29 - SUCE - Notificação criada - 51
+28/08/2020 08:07:38 - SUCE - Visualização criada, usuario 15
+28/08/2020 08:07:44 - SUCE - Visualização criada, usuario 11
+29/08/2020 02:47:17 Consulta de notificação realizada
+29/08/2020 02:47:21 Consulta de notificação realizada
+29/08/2020 02:48:23 Consulta de notificação realizada
+29/08/2020 02:49:26 Consulta de notificação realizada
+29/08/2020 02:50:28 Consulta de notificação realizada
+29/08/2020 02:51:30 Consulta de notificação realizada
+29/08/2020 02:52:32 Consulta de notificação realizada
+29/08/2020 02:53:34 Consulta de notificação realizada
+29/08/2020 02:54:36 Consulta de notificação realizada
+29/08/2020 02:55:38 Consulta de notificação realizada
+29/08/2020 02:56:40 Consulta de notificação realizada
+29/08/2020 02:57:43 Consulta de notificação realizada
+29/08/2020 02:58:17 Consulta de notificação realizada
+29/08/2020 02:58:21 Consulta de notificação realizada
+29/08/2020 02:59:23 Consulta de notificação realizada
+29/08/2020 03:00:25 Consulta de notificação realizada
+29/08/2020 03:01:27 Consulta de notificação realizada
+29/08/2020 03:02:29 Consulta de notificação realizada
+29/08/2020 03:03:31 Consulta de notificação realizada
+29/08/2020 03:04:34 Consulta de notificação realizada
+29/08/2020 03:05:36 Consulta de notificação realizada
+29/08/2020 03:06:38 Consulta de notificação realizada
+29/08/2020 03:07:41 Consulta de notificação realizada
+29/08/2020 03:08:43 Consulta de notificação realizada
+29/08/2020 03:09:45 Consulta de notificação realizada
+29/08/2020 03:10:48 Consulta de notificação realizada
+29/08/2020 03:11:50 Consulta de notificação realizada
+29/08/2020 03:12:52 Consulta de notificação realizada
+29/08/2020 03:13:55 Consulta de notificação realizada
+29/08/2020 03:14:57 Consulta de notificação realizada
+29/08/2020 03:15:59 Consulta de notificação realizada
+29/08/2020 03:17:01 Consulta de notificação realizada
+29/08/2020 03:18:03 Consulta de notificação realizada
+29/08/2020 03:19:06 Consulta de notificação realizada
+29/08/2020 03:20:08 Consulta de notificação realizada
+29/08/2020 03:21:10 Consulta de notificação realizada
+29/08/2020 03:22:12 Consulta de notificação realizada
+29/08/2020 03:23:15 Consulta de notificação realizada
+29/08/2020 03:24:17 Consulta de notificação realizada
+29/08/2020 03:25:19 Consulta de notificação realizada
+29/08/2020 03:26:25 Consulta de notificação realizada
+29/08/2020 03:27:28 Consulta de notificação realizada
+29/08/2020 03:28:30 Consulta de notificação realizada
+29/08/2020 03:29:33 Consulta de notificação realizada
+29/08/2020 03:30:35 Consulta de notificação realizada
+29/08/2020 03:31:37 Consulta de notificação realizada
+29/08/2020 03:32:39 Consulta de notificação realizada
+29/08/2020 03:33:41 Consulta de notificação realizada
+29/08/2020 03:34:44 Consulta de notificação realizada
+29/08/2020 03:35:46 Consulta de notificação realizada
+29/08/2020 03:36:48 Consulta de notificação realizada
+29/08/2020 03:37:50 Consulta de notificação realizada
+29/08/2020 03:38:52 Consulta de notificação realizada
+29/08/2020 03:39:54 Consulta de notificação realizada
+29/08/2020 03:40:56 Consulta de notificação realizada
+29/08/2020 03:41:59 Consulta de notificação realizada
+29/08/2020 03:43:01 Consulta de notificação realizada
+29/08/2020 03:44:03 Consulta de notificação realizada
+29/08/2020 03:45:05 Consulta de notificação realizada
+29/08/2020 03:46:07 Consulta de notificação realizada
+29/08/2020 03:47:10 Consulta de notificação realizada
+29/08/2020 03:48:12 Consulta de notificação realizada
+29/08/2020 03:49:14 Consulta de notificação realizada
+29/08/2020 03:50:16 Consulta de notificação realizada
+29/08/2020 03:51:18 Consulta de notificação realizada
+29/08/2020 03:52:20 Consulta de notificação realizada
+29/08/2020 03:53:22 Consulta de notificação realizada
+29/08/2020 03:54:25 Consulta de notificação realizada
+29/08/2020 03:55:27 Consulta de notificação realizada
+29/08/2020 03:56:29 Consulta de notificação realizada
+29/08/2020 03:57:31 Consulta de notificação realizada
+29/08/2020 03:58:33 Consulta de notificação realizada
+29/08/2020 03:59:35 Consulta de notificação realizada
+29/08/2020 04:00:37 Consulta de notificação realizada
+29/08/2020 04:01:40 Consulta de notificação realizada
+29/08/2020 04:02:42 Consulta de notificação realizada
+29/08/2020 04:03:44 Consulta de notificação realizada
+29/08/2020 04:04:46 Consulta de notificação realizada
+29/08/2020 04:05:48 Consulta de notificação realizada
+29/08/2020 04:06:50 Consulta de notificação realizada
+29/08/2020 04:07:52 Consulta de notificação realizada
+29/08/2020 04:08:54 Consulta de notificação realizada
+29/08/2020 04:09:54 Consulta de notificação realizada
+29/08/2020 04:10:01 Consulta de notificação realizada
+29/08/2020 04:11:03 Consulta de notificação realizada
+29/08/2020 04:12:05 Consulta de notificação realizada
+29/08/2020 04:13:07 Consulta de notificação realizada
+29/08/2020 04:14:09 Consulta de notificação realizada
+29/08/2020 04:15:11 Consulta de notificação realizada
+29/08/2020 04:16:13 Consulta de notificação realizada
+29/08/2020 04:17:16 Consulta de notificação realizada
+29/08/2020 04:18:18 Consulta de notificação realizada
+29/08/2020 04:19:20 Consulta de notificação realizada
+29/08/2020 04:20:22 Consulta de notificação realizada
+29/08/2020 04:21:24 Consulta de notificação realizada
+29/08/2020 04:22:26 Consulta de notificação realizada
+29/08/2020 04:23:29 Consulta de notificação realizada
+29/08/2020 04:24:31 Consulta de notificação realizada
+29/08/2020 04:25:33 Consulta de notificação realizada
+29/08/2020 04:26:36 Consulta de notificação realizada
+29/08/2020 04:27:38 Consulta de notificação realizada
+29/08/2020 04:28:40 Consulta de notificação realizada
+29/08/2020 04:29:42 Consulta de notificação realizada
+29/08/2020 04:30:45 Consulta de notificação realizada
+29/08/2020 04:31:47 Consulta de notificação realizada
+29/08/2020 04:32:50 Consulta de notificação realizada
+29/08/2020 04:33:52 Consulta de notificação realizada
+29/08/2020 04:34:54 Consulta de notificação realizada
+29/08/2020 04:35:56 Consulta de notificação realizada
+29/08/2020 04:36:58 Consulta de notificação realizada
+29/08/2020 04:38:00 Consulta de notificação realizada
+29/08/2020 04:39:03 Consulta de notificação realizada
+29/08/2020 04:40:05 Consulta de notificação realizada
+29/08/2020 04:41:07 Consulta de notificação realizada
+29/08/2020 04:42:10 Consulta de notificação realizada
+29/08/2020 04:43:12 Consulta de notificação realizada
+29/08/2020 04:44:14 Consulta de notificação realizada
+29/08/2020 04:45:16 Consulta de notificação realizada
+29/08/2020 04:46:18 Consulta de notificação realizada
+29/08/2020 04:47:20 Consulta de notificação realizada
+29/08/2020 04:48:22 Consulta de notificação realizada
+29/08/2020 04:49:24 Consulta de notificação realizada
+29/08/2020 04:49:56 Consulta de notificação realizada
+29/08/2020 04:50:58 Consulta de notificação realizada
+29/08/2020 04:52:00 Consulta de notificação realizada
+29/08/2020 04:52:42 Consulta de notificação realizada
+29/08/2020 04:53:45 Consulta de notificação realizada
+29/08/2020 04:54:47 Consulta de notificação realizada
+29/08/2020 04:55:49 Consulta de notificação realizada
+29/08/2020 04:56:53 Consulta de notificação realizada
+29/08/2020 04:57:56 Consulta de notificação realizada
+29/08/2020 04:58:58 Consulta de notificação realizada
+29/08/2020 05:00:03 Consulta de notificação realizada
+29/08/2020 05:01:05 Consulta de notificação realizada
+29/08/2020 05:02:07 Consulta de notificação realizada
+29/08/2020 05:03:09 Consulta de notificação realizada
+29/08/2020 05:04:11 Consulta de notificação realizada
+29/08/2020 05:05:15 Consulta de notificação realizada
+29/08/2020 05:06:19 Consulta de notificação realizada
+29/08/2020 05:07:22 Consulta de notificação realizada
+29/08/2020 05:08:27 Consulta de notificação realizada
+29/08/2020 05:09:29 Consulta de notificação realizada
+29/08/2020 05:10:31 Consulta de notificação realizada
+29/08/2020 05:11:33 Consulta de notificação realizada
+29/08/2020 05:12:35 Consulta de notificação realizada
+29/08/2020 05:13:37 Consulta de notificação realizada
+29/08/2020 05:14:39 Consulta de notificação realizada
+29/08/2020 05:15:42 Consulta de notificação realizada
+29/08/2020 05:16:44 Consulta de notificação realizada
+29/08/2020 05:17:46 Consulta de notificação realizada
+29/08/2020 05:18:48 Consulta de notificação realizada
+29/08/2020 05:19:04 - SUCE - Visualização criada, usuario 15
+29/08/2020 05:19:50 Consulta de notificação realizada
+29/08/2020 05:25:26 - SUCE - Visualização criada, usuario 15
+30/08/2020 04:36:42 Consulta de notificação realizada
+30/08/2020 04:53:54 Consulta de notificação realizada
+30/08/2020 04:56:48 Consulta de notificação realizada
+30/08/2020 04:59:55 Consulta de notificação realizada
+30/08/2020 05:00:00 Consulta de notificação realizada
+30/08/2020 05:00:25 Consulta de notificação realizada
+30/08/2020 05:01:49 - SUCE - Visualização criada, usuario 1
+30/08/2020 05:01:52 Consulta de notificação realizada
+30/08/2020 05:02:59 - Solicitação criada - 1
+30/08/2020 05:03:02 - SUCE - Notificação criada - 1
+30/08/2020 05:03:10 - SUCE - Visualização criada, usuario 1
+30/08/2020 05:12:01 Consulta de notificação realizada
+30/08/2020 05:17:10 Consulta de notificação realizada
+30/08/2020 05:17:57 Consulta de notificação realizada
+30/08/2020 05:21:52 Consulta de notificação realizada
+30/08/2020 05:22:55 Consulta de notificação realizada
+30/08/2020 05:23:58 Consulta de notificação realizada
+30/08/2020 05:25:01 Consulta de notificação realizada
+30/08/2020 05:26:04 Consulta de notificação realizada
+30/08/2020 05:27:07 Consulta de notificação realizada
+30/08/2020 05:28:10 Consulta de notificação realizada
+30/08/2020 05:29:13 Consulta de notificação realizada
+30/08/2020 05:30:16 Consulta de notificação realizada
+30/08/2020 05:31:19 Consulta de notificação realizada
+30/08/2020 05:32:25 Consulta de notificação realizada
+30/08/2020 05:33:28 Consulta de notificação realizada
+30/08/2020 05:34:31 Consulta de notificação realizada
+30/08/2020 05:35:34 Consulta de notificação realizada
+30/08/2020 05:36:37 Consulta de notificação realizada
+30/08/2020 05:37:40 Consulta de notificação realizada
+30/08/2020 05:38:43 Consulta de notificação realizada
+30/08/2020 05:39:46 Consulta de notificação realizada
+30/08/2020 05:40:49 Consulta de notificação realizada
+30/08/2020 05:41:52 Consulta de notificação realizada
+30/08/2020 05:42:54 Consulta de notificação realizada
+30/08/2020 05:43:58 Consulta de notificação realizada
+30/08/2020 05:45:01 Consulta de notificação realizada
+30/08/2020 05:46:04 Consulta de notificação realizada
+30/08/2020 05:47:07 Consulta de notificação realizada
+30/08/2020 05:48:10 Consulta de notificação realizada
+30/08/2020 05:49:13 Consulta de notificação realizada
+30/08/2020 05:50:16 Consulta de notificação realizada
+30/08/2020 05:51:19 Consulta de notificação realizada
+30/08/2020 05:52:22 Consulta de notificação realizada
+30/08/2020 05:53:25 Consulta de notificação realizada
+30/08/2020 05:54:28 Consulta de notificação realizada
+30/08/2020 05:55:31 Consulta de notificação realizada
+30/08/2020 05:56:34 Consulta de notificação realizada
+30/08/2020 05:57:37 Consulta de notificação realizada
+30/08/2020 05:58:40 Consulta de notificação realizada
+30/08/2020 05:59:43 Consulta de notificação realizada
+30/08/2020 06:00:46 Consulta de notificação realizada
+30/08/2020 06:01:49 Consulta de notificação realizada
+30/08/2020 06:02:52 Consulta de notificação realizada
+30/08/2020 06:03:55 Consulta de notificação realizada
+30/08/2020 06:04:58 Consulta de notificação realizada
+30/08/2020 06:06:02 Consulta de notificação realizada
+30/08/2020 06:07:05 Consulta de notificação realizada
+30/08/2020 06:08:08 Consulta de notificação realizada
+30/08/2020 06:09:11 Consulta de notificação realizada
+30/08/2020 06:10:14 Consulta de notificação realizada
+30/08/2020 06:11:18 Consulta de notificação realizada
+30/08/2020 06:12:21 Consulta de notificação realizada
+30/08/2020 06:13:24 Consulta de notificação realizada
+30/08/2020 06:14:27 Consulta de notificação realizada
+30/08/2020 06:15:30 Consulta de notificação realizada
+30/08/2020 06:16:33 Consulta de notificação realizada
+30/08/2020 06:17:36 Consulta de notificação realizada
+30/08/2020 06:18:42 Consulta de notificação realizada
+30/08/2020 06:19:46 Consulta de notificação realizada
+30/08/2020 06:20:50 Consulta de notificação realizada
+30/08/2020 06:21:56 Consulta de notificação realizada
+30/08/2020 06:22:59 Consulta de notificação realizada
+30/08/2020 06:24:02 Consulta de notificação realizada
+30/08/2020 06:25:05 Consulta de notificação realizada
+30/08/2020 06:26:08 Consulta de notificação realizada
+30/08/2020 06:27:12 Consulta de notificação realizada
+30/08/2020 06:28:16 Consulta de notificação realizada
+30/08/2020 06:29:19 Consulta de notificação realizada
+30/08/2020 06:30:22 Consulta de notificação realizada
+30/08/2020 06:31:25 Consulta de notificação realizada
+30/08/2020 06:32:32 Consulta de notificação realizada
+30/08/2020 06:33:35 Consulta de notificação realizada
+30/08/2020 06:34:38 Consulta de notificação realizada
+30/08/2020 06:35:41 Consulta de notificação realizada
+30/08/2020 06:36:44 Consulta de notificação realizada
+30/08/2020 06:37:47 Consulta de notificação realizada
+30/08/2020 06:38:50 Consulta de notificação realizada
+30/08/2020 06:39:53 Consulta de notificação realizada
+30/08/2020 06:40:56 Consulta de notificação realizada
+30/08/2020 06:41:59 Consulta de notificação realizada
+30/08/2020 06:43:02 Consulta de notificação realizada
+30/08/2020 06:44:05 Consulta de notificação realizada
+30/08/2020 06:45:08 Consulta de notificação realizada
+30/08/2020 06:46:11 Consulta de notificação realizada
+30/08/2020 06:47:14 Consulta de notificação realizada
+30/08/2020 06:48:17 Consulta de notificação realizada
+30/08/2020 06:49:20 Consulta de notificação realizada
+30/08/2020 06:50:23 Consulta de notificação realizada
+30/08/2020 06:51:26 Consulta de notificação realizada
+30/08/2020 06:52:29 Consulta de notificação realizada
+30/08/2020 06:53:32 Consulta de notificação realizada
+30/08/2020 06:54:35 Consulta de notificação realizada
+30/08/2020 06:55:38 Consulta de notificação realizada
+30/08/2020 06:56:41 Consulta de notificação realizada
+30/08/2020 06:57:44 Consulta de notificação realizada
+30/08/2020 06:58:47 Consulta de notificação realizada
+30/08/2020 06:59:50 Consulta de notificação realizada
+30/08/2020 07:00:53 Consulta de notificação realizada
+30/08/2020 07:01:56 Consulta de notificação realizada
+30/08/2020 07:02:59 Consulta de notificação realizada
+30/08/2020 07:04:02 Consulta de notificação realizada
+30/08/2020 07:05:05 Consulta de notificação realizada
+30/08/2020 07:06:08 Consulta de notificação realizada
+30/08/2020 07:07:11 Consulta de notificação realizada
+30/08/2020 07:08:14 Consulta de notificação realizada
+30/08/2020 07:09:17 Consulta de notificação realizada
+30/08/2020 07:10:20 Consulta de notificação realizada
+30/08/2020 07:11:23 Consulta de notificação realizada
+30/08/2020 07:12:26 Consulta de notificação realizada
+30/08/2020 07:13:29 Consulta de notificação realizada
+30/08/2020 07:14:32 Consulta de notificação realizada
+30/08/2020 07:15:35 Consulta de notificação realizada
+30/08/2020 07:16:38 Consulta de notificação realizada
+30/08/2020 07:17:41 Consulta de notificação realizada
+30/08/2020 07:18:44 Consulta de notificação realizada
+30/08/2020 07:19:47 Consulta de notificação realizada
+30/08/2020 07:20:50 Consulta de notificação realizada
+30/08/2020 07:21:53 Consulta de notificação realizada
+30/08/2020 07:22:56 Consulta de notificação realizada
+30/08/2020 07:23:59 Consulta de notificação realizada
+30/08/2020 07:25:02 Consulta de notificação realizada
+30/08/2020 07:26:06 Consulta de notificação realizada
+30/08/2020 07:27:09 Consulta de notificação realizada
+30/08/2020 07:28:12 Consulta de notificação realizada
+30/08/2020 07:29:15 Consulta de notificação realizada
+30/08/2020 07:30:18 Consulta de notificação realizada
+30/08/2020 07:31:21 Consulta de notificação realizada
+30/08/2020 07:32:23 Consulta de notificação realizada
+30/08/2020 07:33:27 Consulta de notificação realizada
+30/08/2020 07:34:30 Consulta de notificação realizada
+30/08/2020 07:35:33 Consulta de notificação realizada
+30/08/2020 07:36:36 Consulta de notificação realizada
+30/08/2020 07:37:39 Consulta de notificação realizada
+30/08/2020 07:38:42 Consulta de notificação realizada
+30/08/2020 07:39:45 Consulta de notificação realizada
+30/08/2020 07:40:48 Consulta de notificação realizada
+30/08/2020 07:41:51 Consulta de notificação realizada
+30/08/2020 07:42:54 Consulta de notificação realizada
+30/08/2020 07:43:57 Consulta de notificação realizada
+30/08/2020 07:45:00 Consulta de notificação realizada
+30/08/2020 07:46:03 Consulta de notificação realizada
+30/08/2020 07:47:06 Consulta de notificação realizada
+30/08/2020 07:48:09 Consulta de notificação realizada
+30/08/2020 07:49:12 Consulta de notificação realizada
+30/08/2020 07:50:15 Consulta de notificação realizada
+30/08/2020 07:51:18 Consulta de notificação realizada
+30/08/2020 07:52:21 Consulta de notificação realizada
+30/08/2020 07:53:24 Consulta de notificação realizada
+30/08/2020 07:54:27 Consulta de notificação realizada
+30/08/2020 07:55:30 Consulta de notificação realizada
+30/08/2020 07:56:33 Consulta de notificação realizada
+30/08/2020 07:57:36 Consulta de notificação realizada
+30/08/2020 07:58:39 Consulta de notificação realizada
+30/08/2020 07:59:42 Consulta de notificação realizada
+30/08/2020 08:00:45 Consulta de notificação realizada
+30/08/2020 08:01:48 Consulta de notificação realizada
+30/08/2020 08:02:51 Consulta de notificação realizada
+30/08/2020 08:03:54 Consulta de notificação realizada
+30/08/2020 08:04:57 Consulta de notificação realizada
+30/08/2020 08:06:00 Consulta de notificação realizada
+30/08/2020 08:07:03 Consulta de notificação realizada
+30/08/2020 08:08:06 Consulta de notificação realizada
+30/08/2020 08:09:09 Consulta de notificação realizada
+30/08/2020 08:10:12 Consulta de notificação realizada
+30/08/2020 08:11:15 Consulta de notificação realizada
+30/08/2020 08:12:18 Consulta de notificação realizada
+30/08/2020 08:13:21 Consulta de notificação realizada
+30/08/2020 08:14:24 Consulta de notificação realizada
+30/08/2020 08:15:27 Consulta de notificação realizada
+30/08/2020 08:16:30 Consulta de notificação realizada
+30/08/2020 08:17:33 Consulta de notificação realizada
+30/08/2020 10:28:28 Consulta de notificação realizada
+30/08/2020 10:29:30 Consulta de notificação realizada
+30/08/2020 10:30:33 Consulta de notificação realizada
+30/08/2020 10:31:35 Consulta de notificação realizada
+30/08/2020 10:32:37 Consulta de notificação realizada
+30/08/2020 10:33:40 Consulta de notificação realizada
+30/08/2020 10:34:43 Consulta de notificação realizada
+30/08/2020 10:35:45 Consulta de notificação realizada
+30/08/2020 10:36:47 Consulta de notificação realizada
+30/08/2020 10:37:49 Consulta de notificação realizada
+30/08/2020 10:38:52 Consulta de notificação realizada
+30/08/2020 10:39:54 Consulta de notificação realizada
+30/08/2020 10:40:56 Consulta de notificação realizada
+30/08/2020 10:41:58 Consulta de notificação realizada
+30/08/2020 10:43:01 Consulta de notificação realizada
+30/08/2020 10:44:03 Consulta de notificação realizada
+30/08/2020 10:45:05 Consulta de notificação realizada
+30/08/2020 10:46:07 Consulta de notificação realizada
+30/08/2020 10:47:09 Consulta de notificação realizada
+30/08/2020 10:48:11 Consulta de notificação realizada
+30/08/2020 10:49:14 Consulta de notificação realizada
+30/08/2020 10:50:16 Consulta de notificação realizada
+30/08/2020 10:51:18 Consulta de notificação realizada
+30/08/2020 10:52:20 Consulta de notificação realizada
+30/08/2020 10:53:22 Consulta de notificação realizada
+30/08/2020 10:54:25 Consulta de notificação realizada
+30/08/2020 10:55:27 Consulta de notificação realizada
+30/08/2020 10:56:30 Consulta de notificação realizada
+30/08/2020 10:57:33 Consulta de notificação realizada
+30/08/2020 10:58:36 Consulta de notificação realizada
+30/08/2020 10:59:39 Consulta de notificação realizada
+30/08/2020 11:00:42 Consulta de notificação realizada
+30/08/2020 11:01:45 Consulta de notificação realizada
+30/08/2020 11:02:48 Consulta de notificação realizada
+30/08/2020 11:03:51 Consulta de notificação realizada
+30/08/2020 11:04:54 Consulta de notificação realizada
+30/08/2020 11:05:57 Consulta de notificação realizada
+30/08/2020 11:07:00 Consulta de notificação realizada
+30/08/2020 11:08:03 Consulta de notificação realizada
+30/08/2020 11:09:06 Consulta de notificação realizada
+30/08/2020 11:10:09 Consulta de notificação realizada
+30/08/2020 11:11:12 Consulta de notificação realizada
+30/08/2020 11:12:18 Consulta de notificação realizada
+30/08/2020 11:13:21 Consulta de notificação realizada
+30/08/2020 11:14:24 Consulta de notificação realizada
+30/08/2020 11:15:27 Consulta de notificação realizada
+30/08/2020 11:16:30 Consulta de notificação realizada
+30/08/2020 11:17:33 Consulta de notificação realizada
+30/08/2020 11:18:36 Consulta de notificação realizada
+30/08/2020 11:19:39 Consulta de notificação realizada
+30/08/2020 11:20:42 Consulta de notificação realizada
+30/08/2020 11:21:45 Consulta de notificação realizada
+30/08/2020 11:22:48 Consulta de notificação realizada
+30/08/2020 11:23:51 Consulta de notificação realizada
+30/08/2020 11:24:54 Consulta de notificação realizada
+30/08/2020 11:25:57 Consulta de notificação realizada
+30/08/2020 11:27:00 Consulta de notificação realizada
+30/08/2020 11:28:03 Consulta de notificação realizada
+30/08/2020 11:29:06 Consulta de notificação realizada
+30/08/2020 11:30:09 Consulta de notificação realizada
+30/08/2020 11:31:12 Consulta de notificação realizada
+30/08/2020 11:32:15 Consulta de notificação realizada
+30/08/2020 11:33:18 Consulta de notificação realizada
+30/08/2020 11:34:21 Consulta de notificação realizada
+30/08/2020 11:35:26 Consulta de notificação realizada
+30/08/2020 11:36:29 Consulta de notificação realizada
+30/08/2020 11:37:32 Consulta de notificação realizada
+30/08/2020 11:38:35 Consulta de notificação realizada
+30/08/2020 11:39:38 Consulta de notificação realizada
+30/08/2020 11:40:41 Consulta de notificação realizada
+30/08/2020 11:41:44 Consulta de notificação realizada
+30/08/2020 11:42:47 Consulta de notificação realizada
+30/08/2020 11:43:50 Consulta de notificação realizada
+30/08/2020 11:44:53 Consulta de notificação realizada
+30/08/2020 11:45:56 Consulta de notificação realizada
+30/08/2020 11:46:59 Consulta de notificação realizada
+30/08/2020 11:48:02 Consulta de notificação realizada
+30/08/2020 11:49:05 Consulta de notificação realizada
+30/08/2020 11:50:08 Consulta de notificação realizada
+30/08/2020 11:51:11 Consulta de notificação realizada
+30/08/2020 11:52:14 Consulta de notificação realizada
+30/08/2020 11:53:17 Consulta de notificação realizada
+30/08/2020 11:54:20 Consulta de notificação realizada
+30/08/2020 11:55:23 Consulta de notificação realizada
+30/08/2020 11:56:26 Consulta de notificação realizada
+30/08/2020 11:57:29 Consulta de notificação realizada
+30/08/2020 11:58:32 Consulta de notificação realizada
+30/08/2020 11:59:35 Consulta de notificação realizada
+31/08/2020 12:00:38 Consulta de notificação realizada
+31/08/2020 12:01:41 Consulta de notificação realizada
+31/08/2020 12:02:44 Consulta de notificação realizada
+31/08/2020 12:03:46 Consulta de notificação realizada
+31/08/2020 12:04:50 Consulta de notificação realizada
+31/08/2020 12:05:53 Consulta de notificação realizada
+31/08/2020 12:06:56 Consulta de notificação realizada
+31/08/2020 12:07:59 Consulta de notificação realizada
+31/08/2020 12:09:02 Consulta de notificação realizada
+31/08/2020 12:10:05 Consulta de notificação realizada
+31/08/2020 12:11:08 Consulta de notificação realizada
+31/08/2020 12:12:10 Consulta de notificação realizada
+31/08/2020 12:13:14 Consulta de notificação realizada
+31/08/2020 12:14:17 Consulta de notificação realizada
+31/08/2020 12:15:20 Consulta de notificação realizada
+31/08/2020 12:16:23 Consulta de notificação realizada
+31/08/2020 12:17:26 Consulta de notificação realizada
+31/08/2020 12:18:28 Consulta de notificação realizada
+31/08/2020 12:19:32 Consulta de notificação realizada
+31/08/2020 12:20:35 Consulta de notificação realizada
+31/08/2020 12:21:38 Consulta de notificação realizada
+31/08/2020 12:22:41 Consulta de notificação realizada
+31/08/2020 12:23:45 Consulta de notificação realizada
+31/08/2020 12:24:47 Consulta de notificação realizada
+31/08/2020 12:25:51 Consulta de notificação realizada
+31/08/2020 12:26:53 Consulta de notificação realizada
+31/08/2020 12:27:55 Consulta de notificação realizada
+31/08/2020 12:28:57 Consulta de notificação realizada
+31/08/2020 12:29:56 Consulta de notificação realizada
+31/08/2020 12:30:09 Consulta de notificação realizada
+31/08/2020 12:30:23 Consulta de notificação realizada
+31/08/2020 12:30:48 Consulta de notificação realizada
+31/08/2020 12:31:11 Consulta de notificação realizada
+31/08/2020 12:31:40 Consulta de notificação realizada
+31/08/2020 12:31:59 Consulta de notificação realizada
+31/08/2020 12:32:41 - SUCE - Visualização criada, usuario 1
+31/08/2020 12:32:42 Consulta de notificação realizada
+31/08/2020 12:33:01 Consulta de notificação realizada
+31/08/2020 12:33:14 Consulta de notificação realizada
+31/08/2020 12:33:51 Consulta de notificação realizada
+31/08/2020 12:34:50 Consulta de notificação realizada
+31/08/2020 12:35:59 Consulta de notificação realizada
+31/08/2020 12:36:52 Consulta de notificação realizada
+31/08/2020 12:37:15 Consulta de notificação realizada
+31/08/2020 12:37:29 Consulta de notificação realizada
+31/08/2020 12:37:45 Consulta de notificação realizada
+31/08/2020 12:37:50 Consulta de notificação realizada
+31/08/2020 12:38:07 Consulta de notificação realizada
+31/08/2020 12:38:20 Consulta de notificação realizada
+31/08/2020 12:38:42 - SUCE - Visualização criada, usuario 1
+31/08/2020 12:40:06 Consulta de notificação realizada
+31/08/2020 12:41:07 Consulta de notificação realizada
+31/08/2020 12:41:20 Consulta de notificação realizada
+31/08/2020 02:41:46 Consulta de notificação realizada
+31/08/2020 03:03:24 Consulta de notificação realizada
+31/08/2020 03:03:40 Consulta de notificação realizada
+31/08/2020 05:09:26 Consulta de notificação realizada
+31/08/2020 05:09:29 Consulta de notificação realizada
+31/08/2020 05:29:00 Consulta de notificação realizada
+31/08/2020 05:30:39 Consulta de notificação realizada
+31/08/2020 06:02:05 Consulta de notificação realizada
+31/08/2020 06:02:35 Consulta de notificação realizada
+31/08/2020 06:03:28 Consulta de notificação realizada
+31/08/2020 06:04:25 Consulta de notificação realizada
+31/08/2020 06:04:34 Consulta de notificação realizada
+31/08/2020 06:12:07 Consulta de notificação realizada
+31/08/2020 06:14:04 Consulta de notificação realizada
+31/08/2020 06:16:20 Consulta de notificação realizada
+31/08/2020 06:16:36 Consulta de notificação realizada
+31/08/2020 06:16:43 Consulta de notificação realizada
+31/08/2020 06:18:16 Consulta de notificação realizada
+31/08/2020 06:18:23 Consulta de notificação realizada
+31/08/2020 06:19:46 Consulta de notificação realizada
+31/08/2020 06:20:31 Consulta de notificação realizada
+31/08/2020 06:20:52 Consulta de notificação realizada
+31/08/2020 06:21:20 Consulta de notificação realizada
+31/08/2020 06:22:24 Consulta de notificação realizada
+31/08/2020 06:23:26 Consulta de notificação realizada
+31/08/2020 06:24:31 Consulta de notificação realizada
+31/08/2020 06:25:34 Consulta de notificação realizada
+31/08/2020 06:26:37 Consulta de notificação realizada
+31/08/2020 06:27:40 Consulta de notificação realizada
+31/08/2020 06:28:43 Consulta de notificação realizada
+31/08/2020 06:29:46 Consulta de notificação realizada
+31/08/2020 06:30:48 Consulta de notificação realizada
+31/08/2020 06:31:51 Consulta de notificação realizada
+31/08/2020 06:32:53 Consulta de notificação realizada
+31/08/2020 06:33:56 Consulta de notificação realizada
+31/08/2020 06:34:58 Consulta de notificação realizada
+31/08/2020 06:36:01 Consulta de notificação realizada
+31/08/2020 06:37:03 Consulta de notificação realizada
+31/08/2020 06:38:05 Consulta de notificação realizada
+31/08/2020 06:39:07 Consulta de notificação realizada
+31/08/2020 06:40:11 Consulta de notificação realizada
+31/08/2020 06:41:14 Consulta de notificação realizada
+31/08/2020 06:42:16 Consulta de notificação realizada
+31/08/2020 06:43:18 Consulta de notificação realizada
+31/08/2020 06:44:20 Consulta de notificação realizada
+31/08/2020 06:45:23 Consulta de notificação realizada
+31/08/2020 06:46:27 Consulta de notificação realizada
+31/08/2020 06:47:30 Consulta de notificação realizada
+31/08/2020 06:48:33 Consulta de notificação realizada
+31/08/2020 06:49:35 Consulta de notificação realizada
+31/08/2020 06:50:37 Consulta de notificação realizada
+31/08/2020 06:51:39 Consulta de notificação realizada
+31/08/2020 06:52:41 Consulta de notificação realizada
+31/08/2020 06:53:44 Consulta de notificação realizada
+31/08/2020 06:54:46 Consulta de notificação realizada
+31/08/2020 06:55:48 Consulta de notificação realizada
+31/08/2020 06:56:51 Consulta de notificação realizada
+31/08/2020 06:57:54 Consulta de notificação realizada
+31/08/2020 06:58:57 Consulta de notificação realizada
+31/08/2020 06:59:59 Consulta de notificação realizada
+31/08/2020 07:01:02 Consulta de notificação realizada
+31/08/2020 07:02:05 Consulta de notificação realizada
+31/08/2020 07:03:09 Consulta de notificação realizada
+31/08/2020 07:04:11 Consulta de notificação realizada
+31/08/2020 07:05:13 Consulta de notificação realizada
+31/08/2020 07:06:16 Consulta de notificação realizada
+31/08/2020 07:07:18 Consulta de notificação realizada
+31/08/2020 07:08:20 Consulta de notificação realizada
+31/08/2020 07:09:24 Consulta de notificação realizada
+31/08/2020 07:10:26 Consulta de notificação realizada
+31/08/2020 07:11:29 Consulta de notificação realizada
+31/08/2020 07:12:31 Consulta de notificação realizada
+31/08/2020 07:13:33 Consulta de notificação realizada
+31/08/2020 07:14:35 Consulta de notificação realizada
+31/08/2020 07:15:37 Consulta de notificação realizada
+31/08/2020 07:16:40 Consulta de notificação realizada
+31/08/2020 07:17:43 Consulta de notificação realizada
+31/08/2020 07:18:45 Consulta de notificação realizada
+31/08/2020 07:19:47 Consulta de notificação realizada
+31/08/2020 07:20:49 Consulta de notificação realizada
+31/08/2020 07:21:51 Consulta de notificação realizada
+31/08/2020 07:22:54 Consulta de notificação realizada
+31/08/2020 07:23:57 Consulta de notificação realizada
+31/08/2020 07:24:59 Consulta de notificação realizada
+31/08/2020 07:26:02 Consulta de notificação realizada
+31/08/2020 07:27:04 Consulta de notificação realizada
+31/08/2020 07:28:06 Consulta de notificação realizada
+31/08/2020 07:29:08 Consulta de notificação realizada
+31/08/2020 07:30:10 Consulta de notificação realizada
+31/08/2020 07:31:13 Consulta de notificação realizada
+31/08/2020 07:32:16 Consulta de notificação realizada
+31/08/2020 07:33:18 Consulta de notificação realizada
+31/08/2020 07:34:20 Consulta de notificação realizada
+31/08/2020 07:35:22 Consulta de notificação realizada
+31/08/2020 07:36:25 Consulta de notificação realizada
+31/08/2020 07:37:27 Consulta de notificação realizada
+31/08/2020 07:38:29 Consulta de notificação realizada
+31/08/2020 07:39:32 Consulta de notificação realizada
+31/08/2020 07:40:34 Consulta de notificação realizada
+31/08/2020 07:41:36 Consulta de notificação realizada
+31/08/2020 07:42:40 Consulta de notificação realizada
+31/08/2020 07:43:44 Consulta de notificação realizada
+31/08/2020 07:44:48 Consulta de notificação realizada
+31/08/2020 07:45:50 Consulta de notificação realizada
+31/08/2020 07:46:53 Consulta de notificação realizada
+31/08/2020 07:47:55 Consulta de notificação realizada
+31/08/2020 07:48:57 Consulta de notificação realizada
+31/08/2020 07:50:00 Consulta de notificação realizada
+31/08/2020 07:51:02 Consulta de notificação realizada
+31/08/2020 07:52:05 Consulta de notificação realizada
+31/08/2020 07:53:08 Consulta de notificação realizada
+31/08/2020 07:54:10 Consulta de notificação realizada
+31/08/2020 07:55:13 Consulta de notificação realizada
+31/08/2020 07:56:15 Consulta de notificação realizada
+31/08/2020 07:57:18 Consulta de notificação realizada
+31/08/2020 07:58:21 Consulta de notificação realizada
+31/08/2020 07:59:26 Consulta de notificação realizada
+31/08/2020 08:00:28 Consulta de notificação realizada
+31/08/2020 08:01:33 Consulta de notificação realizada
+31/08/2020 08:02:36 Consulta de notificação realizada
+31/08/2020 08:03:40 Consulta de notificação realizada
+31/08/2020 08:04:43 Consulta de notificação realizada
+31/08/2020 08:05:45 Consulta de notificação realizada
+31/08/2020 08:06:48 Consulta de notificação realizada
+31/08/2020 08:07:31 Consulta de notificação realizada
+31/08/2020 08:07:37 Consulta de notificação realizada
+31/08/2020 08:08:09 Consulta de notificação realizada
+31/08/2020 08:09:13 Consulta de notificação realizada
+31/08/2020 08:09:32 Consulta de notificação realizada
+31/08/2020 08:09:48 Consulta de notificação realizada
+31/08/2020 08:10:37 Consulta de notificação realizada
+31/08/2020 08:11:42 Consulta de notificação realizada
+31/08/2020 08:12:44 Consulta de notificação realizada
+31/08/2020 08:13:46 Consulta de notificação realizada
+31/08/2020 08:14:50 Consulta de notificação realizada
+31/08/2020 08:15:53 Consulta de notificação realizada
+31/08/2020 08:17:03 Consulta de notificação realizada
+31/08/2020 08:17:20 Consulta de notificação realizada
+31/08/2020 08:18:23 Consulta de notificação realizada
+31/08/2020 08:18:41 Consulta de notificação realizada
+31/08/2020 08:18:46 - ERRO - Visualização não criada, usuario - 
+31/08/2020 08:19:45 Consulta de notificação realizada
+31/08/2020 08:20:47 Consulta de notificação realizada
+31/08/2020 08:21:50 Consulta de notificação realizada
+31/08/2020 08:22:52 Consulta de notificação realizada
+31/08/2020 08:23:02 - ERRO - Visualização não criada, usuario - 
+31/08/2020 08:23:02 Consulta de notificação realizada
+31/08/2020 08:24:05 Consulta de notificação realizada
+31/08/2020 08:25:08 Consulta de notificação realizada
+31/08/2020 08:26:10 Consulta de notificação realizada
+31/08/2020 08:26:14 Consulta de notificação realizada
+31/08/2020 08:26:18 - ERRO - Visualização não criada, usuario - 
+31/08/2020 08:27:16 Consulta de notificação realizada
+31/08/2020 08:27:25 Consulta de notificação realizada
+31/08/2020 08:27:29 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:28:27 Consulta de notificação realizada
+31/08/2020 08:28:31 Consulta de notificação realizada
+31/08/2020 08:28:37 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:33:42 Consulta de notificação realizada
+31/08/2020 08:33:46 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:33:59 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:34:02 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:34:02 Consulta de notificação realizada
+31/08/2020 08:36:11 Consulta de notificação realizada
+31/08/2020 08:36:16 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:36:19 - SUCE - Visualização criada, usuario 13
+31/08/2020 08:49:42 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:16:56 Consulta de notificação realizada
+31/08/2020 09:17:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:17:02 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:17:42 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:17:45 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:17:45 Consulta de notificação realizada
+31/08/2020 09:22:16 Consulta de notificação realizada
+31/08/2020 09:22:22 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:22:25 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:24:37 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:24:39 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:24:39 Consulta de notificação realizada
+31/08/2020 09:24:44 Consulta de notificação realizada
+31/08/2020 09:24:50 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:24:52 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:25:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:25:44 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:25:44 Consulta de notificação realizada
+31/08/2020 09:29:44 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:29:52 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:29:55 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:29:55 Consulta de notificação realizada
+31/08/2020 09:32:16 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:32:20 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:32:20 Consulta de notificação realizada
+31/08/2020 09:33:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:33:00 Consulta de notificação realizada
+31/08/2020 09:33:06 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:34:37 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:34:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:34:41 Consulta de notificação realizada
+31/08/2020 09:34:48 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:34:51 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:34:51 Consulta de notificação realizada
+31/08/2020 09:35:07 Consulta de notificação realizada
+31/08/2020 09:37:49 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:37:49 Consulta de notificação realizada
+31/08/2020 09:37:57 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:38:39 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:38:39 Consulta de notificação realizada
+31/08/2020 09:38:44 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:39:09 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:39:12 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:39:12 Consulta de notificação realizada
+31/08/2020 09:39:51 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:39:55 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:39:55 Consulta de notificação realizada
+31/08/2020 09:40:20 Consulta de notificação realizada
+31/08/2020 09:40:25 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:40:29 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:41:42 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:41:42 Consulta de notificação realizada
+31/08/2020 09:41:46 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:49:20 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:49:23 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:49:23 Consulta de notificação realizada
+31/08/2020 09:58:04 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:58:07 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:58:07 Consulta de notificação realizada
+31/08/2020 09:58:29 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:58:32 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:58:32 Consulta de notificação realizada
+31/08/2020 09:58:34 Consulta de notificação realizada
+31/08/2020 09:58:38 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:58:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:59:09 Consulta de notificação realizada
+31/08/2020 09:59:13 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:59:17 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:59:38 Consulta de notificação realizada
+31/08/2020 09:59:42 - SUCE - Visualização criada, usuario 13
+31/08/2020 09:59:46 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:00:13 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:00:13 Consulta de notificação realizada
+31/08/2020 10:00:18 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:05:05 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:05:05 Consulta de notificação realizada
+31/08/2020 10:05:10 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:05:39 Consulta de notificação realizada
+31/08/2020 10:05:43 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:05:47 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:05:56 Consulta de notificação realizada
+31/08/2020 10:06:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:06:06 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:06:53 Consulta de notificação realizada
+31/08/2020 10:06:58 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:07:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:07:27 Consulta de notificação realizada
+31/08/2020 10:07:31 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:07:34 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:08:35 Consulta de notificação realizada
+31/08/2020 10:08:39 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:08:43 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:09:27 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:09:30 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:09:30 Consulta de notificação realizada
+31/08/2020 10:09:53 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:09:53 Consulta de notificação realizada
+31/08/2020 10:09:56 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:10:03 Consulta de notificação realizada
+31/08/2020 10:10:07 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:10:10 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:10:36 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:10:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:10:40 Consulta de notificação realizada
+31/08/2020 10:10:42 Consulta de notificação realizada
+31/08/2020 10:10:46 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:10:48 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:11:17 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:11:17 Consulta de notificação realizada
+31/08/2020 10:11:21 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:08 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:10 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:10 Consulta de notificação realizada
+31/08/2020 10:12:25 Consulta de notificação realizada
+31/08/2020 10:12:29 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:31 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:37 Consulta de notificação realizada
+31/08/2020 10:12:42 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:45 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:12:56 Consulta de notificação realizada
+31/08/2020 10:13:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:13:03 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:17:59 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:18:01 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:18:01 Consulta de notificação realizada
+31/08/2020 10:18:09 Consulta de notificação realizada
+31/08/2020 10:18:14 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:18:16 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:19:52 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:19:52 Consulta de notificação realizada
+31/08/2020 10:19:56 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:20:38 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:20:38 Consulta de notificação realizada
+31/08/2020 10:20:43 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:32:50 Consulta de notificação realizada
+31/08/2020 10:32:53 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:32:56 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:34:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:34:43 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:34:43 Consulta de notificação realizada
+31/08/2020 10:35:47 Consulta de notificação realizada
+31/08/2020 10:35:51 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:35:53 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:37:15 Consulta de notificação realizada
+31/08/2020 10:37:19 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:37:22 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:37:39 Consulta de notificação realizada
+31/08/2020 10:37:42 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:37:45 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:37:55 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:37:56 Consulta de notificação realizada
+31/08/2020 10:38:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:38:27 Consulta de notificação realizada
+31/08/2020 10:38:32 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:38:34 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:40:54 Consulta de notificação realizada
+31/08/2020 10:40:58 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:41:00 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:41:10 Consulta de notificação realizada
+31/08/2020 10:41:14 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:41:16 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:41:34 Consulta de notificação realizada
+31/08/2020 10:41:38 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:41:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:42:12 Consulta de notificação realizada
+31/08/2020 10:42:16 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:42:19 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:42:48 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:42:51 - SUCE - Visualização criada, usuario 13
+31/08/2020 10:42:51 Consulta de notificação realizada
+31/08/2020 11:01:37 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:01:40 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:01:40 Consulta de notificação realizada
+31/08/2020 11:03:54 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:03:57 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:03:57 Consulta de notificação realizada
+31/08/2020 11:04:01 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:05:16 Consulta de notificação realizada
+31/08/2020 11:06:18 Consulta de notificação realizada
+31/08/2020 11:07:20 Consulta de notificação realizada
+31/08/2020 11:07:38 Consulta de notificação realizada
+31/08/2020 11:08:26 Consulta de notificação realizada
+31/08/2020 11:08:30 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:08:32 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:08:35 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:09:15 - Solicitação criada - 12
+31/08/2020 11:09:18 - SUCE - Notificação criada - 12
+31/08/2020 11:09:21 Consulta de notificação realizada
+31/08/2020 11:09:27 - SUCE - Visualização criada, usuario 13
+31/08/2020 11:09:50 Consulta de notificação realizada
+31/08/2020 11:10:52 Consulta de notificação realizada
+31/08/2020 11:11:54 Consulta de notificação realizada
+31/08/2020 11:12:15 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:12:16 Consulta de notificação realizada
+31/08/2020 11:12:52 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:12:52 Consulta de notificação realizada
+31/08/2020 11:13:20 Consulta de notificação realizada
+31/08/2020 11:13:24 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:18:45 Consulta de notificação realizada
+31/08/2020 11:18:49 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:23:34 Consulta de notificação realizada
+31/08/2020 11:23:37 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:24:50 Consulta de notificação realizada
+31/08/2020 11:24:54 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:29:20 Consulta de notificação realizada
+31/08/2020 11:29:24 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:29:55 Consulta de notificação realizada
+31/08/2020 11:29:59 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:30:56 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:30:57 Consulta de notificação realizada
+31/08/2020 11:31:13 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:31:14 Consulta de notificação realizada
+31/08/2020 11:31:56 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:31:56 Consulta de notificação realizada
+31/08/2020 11:34:21 Consulta de notificação realizada
+31/08/2020 11:34:24 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:36:14 Consulta de notificação realizada
+31/08/2020 11:36:18 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:40:30 Consulta de notificação realizada
+31/08/2020 11:40:34 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:41:00 Consulta de notificação realizada
+31/08/2020 11:41:04 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:42:47 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:42:47 Consulta de notificação realizada
+31/08/2020 11:43:34 Consulta de notificação realizada
+31/08/2020 11:43:41 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:44:03 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:44:03 Consulta de notificação realizada
+31/08/2020 11:44:29 Consulta de notificação realizada
+31/08/2020 11:44:33 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:47:05 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:47:06 Consulta de notificação realizada
+31/08/2020 11:48:47 Consulta de notificação realizada
+31/08/2020 11:48:51 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:51:29 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:51:29 Consulta de notificação realizada
+31/08/2020 11:54:54 Consulta de notificação realizada
+31/08/2020 11:54:57 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:55:29 Consulta de notificação realizada
+31/08/2020 11:55:33 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:55:52 Consulta de notificação realizada
+31/08/2020 11:55:56 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:57:22 - SUCE - Visualização criada, usuario 14
+31/08/2020 11:57:23 Consulta de notificação realizada
+31/08/2020 11:59:03 Consulta de notificação realizada
+31/08/2020 11:59:08 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:00:01 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:00:01 Consulta de notificação realizada
+01/09/2020 12:00:39 Consulta de notificação realizada
+01/09/2020 12:00:43 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:01:36 Consulta de notificação realizada
+01/09/2020 12:01:39 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:18:16 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:18:17 Consulta de notificação realizada
+01/09/2020 12:18:58 Consulta de notificação realizada
+01/09/2020 12:19:03 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:19:31 Consulta de notificação realizada
+01/09/2020 12:19:35 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:20:55 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:20:57 Consulta de notificação realizada
+01/09/2020 12:22:08 Consulta de notificação realizada
+01/09/2020 12:22:12 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:22:31 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:22:32 Consulta de notificação realizada
+01/09/2020 12:24:23 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:24:24 Consulta de notificação realizada
+01/09/2020 12:28:44 Consulta de notificação realizada
+01/09/2020 12:28:48 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:31:03 Consulta de notificação realizada
+01/09/2020 12:31:06 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:34:12 Consulta de notificação realizada
+01/09/2020 12:34:16 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:34:31 Consulta de notificação realizada
+01/09/2020 12:34:35 - SUCE - Visualização criada, usuario 13
+01/09/2020 12:35:54 Consulta de notificação realizada
+01/09/2020 12:36:17 Consulta de notificação realizada
+01/09/2020 12:36:23 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:36:42 Consulta de notificação realizada
+01/09/2020 12:36:45 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:45:40 Consulta de notificação realizada
+01/09/2020 12:45:45 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:46:09 Consulta de notificação realizada
+01/09/2020 12:46:14 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:48:31 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:48:32 Consulta de notificação realizada
+01/09/2020 12:49:55 Consulta de notificação realizada
+01/09/2020 12:49:59 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:50:59 Consulta de notificação realizada
+01/09/2020 12:51:04 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:54:55 Consulta de notificação realizada
+01/09/2020 12:54:59 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:56:40 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:56:40 Consulta de notificação realizada
+01/09/2020 12:58:40 - SUCE - Visualização criada, usuario 14
+01/09/2020 12:58:41 Consulta de notificação realizada
+01/09/2020 01:06:00 Consulta de notificação realizada
+01/09/2020 01:06:04 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:06:45 Consulta de notificação realizada
+01/09/2020 01:06:48 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:06:54 Consulta de notificação realizada
+01/09/2020 01:06:58 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:07:16 Consulta de notificação realizada
+01/09/2020 01:07:20 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:07:35 Consulta de notificação realizada
+01/09/2020 01:07:40 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:08:10 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:08:10 Consulta de notificação realizada
+01/09/2020 01:08:38 Consulta de notificação realizada
+01/09/2020 01:08:42 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:10:06 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:10:07 Consulta de notificação realizada
+01/09/2020 01:13:38 Consulta de notificação realizada
+01/09/2020 01:13:42 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:13:53 Consulta de notificação realizada
+01/09/2020 01:13:57 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:17:32 Consulta de notificação realizada
+01/09/2020 01:17:36 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:18:02 Consulta de notificação realizada
+01/09/2020 01:22:00 Consulta de notificação realizada
+01/09/2020 01:22:44 Consulta de notificação realizada
+01/09/2020 01:27:19 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:27:19 Consulta de notificação realizada
+01/09/2020 01:28:10 Consulta de notificação realizada
+01/09/2020 01:28:13 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:35:26 Consulta de notificação realizada
+01/09/2020 01:35:30 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:35:32 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:36:22 Consulta de notificação realizada
+01/09/2020 01:36:26 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:36:28 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:37:24 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:37:25 Consulta de notificação realizada
+01/09/2020 01:37:29 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:37:53 Consulta de notificação realizada
+01/09/2020 01:37:57 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:38:00 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:38:49 Consulta de notificação realizada
+01/09/2020 01:38:53 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:38:56 - SUCE - Visualização criada, usuario 13
+01/09/2020 01:39:09 Consulta de notificação realizada
+01/09/2020 01:39:12 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:42:51 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:42:52 Consulta de notificação realizada
+01/09/2020 01:43:05 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:43:05 Consulta de notificação realizada
+01/09/2020 01:43:29 Consulta de notificação realizada
+01/09/2020 01:43:32 - SUCE - Visualização criada, usuario 14
+01/09/2020 01:47:31 Consulta de notificação realizada
+01/09/2020 01:47:35 - SUCE - Visualização criada, usuario 14
+01/09/2020 02:02:00 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:02:02 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:02:02 Consulta de notificação realizada
+01/09/2020 02:02:13 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:02:15 Consulta de notificação realizada
+01/09/2020 02:02:25 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:02:37 Consulta de notificação realizada
+01/09/2020 02:02:42 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:03:43 Consulta de notificação realizada
+01/09/2020 02:03:46 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:03:49 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:04:32 - SUCE - Visualização criada, usuario 1
+01/09/2020 02:04:32 Consulta de notificação realizada
+02/09/2020 01:41:11 Consulta de notificação realizada
+02/09/2020 01:41:14 - SUCE - Visualização criada, usuario 1
+02/09/2020 01:41:17 - SUCE - Visualização criada, usuario 1
+02/09/2020 01:43:15 Consulta de notificação realizada
+02/09/2020 01:43:57 Consulta de notificação realizada
+02/09/2020 01:45:59 Consulta de notificação realizada
+02/09/2020 01:46:02 Consulta de notificação realizada
+02/09/2020 01:46:45 Consulta de notificação realizada
+02/09/2020 01:47:20 Consulta de notificação realizada
+02/09/2020 01:48:23 Consulta de notificação realizada
+02/09/2020 01:48:40 Consulta de notificação realizada
+02/09/2020 01:49:06 Consulta de notificação realizada
+02/09/2020 01:49:30 Consulta de notificação realizada
+02/09/2020 01:51:20 Consulta de notificação realizada
+02/09/2020 01:52:05 Consulta de notificação realizada
+02/09/2020 01:52:25 Consulta de notificação realizada
+02/09/2020 01:52:49 Consulta de notificação realizada
+02/09/2020 01:56:05 Consulta de notificação realizada
+02/09/2020 02:04:37 Consulta de notificação realizada
+02/09/2020 02:12:51 Consulta de notificação realizada
+02/09/2020 02:14:01 Consulta de notificação realizada
+02/09/2020 02:21:31 Consulta de notificação realizada
+02/09/2020 02:22:51 Consulta de notificação realizada
+02/09/2020 02:24:58 Consulta de notificação realizada
+02/09/2020 02:25:55 Consulta de notificação realizada
+07/09/2020 02:11:45 Consulta de notificação realizada
+07/09/2020 02:13:13 Consulta de notificação realizada
+07/09/2020 02:16:41 Consulta de notificação realizada
+07/09/2020 02:16:56 Consulta de notificação realizada
+07/09/2020 03:21:42 Consulta de notificação realizada
+07/09/2020 04:13:41 Consulta de notificação realizada
+07/09/2020 04:14:29 Consulta de notificação realizada
+07/09/2020 04:19:01 Consulta de notificação realizada
+07/09/2020 06:18:09 Consulta de notificação realizada
+07/09/2020 07:36:26 Consulta de notificação realizada
+07/09/2020 08:37:53 Consulta de notificação realizada
+07/09/2020 08:38:13 Consulta de notificação realizada
+08/09/2020 12:59:22 Consulta de notificação realizada
+10/09/2020 12:10:32 Consulta de notificação realizada
+10/09/2020 12:16:31 Consulta de notificação realizada
+10/09/2020 12:16:50 Consulta de notificação realizada
+10/09/2020 12:17:22 Consulta de notificação realizada
+10/09/2020 12:22:52 Consulta de notificação realizada
+10/09/2020 12:22:58 Consulta de notificação realizada
+10/09/2020 12:24:11 Consulta de notificação realizada
+10/09/2020 12:36:44 Consulta de notificação realizada
+10/09/2020 12:42:28 Consulta de notificação realizada
+10/09/2020 01:01:07 Consulta de notificação realizada
+10/09/2020 01:01:46 Consulta de notificação realizada
+14/09/2020 03:25:36 Consulta de notificação realizada
+16/09/2020 06:51:12 Consulta de notificação realizada
+16/09/2020 06:54:18 Consulta de notificação realizada
+16/09/2020 06:58:28 Consulta de notificação realizada
+16/09/2020 07:06:39 Consulta de notificação realizada
+16/09/2020 07:07:30 Consulta de notificação realizada
+16/09/2020 11:44:56 Consulta de notificação realizada
+16/09/2020 11:45:27 Consulta de notificação realizada
+16/09/2020 12:04:58 Consulta de notificação realizada
+16/09/2020 12:06:11 Consulta de notificação realizada
+16/09/2020 12:31:10 Consulta de notificação realizada
+16/09/2020 12:33:04 Consulta de notificação realizada
+16/09/2020 12:36:35 Consulta de notificação realizada
+16/09/2020 12:43:37 Consulta de notificação realizada
+16/09/2020 12:44:21 Consulta de notificação realizada
+16/09/2020 12:47:02 Consulta de notificação realizada
+16/09/2020 01:58:09 Consulta de notificação realizada
+16/09/2020 02:05:45 Consulta de notificação realizada
+16/09/2020 03:46:18 Consulta de notificação realizada
+16/09/2020 04:31:45 Consulta de notificação realizada
+16/09/2020 04:46:45 Consulta de notificação realizada
+16/09/2020 05:28:31 Consulta de notificação realizada
+16/09/2020 05:29:13 Consulta de notificação realizada
+16/09/2020 05:31:33 Consulta de notificação realizada
+16/09/2020 05:33:30 Consulta de notificação realizada
+16/09/2020 05:57:07 Consulta de notificação realizada
+16/09/2020 06:02:23 Consulta de notificação realizada
+16/09/2020 06:03:07 Consulta de notificação realizada
+16/09/2020 06:08:03 Consulta de notificação realizada
+16/09/2020 06:10:28 Consulta de notificação realizada
+16/09/2020 07:24:21 Consulta de notificação realizada
+16/09/2020 07:24:46 Consulta de notificação realizada
+16/09/2020 07:29:51 Consulta de notificação realizada
+16/09/2020 07:31:44 Consulta de notificação realizada
+16/09/2020 07:41:48 Consulta de notificação realizada
+16/09/2020 07:42:17 Consulta de notificação realizada
+16/09/2020 07:43:34 Consulta de notificação realizada
+16/09/2020 07:44:26 Consulta de notificação realizada
+16/09/2020 07:51:57 Consulta de notificação realizada
+16/09/2020 08:33:11 Consulta de notificação realizada
+16/09/2020 08:54:09 Consulta de notificação realizada
+16/09/2020 10:29:00 Consulta de notificação realizada
+16/09/2020 10:32:14 Consulta de notificação realizada
+16/09/2020 10:39:44 Consulta de notificação realizada
+16/09/2020 11:20:09 Consulta de notificação realizada
+16/09/2020 11:21:42 Consulta de notificação realizada
+16/09/2020 11:27:35 Consulta de notificação realizada
+16/09/2020 11:33:17 Consulta de notificação realizada
+17/09/2020 11:46:20 Consulta de notificação realizada
+17/09/2020 12:15:06 Consulta de notificação realizada
+17/09/2020 12:23:25 Consulta de notificação realizada
+17/09/2020 12:23:59 Consulta de notificação realizada
+17/09/2020 12:24:27 Consulta de notificação realizada
+17/09/2020 02:11:58 Consulta de notificação realizada
+17/09/2020 02:12:35 Consulta de notificação realizada
+17/09/2020 04:00:33 Consulta de notificação realizada
+17/09/2020 04:04:31 Consulta de notificação realizada
+17/09/2020 04:53:07 Consulta de notificação realizada
+17/09/2020 06:47:54 Consulta de notificação realizada
+17/09/2020 07:15:17 Consulta de notificação realizada
+17/09/2020 07:15:35 Consulta de notificação realizada
+17/09/2020 07:18:07 Consulta de notificação realizada
+17/09/2020 07:54:52 Consulta de notificação realizada
+17/09/2020 08:06:05 Consulta de notificação realizada
+17/09/2020 08:24:25 Consulta de notificação realizada
+17/09/2020 08:29:07 Consulta de notificação realizada
+17/09/2020 08:29:50 Consulta de notificação realizada
+17/09/2020 08:30:05 Consulta de notificação realizada
+17/09/2020 08:31:44 Consulta de notificação realizada
+17/09/2020 08:36:23 Consulta de notificação realizada
+17/09/2020 08:43:07 Consulta de notificação realizada
+17/09/2020 09:22:43 Consulta de notificação realizada
+17/09/2020 11:20:28 Consulta de notificação realizada
+18/09/2020 12:01:46 Consulta de notificação realizada
+18/09/2020 12:18:50 Consulta de notificação realizada
+18/09/2020 12:50:58 Consulta de notificação realizada
+18/09/2020 01:00:15 Consulta de notificação realizada
+18/09/2020 01:00:32 Consulta de notificação realizada
+18/09/2020 01:05:51 Consulta de notificação realizada
+18/09/2020 01:06:20 Consulta de notificação realizada
+18/09/2020 01:07:13 Consulta de notificação realizada
+18/09/2020 01:09:45 Consulta de notificação realizada
+18/09/2020 01:10:22 Consulta de notificação realizada
+18/09/2020 01:56:04 Consulta de notificação realizada
+18/09/2020 02:02:59 Consulta de notificação realizada
+18/09/2020 02:31:19 Consulta de notificação realizada
+18/09/2020 02:39:40 Consulta de notificação realizada
+18/09/2020 02:45:28 Consulta de notificação realizada
+18/09/2020 02:45:45 Consulta de notificação realizada
+18/09/2020 02:47:43 Consulta de notificação realizada
+18/09/2020 03:16:46 Consulta de notificação realizada
+18/09/2020 06:12:51 Consulta de notificação realizada
+18/09/2020 06:31:32 Consulta de notificação realizada
+18/09/2020 07:22:34 Consulta de notificação realizada
+18/09/2020 07:28:13 Consulta de notificação realizada
+18/09/2020 07:42:33 Consulta de notificação realizada
+18/09/2020 08:48:33 Consulta de notificação realizada
+18/09/2020 10:14:09 Consulta de notificação realizada
+18/09/2020 11:53:54 Consulta de notificação realizada
+18/09/2020 11:54:44 Consulta de notificação realizada
+19/09/2020 12:48:36 Consulta de notificação realizada
+19/09/2020 12:52:41 Consulta de notificação realizada
+19/09/2020 01:33:51 Consulta de notificação realizada
+19/09/2020 02:01:43 Consulta de notificação realizada
+19/09/2020 02:05:07 Consulta de notificação realizada
+19/09/2020 02:25:49 Consulta de notificação realizada
+19/09/2020 02:27:37 Consulta de notificação realizada
+19/09/2020 02:27:51 Consulta de notificação realizada
+19/09/2020 02:42:30 Consulta de notificação realizada
+19/09/2020 02:53:27 Consulta de notificação realizada
+19/09/2020 02:55:45 Consulta de notificação realizada
+19/09/2020 02:56:09 Consulta de notificação realizada
+19/09/2020 02:58:49 Consulta de notificação realizada
+19/09/2020 02:41:37 Consulta de notificação realizada
+19/09/2020 03:00:59 Consulta de notificação realizada
+19/09/2020 03:04:38 Consulta de notificação realizada
+19/09/2020 03:44:28 Consulta de notificação realizada
+19/09/2020 07:15:23 Consulta de notificação realizada
+20/09/2020 02:44:20 Consulta de notificação realizada
+20/09/2020 11:17:07 Consulta de notificação realizada
+20/09/2020 11:31:06 Consulta de notificação realizada
+20/09/2020 11:47:18 Consulta de notificação realizada
+20/09/2020 12:12:33 Consulta de notificação realizada
+20/09/2020 07:39:00 Consulta de notificação realizada
+20/09/2020 08:14:12 Consulta de notificação realizada
+20/09/2020 08:58:23 Consulta de notificação realizada
+20/09/2020 08:59:32 Consulta de notificação realizada
+20/09/2020 09:00:21 Consulta de notificação realizada
+20/09/2020 09:00:29 Consulta de notificação realizada
+20/09/2020 09:01:17 Consulta de notificação realizada
+20/09/2020 09:01:44 Consulta de notificação realizada
+20/09/2020 09:01:54 Consulta de notificação realizada
+20/09/2020 09:03:58 Consulta de notificação realizada
+20/09/2020 09:11:37 Consulta de notificação realizada
+20/09/2020 09:24:04 Consulta de notificação realizada
+20/09/2020 09:29:58 Consulta de notificação realizada
+20/09/2020 09:32:56 Consulta de notificação realizada
+20/09/2020 09:58:20 Consulta de notificação realizada
+20/09/2020 10:04:54 Consulta de notificação realizada
+20/09/2020 10:14:27 Consulta de notificação realizada
+20/09/2020 10:15:56 Consulta de notificação realizada
+20/09/2020 10:17:46 Consulta de notificação realizada
+20/09/2020 10:18:17 Consulta de notificação realizada
+20/09/2020 10:18:37 Consulta de notificação realizada
+20/09/2020 10:40:28 Consulta de notificação realizada
+20/09/2020 10:41:13 Consulta de notificação realizada
+20/09/2020 10:42:22 Consulta de notificação realizada
+21/09/2020 12:34:37 Consulta de notificação realizada
+21/09/2020 12:35:11 Consulta de notificação realizada
+21/09/2020 12:49:12 Consulta de notificação realizada
+21/09/2020 12:54:59 Consulta de notificação realizada
+21/09/2020 12:55:25 Consulta de notificação realizada
+21/09/2020 12:55:53 Consulta de notificação realizada
+21/09/2020 02:23:34 Consulta de notificação realizada
+21/09/2020 02:25:24 Consulta de notificação realizada
+21/09/2020 02:58:29 Consulta de notificação realizada
+21/09/2020 03:01:23 Consulta de notificação realizada
+21/09/2020 03:02:58 Consulta de notificação realizada
+21/09/2020 04:10:04 Consulta de notificação realizada
+21/09/2020 04:19:46 Consulta de notificação realizada
+21/09/2020 04:28:07 Consulta de notificação realizada
+21/09/2020 04:34:47 Consulta de notificação realizada
+21/09/2020 04:45:15 Consulta de notificação realizada
+21/09/2020 05:39:55 Consulta de notificação realizada
+21/09/2020 05:43:03 Consulta de notificação realizada
+21/09/2020 05:43:38 Consulta de notificação realizada
+21/09/2020 05:44:20 Consulta de notificação realizada
+23/09/2020 11:55:12 Consulta de notificação realizada
+23/09/2020 11:57:26 Consulta de notificação realizada
+23/09/2020 11:58:30 Consulta de notificação realizada
+24/09/2020 12:01:57 Consulta de notificação realizada
+24/09/2020 12:02:25 Consulta de notificação realizada
+24/09/2020 12:02:43 Consulta de notificação realizada
+24/09/2020 12:04:05 Consulta de notificação realizada
+24/09/2020 12:04:26 Consulta de notificação realizada
+24/09/2020 12:07:53 Consulta de notificação realizada
+24/09/2020 12:09:06 Consulta de notificação realizada
+24/09/2020 12:09:30 Consulta de notificação realizada
+24/09/2020 12:31:14 Consulta de notificação realizada
+24/09/2020 07:32:40 Consulta de notificação realizada
+24/09/2020 08:56:17 Consulta de notificação realizada
+24/09/2020 09:12:09 Consulta de notificação realizada
+26/09/2020 08:56:37 Consulta de notificação realizada
+26/09/2020 08:59:15 Consulta de notificação realizada
+26/09/2020 09:00:40 Consulta de notificação realizada
+26/09/2020 09:00:52 Consulta de notificação realizada
+26/09/2020 09:01:08 Consulta de notificação realizada
+26/09/2020 09:01:37 Consulta de notificação realizada
+26/09/2020 09:02:04 Consulta de notificação realizada
+26/09/2020 09:05:25 Consulta de notificação realizada
+27/09/2020 02:24:39 Consulta de notificação realizada
+27/09/2020 02:27:29 Consulta de notificação realizada
+27/09/2020 02:28:00 Consulta de notificação realizada
+27/09/2020 02:34:04 Consulta de notificação realizada
+27/09/2020 02:34:54 Consulta de notificação realizada
+27/09/2020 04:10:54 Consulta de notificação realizada
+27/09/2020 04:58:24 Consulta de notificação realizada
+27/09/2020 05:02:43 Consulta de notificação realizada
+27/09/2020 05:09:05 Consulta de notificação realizada
+27/09/2020 05:11:26 Consulta de notificação realizada
+27/09/2020 05:12:29 Consulta de notificação realizada
+27/09/2020 05:19:59 Consulta de notificação realizada
+28/09/2020 02:33:53 Consulta de notificação realizada
+30/09/2020 03:30:15 Consulta de notificação realizada
+30/09/2020 03:34:13 Consulta de notificação realizada
+30/09/2020 04:45:27 Consulta de notificação realizada
+30/09/2020 04:51:42 Consulta de notificação realizada
