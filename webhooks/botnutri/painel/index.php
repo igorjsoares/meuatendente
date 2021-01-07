@@ -45,7 +45,7 @@ header("Content-Type: text/html; charset=UTF-8", true);
             <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" required>
             <div class="input-group-append">
               <div class="input-group-text">
-                <span style="color: #000" class="fas fa-envelope"></span>
+                <span style="color: #f1a583" class="fas fa-envelope"></span>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@ header("Content-Type: text/html; charset=UTF-8", true);
             <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha" required>
             <div class="input-group-append">
               <div class="input-group-text">
-                <span style="color: #000" class="fas fa-lock"></span>
+                <span style="color: #f1a583" class="fas fa-lock"></span>
               </div>
             </div>
           </div>
