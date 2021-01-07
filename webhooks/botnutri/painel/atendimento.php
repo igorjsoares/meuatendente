@@ -67,7 +67,7 @@ $aleatorio = rand(1000, 10000);
                         <h3 class="card-title">
                             <div class="row">
 
-                                <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
+                                <img style="width: 45px; height: 45px; margin-right: 10px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
                                 Igor Soares
                             </div>
                         </h3>
