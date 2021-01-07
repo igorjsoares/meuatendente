@@ -38,12 +38,12 @@ $aleatorio = rand(1000, 10000);
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <div style="padding: 10px" class="row align-items-center">
-                                                <div class="col-3">
+                                                <div class="col-2">
                                                     <div style="padding: 0px;" class="image">
                                                         <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
                                                     </div>
                                                 </div>
-                                                <div class="col-7">
+                                                <div class="col-8">
                                                     <font style="font-size: 20px;">Igor Soares</font><br>
                                                     <font style="font-size: 13px; color: gray">Mensagem enviada</font>
                                                 </div>
@@ -54,12 +54,12 @@ $aleatorio = rand(1000, 10000);
                                         </li>
                                         <li class="nav-item">
                                             <div style="padding: 10px" class="row align-items-center">
-                                                <div class="col-3">
+                                                <div class="col-2">
                                                     <div style="padding: 0px;" class="image">
                                                         <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
                                                     </div>
                                                 </div>
-                                                <div class="col-7">
+                                                <div class="col-8">
                                                     <font style="font-size: 20px;">Igor Soares</font><br>
                                                     <font style="font-size: 13px; color: gray">Mensagem enviada</font>
                                                 </div>
