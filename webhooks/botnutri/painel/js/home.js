@@ -4,8 +4,8 @@ $(function () {
     Notification.requestPermission()
   }
 
-  activeMenu('#btnCampanhas')
-  tela('campanhas.php')
+  activeMenu('#btnAtendimento')
+  tela('atendimento.php')
 
   /* jQueryKnob */
   $('.knob').knob({
@@ -647,15 +647,15 @@ $("#btnTeste").click(function () {
 
 })
 
-$("#btnConsultar").click(function () {
-  activeMenu('#btnConsultar')
-  tela('consulta.php')
+$("#btnPainel").click(function () {
+  activeMenu('#btnPainel')
+  tela('painel.php')
 });
-$("#btnEmpresa").click(function () {
+$("#btnAtendimento").click(function () {
   //$('[data-widget="pushmenu"]').PushMenu('collapse')
   //https://adminlte.io/docs/3.0/javascript/push-menu.html
-  activeMenu('#btnEmpresa')
-  tela('empresa.php')
+  activeMenu('#btnAtendimento')
+  tela('atendimento.php')
 });
 $("#btnEmpresaProfile").click(function () {
   acessoVagas()
@@ -668,53 +668,8 @@ $("#btnUsuarios").click(function () {
   activeMenu('#btnUsuarios')
   tela('usuarios.php')
 });
-$("#btnCreditos").click(function () {
-  activeMenu('#btnCreditos')
-  tela('creditos.php')
-});
-$("#btnConfiguracoes").click(function () {
-  activeMenu('#btnConfiguracoes')
-  tela('configuracoes.php')
-});
-$("#btnClientes").click(function () {
-  activeMenu('#btnClientes')
-  tela('clientes.php')
-});
-$("#btnProspectos").click(function () {
-  activeMenu('#btnProspectos')
-  tela('prospectos.php')
-});
-$("#btnEnvios").click(function () {
-  activeMenu('#btnEnvios')
-  tela('envios.php')
-});
-$("#btnListas").click(function () {
-  activeMenu('#btnListas')
-  tela('listas.php')
-});
-$("#btnContas").click(function () {
-  activeMenu('#btnContas')
-  tela('contas.php')
-});
-$("#btnCampanhas").click(function () {
-  activeMenu('#btnCampanhas')
-  tela('campanhas.php')
-});
-$("#btnAudios").click(function () {
-  activeMenu('#btnAudios')
-  tela('audios.php')
-});
-$("#btnCampanhasVoz").click(function () {
-  activeMenu('#btnCampanhasVoz')
-  tela('campanhasvoz.php')
-});
-
 function activeMenu(item_ativo) {
-  if (item_ativo == '#btnConsultar') {
-    $("#btnConsultar").addClass('active')
-  } else {
-    $("#btnConsultar").removeClass('active')
-  }
+  
   if (item_ativo == '#btnEmpresa') {
     $("#btnEmpresa").addClass('active')
   } else {
@@ -725,50 +680,15 @@ function activeMenu(item_ativo) {
   } else {
     $("#btnUsuarios").removeClass('active')
   }
-  if (item_ativo == '#btnRelatorios') {
-    $("#btnRelatorios").addClass('active')
+  if (item_ativo == '#btnPainel') {
+    $("#btnPainel").addClass('active')
   } else {
-    $("#btnRelatorios").removeClass('active')
+    $("#btnPainel").removeClass('active')
   }
-  if (item_ativo == '#btnCreditos') {
-    $("#btnCreditos").addClass('active')
+  if (item_ativo == '#btnAtendimento') {
+    $("#btnAtendimento").addClass('active')
   } else {
-    $("#btnCreditos").removeClass('active')
-  }
-  if (item_ativo == '#btnConfiguracoes') {
-    $("#btnConfiguracoes").addClass('active')
-  } else {
-    $("#btnConfiguracoes").removeClass('active')
-  }
-  if (item_ativo == '#btnClientes') {
-    $("#btnClientes").addClass('active')
-  } else {
-    $("#btnClientes").removeClass('active')
-  }
-  if (item_ativo == '#btnProspectos') {
-    $("#btnProspectos").addClass('active')
-  } else {
-    $("#btnProspectos").removeClass('active')
-  }
-  if (item_ativo == '#btnEnvios') {
-    $("#btnEnvios").addClass('active')
-  } else {
-    $("#btnEnvios").removeClass('active')
-  }
-  if (item_ativo == '#btnContas') {
-    $("#btnContas").addClass('active')
-  } else {
-    $("#btnContas").removeClass('active')
-  }
-  if (item_ativo == '#btnListas') {
-    $("#btnListas").addClass('active')
-  } else {
-    $("#btnListas").removeClass('active')
-  }
-  if (item_ativo == '#btnCampanhas') {
-    $("#btnCampanhas").addClass('active')
-  } else {
-    $("#btnCampanhas").removeClass('active')
+    $("#btnAtendimento").removeClass('active')
   }
 }
 
