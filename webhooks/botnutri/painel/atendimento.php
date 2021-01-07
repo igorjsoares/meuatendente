@@ -48,29 +48,8 @@ $aleatorio = rand(1000, 10000);
                     <div class="card-body" style="height: 100vh">
 
                         <div class="container-fluid">
-                            <div class="row align-items-center" style="height: 100vh">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Projects <span class="float-right badge bg-primary">31</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Tasks <span class="float-right badge bg-info">5</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Completed Projects <span class="float-right badge bg-success">12</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Followers <span class="float-right badge bg-danger">842</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div class="row align-items-top" style="height: 100vh">
+                                
                             </div>
                             <div class="col-8 col-md-8">
                                 <h1>Calcule seu consumo mínimo de água</h1>
