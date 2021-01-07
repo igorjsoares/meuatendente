@@ -63,8 +63,8 @@ header("Content-Type: text/html; charset=UTF-8", true);
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button style="background-color: #000; border-color: #000;" type="submit"
-              class="btn btn-primary btn-block" style="color: white; background-color: #f1a583; border: none;" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
+            <button style="color: white; background-color: #f1a583; border: none;" type="submit"
+              class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
           </div>
           <!-- /.col -->
         </div>
