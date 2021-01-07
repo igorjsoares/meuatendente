@@ -19,9 +19,6 @@ $aleatorio = rand(1000, 10000);
 
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 col-lg-12">
 
 
                 <div class="container-fluid">
@@ -160,9 +157,6 @@ $aleatorio = rand(1000, 10000);
                         </div>
                         <!-- /.col -->
                     </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 <!-- /.content -->
