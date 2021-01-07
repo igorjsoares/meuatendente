@@ -45,47 +45,68 @@ $aleatorio = rand(1000, 10000);
                         <i style="color:#00A599" class="fas fa-2x fa-sync fa-spin"></i>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body" style="height: 100vh">
 
                         <div class="container-fluid">
                             <div class="row align-items-center" style="height: 100vh">
-                                <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #D6CBDF; background-position: bottom;">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            Projects <span class="float-right badge bg-primary">31</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            Tasks <span class="float-right badge bg-info">5</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            Completed Projects <span class="float-right badge bg-success">12</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            Followers <span class="float-right badge bg-danger">842</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-8 col-md-8">
+                                <h1>Calcule seu consumo mínimo de água</h1>
+                                <h5 style="margin-bottom: 40px">Nutri Mari Martins</h5>
+                                <div id="divForm">
+                                    <div class="row">
+                                        <div class="form-group" style="margin-left: 15px">
+                                            <label for="peso">Seu peso em kg</label>
+                                            <input style="width: 116px" class="form-control" type="number" id="peso" />
+                                        </div>
+                                        <button id="botao" class="btn btn-primary btn-sm" style="margin-left: 20px; margin: 15px">Quanto de água preciso beber?</button>
+                                    </div>
                                 </div>
-                                <div class="col-8 col-md-8">
-                                    <h1>Calcule seu consumo mínimo de água</h1>
-                                    <h5 style="margin-bottom: 40px">Nutri Mari Martins</h5>
-                                    <div id="divForm">
-                                        <div class="row">
-                                            <div class="form-group" style="margin-left: 15px">
-                                                <label for="peso">Seu peso em kg</label>
-                                                <input style="width: 116px" class="form-control" type="number" id="peso" />
-                                            </div>
-                                            <button id="botao" class="btn btn-primary btn-sm" style="margin-left: 20px; margin: 15px">Quanto de água preciso beber?</button>
-                                        </div>
-                                    </div>
 
 
-                                    <div id="resultado" class="jumbotron" style="margin: 20px; display: none; padding: 2rem 2rem">
-                                        <div class="container">
-                                            <h2 id="titulo" class="display-4"></h2>
-                                        </div>
+                                <div id="resultado" class="jumbotron" style="margin: 20px; display: none; padding: 2rem 2rem">
+                                    <div class="container">
+                                        <h2 id="titulo" class="display-4"></h2>
                                     </div>
-                                    <button id="botaoNovamente" style="color: #B1B7C6; margin-top: 10px; display: none; margin-left: 15px" class="btn btn-outline-light btn-sm">Calcular novamente</button>
-                                    <div style="padding: 15px">
-                                        <p style="color: #B1B7C6; line-height: initial;"><small>
-                                                Quando falamos que todos devem beber 2 litros de água por dia, isso é uma estimativa.
-                                                A quantidade exata de água que cada pessoa necessita ingerir diariamente varia de acordo com o peso, idade, estação do ano (durante tempos de calor perdemos mais líquido com a sudorese) e outros fatores, como prática de atividade física (deve aumentar ingestão de água).
-                                            </small></p>
-                                    </div>
+                                </div>
+                                <button id="botaoNovamente" style="color: #B1B7C6; margin-top: 10px; display: none; margin-left: 15px" class="btn btn-outline-light btn-sm">Calcular novamente</button>
+                                <div style="padding: 15px">
+                                    <p style="color: #B1B7C6; line-height: initial;"><small>
+                                            Quando falamos que todos devem beber 2 litros de água por dia, isso é uma estimativa.
+                                            A quantidade exata de água que cada pessoa necessita ingerir diariamente varia de acordo com o peso, idade, estação do ano (durante tempos de calor perdemos mais líquido com a sudorese) e outros fatores, como prática de atividade física (deve aumentar ingestão de água).
+                                        </small></p>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
-                <!-- /.card -->
             </div>
+            <!-- /.card -->
         </div>
+    </div>
     </div>
 </section>
 <!-- /.content -->
