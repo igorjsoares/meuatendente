@@ -72,12 +72,6 @@ header("Content-Type: text/html; charset=UTF-8", true);
         <p class="mb-1">
           <a href="esqueci.php">Esqueci minha senha</a>
         </p>
-        <p class="mb-1">
-          <a href="cadastro.php">Primeiro acesso</a>
-        </p>
-        <p class="mb-1">
-          <a href="solicita_cadastro.php">Solicitar cadastro</a>
-        </p>
       </div>
       <!-- /.login-card-body -->
     </div>
