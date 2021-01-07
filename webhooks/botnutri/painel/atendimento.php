@@ -64,10 +64,9 @@ $aleatorio = rand(1000, 10000);
                 <!-- DIRECT CHAT PRIMARY -->
                 <div class="card card-primary card-outline direct-chat direct-chat-primary" style="box-shadow: none;">
                     <div class="card-header">
-                                <div style="padding: 0px;" class="image">
-                                    <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
-                                </div>
-                        <h3 class="card-title">Igor Soares</h3>
+                                <h3 class="card-title">
+                            <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
+                            Igor Soares</h3>
 
                         <div class="card-tools">
                             <span title="3 New Messages" class="badge bg-primary">3</span>
