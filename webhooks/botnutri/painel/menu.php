@@ -36,13 +36,13 @@
 
 
         <li class="nav-item">
-          <a id="btnListas" style="color: white;" href="#" class="nav-link">
+          <a id="btnPainel" style="color: white;" href="#" class="nav-link">
             <i class="fas fa-columns nav-icon"></i>
             <p>Painel</p>
           </a>
         </li>
         <li class="nav-item">
-          <a id="btnListas" style="color: white;" href="#" class="nav-link">
+          <a id="btnAtendimento" style="color: white;" href="#" class="nav-link">
             <i class="fab fa-whatsapp nav-icon"></i>
             <p>Atendimento</p>
           </a>
