@@ -15,22 +15,6 @@ $aleatorio = rand(1000, 10000);
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Header (Page header) -->
 <!--
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Atendimento</h1>
-            </div>
-            <div class="col-sm-6 text-right">
-                <a id="btnNovoUsuario" style="padding: 10px; color: white; background-color: #f1a583; border: none;" class="btn btn-warning" data-toggle="modal" data-target="#modalNova">
-                    <i class="fas fa-plus">
-                    </i>
-                    Novo atendimento
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 -->
 
 <!-- Main content -->
@@ -50,6 +34,41 @@ $aleatorio = rand(1000, 10000);
                         <div class="container-fluid">
                             <div class="row align-items-center" style="height: 100vh">
                                 <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #D6CBDF; background-position: bottom;">
+
+                                    <ul>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div style="padding: 0px;" class="image">
+                                                        <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <h4>Igor Soares</h4><br>
+                                                    <h6>Mensagem enviada</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <span class="float-right badge bg-success">2</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div style="padding: 0px;" class="image">
+                                                        <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <h4>Igor Soares</h4><br>
+                                                    <h6>Mensagem enviada</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <span class="float-right badge bg-success">2</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class="col-8 col-md-8">
                                     <h1>Calcule seu consumo mínimo de água</h1>
