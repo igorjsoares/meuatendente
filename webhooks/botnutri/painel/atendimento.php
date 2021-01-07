@@ -65,7 +65,7 @@ $aleatorio = rand(1000, 10000);
                 <div class="card card-primary card-outline direct-chat direct-chat-primary" style="box-shadow: none;">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <div class="row">
+                            <div class="row  align-items-center">
 
                                 <img style="width: 45px; height: 45px; margin-right: 10px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
                                 Igor Soares
