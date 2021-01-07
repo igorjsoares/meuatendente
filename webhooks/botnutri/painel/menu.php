@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a style="height: 60px" href="home.php" class="brand-link">
     <img style="margin-top: 5px" src="assets/logo_sozinha_branca.png" class="brand-image">
-    <span style="color: white" class="brand-text">NEW PROSPECT</span>
+    <span style="color: white" class="brand-text">BOT Nutri</span>
   </a>
 
   <!-- Sidebar -->
@@ -32,42 +32,19 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-        <?php
-        if ($_SESSION['NP_perfil_usuario'] == 'MASTER') {
-        ?>
-          <li class="nav-item">
-            <a style="color: white" href="#" class="nav-link">
-              <i class="fas fa-phone-alt nav-icon"></i>
-              <p>
-                Mensagens de voz
-                <i class="right fas fa-angle-left"></i>
-
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a id="btnAudios" style="color: white; margin-left: 5px" href="#" class="nav-link">
-                  <i class="fas fa-file-audio nav-icon"></i>
-                  <p>Áudios</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="btnCampanhasVoz" style="color: white; margin-left: 5px" href="#" class="nav-link">
-                  <i class="fas fa-phone-volume nav-icon"></i>
-                  <p>Campanhas</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        <?php
-        }
-        ?>
+        
 
 
         <li class="nav-item">
           <a id="btnListas" style="color: white;" href="#" class="nav-link">
             <i class="far fa-address-book nav-icon"></i>
-            <p>Listas</p>
+            <p>Painel</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="btnListas" style="color: white;" href="#" class="nav-link">
+            <i class="far fa-address-book nav-icon"></i>
+            <p>Atendimento</p>
           </a>
         </li>
         <?php
