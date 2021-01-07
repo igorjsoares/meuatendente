@@ -49,7 +49,8 @@ $aleatorio = rand(1000, 10000);
 
                         <div class="container-fluid">
                             <div class="row align-items-top" style="height: 100vh">
-                                
+                            <div class="col-4 col-md-4">
+                            </div>
                             </div>
                             <div class="col-8 col-md-8">
                                 <h1>Calcule seu consumo mínimo de água</h1>
