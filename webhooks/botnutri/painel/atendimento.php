@@ -60,9 +60,9 @@ $aleatorio = rand(1000, 10000);
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-8 col-md-8">
+                        <div class="col-8 col-md-8" style="padding: 0px;">
                             <!-- DIRECT CHAT PRIMARY -->
-                            <div class="card card-primary card-outline direct-chat direct-chat-primary">
+                            <div class="card card-primary card-outline direct-chat direct-chat-primary" style="box-shadow: none;">
                                 <div class="card-header">
                                     <h3 class="card-title">Direct Chat</h3>
 
