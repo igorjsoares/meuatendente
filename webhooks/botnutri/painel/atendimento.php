@@ -106,6 +106,63 @@ $aleatorio = rand(1000, 10000);
                                 </div>
                                 <!-- /.direct-chat-text -->
                             </div>
+
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
                             <!-- /.direct-chat-msg -->
                         </div>
                         <!--/.direct-chat-messages-->
