@@ -654,7 +654,8 @@
             $mensagem .= "<p>Fico muito feliz de te receber aqui. Quero que saiba que estou te enviando <strong>materiais e ferramentas muito importantes para o emagrecimento</strong> e acompanhamento de resultados!</p>";
             $mensagem .= "<p>Clique no link abaixo e assista ao&nbsp;v&iacute;deo para aprender como <strong>montar uma alimenta&ccedil;&atilde;o saud&aacute;vel</strong>, prazerosa e emagrecedora! Os&nbsp;links para o <strong>c&aacute;lculo de imc</strong>, <strong>quantidade de &aacute;gua e plano alimentar</strong>&nbsp;tamb&eacute;m estar&atilde;o no link abaixo!</p>";
             $mensagem .= "<h3>N&atilde;o se esque&ccedil;a que no v&iacute;deo explicarei a import&acirc;ncia de cada um.&nbsp;</h3>";
-            $mensagem .= '<p><a href="https://nutrimarimartins.com.br/ferramentas/emagrecimentodefinitivo.html">Clique aqui para o conte&uacute;do gratuito.</a></p>';
+            $idContato = $this->idContato;
+            $mensagem .= '<p><a href="https://nutrimarimartins.com.br/ferramentas/emagrecimentodefinitivo.php?idcontato=' . $idContato . '">Clique aqui para o conte&uacute;do gratuito.</a></p>';
             $mensagem .= "<p>Um beijo da nutri.</p>";
             $mensagem .= "</html></body>";
 
