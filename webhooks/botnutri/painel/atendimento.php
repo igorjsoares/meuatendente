@@ -44,7 +44,7 @@ $aleatorio = rand(1000, 10000);
                                                     </div>
                                                 </div>
                                                 <div class="col-7">
-                                                    <strong><font style="font-size: 20px;">Igor Soares</font></strong>
+                                                    <font style="font-size: 20px;">Igor Soares</font><br>
                                                     <font style="font-size: 13px; color: gray">Mensagem enviada</font>
                                                 </div>
                                                 <div class="col-2">
