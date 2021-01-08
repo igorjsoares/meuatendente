@@ -61,7 +61,7 @@ $aleatorio = rand(1000, 10000);
                 </ul>
             </div>
             <div class="col-8 col-md-8" style="padding: 0px;">
-                <div class="row align-items-center">
+                <div class="row align-items-center" style="margin-left: 20px; padding: 10px;">
                     <div class="col-8">
                         <div class="row  align-items-center">
 
@@ -69,7 +69,7 @@ $aleatorio = rand(1000, 10000);
                             Igor Soares
                         </div>
                     </div>
-                    <div-col class="4">
+                    <div-col class="col-4">
                         <div class="card-tools">
                             <span title="3 New Messages" class="badge bg-primary">3</span>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
