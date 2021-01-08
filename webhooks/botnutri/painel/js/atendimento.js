@@ -119,7 +119,7 @@ $(function () {
                 } else {
                     var nome = content[i]['numero']
                 }
-                conteudo += '<li class="nav-item" click="fctClickMenu(' + content[i]['id_contato'] + ')">'
+                conteudo += '<li class="nav-item" click="fctClickMenu(' + content[i]['idContato'] + ')">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
