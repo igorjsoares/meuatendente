@@ -119,7 +119,7 @@ $(function () {
                 } else {
                     var nome = content[i]['numero']
                 }
-
+                var nomeComAspas = "'nome'"
                 conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nome + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
