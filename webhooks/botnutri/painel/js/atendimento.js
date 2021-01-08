@@ -159,6 +159,7 @@ function fctClickMenu(idContato, nome) {
         data: {
             acao: 'consultaConversaAtendimento',
             dados: {
+                idContato: idContato
             }
         },
         beforeSend: function () {
