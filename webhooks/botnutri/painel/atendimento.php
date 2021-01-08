@@ -134,7 +134,7 @@ $aleatorio = rand(1000, 10000);
                         <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
                             <!-- /.direct-chat-img -->
                             <div class="direct-chat-text">
-                                You better believe it!
+                                Uma mensagem vai aqui
                             </div>
                             <!-- /.direct-chat-text -->
                         </div>
