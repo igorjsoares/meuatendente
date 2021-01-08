@@ -26,6 +26,7 @@ $aleatorio = rand(1000, 10000);
             <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #fff; background-position: bottom;">
 
                 <ul class="nav flex-column" id="ulMenuConversas">
+                    <!--
                     <li class="nav-item">
                         <div style="padding: 10px" class="row align-items-center">
                             <div class="col-2">
@@ -42,22 +43,7 @@ $aleatorio = rand(1000, 10000);
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <div style="padding: 10px" class="row align-items-center">
-                            <div class="col-2">
-                                <div style="padding: 0px;" class="image">
-                                    <img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <font style="font-size: 20px;">Igor Soares</font><br>
-                                <font style="font-size: 13px; color: gray">Mensagem enviada</font>
-                            </div>
-                            <div class="col-2">
-                                <span class="float-right badge bg-success">2</span>
-                            </div>
-                        </div>
-                    </li>
+                    -->
                 </ul>
             </div>
             <div class="col-8 col-md-8" style="padding: 0px;">
