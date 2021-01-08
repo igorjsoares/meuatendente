@@ -90,7 +90,7 @@ $aleatorio = rand(1000, 10000);
                     <div class="direct-chat-messages" style="height: 400px; background-color: #E5DDD5;">
                         <!-- Message. Default to the left -->
                         <div class="direct-chat-msg" style="padding-right: 10%;">
-                            <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%;ackground-color: #FFF;">
+                            <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #FFF;">
                                 Is this template really for free? That's unbelievable!
                             </div>
                             <!-- /.direct-chat-text -->
@@ -100,7 +100,7 @@ $aleatorio = rand(1000, 10000);
                         <!-- Message to the right -->
                         <div class="direct-chat-msg right"  style="padding-left: 10%;">
                             <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; ackground-color: #DBF7C6;">
+                            <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">
                                 You better believe it!
                             </div>
                             <!-- /.direct-chat-text -->
