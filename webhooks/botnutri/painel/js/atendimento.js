@@ -119,7 +119,7 @@ $(function () {
                 } else {
                     var nome = content[i]['numero']
                 }
-                conteudo += '<li class="nav-item">'
+                conteudo += '<li class="nav-item" click="fctClickMenu(' + content[i]['id_contato'] + ')">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
@@ -144,6 +144,11 @@ $(function () {
         }
     })
 })
+
+//* FUNÇÃO de notificação
+function fctClickMenu(idContato) {
+    console.log('Id contato é: ' + idContato)
+}
 
 //* FUNÇÃO de notificação
 function notify(alert, alert_message) {
