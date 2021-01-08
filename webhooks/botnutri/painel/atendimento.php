@@ -98,7 +98,7 @@ $aleatorio = rand(1000, 10000);
                         <!-- /.direct-chat-msg -->
 
                         <!-- Message to the right -->
-                        <div class="direct-chat-msg right"  style="padding-left: 10%;">
+                        <div class="direct-chat-msg right" style="padding-left: 10%;">
                             <!-- /.direct-chat-img -->
                             <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">
                                 You better believe it!
@@ -110,12 +110,14 @@ $aleatorio = rand(1000, 10000);
                     <!--/.direct-chat-messages-->
 
                     <div class="card-footer">
-                            <div class="input-group">
-                                <input type="text" name="message" placeholder="Escreva a mensagem..." class="form-control">
-                                <span class="input-group-append">
-                                    <button class="btn btn-primary">Enviar</button>
-                                </span>
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="textarea" name="message" placeholder="Escreva a mensagem..." class="form-control">
                             </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary">Enviar</button>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-footer-->
 
