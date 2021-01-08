@@ -150,6 +150,7 @@ $(function () {
 function fctClickMenu(idContato, nome) {
     console.log('Id contato é: ' + idContato)
     document.getElementById("fConversaNome").innerHTML = nome
+    document.getElementById("imgConversaAvatar").src = "avatar.png"
 }
 
 //* FUNÇÃO de notificação
