@@ -23,7 +23,7 @@ $aleatorio = rand(1000, 10000);
 
     <div class="container-fluid">
         <div class="row align-items-top" style="height: 100vh">
-            <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #D6CBDF; background-position: bottom;">
+            <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #fff; background-position: bottom;">
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
