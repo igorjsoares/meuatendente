@@ -69,7 +69,7 @@ $aleatorio = rand(1000, 10000);
                             Igor Soares
                         </div>
                     </div>
-                    <div-col class="col-4">
+                    <div-col class="col-4" style="text-align: right;">
                         <div class="card-tools">
                             <span title="3 New Messages" class="badge bg-primary">3</span>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -87,7 +87,7 @@ $aleatorio = rand(1000, 10000);
 
                 <div>
                     <!-- Conversations are loaded here -->
-                    <div class="direct-chat-messages">
+                    <div class="direct-chat-messages" style="height: 400px">
                         <!-- Message. Default to the left -->
                         <div class="direct-chat-msg">
                             <div class="direct-chat-text">
