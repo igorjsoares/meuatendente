@@ -36,6 +36,35 @@ switch ($acao) {
 
         break;
 
+    case 'consultaConversaAtendimento':
+        $dados = $_POST['dados'];
+        $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
+
+        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_mensagem, mensagem, status, status_chat, DATE_FORMAT(data_envio, '%d/%m/%Y') AS data_envio FROM tbl_interacoes WHERE id_contato = $idContato ORDER BY data_envio ASC";
+        $query = mysqli_query($conn['link'], $sql);
+        $numRow = mysqli_num_rows($query);
+
+        $arrayMensagens = [];
+        while ($campanha = mysqli_fetch_array($query)) {
+
+            array_push($arrayMensagens, array(
+                'idInteracao' => $campanha['id_interacao'],
+                'direcao' => $campanha['direcao'],
+                'tipo' => $campanha['tipo'],
+                'subtipo' => $campanha['subtipo'],
+                'idMensagem' => $campanha['id_mensagem'],
+                'mensagem' => $campanha['mensagem'],
+                'status' => $campanha['status'],
+                'status_chat' => $campanha['status_chat'],
+                'dataEnvio' => $campanha['data_envio']
+
+            ));
+        }
+
+        echo json_encode($arrayMensagens, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR, true);
+
+        break;
+
     case 'consultaTotalLista':
         $dados = $_POST['dados'];
         $idLista = filter_var($dados['idLista'], FILTER_SANITIZE_STRING);

@@ -146,16 +146,60 @@ $(function () {
     })
 })
 
-//* FUNÇÃO de notificação
+//* FUNÇÃO Seleção da conversa
 function fctClickMenu(idContato, nome) {
     console.log('Id contato é: ' + idContato)
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
-}
+
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'consultaConversaAtendimento',
+            dados: {
+            }
+        },
+        beforeSend: function () {
+            console.log('Consultando conversa de atendimento')
+        },
+        success: function (content) {
+            console.log('Consultado conversa')
+
+            //$("#overlayTabela").add('hidden')
+            //$("#overlayTabela").removeClass('d-flex')
+
+            console.log(content)
+
+            var conteudo = ''
+
+            for (var i = 0; i < content.length; i++) {
+                if (content[i]['direcao'] == 0) { //recebida
+
+                    conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;">'
+                    conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #FFF;">'
+                    conteudo += content[i]['mensagem']
+                    conteudo += '</div></div>'
+
+                } else { //enviada    
+
+                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
+                    conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
+                    conteudo += content[i]['mensagem']
+                    conteudo += '</div></div>'
+                }
+
+
+            }
+
+            document.getElementById('divMensagens').innerHTML = conteudo
+
+        }
 
 //* FUNÇÃO de notificação
 function notify(alert, alert_message) {
-    if (alert == 'success') {
+        if(alert == 'success') {
         toastr.success(alert_message, '', {
             timeOut: 2000,
             positionClass: 'toast-bottom-right',
