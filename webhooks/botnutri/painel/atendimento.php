@@ -25,7 +25,7 @@ $aleatorio = rand(1000, 10000);
         <div class="row align-items-top" style="height: 100vh">
             <div class="col-4 col-md-4" style="height: 100vh; background-image: url('mari_fita.png'); background-repeat: no-repeat;background-size: 100%; background-position: center; background-color: #fff; background-position: bottom;">
 
-                <ul class="nav flex-column">
+                <ul class="nav flex-column" id="ulMenuConversas">
                     <li class="nav-item">
                         <div style="padding: 10px" class="row align-items-center">
                             <div class="col-2">
