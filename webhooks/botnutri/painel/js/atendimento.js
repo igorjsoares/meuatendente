@@ -2,6 +2,7 @@ $(function () {
 
     window.inicio = moment().format('YYYY-MM-DD HH:mm')
     console.log(window.inicio)
+    console.log("Iniciando atendimento.js")
 
     consultarCreditos()
 
