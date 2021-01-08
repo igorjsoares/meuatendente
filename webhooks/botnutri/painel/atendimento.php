@@ -89,8 +89,8 @@ $aleatorio = rand(1000, 10000);
                     <!-- Conversations are loaded here -->
                     <div class="direct-chat-messages" style="height: 400px">
                         <!-- Message. Default to the left -->
-                        <div class="direct-chat-msg" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <div class="direct-chat-text">
+                        <div class="direct-chat-msg">
+                            <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 80%;">
                                 Is this template really for free? That's unbelievable!
                             </div>
                             <!-- /.direct-chat-text -->
@@ -98,71 +98,14 @@ $aleatorio = rand(1000, 10000);
                         <!-- /.direct-chat-msg -->
 
                         <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
+                        <div class="direct-chat-msg right">
                             <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
+                            <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 80%;">
                                 You better believe it!
                             </div>
                             <!-- /.direct-chat-text -->
                         </div>
 
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                Uma mensagem vai aqui
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right" style="margin-left: 0px; margin-right: 0px; width: 80%;">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                        </div>
-                        <!-- /.direct-chat-msg -->
                     </div>
                     <!--/.direct-chat-messages-->
 
