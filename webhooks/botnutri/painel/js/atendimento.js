@@ -152,7 +152,9 @@ function fctClickMenu(idContato, nome) {
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
 
-    document.getElementById('span' + idContato).style.visibility = 'hidden'
+    if (typeof document.getElementById('span' + idContato) != "undefined") {
+        document.getElementById('span' + idContato).style.visibility = 'hidden'
+     }
 
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
