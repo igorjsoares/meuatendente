@@ -198,12 +198,13 @@ function fctClickMenu(idContato, nome) {
 
             document.getElementById('divMensagens').innerHTML = conteudo
 
+            alterarStatusChat(idContato)
         }
     })
 }
 
 //* FUNÇÃO Alterar Status statusCHAT
-function fctClickMenu(idContato) {
+function alterarStatusChat(idContato) {
 
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
