@@ -194,7 +194,7 @@ function fctClickMenu(idContato, nome) {
 
             }
 
-            document.getElementById('divMensagens').innerHTML = conteudo
+            document.getElementById('divMensagens').innerHTML += conteudo
 
         }
     })
