@@ -140,7 +140,7 @@ $(function () {
                 conteudo += '</div>'
             }
 
-            document.getElementById('tbodyCampanhas').innerHTML = $conteudo
+            document.getElementById('ulMenuConversas').innerHTML = conteudo
         }
     })
 })
