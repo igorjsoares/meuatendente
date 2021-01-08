@@ -24,7 +24,7 @@ echo "<script>window.tipoEmpresa = '" . $_SESSION['NP_tipo_empresa'] . "'</scrip
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NEW PROSPECT</title>
+  <title>BOT NUTRI MARI MARTINS</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -122,7 +122,7 @@ echo "<script>window.tipoEmpresa = '" . $_SESSION['NP_tipo_empresa'] . "'</scrip
       <div class="float-right d-none d-sm-block">
         <b>Versão</b> 1.0.027
       </div>
-      <strong>Copyright &copy; 2020-2021 <a href="https://newprospect.com.br">NEWPROSPECT</a>.</strong> Todos os direitos reservados.
+      <strong>Copyright &copy; 2020-2021 <a href="https://nutrimarimartins.com.br">Nutri Mari Martins</a>.</strong> Todos os direitos reservados.
     </footer>
 
     <!-- Control Sidebar -->

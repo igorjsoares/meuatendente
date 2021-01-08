@@ -119,8 +119,8 @@ $(function () {
                 } else {
                     var nome = content[i]['numero']
                 }
-                var cursor = "'pointer'"
-                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ')" style="something.style.cursor = ' + cursor + '">'
+                
+                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
