@@ -52,7 +52,7 @@ $aleatorio = rand(1000, 10000);
                         <div class="row  align-items-center">
 
                             <img style="width: 45px; height: 45px; margin-right: 10px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
-                            Igor Soares
+                            <font id="fConversaNome">Igor Soares</font>
                         </div>
                     </div>
                     <div-col class="col-4" style="text-align: right;">
