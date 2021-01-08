@@ -4,8 +4,6 @@ $(function () {
     console.log(window.inicio)
     console.log("Iniciando atendimento.js")
 
-    consultarCreditos()
-
     $("#bodyPreview").overlayScrollbars({
         overflowBehavior: {
             x: "hide",
