@@ -133,7 +133,7 @@ $(function () {
                 conteudo += '</div>'
                 conteudo += '<div class="col-2">'
                 if (content[i]['quant'] > 0) {
-                    conteudo += '<span class="float-right badge bg-success">' + content[i]['quant'] + '</span>'
+                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
                 }
                 conteudo += '</div>'
                 conteudo += '</div>'
@@ -151,6 +151,8 @@ function fctClickMenu(idContato, nome) {
     console.log('Id contato é: ' + idContato)
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
+
+    document.getElementById('span' + idContato).style.display = none
 
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
@@ -194,7 +196,7 @@ function fctClickMenu(idContato, nome) {
 
             }
 
-            document.getElementById('divMensagens').innerHTML += conteudo
+            document.getElementById('divMensagens').innerHTML = conteudo
 
         }
     })
