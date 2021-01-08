@@ -120,7 +120,7 @@ $(function () {
                     var nome = content[i]['numero']
                 }
                 var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
@@ -147,14 +147,14 @@ $(function () {
 })
 
 //* FUNÇÃO Seleção da conversa
-function fctClickMenu(idContato, nome) {
+function fctClickMenu(idContato, nome, quant) {
     console.log('Id contato é: ' + idContato)
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
 
-    if (typeof document.getElementById('span' + idContato) != "undefined") {
+    if (quant != 0) {
         document.getElementById('span' + idContato).style.visibility = 'hidden'
-     }
+    }
 
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
