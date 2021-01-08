@@ -89,7 +89,7 @@ $aleatorio = rand(1000, 10000);
                     <!-- Conversations are loaded here -->
                     <div class="direct-chat-messages" style="height: 400px">
                         <!-- Message. Default to the left -->
-                        <div class="direct-chat-msg" style="padding-right: 20%;">
+                        <div class="direct-chat-msg" style="padding-right: 10%;">
                             <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%;">
                                 Is this template really for free? That's unbelievable!
                             </div>
@@ -98,7 +98,7 @@ $aleatorio = rand(1000, 10000);
                         <!-- /.direct-chat-msg -->
 
                         <!-- Message to the right -->
-                        <div class="direct-chat-msg right"  style="padding-left: 20%;">
+                        <div class="direct-chat-msg right"  style="padding-left: 10%;">
                             <!-- /.direct-chat-img -->
                             <div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%;">
                                 You better believe it!
@@ -112,9 +112,9 @@ $aleatorio = rand(1000, 10000);
                     <div class="card-footer">
                         <form action="#" method="post">
                             <div class="input-group">
-                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <input type="text" name="message" placeholder="Escreva a mensagem..." class="form-control">
                                 <span class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">Send</button>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                 </span>
                             </div>
                         </form>
