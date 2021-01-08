@@ -113,7 +113,7 @@ $aleatorio = rand(1000, 10000);
                             <div class="input-group">
                                 <input type="text" name="message" placeholder="Escreva a mensagem..." class="form-control">
                                 <span class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <button class="btn btn-primary">Enviar</button>
                                 </span>
                             </div>
                     </div>
