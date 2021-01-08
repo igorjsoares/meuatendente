@@ -123,7 +123,7 @@ $(function () {
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
-                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/1.jpg" class="img-circle elevation-2" alt="">'
+                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
                 conteudo += '</div>'
                 conteudo += '</div>'
                 conteudo += '<div class="col-8">'
