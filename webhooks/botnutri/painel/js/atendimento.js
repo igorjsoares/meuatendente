@@ -202,6 +202,40 @@ function fctClickMenu(idContato, nome) {
     })
 }
 
+//* FUNÇÃO Alterar Status statusCHAT
+function fctClickMenu(idContato) {
+
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'atualizarStatusChat',
+            dados: {
+                idContato: idContato
+            }
+        },
+        beforeSend: function () {
+            console.log('Atualizando Status Chat. IdContato: ' + idContato)
+        },
+        success: function (content) {
+            console.log('Atualização concluída')
+
+            //$("#overlayTabela").add('hidden')
+            //$("#overlayTabela").removeClass('d-flex')
+
+            console.log(content)
+
+            if (content != 0) {
+                console.log("Atualizou o StatusChat")
+            } else {
+                console.log("Não atualizou o StatusChat")
+            }
+
+        }
+    })
+}
+
 //* FUNÇÃO de notificação
 function notify(alert, alert_message) {
     if (alert == 'success') {
