@@ -61,17 +61,15 @@ $aleatorio = rand(1000, 10000);
                 </ul>
             </div>
             <div class="col-8 col-md-8" style="padding: 0px;">
-                <!-- DIRECT CHAT PRIMARY -->
-                <div class="card card-primary card-outline direct-chat direct-chat-primary" style="box-shadow: none;">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <div class="row  align-items-center">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <div class="row  align-items-center">
 
-                                <img style="width: 45px; height: 45px; margin-right: 10px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
-                                Igor Soares
-                            </div>
-                        </h3>
-
+                            <img style="width: 45px; height: 45px; margin-right: 10px" id="imgEmpresaMenu" src="assets/empresas/<?= $_SESSION['NP_id_empresa'] ?>.jpg" class="img-circle elevation-2" alt="">
+                            Igor Soares
+                        </div>
+                    </div>
+                    <div-col class="4">
                         <div class="card-tools">
                             <span title="3 New Messages" class="badge bg-primary">3</span>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -84,113 +82,90 @@ $aleatorio = rand(1000, 10000);
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <!-- Conversations are loaded here -->
-                        <div class="direct-chat-messages">
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-text">
-                                    Is this template really for free? That's unbelievable!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
+                    </div-col>
+                </div>
 
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
+                <div>
+                    <!-- Conversations are loaded here -->
+                    <div class="direct-chat-messages">
+                        <!-- Message. Default to the left -->
+                        <div class="direct-chat-msg">
+                            <div class="direct-chat-text">
+                                Is this template really for free? That's unbelievable!
                             </div>
-
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
+                            <!-- /.direct-chat-text -->
                         </div>
-                        <!--/.direct-chat-messages-->
+                        <!-- /.direct-chat-msg -->
 
-                        <!-- Contacts are loaded here -->
-                        <div class="direct-chat-contacts">
-                            <ul class="contacts-list">
-                                <li>
-                                    <a href="#">
-                                        <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
-
-                                        <div class="contacts-list-info">
-                                            <span class="contacts-list-name">
-                                                Count Dracula
-                                                <small class="contacts-list-date float-right">2/28/2015</small>
-                                            </span>
-                                            <span class="contacts-list-msg">How have you been? I was...</span>
-                                        </div>
-                                        <!-- /.contacts-list-info -->
-                                    </a>
-                                </li>
-                                <!-- End Contact Item -->
-                            </ul>
-                            <!-- /.contatcts-list -->
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
                         </div>
-                        <!-- /.direct-chat-pane -->
+
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- /.direct-chat-msg -->
                     </div>
-                    <!-- /.card-body -->
+                    <!--/.direct-chat-messages-->
+
                     <div class="card-footer">
                         <form action="#" method="post">
                             <div class="input-group">
@@ -202,16 +177,16 @@ $aleatorio = rand(1000, 10000);
                         </form>
                     </div>
                     <!-- /.card-footer-->
+
+                    <!--/.direct-chat -->
+                    <div class="row">
+                        <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
+                        <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
+                    </div>
                 </div>
-                <!--/.direct-chat -->
-                <div class="row">
-                    <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
-                    <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
-                </div>
+                <!-- /.col -->
             </div>
-            <!-- /.col -->
         </div>
-    </div>
 </section>
 <!-- /.content -->
 
