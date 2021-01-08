@@ -111,12 +111,10 @@ $aleatorio = rand(1000, 10000);
 
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-10">
                                 <input type="textarea" name="message" placeholder="Escreva a mensagem..." class="form-control">
-                            </div>
-                            <div class="col-12">
+
                                 <button class="btn btn-primary">Enviar</button>
-                            </div>
+
                         </div>
                     </div>
                     <!-- /.card-footer-->
