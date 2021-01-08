@@ -204,6 +204,10 @@ $aleatorio = rand(1000, 10000);
                     <!-- /.card-footer-->
                 </div>
                 <!--/.direct-chat -->
+                <div class="row">
+                    <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
+                    <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
+                </div>
             </div>
             <!-- /.col -->
         </div>
