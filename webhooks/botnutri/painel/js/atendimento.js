@@ -196,10 +196,12 @@ function fctClickMenu(idContato, nome) {
             document.getElementById('divMensagens').innerHTML = conteudo
 
         }
+    })
+}
 
 //* FUNÇÃO de notificação
 function notify(alert, alert_message) {
-        if(alert == 'success') {
+    if (alert == 'success') {
         toastr.success(alert_message, '', {
             timeOut: 2000,
             positionClass: 'toast-bottom-right',
