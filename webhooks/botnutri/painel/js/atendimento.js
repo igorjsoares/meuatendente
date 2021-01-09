@@ -173,6 +173,7 @@ function fctClickMenu(idContato, nome, quant) {
 
                 if (i == (content.length - 1)) {
                     window.ultimaRecebidaAtiva = content[i]['dataEnvioPadrao']
+                    console.log("Window última Retorno Ativo: ".window.ultimaRecebidaAtiva)
                 }
 
             }
@@ -224,6 +225,8 @@ function atualizacaoPeriodica() {
     console.log("Atualização periódica")
 
     var ultimaRecebida = consultaUltimaRecebida()
+    console.log('VAR dentro da atualização periódica. Ultima recebida: ' + ultimaRecebida)
+
 
     if (window.ultimaRecebida != ultimaRecebida) {
         window.ultimaRecebida = ultimaRecebida
@@ -231,6 +234,8 @@ function atualizacaoPeriodica() {
         consultaMenu()
         if (window.idContatoAtivo != 0) {
             var ultimaRecebidaAtiva = consultaUltimaRecebida(window.idContatoAtivo)
+    console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
+
             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
                 consultaConversaAtiva(window.idContatoAtivo)
             }
@@ -241,6 +246,7 @@ function atualizacaoPeriodica() {
 
 //* FUNÇÃO de consulta do Menu
 function consultaMenu() {
+    console.log("FCT consulta Menu")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
@@ -298,6 +304,7 @@ function consultaMenu() {
 
 //* FUNÇÃO de conversa Ativa
 function consultaConversaAtiva(idContato, ultimaRecebida) {
+console.log("FCT consultaConversaAtiva")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
