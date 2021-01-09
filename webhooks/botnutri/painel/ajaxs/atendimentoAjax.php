@@ -39,8 +39,13 @@ switch ($acao) {
     case 'consultaConversaAtendimento':
         $dados = $_POST['dados'];
         $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
+        $ultimaRecebida = filter_var(@$dados['ultimaRecebida'], FILTER_SANITIZE_STRING);
 
-        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_mensagem, mensagem, status, status_chat, DATE_FORMAT(data_envio, '%d/%m %H:%i') AS data_envio FROM tbl_interacoes WHERE id_contato = $idContato ORDER BY data_envio ASC";
+        if(isset($ultimaRecebida)){
+            $whereUltimaRecebida = "AND data_envio > '$ultimaRecebida' ";
+        }
+
+        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_mensagem, mensagem, status, status_chat, data_envio, DATE_FORMAT(data_envio, '%d/%m %H:%i') AS data_envio_formatada FROM tbl_interacoes WHERE id_contato = $idContato $whereUltimaRecebida ORDER BY data_envio ASC";
         $query = mysqli_query($conn['link'], $sql);
         $numRow = mysqli_num_rows($query);
 
@@ -56,7 +61,8 @@ switch ($acao) {
                 'mensagem' => $campanha['mensagem'],
                 'status' => $campanha['status'],
                 'status_chat' => $campanha['status_chat'],
-                'dataEnvio' => $campanha['data_envio']
+                'dataEnvioPadrao' => $campanha['data_envio'],
+                'dataEnvio' => $campanha['data_envio_formatada']
 
             ));
         }
@@ -67,8 +73,14 @@ switch ($acao) {
 
         case 'consultaUltimaRecebida':
             $dados = $_POST['dados'];
-    
-            $sql = "SELECT MAX(data_envio) AS ultimo_envio FROM tbl_interacoes WHERE direcao = 0";
+            $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
+
+
+    if($idContato != ""){
+        $sql = "SELECT MAX(data_envio) AS ultimo_envio FROM tbl_interacoes WHERE direcao = 0 AND id_contato = $idContato";
+    }else{
+        $sql = "SELECT MAX(data_envio) AS ultimo_envio FROM tbl_interacoes WHERE direcao = 0";
+    }
             $query = mysqli_query($conn['link'], $sql);
             $numRow = mysqli_num_rows($query);
     

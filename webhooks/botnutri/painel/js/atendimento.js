@@ -1,5 +1,7 @@
 $(function () {
 
+    window.idContatoAtivo = 0;
+
     console.log("Horário atual local: " + moment().format('DD/MM/YYY HH:mm'))
 
     window.inicio = moment().format('YYYY-MM-DD HH:mm')
@@ -90,7 +92,7 @@ $(function () {
     })
 })
 
-function consultaUltimaRecebida() {
+function consultaUltimaRecebida(idContato) {
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
@@ -98,6 +100,7 @@ function consultaUltimaRecebida() {
         data: {
             acao: 'consultaUltimaRecebida',
             dados: {
+                idContato: idContato
             }
         },
         beforeSend: function () {
@@ -168,6 +171,9 @@ function fctClickMenu(idContato, nome, quant) {
                     conteudo += '</div>'
                 }
 
+                if (i == (content.length - 1)) {
+                    window.ultimaRecebidaAtiva = content[i]['dataEnvioPadrao']
+                }
 
             }
 
@@ -217,6 +223,20 @@ function atualizacaoPeriodica() {
     clearInterval(window.tempoAtualizacao)
     console.log("Atualização periódica")
 
+    var ultimaRecebida = consultaUltimaRecebida()
+
+    if (window.ultimaRecebida != ultimaRecebida) {
+        window.ultimaRecebida = ultimaRecebida
+
+        consultaMenu()
+        if (window.idContatoAtivo != 0) {
+            var ultimaRecebidaAtiva = consultaUltimaRecebida(window.idContatoAtivo)
+            if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
+                consultaConversaAtiva(window.idContatoAtivo)
+            }
+        }
+    }
+
 }
 
 //* FUNÇÃO de consulta do Menu
@@ -232,6 +252,65 @@ function consultaMenu() {
         },
         beforeSend: function () {
             console.log('Consultando menu periódico de atendimento')
+        },
+        success: function (content) {
+            console.log('Consultado menu periódico')
+
+            //$("#overlayTabela").add('hidden')
+            //$("#overlayTabela").removeClass('d-flex')
+
+            console.log(content)
+
+            var conteudo = ''
+
+            for (var i = 0; i < content.length; i++) {
+                if (content[i]['nome'] != '') {
+                    var nome = content[i]['nome']
+                } else {
+                    var nome = content[i]['numero']
+                }
+                var nomeComAspas = "'" + nome + "'"
+                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
+                conteudo += '<div style="padding: 10px" class="row align-items-center">'
+                conteudo += '<div class="col-2">'
+                conteudo += '<div style="padding: 0px;" class="image">'
+                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
+                conteudo += '</div>'
+                conteudo += '</div>'
+                conteudo += '<div class="col-8">'
+                conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
+                conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
+                conteudo += '</div>'
+                conteudo += '<div class="col-2">'
+                if (content[i]['quant'] > 0) {
+                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
+                }
+                conteudo += '</div>'
+                conteudo += '</div>'
+                conteudo += '</li>'
+                conteudo += '</div>'
+            }
+
+            document.getElementById('ulMenuConversas').innerHTML += conteudo
+        }
+    })
+}
+
+//* FUNÇÃO de conversa Ativa
+function consultaConversaAtiva(idContato, ultimaRecebida) {
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'consultaConversaAtendimento',
+            dados: {
+                idContato: idContato,
+                ultimaRecebida: ultimaRecebida
+            }
+        },
+        beforeSend: function () {
+            console.log('Consultando conversa ativa periódico de atendimento')
         },
         success: function (content) {
             console.log('Consultado menu periódico')
