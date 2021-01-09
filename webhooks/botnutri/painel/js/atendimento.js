@@ -185,14 +185,18 @@ function fctClickMenu(idContato, nome, quant) {
                     conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;">'
                     conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #FFF;">'
                     conteudo += content[i]['mensagem']
-                    conteudo += '</div></div><div>Teste</div>'
+                    conteudo += '</div>'
+                    conteudo += '<div style="color: gray; font-size: 8px; text-align: left; margin-left: 10px">'+content[i]['dataEnvio']+'</div>'
+                    conteudo += '</div>'
 
                 } else { //enviada    
 
                     conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
                     conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
                     conteudo += content[i]['mensagem']
-                    conteudo += '</div><div>Teste</div></div>'
+                    conteudo += '</div>'
+                    conteudo += '<div style="color: gray; font-size: 8px; text-align: right; margin-right: 10px">'+content[i]['dataEnvio']+'</div>'
+                    conteudo += '</div>'
                 }
 
 
