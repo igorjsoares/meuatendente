@@ -40,7 +40,7 @@ switch ($acao) {
         $dados = $_POST['dados'];
         $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
 
-        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_mensagem, mensagem, status, status_chat, DATE_FORMAT(data_envio, '%d/%m/%Y') AS data_envio FROM tbl_interacoes WHERE id_contato = $idContato ORDER BY data_envio ASC";
+        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_mensagem, mensagem, status, status_chat, DATE_FORMAT(data_envio, '%d/%m %H:%i') AS data_envio FROM tbl_interacoes WHERE id_contato = $idContato ORDER BY data_envio ASC";
         $query = mysqli_query($conn['link'], $sql);
         $numRow = mysqli_num_rows($query);
 
