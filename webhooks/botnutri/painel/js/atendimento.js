@@ -110,8 +110,10 @@ function consultaUltimaRecebida(idContato) {
             console.log('Consultado ultima recebida')
 
             console.log(content)
+            console.log(content[0])
+            console.log(content[0]['ultimo_envio'])
 
-            return content['ultimo_envio']
+            return content[0]['ultimo_envio']
         }
     })
 }
