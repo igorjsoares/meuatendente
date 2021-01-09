@@ -7,7 +7,7 @@ $(function () {
     console.log("Iniciando atendimento.js")
 
     window.previsao = moment()
-    window.tempoAtualizacao = 1000 * 30 //x*y onde y representa os segundos
+    window.tempoAtualizacao = 1000 * 10 //x*y onde y representa os segundos
 
     window.intervalo = window.setInterval(atualizacaoPeriodica, window.tempoAtualizacao)
 
@@ -254,8 +254,6 @@ function alterarStatusChat(idContato) {
 function atualizacaoPeriodica() {
     clearInterval(window.tempoAtualizacao)
     console.log("Atualização periódica")
-
-    window.tempoAtualizacao = window.setInterval(atualizacaoPeriodica, window.tempoAtualizacao)
 }
 
 //* FUNÇÃO de notificação
