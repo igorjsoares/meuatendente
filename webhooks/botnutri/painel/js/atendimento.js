@@ -58,8 +58,8 @@ $(function () {
             var conteudo = ''
 
             for (var i = 0; i < content.length; i++) {
-                window.ultimaRecebida = consultaUltimaRecebida()
-                console.log('Return da Ultima recebida: ' + window.ultimaRecebida)
+                consultaUltimaRecebida()
+
                 if (content[i]['nome'] != '') {
                     var nome = content[i]['nome']
                 } else {
@@ -92,7 +92,7 @@ $(function () {
     })
 })
 
-function consultaUltimaRecebida(idContato) {
+async function consultaUltimaRecebida(idContato) {
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
@@ -110,11 +110,10 @@ function consultaUltimaRecebida(idContato) {
             console.log('Consultado ultima recebida')
 
             console.log(content)
-            console.log(content[0])
-            console.log(content[0]['ultimo_envio'])
 
-            //return content[0]['ultimo_envio']
-            return true
+            window.ultimaRecebida = content[0]['ultimo_envio']
+            console.log('Return da Ultima recebida: ' + window.ultimaRecebida)
+
         }
     })
 }
@@ -235,7 +234,7 @@ function atualizacaoPeriodica() {
         consultaMenu()
         if (window.idContatoAtivo != 0) {
             var ultimaRecebidaAtiva = consultaUltimaRecebida(window.idContatoAtivo)
-    console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
+            console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
 
             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
                 consultaConversaAtiva(window.idContatoAtivo)
@@ -305,7 +304,7 @@ function consultaMenu() {
 
 //* FUNÇÃO de conversa Ativa
 function consultaConversaAtiva(idContato, ultimaRecebida) {
-console.log("FCT consultaConversaAtiva")
+    console.log("FCT consultaConversaAtiva")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
