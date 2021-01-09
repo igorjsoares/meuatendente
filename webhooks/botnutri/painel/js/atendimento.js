@@ -252,9 +252,10 @@ function alterarStatusChat(idContato) {
 
 //* Atualização periódica
 function atualizacaoPeriodica() {
-    clearInterval(window.intervalo);
-
+    clearInterval(window.tempoAtualizacao)
     console.log("Atualização periódica")
+
+    window.tempoAtualizacao = window.setInterval(atualizacaoPeriodica, window.tempoAtualizacao)
 }
 
 //* FUNÇÃO de notificação
