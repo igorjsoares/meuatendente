@@ -113,7 +113,7 @@ function consultaUltimaRecebida(idContato) {
 
             var conteudo = ''
 
-            return content[0]['ultima_recebida']
+            return content[0]['ultima_envio']
         }
     })
 }
