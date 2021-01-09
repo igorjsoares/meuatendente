@@ -65,6 +65,26 @@ switch ($acao) {
 
         break;
 
+        case 'consultaUltimaRecebida':
+            $dados = $_POST['dados'];
+    
+            $sql = "SELECT MAX(data_envio) AS ultimo_envio FROM tbl_interacoes WHERE direcao = 0";
+            $query = mysqli_query($conn['link'], $sql);
+            $numRow = mysqli_num_rows($query);
+    
+            $arrayMensagens = [];
+            while ($campanha = mysqli_fetch_array($query)) {
+    
+                array_push($arrayMensagens, array(
+                    'ultimo_envio' => $campanha['ultimo_envio']
+    
+                ));
+            }
+    
+            echo json_encode($arrayMensagens, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR, true);
+    
+            break;
+
     case 'atualizarStatusChat':
         $dados = $_POST['dados'];
         $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
