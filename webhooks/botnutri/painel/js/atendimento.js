@@ -1,8 +1,15 @@
 $(function () {
 
+    console.log("Horário atual local: " + moment().format('DD/MM/YYY HH:mm'))
+
     window.inicio = moment().format('YYYY-MM-DD HH:mm')
     console.log(window.inicio)
     console.log("Iniciando atendimento.js")
+
+    window.previsao = moment()
+    window.tempoAtualizacao = 1000 * 30 //x*y onde y representa os segundos
+
+    window.intervalo = window.setInterval(atualizacaoPeriodica, window.tempoAtualizacao)
 
     $("#bodyPreview").overlayScrollbars({
         overflowBehavior: {
@@ -241,6 +248,13 @@ function alterarStatusChat(idContato) {
 
         }
     })
+}
+
+//* Atualização periódica
+function atualizacaoPeriodica() {
+    clearInterval(window.intervalo);
+
+    console.log("Atualização periódica")
 }
 
 //* FUNÇÃO de notificação
