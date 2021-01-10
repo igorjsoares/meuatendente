@@ -58,7 +58,7 @@ $aleatorio = rand(1000, 10000);
                     <div-col class="col-4" style="text-align: right;">
                         <div class="card-tools">
                             <span title="3 New Messages" class="badge bg-primary">3</span>
-                            <button type="button" class="btn btn-tool" title="Bot liberado" id="btnBloqueio" data-widget="chat-pane-toggle">
+                            <button type="button" class="btn btn-tool" title="Bot liberado" id="btnBloqueio">
                                 <i id="iBloqueio" class="fas fa-robot" style="color: #67e375"></i>
                             </button>
                         </div>
