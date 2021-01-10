@@ -196,7 +196,7 @@
                         }
                     }
                 }
-            }elseif(isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'receveid_image_message')){
+            }else if(isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'receveid_image_message')){
                 $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
                 $RemoteJidArray = explode("@", $RemoteJid);
                 $numero = $RemoteJidArray[0];
