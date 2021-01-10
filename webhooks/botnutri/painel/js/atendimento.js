@@ -258,7 +258,7 @@ function atualizacaoPeriodica() {
             console.log('Consultando ultima recebida')
         },
         success: function (content) {
-            window.ultimaRecebida = content[0]['ultimo_envio']
+            var ultimaRecebida = content[0]['ultimo_envio']
             
             if (window.ultimaRecebida != ultimaRecebida) {
                 window.ultimaRecebida = ultimaRecebida
