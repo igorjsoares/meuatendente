@@ -30,7 +30,8 @@
 
 
             //() Verifica SE É uma mensagem recebida 
-            if (isset($decoded['Type']) && ($decoded['Type'] == 'receveid_message' || $decoded['Type'] == 'receveid_audio_message')) {
+            if (isset($decoded['Type']) && $decoded['Type'] == 'receveid_message') {
+                //if (isset($decoded['Type']) && ($decoded['Type'] == 'receveid_message' || $decoded['Type'] == 'receveid_audio_message')) {
                 $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
                 $RemoteJidArray = explode("@", $RemoteJid);
                 $numero = $RemoteJidArray[0];
@@ -195,6 +196,13 @@
                         }
                     }
                 }
+            }elseif(isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'receveid_image_message')){
+                $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
+                $RemoteJidArray = explode("@", $RemoteJid);
+                $numero = $RemoteJidArray[0];
+                $this->numerocliente = $numero;
+
+                $this->sendMessage('ErroFormatoMensagem', $this->numerocliente, "Esse atendimento funciona somente com envio de texto.\nFavor enviar sempre mensagens de texto.", "");
             }
         }
 
