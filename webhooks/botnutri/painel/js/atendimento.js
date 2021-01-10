@@ -92,7 +92,7 @@ $(function () {
     })
 })
 
-async function consultaUltimaRecebida(idContato) {
+function consultaUltimaRecebida(idContato) {
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
@@ -180,6 +180,25 @@ function fctClickMenu(idContato, nome, quant) {
 
             document.getElementById('divMensagens').innerHTML = conteudo
 
+            $.ajax({
+                url: 'ajaxs/atendimentoAjax.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    acao: 'consultaUltimaRecebida',
+                    dados: {
+                        idContato: window.idContatoAtivo
+                    }
+                },
+                beforeSend: function () {
+                    console.log('Consultando ultima recebida')
+                },
+                success: function (content) {
+                    window.ultimaRecebidaAtiva = content[0]['ultimo_envio']
+                    console.log('VAR clickMenu. Ultima recebida conversa Ativa: ' + window.ultimaRecebidaAtiva)
+                }
+            })
+
             alterarStatusChat(idContato)
         }
     })
@@ -224,23 +243,66 @@ function atualizacaoPeriodica() {
     clearInterval(window.tempoAtualizacao)
     console.log("Atualização periódica")
 
-    var ultimaRecebida = consultaUltimaRecebida()
+    //( Consulta a última mensagem recebida no geral pra comparar com a última pesquisa dessa
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'consultaUltimaRecebida',
+            dados: {
+                idContato: idContato
+            }
+        },
+        beforeSend: function () {
+            console.log('Consultando ultima recebida')
+        },
+        success: function (content) {
+            window.ultimaRecebida = content[0]['ultimo_envio']
+            
+            if (window.ultimaRecebida != ultimaRecebida) {
+                window.ultimaRecebida = ultimaRecebida
+        
+                consultaMenu()
+                if (window.idContatoAtivo != 0) {
+                    
+                    //( Consulta a última mensagem recebida do contato ativo pra ver se teve atualização desse contato
+                    $.ajax({
+                        url: 'ajaxs/atendimentoAjax.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            acao: 'consultaUltimaRecebida',
+                            dados: {
+                                idContato: window.idContatoAtivo
+                            }
+                        },
+                        beforeSend: function () {
+                            console.log('Consultando ultima recebida')
+                        },
+                        success: function (content) {
+                             var ultimaRecebidaAtiva = content[0]['ultimo_envio']
+                            console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
+                            
+                            if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
+                                window.ultimaRecebidaAtiva = ultimaRecebidaAtiva
+                                consultaConversaAtiva(window.idContatoAtivo)
+                            }
+                        }
+                    })
+        
+                    
+                }
+            }
+            
+            console.log('Return da Ultima recebida: ' + window.ultimaRecebida)
+
+        }
+    })
     console.log('VAR dentro da atualização periódica. Ultima recebida: ' + ultimaRecebida)
 
 
-    if (window.ultimaRecebida != ultimaRecebida) {
-        window.ultimaRecebida = ultimaRecebida
-
-        consultaMenu()
-        if (window.idContatoAtivo != 0) {
-            var ultimaRecebidaAtiva = consultaUltimaRecebida(window.idContatoAtivo)
-            console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
-
-            if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
-                consultaConversaAtiva(window.idContatoAtivo)
-            }
-        }
-    }
+    
 
 }
 
