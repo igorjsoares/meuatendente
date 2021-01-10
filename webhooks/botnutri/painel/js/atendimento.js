@@ -185,8 +185,9 @@ function fctClickMenu(idContato, nome, quant) {
         }
     })
 
-    var div = $('#divMensagens');
-    div.prop("scrollTop", div.prop("scrollHeight"));
+
+    var objDiv = document.getElementById("divMensagens");
+    objDiv.scrollTop = objDiv.scrollHeight;
 }
 
 //* FUNÇÃO Alterar Status statusCHAT
