@@ -181,13 +181,15 @@ function fctClickMenu(idContato, nome, quant) {
 
             document.getElementById('divMensagens').innerHTML = conteudo
 
+            var objDiv = document.getElementById("divMensagens");
+            objDiv.scrollTop = objDiv.scrollHeight;
+
             alterarStatusChat(idContato)
         }
     })
 
 
-    var objDiv = document.getElementById("divMensagens");
-    objDiv.scrollTop = objDiv.scrollHeight;
+
 }
 
 //* FUNÇÃO Alterar Status statusCHAT
@@ -407,12 +409,12 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
 
             document.getElementById('divMensagens').innerHTML += conteudo
 
+            var objDiv = document.getElementById("divMensagens");
+            objDiv.scrollTop = objDiv.scrollHeight;
+
             consultaMenu()
         }
     })
-
-    var div = $('#divMensagens')[0];
-    div.scrollTop = div.scrollHeight;
 }
 
 
