@@ -266,8 +266,9 @@ function atualizacaoPeriodica() {
                             console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
                             
                             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
+                                consultaConversaAtiva(window.idContatoAtivo, window.ultimaRecebidaAtiva)
                                 window.ultimaRecebidaAtiva = ultimaRecebidaAtiva
-                                consultaConversaAtiva(window.idContatoAtivo)
+
                             }else{
                                 console.log('Não precisou atualizar a conversa ativa')
                             }
@@ -379,34 +380,28 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
             var conteudo = ''
 
             for (var i = 0; i < content.length; i++) {
-                if (content[i]['nome'] != '') {
-                    var nome = content[i]['nome']
-                } else {
-                    var nome = content[i]['numero']
+                if (content[i]['direcao'] == 0) { //recebida
+
+                    conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;">'
+                    conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #FFF;">'
+                    conteudo += content[i]['mensagem']
+                    conteudo += '</div>'
+                    conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: left; margin-left: 10px">' + content[i]['dataEnvio'] + '</div>'
+                    conteudo += '</div>'
+
+                } else { //enviada    
+
+                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
+                    conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
+                    conteudo += content[i]['mensagem']
+                    conteudo += '</div>'
+                    conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">' + content[i]['dataEnvio'] + '</div>'
+                    conteudo += '</div>'
                 }
-                var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
-                conteudo += '<div style="padding: 10px" class="row align-items-center">'
-                conteudo += '<div class="col-2">'
-                conteudo += '<div style="padding: 0px;" class="image">'
-                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
-                conteudo += '</div>'
-                conteudo += '</div>'
-                conteudo += '<div class="col-8">'
-                conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
-                conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
-                conteudo += '</div>'
-                conteudo += '<div class="col-2">'
-                if (content[i]['quant'] > 0) {
-                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
-                }
-                conteudo += '</div>'
-                conteudo += '</div>'
-                conteudo += '</li>'
-                conteudo += '</div>'
+
             }
 
-            document.getElementById('ulMenuConversas').innerHTML += conteudo
+            document.getElementById('divMensagens').innerHTML = conteudo
 
             consultaMenu()
         }
