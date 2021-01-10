@@ -173,31 +173,12 @@ function fctClickMenu(idContato, nome, quant) {
 
                 if (i == (content.length - 1)) {
                     window.ultimaRecebidaAtiva = content[i]['dataEnvioPadrao']
-                    console.log("Window última Retorno Ativo: ".window.ultimaRecebidaAtiva)
+                    console.log("Window última Retorno Ativo: "+window.ultimaRecebidaAtiva)
                 }
 
             }
 
             document.getElementById('divMensagens').innerHTML = conteudo
-
-            $.ajax({
-                url: 'ajaxs/atendimentoAjax.php',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    acao: 'consultaUltimaRecebida',
-                    dados: {
-                        idContato: window.idContatoAtivo
-                    }
-                },
-                beforeSend: function () {
-                    console.log('Consultando ultima recebida')
-                },
-                success: function (content) {
-                    window.ultimaRecebidaAtiva = content[0]['ultimo_envio']
-                    console.log('VAR clickMenu. Ultima recebida conversa Ativa: ' + window.ultimaRecebidaAtiva)
-                }
-            })
 
             alterarStatusChat(idContato)
         }
@@ -308,6 +289,10 @@ function atualizacaoPeriodica() {
 
 //* FUNÇÃO de consulta do Menu
 function consultaMenu() {
+    //&================
+    //&================
+    //&================ Colocar aqui uma inteligência de entender o que tem no menu ou pesquisar somente o que mudou
+    //&================ ao invés de trazer todos os contatos do menu novamente
     console.log("FCT consulta Menu. Teve diferença entre a ultimo envio e o registrado")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
