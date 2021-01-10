@@ -244,7 +244,6 @@ function atualizacaoPeriodica() {
             if (window.ultimaRecebida != ultimaRecebida) {
                 window.ultimaRecebida = ultimaRecebida
         
-                consultaMenu()
                 if (window.idContatoAtivo != 0) {
                     
                     //( Consulta a última mensagem recebida do contato ativo pra ver se teve atualização desse contato
@@ -272,9 +271,9 @@ function atualizacaoPeriodica() {
                                 console.log('Não precisou atualizar a conversa ativa')
                             }
                         }
-                    })
-        
-                    
+                    })    
+                }else{
+                    consultaMenu()
                 }
             }else{
                 console.log('Não atualiza o Menu. Última mensagem reebida geral em: ' + window.ultimaRecebida)
@@ -407,6 +406,8 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
             }
 
             document.getElementById('ulMenuConversas').innerHTML += conteudo
+
+            consultaMenu()
         }
     })
 }
