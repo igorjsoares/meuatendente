@@ -251,7 +251,7 @@ function atualizacaoPeriodica() {
         data: {
             acao: 'consultaUltimaRecebida',
             dados: {
-                idContato: idContato
+                idContato: ''
             }
         },
         beforeSend: function () {
