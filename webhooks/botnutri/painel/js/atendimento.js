@@ -438,8 +438,9 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
     })
 }
 
-$("btnBloqueio").click(function () {
+$("#btnBloqueio").click(function () {
     console.log("Pedido Bloqueio/Desbloqueio")
+
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
