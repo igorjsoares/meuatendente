@@ -268,6 +268,8 @@ function atualizacaoPeriodica() {
                             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
                                 window.ultimaRecebidaAtiva = ultimaRecebidaAtiva
                                 consultaConversaAtiva(window.idContatoAtivo)
+                            }else{
+                                console.log('Não precisou atualizar a conversa ativa')
                             }
                         }
                     })
@@ -351,7 +353,7 @@ function consultaMenu() {
 
 //* FUNÇÃO de conversa Ativa
 function consultaConversaAtiva(idContato, ultimaRecebida) {
-    console.log("FCT consultaConversaAtiva")
+    console.log("FCT consultaConversaAtiva - Precisou atualizar a conversa ativa")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
