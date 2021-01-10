@@ -401,7 +401,7 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
 
             }
 
-            document.getElementById('divMensagens').innerHTML = conteudo
+            document.getElementById('divMensagens').innerHTML += conteudo
 
             consultaMenu()
         }
