@@ -184,8 +184,7 @@ function fctClickMenu(idContato, nome, quant) {
             alterarStatusChat(idContato)
         }
     })
-    var div = $('#divMensagens')[0];
-    div.scrollTop = div.scrollHeight;
+    $('#divMensagens').animate({scrollTop: $('#div')[0].scrollHeight}, 500);
 }
 
 //* FUNÇÃO Alterar Status statusCHAT
