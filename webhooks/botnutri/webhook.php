@@ -31,48 +31,61 @@
 
             //() Verifica SE É uma mensagem recebida 
             if (isset($decoded['Type']) && $decoded['Type'] == 'receveid_message') {
-                //if (isset($decoded['Type']) && ($decoded['Type'] == 'receveid_message' || $decoded['Type'] == 'receveid_audio_message')) {
-                $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
-                $RemoteJidArray = explode("@", $RemoteJid);
-                $numero = $RemoteJidArray[0];
-                $this->numerocliente = $numero;
-                $this->numero = $numero;
-                $tipoNumero = $RemoteJidArray[1];
-                $idMensagemWhats = $decoded['Body']['Info']['Id'];
-                $timestamp = $decoded['Body']['Info']['Timestamp'];
-                $mensagem = $decoded['Body']['Text'];
-                $this->stringMensagemAtual = $mensagem;
-
-
-                //( Busca informações da instância CHATPRO no banco de dados 
-                $sql = "SELECT * FROM tbl_instancias WHERE id_instancia = $idInstancia";
-                $query = mysqli_query($conn['link'], $sql);
-                $consultaInstancia = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                $numRow = mysqli_num_rows($query);
-                if (!$query) {
-                    echo "Erro ao tentar conectar no MYSQL " . mysqli_connect_error();
-                    $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error());
-
-                    exit(0);
-                }
-                if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
-                    $this->logSis('ERR', "Instância N/E: " . $id_instancia);
-                    exit(0);
-                } else {
-                    $this->APIurl  = $consultaInstancia['endpoint'] . '/api/v1/';
-                    $this->token  = $consultaInstancia['token'];
-                    $this->numerosuporte =  $consultaInstancia['numero_suporte'];
-                    $this->conf_cad_dados =  $consultaInstancia['conf_cad_dados'];
-                    $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
-                    $this->msg_inicial =  $consultaInstancia['msg_inicial'];
-                    $this->msg_erro =  $consultaInstancia['msg_erro'];
-                    $this->menuRaiz =  $consultaInstancia['menu_raiz'];
-                    $limite = $consultaInstancia['limite'];
-                    $status = $consultaInstancia['status'];
-                    $nome = $consultaInstancia['nome'];
-                }
-
-
+                if ($decoded['Type'] == 'receveid_message') {
+                    $mensagemDeTexto = true;
+                } else if (isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'whatsapp.StickerMessage' || $decoded['Type'] == 'receveid_video_message' || $decoded['Type'] == 'receveid_image_message' || $decoded['Type'] == 'receveid_document_message' || $decoded['Type'] == 'whatsapp.ContactMessage' || $decoded['Type'] == 'whatsapp.LocationMessage')) {
+                    $this->logSis('ERR', 'Cliente tentou enviar mídias');
+$mensageDeTexto = false;
+}else{
+    exit(0);
+}
+//if (isset($decoded['Type']) && ($decoded['Type'] == 'receveid_message' || $decoded['Type'] == 'receveid_audio_message')) {
+    $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
+    $RemoteJidArray = explode("@", $RemoteJid);
+    $numero = $RemoteJidArray[0];
+    $this->numerocliente = $numero;
+    $this->numero = $numero;
+    $tipoNumero = $RemoteJidArray[1];
+    $idMensagemWhats = $decoded['Body']['Info']['Id'];
+    $timestamp = $decoded['Body']['Info']['Timestamp'];
+    $mensagem = $decoded['Body']['Text'];
+    $this->stringMensagemAtual = $mensagem;
+    
+    
+    //( Busca informações da instância CHATPRO no banco de dados 
+    $sql = "SELECT * FROM tbl_instancias WHERE id_instancia = $idInstancia";
+    $query = mysqli_query($conn['link'], $sql);
+    $consultaInstancia = mysqli_fetch_array($query, MYSQLI_ASSOC);
+    $numRow = mysqli_num_rows($query);
+    if (!$query) {
+        echo "Erro ao tentar conectar no MYSQL " . mysqli_connect_error();
+        $this->logSis('ERR', 'Mysql Connect: ' . mysqli_connect_error());
+        
+        exit(0);
+    }
+    if ($numRow == 0) { //VERIFICA SE EXISTE NO BANCO DE DADOS
+        $this->logSis('ERR', "Instância N/E: " . $id_instancia);
+        exit(0);
+    } else {
+        $this->APIurl  = $consultaInstancia['endpoint'] . '/api/v1/';
+        $this->token  = $consultaInstancia['token'];
+        $this->numerosuporte =  $consultaInstancia['numero_suporte'];
+        $this->conf_cad_dados =  $consultaInstancia['conf_cad_dados'];
+        $this->msg_cad_dados =  $consultaInstancia['msg_cad_dados'];
+        $this->msg_inicial =  $consultaInstancia['msg_inicial'];
+        $this->msg_erro =  $consultaInstancia['msg_erro'];
+        $this->menuRaiz =  $consultaInstancia['menu_raiz'];
+        $limite = $consultaInstancia['limite'];
+        $status = $consultaInstancia['status'];
+        $nome = $consultaInstancia['nome'];
+        
+        if($mensagemDeTexto == false){
+            $this->sendMessage('ErroFormatoMensagem', $this->numerocliente, "Esse atendimento funciona somente com envio de texto.\nFavor enviar sempre mensagens de texto.", "");
+            exit(0);
+        }
+    }
+    
+    
                 //() Verifica se NÃO É uma mensagem recebida de um número ou GRUPO 
                 if ($tipoNumero == 's.whatsapp.net') {
 
@@ -196,14 +209,6 @@
                         }
                     }
                 }
-            }else if(isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'whatsapp.StickerMessage' || $decoded['Type'] == 'receveid_video_message' || $decoded['Type'] == 'receveid_image_message' || $decoded['Type'] == 'receveid_document_message' || $decoded['Type'] == 'whatsapp.ContactMessage' || $decoded['Type'] == 'whatsapp.LocationMessage')){
-                $this->logSis('ERR', 'Cliente tentou enviar mídias');
-                $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
-                $RemoteJidArray = explode("@", $RemoteJid);
-                $numero = $RemoteJidArray[0];
-                $this->numerocliente = $numero;
-
-                $this->sendMessage('ErroFormatoMensagem', $this->numerocliente, "Esse atendimento funciona somente com envio de texto.\nFavor enviar sempre mensagens de texto.", "");
             }
         }
 
