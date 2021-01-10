@@ -131,11 +131,11 @@ function fctClickMenu(idContato, nome, quant, bloqueio_bot) {
     }
 
     if (bloqueio_bot == 1) {
-        document.getElementById("iBloqueio").style.color = #ff8181
+        document.getElementById("iBloqueio").style.color = "#ff8181"
         document.getElementById("btnBloqueio").title = "Bot bloqueado"
         window.bloqueio = 1
     } else {
-        document.getElementById("iBloqueio").style.color = #67e375
+        document.getElementById("iBloqueio").style.color = "#67e375"
         document.getElementById("btnBloqueio").title = "Bot liberado"
         window.bloqueio = 0
 
