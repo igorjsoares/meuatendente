@@ -1,6 +1,7 @@
 $(function () {
 
-    window.idContatoAtivo = 0;
+    window.idContatoAtivo = 0
+    window.bloqueio = 0
 
     console.log("Horário atual local: " + moment().format('DD/MM/YYY HH:mm'))
 
@@ -66,7 +67,7 @@ $(function () {
                     var nome = content[i]['numero']
                 }
                 var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
@@ -119,7 +120,7 @@ function consultaUltimaRecebida(idContato) {
 }
 
 //* FUNÇÃO Seleção da conversa
-function fctClickMenu(idContato, nome, quant) {
+function fctClickMenu(idContato, nome, quant, bloqueio_bot) {
     console.log('Id contato é: ' + idContato)
     window.idContatoAtivo = idContato
     document.getElementById("fConversaNome").innerHTML = nome
@@ -127,6 +128,17 @@ function fctClickMenu(idContato, nome, quant) {
 
     if (quant != 0) {
         document.getElementById('span' + idContato).style.visibility = 'hidden'
+    }
+
+    if (bloqueio_bot == 1) {
+        document.getElementById("iBloqueio").style.color = #ff8181
+        document.getElementById("btnBloqueio").title = "Bot bloqueado"
+        window.bloqueio = 1
+    } else {
+        document.getElementById("iBloqueio").style.color = #67e375
+        document.getElementById("btnBloqueio").title = "Bot liberado"
+        window.bloqueio = 0
+
     }
 
     $.ajax({
@@ -224,6 +236,15 @@ function alterarStatusChat(idContato) {
 
         }
     })
+    consultaStatusContato()
+}
+
+function consultaStatusContato() {
+    //& ======================
+    //& ======================
+    //& ====================== Colocar aqui as consultas dos status do contato
+    //& ======================
+    //& ======================
 }
 
 //* Atualização periódica
@@ -417,6 +438,36 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
     })
 }
 
+$("btnBloqueio").click(function () {
+    console.log("Pedido Bloqueio/Desbloqueio")
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'bloqueioBot',
+            dados: {
+                idContato: window.idContatoAtivo,
+                bloqueio: window.bloqueio
+            }
+        },
+        beforeSend: function () {
+            console.log('Atualizando Bloqueio')
+        },
+        success: function (content) {
+            console.log('Atualizado bloqueio')
+
+            //$("#overlayTabela").add('hidden')
+            //$("#overlayTabela").removeClass('d-flex')
+
+            console.log(content)
+
+            if (content == 1) {
+                console.log("Bloqueio BOT Alterado com sucesso!")
+            }
+        }
+    })
+});
 
 //* FUNÇÃO de notificação
 function notify(alert, alert_message) {
@@ -435,3 +486,4 @@ function notify(alert, alert_message) {
         })
     }
 }
+

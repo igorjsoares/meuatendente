@@ -58,14 +58,8 @@ $aleatorio = rand(1000, 10000);
                     <div-col class="col-4" style="text-align: right;">
                         <div class="card-tools">
                             <span title="3 New Messages" class="badge bg-primary">3</span>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                                <i class="fas fa-comments"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
+                            <button type="button" class="btn btn-tool" title="Bot liberado" id="btnBloqueio" data-widget="chat-pane-toggle">
+                                <i id="iBloqueio" class="fas fa-robot" style="color: #67e375"></i>
                             </button>
                         </div>
                     </div-col>
@@ -97,8 +91,8 @@ $aleatorio = rand(1000, 10000);
 
                     <div class="card-footer">
                         <div class="row">
-                        <textarea class="form-control" rows="3" placeholder="Digite a mensagem..." style="width: 84%; margin-right: 1%"></textarea>
-                                <button class="btn btn-primary" style="width: 15%">Enviar</button>
+                            <textarea class="form-control" rows="3" placeholder="Digite a mensagem..." style="width: 84%; margin-right: 1%"></textarea>
+                            <button class="btn btn-primary" style="width: 15%">Enviar</button>
 
                         </div>
                     </div>

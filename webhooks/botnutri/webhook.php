@@ -87,6 +87,13 @@
                     }
 
                     if ($numRow != 0) { //( O CONTATO EXISTE NO BANCO DE DADOS  
+
+                        if ($consultaContato['bloqueio_bot'] == 1) {
+                            $this->logSis('DEB', "Usuário bloqueado bot tentando contato. Contato: " . $consultaContato['id_contato']);
+
+                            exit(0);
+                        }
+
                         $this->id_contato = $consultaContato['id_contato'];
                         $this->idContato = $consultaContato['id_contato'];
                         $nome = $consultaContato['nome'];

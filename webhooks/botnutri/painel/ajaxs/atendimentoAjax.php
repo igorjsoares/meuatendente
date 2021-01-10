@@ -14,7 +14,7 @@ switch ($acao) {
         $dados = $_POST['dados'];
 
 
-        $sql = "SELECT c.id_contato, c.nome, c.numero, c.email, c.created_at AS contato_criado, count(i.id_contato) AS quant FROM tbl_contatos c LEFT JOIN tbl_interacoes i ON c.id_contato = i.id_contato AND i.direcao = 0 AND i.status_chat = 0 GROUP BY c.id_contato";
+        $sql = "SELECT c.id_contato, c.nome, c.numero, c.email, c.bloqueio_bot, c.created_at AS contato_criado, count(i.id_contato) AS quant FROM tbl_contatos c LEFT JOIN tbl_interacoes i ON c.id_contato = i.id_contato AND i.direcao = 0 AND i.status_chat = 0 GROUP BY c.id_contato";
         $query = mysqli_query($conn['link'], $sql);
         $numRow = mysqli_num_rows($query);
 
@@ -26,6 +26,7 @@ switch ($acao) {
                 'nome' => $campanha['nome'],
                 'numero' => $campanha['numero'],
                 'email' => $campanha['email'],
+                'bloqueio_bot' => $campanha['bloqueio_bot'],
                 'contatoCriado' => $campanha['contato_criado'],
                 'quant' => $campanha['quant']
 
@@ -102,6 +103,28 @@ switch ($acao) {
         $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
 
         $sql = "UPDATE tbl_interacoes SET status_chat = 1 WHERE id_contato = $idContato";
+
+        $query = mysqli_query($conn['link'], $sql);
+
+        if ($query == true) {
+            echo 1;
+        } else {
+            //echo $sql;
+            echo 0;
+        }
+        break;
+
+    case 'bloqueioBot':
+        $dados = $_POST['dados'];
+        $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
+        $bloqueio = filter_var($dados['bloqueio'], FILTER_SANITIZE_STRING);
+        if ($bloqueio == 1) {
+            $bloqueio = 0;
+        } else {
+            $bloqueio = 1;
+        }
+
+        $sql = "UPDATE tbl_contatos SET bloqueio_bot = $bloqueio WHERE id_contato = $idContato";
 
         $query = mysqli_query($conn['link'], $sql);
 
