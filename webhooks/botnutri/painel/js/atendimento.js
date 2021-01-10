@@ -464,6 +464,16 @@ $("#btnBloqueio").click(function () {
             console.log(content)
 
             if (content == 1) {
+                if (window.bloqueio == 1) { //Se era igual a 1
+                    document.getElementById("iBloqueio").style.color = "#67e375"
+                    document.getElementById("btnBloqueio").title = "Bot liberado"
+                    window.bloqueio = 0
+                } else {
+                    document.getElementById("iBloqueio").style.color = "#ff8181"
+                    document.getElementById("btnBloqueio").title = "Bot bloqueado"
+                    window.bloqueio = 1
+            
+                }
                 console.log("Bloqueio BOT Alterado com sucesso!")
             }
         }
