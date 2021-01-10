@@ -174,7 +174,7 @@ function fctClickMenu(idContato, nome, quant) {
 
                 if (i == (content.length - 1)) {
                     window.ultimaRecebidaAtiva = content[i]['dataEnvioPadrao']
-                    console.log("Window última Retorno Ativo: "+window.ultimaRecebidaAtiva)
+                    console.log("Window última Retorno Ativo: " + window.ultimaRecebidaAtiva)
                 }
 
             }
@@ -241,12 +241,12 @@ function atualizacaoPeriodica() {
         },
         success: function (content) {
             var ultimaRecebida = content[0]['ultimo_envio']
-            
+
             if (window.ultimaRecebida != ultimaRecebida) {
                 window.ultimaRecebida = ultimaRecebida
-        
+
                 if (window.idContatoAtivo != 0) {
-                    
+
                     //( Consulta a última mensagem recebida do contato ativo pra ver se teve atualização desse contato
                     $.ajax({
                         url: 'ajaxs/atendimentoAjax.php',
@@ -262,31 +262,31 @@ function atualizacaoPeriodica() {
                             console.log('Consultando ultima recebida Ativa')
                         },
                         success: function (content) {
-                             var ultimaRecebidaAtiva = content[0]['ultimo_envio']
+                            var ultimaRecebidaAtiva = content[0]['ultimo_envio']
                             console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
-                            
+
                             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
                                 consultaConversaAtiva(window.idContatoAtivo, window.ultimaRecebidaAtiva)
                                 window.ultimaRecebidaAtiva = ultimaRecebidaAtiva
 
-                            }else{
+                            } else {
                                 console.log('Não precisou atualizar a conversa ativa')
                             }
                         }
-                    })    
-                }else{
+                    })
+                } else {
                     consultaMenu()
                 }
-            }else{
+            } else {
                 console.log('Não atualiza o Menu. Última mensagem reebida geral em: ' + window.ultimaRecebida)
             }
-            
+
 
         }
     })
 
 
-    
+
 
 }
 
@@ -406,6 +406,9 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
             consultaMenu()
         }
     })
+
+    var div = $('#divMensagens')[0];
+    div.scrollTop = div.scrollHeight;
 }
 
 
