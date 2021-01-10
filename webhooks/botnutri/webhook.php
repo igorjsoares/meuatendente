@@ -197,6 +197,7 @@
                     }
                 }
             }else if(isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'whatsapp.StickerMessage' || $decoded['Type'] == 'receveid_video_message' || $decoded['Type'] == 'receveid_image_message' || $decoded['Type'] == 'receveid_document_message' || $decoded['Type'] == 'whatsapp.ContactMessage' || $decoded['Type'] == 'whatsapp.LocationMessage')){
+                $this->logSis('ERR', 'Cliente tentou enviar mídias');
                 $RemoteJid = $decoded['Body']['Info']['RemoteJid'];
                 $RemoteJidArray = explode("@", $RemoteJid);
                 $numero = $RemoteJidArray[0];
