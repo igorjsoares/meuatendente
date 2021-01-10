@@ -293,13 +293,13 @@ function atualizacaoPeriodica() {
         
                     
                 }
+            }else{
+                console.log('Não atualiza o Menu. Última mensagem reebida geral em: ' + window.ultimaRecebida)
             }
             
-            console.log('Return da Ultima recebida: ' + window.ultimaRecebida)
 
         }
     })
-    console.log('VAR dentro da atualização periódica. Ultima recebida: ' + ultimaRecebida)
 
 
     
@@ -308,7 +308,7 @@ function atualizacaoPeriodica() {
 
 //* FUNÇÃO de consulta do Menu
 function consultaMenu() {
-    console.log("FCT consulta Menu")
+    console.log("FCT consulta Menu. Teve diferença entre a ultimo envio e o registrado")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
