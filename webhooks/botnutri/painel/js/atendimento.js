@@ -121,6 +121,7 @@ function consultaUltimaRecebida(idContato) {
 //* FUNÇÃO Seleção da conversa
 function fctClickMenu(idContato, nome, quant) {
     console.log('Id contato é: ' + idContato)
+    window.idContatoAtivo = idContato
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
 
@@ -258,7 +259,7 @@ function atualizacaoPeriodica() {
                             }
                         },
                         beforeSend: function () {
-                            console.log('Consultando ultima recebida')
+                            console.log('Consultando ultima recebida Ativa')
                         },
                         success: function (content) {
                              var ultimaRecebidaAtiva = content[0]['ultimo_envio']
