@@ -307,6 +307,8 @@ function atualizacaoPeriodica() {
 
                             } else {
                                 console.log('Não precisou atualizar a conversa ativa')
+                                consultaMenu(ultimaAnterior)
+
                             }
                         }
                     })
@@ -356,7 +358,7 @@ function consultaMenu(ultimaRecebida) {
                 if (typeof 'li' + content[i]['idContato'] != "undefined") { //( Existe
                     var span = document.getElementById('span' + content[i]['idContato'])
                     span.innerHTML = parseFloat($('#span' + content[i]['idContato']).html()) + parseFloat(content[i]['quant'])
-                    if(span.style.display == 'none'){
+                    if (span.style.display == 'none') {
                         span.style.display = 'block'
                     }
 
