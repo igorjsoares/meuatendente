@@ -275,11 +275,13 @@ function atualizacaoPeriodica() {
             console.log('Consultando ultima recebida. Window.ultimaRecebida: ' + window.ultimaRecebida)
         },
         success: function (content) {
-            var ultimaRecebida = content[0]['ultimo_envio']
+            
+            var ultimaRecebidaBanco = content[0]['ultimo_envio']
+            console.log('Fim da consulta. ultimaRecebida do banco: ' + ultimaRecebidaBanco)
 
-            if (window.ultimaRecebida != ultimaRecebida) {
+            if (window.ultimaRecebida != ultimaRecebidaBanco) {
                 var ultimaAnterior = window.ultimaRecebida
-                window.ultimaRecebida = ultimaRecebida
+                window.ultimaRecebida = ultimaRecebidaBanco
 
                 if (window.idContatoAtivo != 0) {
 
