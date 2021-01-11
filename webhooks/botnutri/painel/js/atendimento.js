@@ -67,7 +67,7 @@ $(function () {
                     var nome = content[i]['numero']
                 }
                 var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li class="nav-item" id="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" value="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
