@@ -102,19 +102,15 @@ $aleatorio = rand(1000, 10000);
                     <div class="row" style="padding: 20px;">
 
                     </div>
-                    <button id="ordena-menor">Sort</button>
-                    <button id="ordena-maior">Sort</button>
-                    <!-- <ul id="list">
-                        <li value="2021-01-11 05:36:36">doesnmatter1</li>
-                        <li value="2021-01-11 05:22:27">doesntmatter2</li>
-                        <li value="2021-01-07 19:39:31">doesntmatter3</li>
-                    </ul> -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
                     <ul id="list">
                         <li value="2021-01-11 05:36:36">doesnmatter1</li>
                         <li value="2021-01-11 05:22:27">doesntmatter2</li>
                         <li value="2021-01-11 05:22:27">doesntmatter3</li>
                     </ul>
+
+                    <button id="ordena-menor">Sort</button>
+                    <button id="ordena-maior">Sort</button>
 
                 </div>
                 <!-- /.col -->
