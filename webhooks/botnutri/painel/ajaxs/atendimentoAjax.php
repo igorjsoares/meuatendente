@@ -121,7 +121,7 @@ switch ($acao) {
 
             array_push($arrayMensagens, array(
                 'id_retorno' => $retornos['id_retorno'],
-                'mensagem' => $retornos['mensagem']
+                'mensagem' => utf8_encode($retornos['mensagem'])
             ));
         }
 
