@@ -302,7 +302,7 @@ function atualizacaoPeriodica() {
                         }
                     })
                 } else {
-                    consultaMenu()
+                    consultaMenu(window.ultimaRecebida)
                 }
             } else {
                 console.log('Não atualiza o Menu. Última mensagem reebida geral em: ' + window.ultimaRecebida)
@@ -318,11 +318,7 @@ function atualizacaoPeriodica() {
 }
 
 //* FUNÇÃO de consulta do Menu
-function consultaMenu() {
-    //&================
-    //&================
-    //&================ Colocar aqui uma inteligência de entender o que tem no menu ou pesquisar somente o que mudou
-    //&================ ao invés de trazer todos os contatos do menu novamente
+function consultaMenu(ultimaRecebida) {
     console.log("FCT consulta Menu. Teve diferença entre a ultimo envio e o registrado")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
@@ -331,6 +327,7 @@ function consultaMenu() {
         data: {
             acao: 'consultaMenuAtendimento',
             dados: {
+                ultimaRecebida: ultimaRecebida
             }
         },
         beforeSend: function () {
