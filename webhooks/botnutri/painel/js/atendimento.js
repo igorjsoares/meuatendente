@@ -545,7 +545,8 @@ function envioMensagem(numeroEnvio, mensagemEnvio, chat) {
             dados: {
                 idContato: window.idContatoAtivo,
                 numero: numeroEnvio,
-                mensagem: mensagemEnvio
+                mensagem: mensagemEnvio,
+                chat: chat
             }
         },
         beforeSend: function () {
@@ -560,8 +561,8 @@ function envioMensagem(numeroEnvio, mensagemEnvio, chat) {
             console.log(content)
 
             if (content == 1) {
-                if (chat != 1) {
-                    notify('success', "Contato enviada para o número de suporte.")
+                if (chat == 0) {
+                    notify('success', "Contato enviado para o número de suporte.")
                 } else {
                     console.log("Mensagem enviada com sucesso!")
 

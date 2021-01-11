@@ -149,7 +149,8 @@ switch ($acao) {
         $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
         $numero = filter_var($dados['numero'], FILTER_SANITIZE_STRING);
         $mensagem = filter_var($dados['mensagem'], FILTER_SANITIZE_STRING);
-        logSis('REQ', 'Requisição de envio Número: ' . $numero . ' Mensagem: ' . $mensagem);
+        $chat = filter_var($dados['chat'], FILTER_SANITIZE_STRING);
+        logSis('REQ', 'Requisição de envio Número: ' . $numero . ' Mensagem: ' . $mensagem . ' Chat: ' . $chat);
 
         $method = 'send_message';
         $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $mensagem);
@@ -177,7 +178,7 @@ switch ($acao) {
         $statusEnvio = $resposta['message'];
         if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
             //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
-            if ($motivo == 'Receptivo') {
+            if ($chat == 0) {
                 echo 1;
                 exit(0);
             }
@@ -195,7 +196,7 @@ switch ($acao) {
             echo $retorno;
 
         } else {
-            if ($motivo == 'Receptivo') {
+            if ($chat == 0) {
                 echo 0;
                 exit(0);
             }
