@@ -100,7 +100,7 @@ $aleatorio = rand(1000, 10000);
 
                     <!--/.direct-chat -->
                     <div class="row" style="padding: 20px;">
-
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
                         <ul id="Teste">
                             <li value="20">doesnmatter1</li>
                             <li value="10">doesntmatter2</li>
