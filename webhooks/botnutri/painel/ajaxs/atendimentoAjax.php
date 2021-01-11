@@ -160,9 +160,9 @@ switch ($acao) {
             $data = json_encode($data);
         }
 
-        $options = stream_context_create(['https' => [
+        $options = stream_context_create(['http' => [
             'method'  => 'POST',
-            'header'  => "Content-type: application/json\r\nAuthorization: $token\r\n",
+            'header'  => "Content-type: application/json\r\nAuthorization: 69fa9a02548516e0e7507d0265b1caf2e3fde824\r\n",
             'content' => $data
         ]]);
 
