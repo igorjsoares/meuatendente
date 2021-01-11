@@ -85,7 +85,7 @@ $(function () {
                 conteudo += '</div>'
                 conteudo += '</div>'
                 conteudo += '</li>'
-                conteudo += '</div>'
+                //conteudo += '</div>'
             }
 
             document.getElementById('ulMenuConversas').innerHTML = conteudo
