@@ -68,7 +68,7 @@ $(function () {
                 }
                 var nomeComAspas = "'" + nome + "'"
 
-                conteudo += '<li class="nav-item" id="li' + content[i]['idContato'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" id="li' + content[i]['idContato'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ', ' + content[i]['numero'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
@@ -128,9 +128,10 @@ function consultaUltimaRecebida(idContato) {
 }
 
 //* FUNÇÃO Seleção da conversa
-function fctClickMenu(idContato, nome, quant, bloqueio_bot) {
+function fctClickMenu(idContato, nome, quant, bloqueio_bot, numeroContato) {
     console.log('Id contato é: ' + idContato)
     window.idContatoAtivo = idContato
+    window.numeroContato = numeroContato
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
 
@@ -511,6 +512,49 @@ $("#btnBloqueio").click(function () {
         }
     })
 });
+
+//* Ação de envio de mensagem
+$("#btnEnvio").click(function () {
+    console.log("Clicou no botão de envio")
+    var numero = window.numeroContato
+    var mensagem = $("#taMensagem").val()
+    envioMensagem(numero, mensagem)
+})
+
+//* Envio de mensagem
+function envioMensagem(numeroEnvio, mensagemEnvio){
+    console.log("Envio acionado")
+
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'envioMensagem',
+            dados: {
+                numero: numeroEnvio,
+                menssagem: mensagemEnvio
+            }
+        },
+        beforeSend: function () {
+            console.log('Enviando Mensagem')
+        },
+        success: function (content) {
+            console.log('Atualizado bloqueio')
+
+            //$("#overlayTabela").add('hidden')
+            //$("#overlayTabela").removeClass('d-flex')
+
+            console.log(content)
+
+            if (content == true){
+                console.log("Mensagem enviada com sucesso!")
+            }else{
+                console.log("Mensagem NÃO enviada")
+            }
+        }
+    })
+}
 
 //* FUNÇÃO de notificação
 function notify(alert, alert_message) {
