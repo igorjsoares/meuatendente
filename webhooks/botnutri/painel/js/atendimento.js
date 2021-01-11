@@ -390,23 +390,23 @@ function ordenarDecrescente(a, b) {
     return ($(b).val()) < ($(a).val()) ? 1 : -1;
 }
 
-$('#ordena-menor').click(function() {
-    $("#teste li").sort(numOrdDesc).appendTo('#teste');
-  });
-  
-  $('#ordena-maior').click(function() {
-    $("#teste li").sort(numOrdCres).appendTo('#teste');
-  });
-  
-  
-  function numOrdDesc(a, b) {
+$('#ordena-menor').click(function () {
+    $("#list li").sort(numOrdDesc).appendTo('#list');
+});
+
+$('#ordena-maior').click(function () {
+    $("#list li").sort(numOrdCres).appendTo('#list');
+});
+
+
+function numOrdDesc(a, b) {
     return ($(b).val()) < ($(a).val()) ? 1 : -1;
-  }
-  
-  function numOrdCres(a, b) {
+}
+
+function numOrdCres(a, b) {
     return ($(b).val()) > ($(a).val()) ? 1 : -1;
-  }
-  
+}
+
 
 //* FUNÇÃO de conversa Ativa
 function consultaConversaAtiva(idContato, ultimaRecebida) {
