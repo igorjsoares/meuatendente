@@ -152,7 +152,7 @@ switch ($acao) {
         $method = 'send_message';
         $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $mensagem);
 
-        include("dados_conexao.php");
+        include("../dados_conexao.php");
 
         $url = 'https://' . $APIurl . $method;
         if (is_array($data)) {
@@ -213,7 +213,7 @@ switch ($acao) {
 //* Inserir interação 
 function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $opcoesVariaveis, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
 {
-    include("dados_conexao.php");
+    include("../dados_conexao.php");
 
     $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES ($id_instancia, $direcao, '$id_contato', '$tipo', '$subTipo', '$opcoesVariaveis', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
     logSis('DEB', 'SQL : ' . $sql);
