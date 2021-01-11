@@ -631,7 +631,7 @@ $('#modalPreview').on('show.bs.modal', function (e) {
 
             console.log(content)
 
-            if (content == 1) {
+            if (content != '') {
                 document.getElementById('pMensagem').innerHTML = content[0]['mensagem']
             } else {
                 console.log("Mensagem NÃO enviada")
