@@ -182,15 +182,7 @@ switch ($acao) {
                 exit(0);
             }
             $id_resposta = $resposta['requestMenssage']['id'];
-            if ($retorno == '') {
-                $tipo = '';
-                $subTipo = '';
-                $idRetorno = '';
-            } else {
-                $tipo = $retorno['modo'];
-                $subTipo = $retorno['subtipo'];
-                $idRetorno = $retorno['id_retorno'];
-            }
+            
             if (isset($retorno['opcoes']) && $retorno['opcoes'] != '') {
                 $opcoes = $retorno['opcoes'];
             } else {
@@ -198,7 +190,7 @@ switch ($acao) {
             }
             //logSis('REQ', 'Chegou aqui - Instância: ' . $idInstancia . ' IdContato: ' . $id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-            $retorno = inserirInteracao($idInstancia, 1, $idContato, $tipo, $subTipo, $opcoes, $ultimoRetorno, $idRetorno, $id_interacao_cliente, $id_resposta, $motivo, 1);
+            $retorno = inserirInteracao($idContato, $id_resposta, $mensagem);
             return true;
         } else {
             if ($motivo == 'Receptivo') {
@@ -213,13 +205,13 @@ switch ($acao) {
 }
 
 //* Inserir interação 
-function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo, $opcoesVariaveis, $menuAnterior, $id_retorno, $resposta, $id_mensagem, $mensagem, $status)
+function inserirInteracao($idContato, $id_resposta, $mensagem)
 {
     logSis('DEB', 'Entrou no inserir interação');
 
     include("../dados_conexao.php");
 
-    $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, tipo, subtipo, opcoes_variaveis, menu_anterior, id_retorno, resposta, id_mensagem, mensagem, status, data_envio) VALUES (1, $direcao, '$id_contato', '$tipo', '$subTipo', '$opcoesVariaveis', '$menuAnterior', '$id_retorno', '$resposta', '$id_mensagem', '$mensagem', $status, NOW())";
+    $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, id_mensagem, mensagem, status, status_chat, data_envio) VALUES (1, 1, '$id_contato', '$id_resposta', '$mensagem', 1, 1, NOW())";
     logSis('DEB', 'SQL : ' . $sql);
 
     $resultado = mysqli_query($conn['link'], $sql);
@@ -227,14 +219,12 @@ function inserirInteracao($id_instancia, $direcao, $id_contato, $tipo, $subTipo,
         logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
         exit(0);
     }
-    if ($direcao == 0) {
-        $id_interacao_cliente = mysqli_insert_id($conn['link']);
-    }
     $id_interacao = mysqli_insert_id($conn['link']);
 
     if ($resultado != '1') {
         logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_error($conn['link']));
         logSis('DEB', 'SQL : ' . $sql);
+        return 0;
     } else {
         return 1;
         logSis('SUC', 'Insert interação IN. ID_Interação: ' . $id_interacao);
