@@ -565,7 +565,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
                 conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">Agora</div>'
                 conteudo += '</div>'
 
-                document.getElementById('divMensagens').innerHTML = conteudo
+                document.getElementById('divMensagens').innerHTML += conteudo
 
 
             } else {
