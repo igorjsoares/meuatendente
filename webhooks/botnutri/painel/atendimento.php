@@ -57,7 +57,7 @@ $aleatorio = rand(1000, 10000);
                     </div>
                     <div-col class="col-4" style="text-align: right;">
                         <div class="card-tools">
-                            <span title="3 New Messages" class="badge bg-primary">3</span>
+                            <!-- <span title="3 New Messages" class="badge bg-primary">3</span> -->
                             <button type="button" class="btn btn-tool" title="Enviar para suporte" id="btnSuporte">
                                 <i id="iSuporte" class="fas fa-headset"></i>
                             </button>
