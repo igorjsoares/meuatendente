@@ -571,6 +571,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
             } else {
                 console.log("Mensagem NÃO enviada")
                 notify('error', 'A mensagem não foi enviada. Verifique a conexão com a API e tente novamente.')
+                
                 //& =========
                 //& =========
                 //& ========= VERIFICAR CONEXÃO COM A API AQUI
