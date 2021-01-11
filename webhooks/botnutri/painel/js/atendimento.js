@@ -360,7 +360,7 @@ function consultaMenu(ultimaRecebida) {
                         span.style.display = 'block'
                     }
 
-                    var li = "li" + content['idContato']
+                    var li = "li" + content[i]['idContato']
                     $("#" + li).parent().prepend(document.getElementById(li));
 
                 } else { //( não existe
