@@ -135,7 +135,6 @@ echo "<script>window.tipoEmpresa = '" . $_SESSION['NP_tipo_empresa'] . "'</scrip
 
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
