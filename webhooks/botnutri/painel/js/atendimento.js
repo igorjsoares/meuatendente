@@ -392,14 +392,14 @@ function consultaMenu(ultimaRecebida) {
 
 $('#ordena-menor').click(function () {
     $("#list li").sort(numOrdDesc).appendTo('#list');
-    console.log("Ordenar Menor")
+    //console.log("Ordenar Menor")
     //$("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
 
 });
 
 $('#ordena-maior').click(function () {
     $("#list li").sort(numOrdCres).appendTo('#list');
-    console.log("Ordenar Maior")
+    //console.log("Ordenar Maior")
     //$("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 });
 
