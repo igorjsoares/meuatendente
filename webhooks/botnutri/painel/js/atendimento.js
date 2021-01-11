@@ -2,7 +2,7 @@ $(function () {
 
     window.idContatoAtivo = 0
     window.bloqueio = 0
-    window.numeroSuporte = '5562999599941'
+    window.numeroSuporte = '556299599941'
 
     console.log("Horário atual local: " + moment().format('DD/MM/YYY HH:mm'))
 
