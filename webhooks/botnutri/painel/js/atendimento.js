@@ -10,7 +10,7 @@ $(function () {
     console.log("Iniciando atendimento.js")
 
     window.previsao = moment()
-    window.tempoAtualizacao = 1000 * 30 //x*y onde y representa os segundos
+    window.tempoAtualizacao = 1000 * 10 //x*y onde y representa os segundos
 
     window.intervalo = window.setInterval(atualizacaoPeriodica, window.tempoAtualizacao)
 
@@ -272,7 +272,7 @@ function atualizacaoPeriodica() {
             }
         },
         beforeSend: function () {
-            console.log('Consultando ultima recebida')
+            console.log('Consultando ultima recebida. Window.ultimaRecebida: ' + window.ultimaRecebida)
         },
         success: function (content) {
             var ultimaRecebida = content[0]['ultimo_envio']
@@ -358,7 +358,7 @@ function consultaMenu(ultimaRecebida) {
                 if (typeof 'li' + content[i]['idContato'] != "undefined") { //( Existe
                     var span = document.getElementById('span' + content[i]['idContato'])
                     span.innerHTML = parseFloat($('#span' + content[i]['idContato']).html()) + parseFloat(content[i]['quant'])
-                    if (span.style.display == 'none') {
+                    if (span.style.display == 'none' && window.idContatoAtivo != content[i]['idContato']) {
                         span.style.display = 'block'
                     }
 
