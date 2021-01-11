@@ -356,8 +356,8 @@ function consultaMenu(ultimaRecebida) {
                 if (typeof 'li' + content[i]['idContato'] != "undefined") { //( Existe
                     var span = document.getElementById('span' + content[i]['idContato'])
                     span.innerHTML = parseFloat($('#span' + content[i]['idContato']).html()) + parseFloat(content[i]['quant'])
-                    if(span.style.display == none){
-                        span.style.display = block
+                    if(span.style.display == 'none'){
+                        span.style.display = 'block'
                     }
 
                     var li = "li" + content['idContato']
