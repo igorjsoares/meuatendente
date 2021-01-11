@@ -316,7 +316,7 @@ function atualizacaoPeriodica() {
                     consultaMenu(ultimaAnterior)
                 }
             } else {
-                console.log('Não atualiza o Menu. Última mensagem reebida geral em: ' + window.ultimaRecebida)
+                console.log('Não atualiza o Menu. Última mensagem recebida geral em: ' + window.ultimaRecebida)
             }
 
 
