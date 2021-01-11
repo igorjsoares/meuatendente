@@ -13,7 +13,7 @@ switch ($acao) {
     case 'consultaMenuAtendimento':
         $dados = $_POST['dados'];
         $ultimaRecebida = filter_var(@$dados['ultimaRecebida'], FILTER_SANITIZE_STRING);
-        if (isset($ultimaRecebida)) {
+        if ($ultimaRecebida != "") {
             $whereUltimaRecebida = "AND i.data_envio > '$ultimaRecebida' ";
             $sql = "SELECT c.id_contato, c.nome, c.numero, c.email, c.bloqueio_bot, c.created_at AS contato_criado, count(i.id_contato) AS quant FROM tbl_contatos c, tbl_interacoes i WHERE c.id_contato = i.id_contato AND i.direcao = 0 AND i.status_chat = 0 $whereUltimaRecebida GROUP BY c.id_contato";
         }else{
