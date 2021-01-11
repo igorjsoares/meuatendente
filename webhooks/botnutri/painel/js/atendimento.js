@@ -391,11 +391,11 @@ function ordenarDecrescente(a, b) {
 }
 
 $('#ordena-menor').click(function () {
-    $("#list li").sort(numOrdDesc).appendTo('#list');
+    $("#teste li").sort(numOrdDesc).appendTo('#teste');
 });
 
 $('#ordena-maior').click(function () {
-    $("#list li").sort(numOrdCres).appendTo('#list');
+    $("#teste li").sort(numOrdCres).appendTo('#teste');
 });
 
 

@@ -102,7 +102,7 @@ $aleatorio = rand(1000, 10000);
                     <div class="row" style="padding: 20px;">
 
                     </div>
-                        <ul id="list">
+                        <ul id="teste">
                             <li value="20">doesnmatter1</li>
                             <li value="10">doesntmatter2</li>
                             <li value="5">doesntmatter3</li>
