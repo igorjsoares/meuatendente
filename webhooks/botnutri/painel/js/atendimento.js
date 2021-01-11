@@ -2,6 +2,7 @@ $(function () {
 
     window.idContatoAtivo = 0
     window.bloqueio = 0
+    window.numeroSuporte = '5562999599941'
 
     console.log("Horário atual local: " + moment().format('DD/MM/YYY HH:mm'))
 
@@ -131,6 +132,7 @@ function consultaUltimaRecebida(idContato) {
 function fctClickMenu(idContato, nome, quant, bloqueio_bot, numeroContato) {
     console.log('Id contato é: ' + idContato)
     window.idContatoAtivo = idContato
+    window.nomeContato = nome
     window.numeroContato = numeroContato
     document.getElementById("fConversaNome").innerHTML = nome
     document.getElementById("imgConversaAvatar").src = 'assets/empresas/avatar.png?random=' + new Date().getTime();
@@ -471,6 +473,15 @@ function consultaConversaAtiva(idContato, ultimaRecebida, ultimaAnteriorGeral) {
     })
 }
 
+//* Ação do Botão de envio para o suporte
+$("#btnSuporte").click(function () {
+    console.log("Clicou no botão de envio Suporte")
+    var numero = window.numeroSuporte
+    var mensagem = "*SUPORTE ENCAMINHADO*\nO contato " + window.nomeContato + " (" + window.idContatoAtivo + ") foi encaminhado para suporte, clique no link abaixo para acessar a conversa com ele.\nhttps://wa.me/" + $window.numeroContato
+    envioMensagem(numero, mensagem, chat)
+})
+
+//* Ação do Botão de bloqueio do BOT
 $("#btnBloqueio").click(function () {
     console.log("Pedido Bloqueio/Desbloqueio")
 
@@ -522,7 +533,7 @@ $("#btnEnvio").click(function () {
 })
 
 //* Envio de mensagem
-function envioMensagem(numeroEnvio, mensagemEnvio) {
+function envioMensagem(numeroEnvio, mensagemEnvio, chat) {
     console.log("Envio acionado. Número: " + numeroEnvio + " Mensagem: " + mensagemEnvio)
 
     $.ajax({
@@ -549,22 +560,26 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
             console.log(content)
 
             if (content == 1) {
-                console.log("Mensagem enviada com sucesso!")
+                if (chat != 1) {
+                    notify('success', "Contato enviada para o número de suporte.")
+                } else {
+                    console.log("Mensagem enviada com sucesso!")
 
-                document.getElementById('taMensagem').value = ""
+                    document.getElementById('taMensagem').value = ""
 
-                conteudo = ""
-                conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
-                conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
-                conteudo += mensagemEnvio
-                conteudo += '</div>'
-                conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">Enviado pelo chat</div>'
-                conteudo += '</div>'
+                    conteudo = ""
+                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
+                    conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
+                    conteudo += mensagemEnvio
+                    conteudo += '</div>'
+                    conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">Enviado pelo chat</div>'
+                    conteudo += '</div>'
 
-                document.getElementById('divMensagens').innerHTML += conteudo
+                    document.getElementById('divMensagens').innerHTML += conteudo
 
-                var objDiv = document.getElementById("divMensagens");
-                objDiv.scrollTop = objDiv.scrollHeight
+                    var objDiv = document.getElementById("divMensagens");
+                    objDiv.scrollTop = objDiv.scrollHeight
+                }
 
 
 
