@@ -391,16 +391,16 @@ function consultaMenu(ultimaRecebida) {
 }
 
 $('#ordena-menor').click(function () {
-    $("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
+    $("#ulTeste li").sort(numOrdDesc).appendTo('#ulTeste');
     //console.log("Ordenar Menor")
-    //$("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
+    //$("#ulTeste li").sort(numOrdDesc).appendTo('#ulTeste');
 
 });
 
 $('#ordena-maior').click(function () {
-    $("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
+    $("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
     //console.log("Ordenar Maior")
-    //$("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
+    //$("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
 });
 
 //* Ordenação descrescente de uma lista
