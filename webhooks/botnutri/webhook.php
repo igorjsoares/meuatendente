@@ -25,7 +25,7 @@
             ob_end_clean();
 
             //Coloca para salvar todas as requisições recebidas em um arquivo de log
-            //file_put_contents('inputs.log', $input . PHP_EOL, FILE_APPEND);
+            file_put_contents('inputs.log', $input . PHP_EOL, FILE_APPEND);
 
 
 
