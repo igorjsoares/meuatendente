@@ -25,12 +25,12 @@
             ob_end_clean();
 
             //Coloca para salvar todas as requisições recebidas em um arquivo de log
-            file_put_contents('inputs.log', $input . PHP_EOL, FILE_APPEND);
+            //file_put_contents('inputs.log', $input . PHP_EOL, FILE_APPEND);
 
 
 
             //() Verifica SE É uma mensagem recebida 
-            if (isset($decoded['Type']) && $decoded['Type'] == 'receveid_message') {
+            if (isset($decoded['Type'])) {
                 $this->logSis('DEB', 'Tipo de mensagem: ' . $decoded['Type']);
                 if ($decoded['Type'] == 'receveid_message') {
                     $mensagemDeTexto = true;
