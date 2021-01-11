@@ -31,6 +31,7 @@
 
             //() Verifica SE É uma mensagem recebida 
             if (isset($decoded['Type']) && $decoded['Type'] == 'receveid_message') {
+                $this->logSis('DEB', 'Tipo de mensagem: ' . $decoded['Type']);
                 if ($decoded['Type'] == 'receveid_message') {
                     $mensagemDeTexto = true;
                 } else if (isset($decoded['Type']) && ($decoded['Type'] == 'receveid_audio_message' || $decoded['Type'] == 'whatsapp.StickerMessage' || $decoded['Type'] == 'receveid_video_message' || $decoded['Type'] == 'receveid_image_message' || $decoded['Type'] == 'receveid_document_message' || $decoded['Type'] == 'whatsapp.ContactMessage' || $decoded['Type'] == 'whatsapp.LocationMessage')) {
@@ -80,6 +81,7 @@
                     $nome = $consultaInstancia['nome'];
 
                     if ($mensagemDeTexto == false) {
+                        $this->logSis('DEB', 'Identificou mensagem de texto false.');
                         $this->sendMessage('ErroFormatoMensagem', $this->numerocliente, "Esse atendimento funciona somente com envio de texto.\nFavor enviar sempre mensagens de texto.", "");
                         exit(0);
                     }
