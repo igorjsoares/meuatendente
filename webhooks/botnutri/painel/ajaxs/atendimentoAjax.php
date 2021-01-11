@@ -17,7 +17,7 @@ switch ($acao) {
             $whereUltimaRecebida = "AND i.data_envio > '$ultimaRecebida' ";
             $sql = "SELECT c.id_contato, c.nome, c.numero, c.email, c.bloqueio_bot, c.created_at AS contato_criado, count(i.id_contato) AS quant, max(i.data_envio) AS ultima_recebida FROM tbl_contatos c, tbl_interacoes i WHERE c.id_contato = i.id_contato AND i.direcao = 0 AND i.status_chat = 0 $whereUltimaRecebida GROUP BY c.id_contato";
         }else{
-            $sql = "SELECT c.id_contato, c.nome, c.numero, c.email, c.bloqueio_bot, c.created_at AS contato_criado, count(i.id_contato) AS quant, max(i2.data_envio) AS ultima_recebida FROM tbl_contatos c LEFT JOIN tbl_interacoes i ON c.id_contato = i.id_contato AND i.direcao = 0 AND i.status_chat = 0 LEFT JOIN tbl_interacoes i2 ON c.id_contato = i2.id_contato AND i2.direcao = 0 GROUP BY c.id_contato";
+            $sql = "SELECT c.id_contato, c.nome, c.numero, c.email, c.bloqueio_bot, c.created_at AS contato_criado, (count(i.id_contato)-sum(status_chat)) AS quant, max(i.data_envio) AS ultima_recebida FROM tbl_contatos c LEFT JOIN tbl_interacoes i ON c.id_contato = i.id_contato AND i.direcao = 0 GROUP BY c.id_contato";
         }
 
         $query = mysqli_query($conn['link'], $sql);
