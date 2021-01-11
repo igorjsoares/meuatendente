@@ -145,7 +145,7 @@ switch ($acao) {
         break;
 
     case 'envioMensagem':
-        
+        $dados = $_POST['dados'];
         $numero = filter_var($dados['numero'], FILTER_SANITIZE_STRING);
         $mensagem = filter_var($dados['mensagem'], FILTER_SANITIZE_STRING);
         logSis('REQ', 'Requisição de envio Número: ' . $numero . ' Mensagem: ' . $mensagem);
