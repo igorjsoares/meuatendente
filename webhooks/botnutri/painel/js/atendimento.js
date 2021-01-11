@@ -89,7 +89,7 @@ $(function () {
                 */
                 conteudo += '<li class="nav-item" value="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
 
-                conteudo += nome
+                conteudo += content[i]['ultimaRecebida']
                 conteudo += '</li>'
             }
 
