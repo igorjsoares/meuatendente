@@ -100,8 +100,18 @@ $aleatorio = rand(1000, 10000);
 
                     <!--/.direct-chat -->
                     <div class="row" style="padding: 20px;">
-                        <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
-                        <button style="color: white; background-color: #f1a583; border: none;" type="submit" class="btn btn-primary btn-block" name="btn-entrar" onclick="" id='btn-entrar'><b>ENTRAR</b></button>
+
+                        <ul id="Teste">
+                            <li value="20">doesnmatter1</li>
+                            <li value="10">doesntmatter2</li>
+                            <li value="5">doesntmatter3</li>
+                            <li value="30">doesntmatter4</li>
+                            <li value="519">doesntmatter5</li>
+                        </ul>
+
+                        <button id="ordena-menor">Sort</button>
+                        <button id="ordena-maior">Sort</button>
+
                     </div>
                 </div>
                 <!-- /.col -->
@@ -641,7 +651,5 @@ $aleatorio = rand(1000, 10000);
 
 <!-- Select2 -->
 <script src="plugins/select2/js/select2.full.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
 <script src="js/atendimento.js"></script>
