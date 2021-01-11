@@ -540,7 +540,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
             console.log('Enviando Mensagem')
         },
         success: function (content) {
-            console.log('Atualizado bloqueio')
+            console.log('Finalizado envio')
 
             //$("#overlayTabela").add('hidden')
             //$("#overlayTabela").removeClass('d-flex')
