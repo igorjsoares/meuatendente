@@ -102,15 +102,6 @@ $aleatorio = rand(1000, 10000);
                     <div class="row" style="padding: 20px;">
 
                     </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-                    <ul class="nav flex-column" id="ulTeste">
-                        <li class="nav-item" onclick="fctClickMenu(4, '556292012739', 3, 0)" style="cursor:pointer" value="1610343396000">2021-01-11 05:36:36</li>
-                        <li class="nav-item" onclick="fctClickMenu(1, 'Igor', 2, 0)" style="cursor:pointer" value="1610342547000">2021-01-11 05:22:27</li>
-                        <li class="nav-item" onclick="fctClickMenu(3, '351963765193', 0, 0)" style="cursor:pointer" value="1610048371000">2021-01-07 19:39:31</li>
-                    </ul>
-
-                    <button id="ordena-menor">Sort</button>
-                    <button id="ordena-maior">Sort</button>
 
                 </div>
                 <!-- /.col -->
