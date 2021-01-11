@@ -125,6 +125,8 @@ switch ($acao) {
             ));
         }
 
+        logSis('DEB', 'SQL : ' . $sql.' Result: '.print_r($arrayMensagens, true));
+
         echo json_encode($arrayMensagens, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR, true);
 
         break;
