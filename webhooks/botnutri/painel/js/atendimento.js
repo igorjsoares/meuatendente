@@ -67,7 +67,7 @@ $(function () {
                     var nome = content[i]['numero']
                 }
                 var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" id="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
@@ -89,6 +89,11 @@ $(function () {
             }
 
             document.getElementById('ulMenuConversas').innerHTML = conteudo
+
+            $("#ulMenuConversas li").sort(ordenarDecrescente).appendTo('#ulMenuConversas');
+
+
+
         }
     })
 })
@@ -383,7 +388,7 @@ function consultaMenu(ultimaRecebida) {
 function ordenarDecrescente(a, b) {
     // Para crescente basta alterar o sinal de maior e menor < >
     return ($(b).val()) < ($(a).val()) ? 1 : -1;
-  }
+}
 
 //* FUNÇÃO de conversa Ativa
 function consultaConversaAtiva(idContato, ultimaRecebida) {
