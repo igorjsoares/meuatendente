@@ -379,7 +379,7 @@ function consultaMenu(ultimaRecebida) {
 
             document.getElementById('ulMenuConversas').innerHTML += conteudo
 
-            $("#ulMenuConversas li").sort(ordenarDecrescente).appendTo('#ulMenuConversas');
+            $("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 
         }
     })
