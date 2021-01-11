@@ -67,25 +67,30 @@ $(function () {
                     var nome = content[i]['numero']
                 }
                 var nomeComAspas = "'" + nome + "'"
+                /*
                 conteudo += '<li class="nav-item" value="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
-                conteudo += '<div style="padding: 10px" class="row align-items-center">'
-                conteudo += '<div class="col-2">'
-                conteudo += '<div style="padding: 0px;" class="image">'
-                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
-                conteudo += '</div>'
-                conteudo += '</div>'
-                conteudo += '<div class="col-8">'
-                conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
-                conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
-                conteudo += '</div>'
-                conteudo += '<div class="col-2">'
-                if (content[i]['quant'] > 0) {
-                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
-                }
-                conteudo += '</div>'
-                conteudo += '</div>'
+                    conteudo += '<div style="padding: 10px" class="row align-items-center">'
+                        conteudo += '<div class="col-2">'
+                            conteudo += '<div style="padding: 0px;" class="image">'
+                                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
+                            conteudo += '</div>'
+                        conteudo += '</div>'
+                        conteudo += '<div class="col-8">'
+                            conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
+                            conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
+                        conteudo += '</div>'
+                        conteudo += '<div class="col-2">'
+                            if (content[i]['quant'] > 0) {
+                                conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
+                            }
+                        conteudo += '</div>'
+                    conteudo += '</div>'
                 conteudo += '</li>'
-                //conteudo += '</div>'
+                */
+                conteudo += '< class="nav-item" value="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
+
+                conteudo += nome
+                conteudo += '</li>'
             }
 
             document.getElementById('ulMenuConversas').innerHTML = conteudo
