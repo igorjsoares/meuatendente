@@ -111,7 +111,7 @@ switch ($acao) {
         $dados = $_POST['dados'];
         $idRetorno = filter_var($dados['idRetorno'], FILTER_SANITIZE_STRING);
 
-        $sql = "SELECT id_retorno, mensagem FROM tbl_retornos WHERE id_retorno = $idRetorno OR id_retorno = 10";
+        $sql = "SELECT id_retorno, mensagem FROM tbl_retornos WHERE id_retorno = $idRetorno";
         //logSis('DEB', 'SQL : ' . $sql.' Result: '.print_r(mysqli_fetch_array($query), true));
 
         $query = mysqli_query($conn['link'], $sql);
@@ -120,6 +120,7 @@ switch ($acao) {
         while ($retornos = mysqli_fetch_array($query)) {
 
             array_push($arrayMensagens, array(
+                'id_retorno' => $retornos['id_retorno'],
                 'mensagem' => $retornos['mensagem']
             ));
         }
