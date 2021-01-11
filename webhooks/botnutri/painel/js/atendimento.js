@@ -605,7 +605,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio, chat) {
 $('#modalPreview').on('show.bs.modal', function (e) {
     var button = $(e.relatedTarget) // Button that triggered the modal
     //Variáveis recebendo os dados do botão
-    var idRetorno = button.data('idRetorno')
+    var idRetorno = button.data('id_retorno')
     console.log("Modal aberto, idRetorno: " + idRetorno)
 
     $.ajax({
