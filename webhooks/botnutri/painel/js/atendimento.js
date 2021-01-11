@@ -319,7 +319,7 @@ function atualizacaoPeriodica() {
 
 //* FUNÇÃO de consulta do Menu
 function consultaMenu(ultimaRecebida) {
-    console.log("FCT consulta Menu. Teve diferença entre a ultimo envio e o registrado")
+    console.log("FCT consulta Menu. Teve diferença entre a ultimo envio e o registrado. ultimaRecebida: " + ultimaRecebida)
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
         type: 'POST',
@@ -469,7 +469,7 @@ $("#btnBloqueio").click(function () {
                     document.getElementById("iBloqueio").style.color = "#ff8181"
                     document.getElementById("btnBloqueio").title = "Bot bloqueado"
                     window.bloqueio = 1
-            
+
                 }
                 console.log("Bloqueio BOT Alterado com sucesso!")
             }
