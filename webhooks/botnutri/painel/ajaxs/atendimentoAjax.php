@@ -205,13 +205,13 @@ switch ($acao) {
 }
 
 //* Inserir interação 
-function inserirInteracao($idContato, $id_resposta, $mensagem)
+function inserirInteracao($idContato, $idResposta, $mensagem)
 {
     logSis('DEB', 'Entrou no inserir interação');
 
     include("../dados_conexao.php");
 
-    $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, id_mensagem, mensagem, status, status_chat, data_envio) VALUES (1, 1, '$id_contato', '$id_resposta', '$mensagem', 1, 1, NOW())";
+    $sql = "INSERT INTO tbl_interacoes(id_instancia, direcao, id_contato, id_mensagem, mensagem, status, status_chat, data_envio) VALUES (1, 1, '$idContato', '$idResposta', '$mensagem', 1, 1, NOW())";
     logSis('DEB', 'SQL : ' . $sql);
 
     $resultado = mysqli_query($conn['link'], $sql);
