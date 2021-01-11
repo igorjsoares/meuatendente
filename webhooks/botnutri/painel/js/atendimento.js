@@ -69,28 +69,26 @@ $(function () {
                 var nomeComAspas = "'" + nome + "'"
 
                 conteudo += '<li class="nav-item" id="li' + content[i]['idContato'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
-                    conteudo += '<div style="padding: 10px" class="row align-items-center">'
-                        conteudo += '<div class="col-2">'
-                            conteudo += '<div style="padding: 0px;" class="image">'
-                                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
-                            conteudo += '</div>'
-                        conteudo += '</div>'
-                        conteudo += '<div class="col-8">'
-                            conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
-                            conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
-                        conteudo += '</div>'
-                        conteudo += '<div class="col-2">'
-                            if (content[i]['quant'] > 0) {
-                                conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
-                            }
-                        conteudo += '</div>'
-                    conteudo += '</div>'
+                conteudo += '<div style="padding: 10px" class="row align-items-center">'
+                conteudo += '<div class="col-2">'
+                conteudo += '<div style="padding: 0px;" class="image">'
+                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
+                conteudo += '</div>'
+                conteudo += '</div>'
+                conteudo += '<div class="col-8">'
+                conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
+                conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
+                conteudo += '</div>'
+                conteudo += '<div class="col-2">'
+                if (content[i]['quant'] > 0) {
+                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
+                } else {
+                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '" style="display: none">' + 0 + '</span>'
+                }
+                conteudo += '</div>'
+                conteudo += '</div>'
                 conteudo += '</li>'
-                
-                conteudo += '<li class="nav-item" id="li' + content[i]['idContato'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
 
-                conteudo += nome
-                conteudo += '</li>'
             }
 
             document.getElementById('ulMenuConversas').innerHTML = conteudo
@@ -352,67 +350,57 @@ function consultaMenu(ultimaRecebida) {
 
             console.log(content)
 
-            var conteudo = ''
 
             for (var i = 0; i < content.length; i++) {
-                if (content[i]['nome'] != '') {
-                    var nome = content[i]['nome']
-                } else {
-                    var nome = content[i]['numero']
+                //( Verifica se o objeto já existe
+                if (typeof 'li' + content[i]['idContato'] != "undefined") { //( Existe
+                    var span = document.getElementById('span' + content[i]['idContato'])
+                    span.innerHTML = parseFloat($('#span' + content[i]['idContato']).html()) + parseFloat(content[i]['quant'])
+                    span.style.display = block
+
+                    $("#li'" + content[i]['idContato']).parent().prepend(document.getElementById("#li'" + content[i]['idContato']));
+
+                } else { //( não existe
+                    var conteudo = ''
+
+                    if (content[i]['nome'] != '') {
+                        var nome = content[i]['nome']
+                    } else {
+                        var nome = content[i]['numero']
+                    }
+                    var nomeComAspas = "'" + nome + "'"
+                    conteudo += '<li id="li' + content[i]['idContato'] + '" class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
+                    conteudo += '<div style="padding: 10px" class="row align-items-center">'
+                    conteudo += '<div class="col-2">'
+                    conteudo += '<div style="padding: 0px;" class="image">'
+                    conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
+                    conteudo += '</div>'
+                    conteudo += '</div>'
+                    conteudo += '<div class="col-8">'
+                    conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
+                    conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
+                    conteudo += '</div>'
+                    conteudo += '<div class="col-2">'
+                    if (content[i]['quant'] > 0) {
+                        conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
+                    } else {
+                        conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '" style="display: none">' + content[i]['quant'] + '</span>'
+                    }
+                    conteudo += '</div>'
+                    conteudo += '</div>'
+                    conteudo += '</li>'
+                    conteudo += '</div>'
+
+                    document.getElementById('ulMenuConversas').innerHTML += conteudo
+
+                    $("#li'" + content[i]['idContato']).parent().prepend(document.getElementById("#li'" + content[i]['idContato']));
+
                 }
-                var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li id="li' + content[i]['idContato'] + '" class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
-                conteudo += '<div style="padding: 10px" class="row align-items-center">'
-                conteudo += '<div class="col-2">'
-                conteudo += '<div style="padding: 0px;" class="image">'
-                conteudo += '<img style="width: 45px; height: 45px" id="imgEmpresaMenu" src="assets/empresas/avatar.png" class="img-circle elevation-2" alt="">'
-                conteudo += '</div>'
-                conteudo += '</div>'
-                conteudo += '<div class="col-8">'
-                conteudo += '<font style="font-size: 20px;">' + nome + '</font><br>'
-                conteudo += '<font style="font-size: 13px; color: gray">Mensagem enviada</font>'
-                conteudo += '</div>'
-                conteudo += '<div class="col-2">'
-                if (content[i]['quant'] > 0) {
-                    conteudo += '<span class="float-right badge bg-success" id="span' + content[i]['idContato'] + '">' + content[i]['quant'] + '</span>'
-                }
-                conteudo += '</div>'
-                conteudo += '</div>'
-                conteudo += '</li>'
-                conteudo += '</div>'
+
             }
-
-            document.getElementById('ulMenuConversas').innerHTML += conteudo
-
-            //$("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 
         }
     })
-}
-
-$('#ordena-menor').click(function () {
-    $("#ulTeste li").sort(numOrdDesc).appendTo('#ulTeste');
-    //console.log("Ordenar Menor")
-    //$("#ulTeste li").sort(numOrdDesc).appendTo('#ulTeste');
-
-});
-
-$('#ordena-maior').click(function () {
-    //$("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
-    $("#li3").parent().prepend(document.getElementById('li3'));
-
-    //console.log("Ordenar Maior")
-    //$("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
-});
-
-//* Ordenação descrescente de uma lista
-function numOrdDesc(a, b) {
-    return ($(b).val()) < ($(a).val()) ? 1 : -1;
-}
-
-//* Ordenação descrescente de uma lista
-function numOrdCres(a, b) {
-    return ($(b).val()) > ($(a).val()) ? 1 : -1;
 }
 
 
