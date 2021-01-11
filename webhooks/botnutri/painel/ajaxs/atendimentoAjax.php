@@ -54,7 +54,7 @@ switch ($acao) {
             $whereUltimaRecebida = "AND data_envio > '$ultimaRecebida' ";
         }
 
-        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_mensagem, mensagem, status, status_chat, data_envio, DATE_FORMAT(data_envio, '%d/%m %H:%i') AS data_envio_formatada FROM tbl_interacoes WHERE id_contato = $idContato $whereUltimaRecebida ORDER BY data_envio ASC";
+        $sql = "SELECT id_interacao, direcao, tipo, subtipo, id_retorno, id_mensagem, mensagem, status, status_chat, data_envio, DATE_FORMAT(data_envio, '%d/%m %H:%i') AS data_envio_formatada FROM tbl_interacoes WHERE id_contato = $idContato $whereUltimaRecebida ORDER BY data_envio ASC";
         $query = mysqli_query($conn['link'], $sql);
         $numRow = mysqli_num_rows($query);
 
@@ -66,6 +66,7 @@ switch ($acao) {
                 'direcao' => $campanha['direcao'],
                 'tipo' => $campanha['tipo'],
                 'subtipo' => $campanha['subtipo'],
+                'idRetorno' => $campanha['id_retorno'],
                 'idMensagem' => $campanha['id_mensagem'],
                 'mensagem' => $campanha['mensagem'],
                 'status' => $campanha['status'],
@@ -98,6 +99,28 @@ switch ($acao) {
 
             array_push($arrayMensagens, array(
                 'ultimo_envio' => $campanha['ultimo_envio']
+
+            ));
+        }
+
+        echo json_encode($arrayMensagens, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PARTIAL_OUTPUT_ON_ERROR, true);
+
+        break;
+
+    case 'consultaRetornoMensagem':
+        $dados = $_POST['dados'];
+        $idRetorno = filter_var($dados['idRetorno'], FILTER_SANITIZE_STRING);
+
+        $sql = "SELECT mensagem FROM tbl_retornos WHERE id_retorno = $idRetorno";
+
+        $query = mysqli_query($conn['link'], $sql);
+        $numRow = mysqli_num_rows($query);
+
+        $arrayMensagens = [];
+        while ($campanha = mysqli_fetch_array($query)) {
+
+            array_push($arrayMensagens, array(
+                'mensagem' => $campanha['mensagem']
 
             ));
         }
@@ -183,7 +206,7 @@ switch ($acao) {
                 exit(0);
             }
             $id_resposta = $resposta['requestMenssage']['id'];
-            
+
             if (isset($retorno['opcoes']) && $retorno['opcoes'] != '') {
                 $opcoes = $retorno['opcoes'];
             } else {
@@ -194,7 +217,6 @@ switch ($acao) {
             $retorno = inserirInteracao($idContato, $id_resposta, $mensagem);
 
             echo $retorno;
-
         } else {
             if ($chat == 0) {
                 echo 0;

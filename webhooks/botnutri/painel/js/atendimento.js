@@ -178,7 +178,7 @@ function fctClickMenu(idContato, nome, quant, bloqueio_bot, numeroContato) {
             for (var i = 0; i < content.length; i++) {
                 if (content[i]['direcao'] == 0) { //recebida
 
-                    conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;" data-toggle="modal" data-target="#modalPreview">'
+                    conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;">'
                     conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #FFF;">'
                     conteudo += content[i]['mensagem']
                     conteudo += '</div>'
@@ -187,7 +187,7 @@ function fctClickMenu(idContato, nome, quant, bloqueio_bot, numeroContato) {
 
                 } else { //enviada    
 
-                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;" data-toggle="modal" data-target="#modalPreview">'
+                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;" data-toggle="modal" data-target="#modalPreview" data-id_retorno="' + content[i]['idRetorno'] + '" >'
                     conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
                     conteudo += content[i]['mensagem']
                     conteudo += '</div>'
@@ -601,21 +601,66 @@ function envioMensagem(numeroEnvio, mensagemEnvio, chat) {
     })
 }
 
-//* FUNÇÃO de notificação
-function notify(alert, alert_message) {
-    if (alert == 'success') {
-        toastr.success(alert_message, '', {
-            timeOut: 2000,
-            positionClass: 'toast-bottom-right',
-            progressBar: true
-        })
+$('#modalPreview').on('show.bs.modal', function (e) {
+    var button = $(e.relatedTarget) // Button that triggered the modal
+    //Variáveis recebendo os dados do botão
+    var idRetorno = button.data('idRetorno')
+
+    $.ajax({
+        url: 'ajaxs/atendimentoAjax.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            acao: 'consultaRetornoMensagem',
+            dados: {
+                idRetorno: idRetorno
+            }
+        },
+        beforeSend: function () {
+            console.log('Consultando Retorno')
+            $("#overlayPreview").removeData('hidden');
+            $("#overlayPreview").addClass('d-flex');
+
+        },
+        success: function (content) {
+            console.log('Finalizado consulta retorno')
+            $("#overlayPreview").add('hidden')
+            $("#overlayPreview").removeClass('d-flex')
+
+            console.log(content)
+
+            if (content == 1) {
+                document.getElementById('pMensagem').innerHTML = content[0]['mensagem']
+            } else {
+                console.log("Mensagem NÃO enviada")
+                $("#modalPreview").modal('hide')
+                notify('error', 'Não foi possível carregar a mensagem')
+
+            }
+        }
+
+
+    })
+
+    $('#modalPreview').on('hidden.bs.modal', function (e) {
+        document.getElementById('pMensagem').value = ""
+    })
+
+    //* FUNÇÃO de notificação
+    function notify(alert, alert_message) {
+        if (alert == 'success') {
+            toastr.success(alert_message, '', {
+                timeOut: 2000,
+                positionClass: 'toast-bottom-right',
+                progressBar: true
+            })
+        }
+        if (alert == 'error') {
+            toastr.error(alert_message, '', {
+                timeOut: 2000,
+                positionClass: 'toast-bottom-right',
+                progressBar: true
+            })
+        }
     }
-    if (alert == 'error') {
-        toastr.error(alert_message, '', {
-            timeOut: 2000,
-            positionClass: 'toast-bottom-right',
-            progressBar: true
-        })
-    }
-}
 
