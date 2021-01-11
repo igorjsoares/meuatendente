@@ -146,6 +146,7 @@ switch ($acao) {
 
     case 'envioMensagem':
         $dados = $_POST['dados'];
+        $idContato = filter_var($dados['idContato'], FILTER_SANITIZE_STRING);
         $numero = filter_var($dados['numero'], FILTER_SANITIZE_STRING);
         $mensagem = filter_var($dados['mensagem'], FILTER_SANITIZE_STRING);
         logSis('REQ', 'Requisição de envio Número: ' . $numero . ' Mensagem: ' . $mensagem);
@@ -197,7 +198,7 @@ switch ($acao) {
             }
             //logSis('REQ', 'Chegou aqui - Instância: ' . $idInstancia . ' IdContato: ' . $id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
-            inserirInteracao($idInstancia, 1, $id_contato, $tipo, $subTipo, $opcoes, $ultimoRetorno, $idRetorno, $id_interacao_cliente, $id_resposta, $motivo, 1);
+            $retorno = inserirInteracao($idInstancia, 1, $idContato, $tipo, $subTipo, $opcoes, $ultimoRetorno, $idRetorno, $id_interacao_cliente, $id_resposta, $motivo, 1);
             return true;
         } else {
             if ($motivo == 'Receptivo') {

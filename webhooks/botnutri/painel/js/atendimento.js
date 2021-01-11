@@ -532,6 +532,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
         data: {
             acao: 'envioMensagem',
             dados: {
+                idContato: window.idContatoAtivo,
                 numero: numeroEnvio,
                 mensagem: mensagemEnvio
             }
