@@ -112,16 +112,16 @@ switch ($acao) {
         $idRetorno = filter_var($dados['idRetorno'], FILTER_SANITIZE_STRING);
 
         $sql = "SELECT id_retorno, mensagem FROM tbl_retornos WHERE id_retorno = $idRetorno";
-        //logSis('DEB', 'SQL : ' . $sql);
+        logSis('DEB', 'SQL : ' . $sql);
 
         $query = mysqli_query($conn['link'], $sql);
         $numRow = mysqli_num_rows($query);
 
         $arrayMensagens = [];
-        while ($campanha = mysqli_fetch_array($query)) {
+        while ($retornos = mysqli_fetch_array($query)) {
 
             array_push($arrayMensagens, array(
-                'mensagem' => $campanha['mensagem']
+                'mensagem' => $retornos['mensagem']
 
             ));
         }
