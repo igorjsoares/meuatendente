@@ -7,7 +7,7 @@ if (isset($_FILES['acao'])) {
 } else {
     $acao = filter_var($_POST['acao'], FILTER_SANITIZE_STRING);
 }
-$APIurl = "v4.chatpro.com.br/chatpro-9piq49nyf9";
+$APIurl = "v4.chatpro.com.br/chatpro-9piq49nyf9" . '/api/v1/';
 $token = "69fa9a02548516e0e7507d0265b1caf2e3fde824";
 
 switch ($acao) {
