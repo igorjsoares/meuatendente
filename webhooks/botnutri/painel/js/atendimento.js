@@ -270,6 +270,7 @@ function atualizacaoPeriodica() {
             var ultimaRecebida = content[0]['ultimo_envio']
 
             if (window.ultimaRecebida != ultimaRecebida) {
+                var ultimaAnterior = window.ultimaRecebida
                 window.ultimaRecebida = ultimaRecebida
 
                 if (window.idContatoAtivo != 0) {
@@ -302,7 +303,7 @@ function atualizacaoPeriodica() {
                         }
                     })
                 } else {
-                    consultaMenu(window.ultimaRecebida)
+                    consultaMenu(ultimaAnterior)
                 }
             } else {
                 console.log('Não atualiza o Menu. Última mensagem reebida geral em: ' + window.ultimaRecebida)
