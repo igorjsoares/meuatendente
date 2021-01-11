@@ -87,7 +87,7 @@ $(function () {
                     conteudo += '</div>'
                 conteudo += '</li>'
                 */
-                conteudo += '<li class="nav-item" value="' + content[i]['ultimaRecebida'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" value="' + Date.parse(content[i]['ultimaRecebida']) + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
 
                 conteudo += content[i]['ultimaRecebida']
                 conteudo += '</li>'
@@ -361,7 +361,7 @@ function consultaMenu(ultimaRecebida) {
                     var nome = content[i]['numero']
                 }
                 var nomeComAspas = "'" + nome + "'"
-                conteudo += '<li value="' + content[i]['ultimaRecebida'] + '" class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
+                conteudo += '<li value="' + Date.parse(content[i]['ultimaRecebida']) + '" class="nav-item" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ')" style="cursor:pointer">'
                 conteudo += '<div style="padding: 10px" class="row align-items-center">'
                 conteudo += '<div class="col-2">'
                 conteudo += '<div style="padding: 0px;" class="image">'
@@ -391,14 +391,14 @@ function consultaMenu(ultimaRecebida) {
 }
 
 $('#ordena-menor').click(function () {
-    $("#list li").sort(numOrdDesc).appendTo('#list');
+    $("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
     //console.log("Ordenar Menor")
     //$("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
 
 });
 
 $('#ordena-maior').click(function () {
-    $("#list li").sort(numOrdCres).appendTo('#list');
+    $("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
     //console.log("Ordenar Maior")
     //$("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 });
