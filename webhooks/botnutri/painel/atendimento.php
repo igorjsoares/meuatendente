@@ -104,10 +104,10 @@ $aleatorio = rand(1000, 10000);
                     </div>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
                     <ul id="list">
-                        <li value="2021-01-11 05:36:36">doesnmatter1</li>
-                        <li value="2021-01-09 05:22:27">doesntmatter2</li>
-                        <li value="2021-01-08 05:22:27">doesntmatter3</li>
-                        <li value="2021-01-10 05:22:27">doesntmatter3</li>
+                        <li value="20">doesnmatter1</li>
+                        <li value="30">doesntmatter2</li>
+                        <li value="25">doesntmatter3</li>
+                        <li value="7">doesntmatter3</li>
                     </ul>
 
                     <button id="ordena-menor">Sort</button>
