@@ -215,19 +215,22 @@ function inserirInteracao($idContato, $idResposta, $mensagem)
     logSis('DEB', 'SQL : ' . $sql);
 
     $resultado = mysqli_query($conn['link'], $sql);
+
     if (!$resultado) {
         logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
         exit(0);
     }
     $id_interacao = mysqli_insert_id($conn['link']);
+    logSis('DEB', 'Id interação inserido : ' . $id_interacao);
+
 
     if ($resultado != '1') {
         logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_error($conn['link']));
         logSis('DEB', 'SQL : ' . $sql);
         return 0;
     } else {
-        return 1;
         logSis('SUC', 'Insert interação IN. ID_Interação: ' . $id_interacao);
+        return 1;
     }
     mysqli_close($conn['link']);
 }
