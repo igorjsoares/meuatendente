@@ -275,7 +275,7 @@ function atualizacaoPeriodica() {
             console.log('Consultando ultima recebida. Window.ultimaRecebida: ' + window.ultimaRecebida)
         },
         success: function (content) {
-            
+
             var ultimaRecebidaBanco = content[0]['ultimo_envio']
             console.log('Fim da consulta. ultimaRecebida do banco: ' + ultimaRecebidaBanco)
 
@@ -297,14 +297,14 @@ function atualizacaoPeriodica() {
                             }
                         },
                         beforeSend: function () {
-                            console.log('Consultando ultima recebida Ativa')
+                            console.log('Consultando ultima recebida Ativa. window.ultimaRecebidaAtiva: ' + window.ultimaRecebidaAtiva)
                         },
                         success: function (content) {
                             var ultimaRecebidaAtiva = content[0]['ultimo_envio']
-                            console.log('VAR dentro da atualização periódica. Ultima recebida Ativa: ' + ultimaRecebidaAtiva)
+            console.log('Fim da consulta. ultimaRecebidaAtiva do banco: ' + ultimaRecebidaAtiva)
 
                             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
-                                consultaConversaAtiva(window.idContatoAtivo, window.ultimaRecebidaAtiva)
+                                consultaConversaAtiva(window.idContatoAtivo, window.ultimaRecebidaAtiva, ultimaAnterior)
                                 window.ultimaRecebidaAtiva = ultimaRecebidaAtiva
 
                             } else {
@@ -412,7 +412,7 @@ function consultaMenu(ultimaRecebida) {
 
 
 //* FUNÇÃO de conversa Ativa
-function consultaConversaAtiva(idContato, ultimaRecebida) {
+function consultaConversaAtiva(idContato, ultimaRecebida, ultimaAnteriorGeral) {
     console.log("FCT consultaConversaAtiva - Precisou atualizar a conversa ativa")
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
@@ -465,7 +465,7 @@ function consultaConversaAtiva(idContato, ultimaRecebida) {
             var objDiv = document.getElementById("divMensagens");
             objDiv.scrollTop = objDiv.scrollHeight;
 
-            consultaMenu()
+            consultaMenu(ultimaAnteriorGeral)
         }
     })
 }
