@@ -87,9 +87,9 @@ $(function () {
                     conteudo += '</div>'
                 conteudo += '</li>'
                 */
-                conteudo += '<li class="nav-item" value="' + Date.parse(content[i]['ultimaRecebida']) + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
+                conteudo += '<li class="nav-item" id="li' + content[i]['idContato'] + '" onclick="fctClickMenu(' + content[i]['idContato'] + ', ' + nomeComAspas + ', ' + content[i]['quant'] + ', ' + content[i]['bloqueio_bot'] + ')" style="cursor:pointer">'
 
-                conteudo += content[i]['ultimaRecebida']
+                conteudo += nome
                 conteudo += '</li>'
             }
 
@@ -398,7 +398,9 @@ $('#ordena-menor').click(function () {
 });
 
 $('#ordena-maior').click(function () {
-    $("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
+    //$("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
+    $("#li3").parent().prepend(document.getElementById('li3'));
+
     //console.log("Ordenar Maior")
     //$("#ulTeste li").sort(numOrdCres).appendTo('#ulTeste');
 });
