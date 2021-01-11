@@ -145,9 +145,10 @@ switch ($acao) {
         break;
 
     case 'envioMensagem':
-
+        
         $numero = filter_var($dados['numero'], FILTER_SANITIZE_STRING);
         $mensagem = filter_var($dados['mensagem'], FILTER_SANITIZE_STRING);
+        logSis('REQ', 'Requisição de envio Número: ' . $numero . ' Mensagem: ' . $mensagem);
 
         $method = 'send_message';
         $data = array('number' => $numero . '@s.whatsapp.net', 'menssage' => $mensagem);
@@ -159,7 +160,7 @@ switch ($acao) {
             $data = json_encode($data);
         }
 
-        $options = stream_context_create(['http' => [
+        $options = stream_context_create(['https' => [
             'method'  => 'POST',
             'header'  => "Content-type: application/json\r\nAuthorization: $token\r\n",
             'content' => $data
