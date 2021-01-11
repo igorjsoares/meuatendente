@@ -178,7 +178,7 @@ function fctClickMenu(idContato, nome, quant, bloqueio_bot, numeroContato) {
             for (var i = 0; i < content.length; i++) {
                 if (content[i]['direcao'] == 0) { //recebida
 
-                    conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;">'
+                    conteudo += '<div class="direct-chat-msg" style="padding-right: 10%;" data-toggle="modal" data-target="#modalPreview">'
                     conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #FFF;">'
                     conteudo += content[i]['mensagem']
                     conteudo += '</div>'
@@ -187,7 +187,7 @@ function fctClickMenu(idContato, nome, quant, bloqueio_bot, numeroContato) {
 
                 } else { //enviada    
 
-                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
+                    conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;" data-toggle="modal" data-target="#modalPreview">'
                     conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
                     conteudo += content[i]['mensagem']
                     conteudo += '</div>'
