@@ -606,6 +606,7 @@ $('#modalPreview').on('show.bs.modal', function (e) {
     var button = $(e.relatedTarget) // Button that triggered the modal
     //Variáveis recebendo os dados do botão
     var idRetorno = button.data('idRetorno')
+    console.log("Modal aberto, idRetorno: " + idRetorno)
 
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
