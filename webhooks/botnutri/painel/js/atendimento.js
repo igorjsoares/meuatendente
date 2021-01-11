@@ -398,14 +398,14 @@ function ordenarDecrescente(a, b) {
 $('#ordena-menor').click(function () {
     $("#teste li").sort(numOrdDesc).appendTo('#teste');
     console.log("Ordenar Menor")
-    $("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
+    //$("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
 
 });
 
 $('#ordena-maior').click(function () {
-    console.log("Ordenar Maior")
     $("#teste li").sort(numOrdCres).appendTo('#teste');
-    $("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
+    console.log("Ordenar Maior")
+    //$("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 });
 
 
