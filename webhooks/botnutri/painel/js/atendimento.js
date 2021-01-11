@@ -562,7 +562,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
                 conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
                 conteudo += mensagemEnvio
                 conteudo += '</div>'
-                conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">' + Agora + '</div>'
+                conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">Agora</div>'
                 conteudo += '</div>'
 
                 document.getElementById('divMensagens').innerHTML = conteudo
@@ -571,7 +571,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
             } else {
                 console.log("Mensagem NÃO enviada")
                 notify('error', 'A mensagem não foi enviada. Verifique a conexão com a API e tente novamente.')
-                
+
                 //& =========
                 //& =========
                 //& ========= VERIFICAR CONEXÃO COM A API AQUI
