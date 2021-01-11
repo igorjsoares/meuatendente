@@ -90,7 +90,7 @@ $(function () {
 
             document.getElementById('ulMenuConversas').innerHTML = conteudo
 
-            $("#ulMenuConversas li").sort(ordenarDecrescente).appendTo('#ulMenuConversas');
+            //$("#ulMenuConversas li").sort(ordenarDecrescente).appendTo('#ulMenuConversas');
 
 
 
