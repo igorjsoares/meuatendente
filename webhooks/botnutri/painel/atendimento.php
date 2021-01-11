@@ -110,11 +110,9 @@ $aleatorio = rand(1000, 10000);
                         <li value="2021-01-07 19:39:31">doesntmatter3</li>
                     </ul> -->
                     <ul id="list">
-                        <li value="20">doesnmatter1</li>
-                        <li value="10">doesntmatter2</li>
-                        <li value="5">doesntmatter3</li>
-                        <li value="30">doesntmatter4</li>
-                        <li value="519">doesntmatter5</li>
+                        <li value="2021-01-11 05:36:36">doesnmatter1</li>
+                        <li value="2021-01-11 05:22:27">doesntmatter2</li>
+                        <li value="2021-01-11 05:22:27">doesntmatter3</li>
                     </ul>
 
                 </div>
