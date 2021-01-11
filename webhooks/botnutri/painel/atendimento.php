@@ -102,6 +102,8 @@ $aleatorio = rand(1000, 10000);
                     <div class="row" style="padding: 20px;">
 
                     </div>
+                        <button id="ordena-menor">Sort</button>
+                        <button id="ordena-maior">Sort</button>
                         <ul id="teste">
                             <li value="20">doesnmatter1</li>
                             <li value="10">doesntmatter2</li>
@@ -110,8 +112,6 @@ $aleatorio = rand(1000, 10000);
                             <li value="519">doesntmatter5</li>
                         </ul>
 
-                        <button id="ordena-menor">Sort</button>
-                        <button id="ordena-maior">Sort</button>
                 </div>
                 <!-- /.col -->
             </div>
