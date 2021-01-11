@@ -10,7 +10,7 @@ $(function () {
     console.log("Iniciando atendimento.js")
 
     window.previsao = moment()
-    window.tempoAtualizacao = 1000 * 10 //x*y onde y representa os segundos
+    window.tempoAtualizacao = 1000 * 30 //x*y onde y representa os segundos
 
     window.intervalo = window.setInterval(atualizacaoPeriodica, window.tempoAtualizacao)
 
