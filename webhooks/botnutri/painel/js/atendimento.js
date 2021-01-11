@@ -478,7 +478,7 @@ $("#btnSuporte").click(function () {
     console.log("Clicou no botão de envio Suporte")
     var numero = window.numeroSuporte
     var mensagem = "*SUPORTE ENCAMINHADO*\nO contato " + window.nomeContato + " (" + window.idContatoAtivo + ") foi encaminhado para suporte, clique no link abaixo para acessar a conversa com ele.\nhttps://wa.me/" + window.numeroContato
-    envioMensagem(numero, mensagem, chat)
+    envioMensagem(numero, mensagem, 0)
 })
 
 //* Ação do Botão de bloqueio do BOT
@@ -529,7 +529,7 @@ $("#btnEnvio").click(function () {
     console.log("Clicou no botão de envio")
     var numero = window.numeroContato
     var mensagem = $("#taMensagem").val()
-    envioMensagem(numero, mensagem)
+    envioMensagem(numero, mensagem, 1)
 })
 
 //* Envio de mensagem
