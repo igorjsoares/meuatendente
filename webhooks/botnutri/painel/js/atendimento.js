@@ -477,7 +477,7 @@ function consultaConversaAtiva(idContato, ultimaRecebida, ultimaAnteriorGeral) {
 $("#btnSuporte").click(function () {
     console.log("Clicou no botão de envio Suporte")
     var numero = window.numeroSuporte
-    var mensagem = "*SUPORTE ENCAMINHADO*\nO contato " + window.nomeContato + " (" + window.idContatoAtivo + ") foi encaminhado para suporte, clique no link abaixo para acessar a conversa com ele.\nhttps://wa.me/" + $window.numeroContato
+    var mensagem = "*SUPORTE ENCAMINHADO*\nO contato " + window.nomeContato + " (" + window.idContatoAtivo + ") foi encaminhado para suporte, clique no link abaixo para acessar a conversa com ele.\nhttps://wa.me/" + window.numeroContato
     envioMensagem(numero, mensagem, chat)
 })
 
