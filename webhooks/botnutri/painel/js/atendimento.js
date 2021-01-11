@@ -356,9 +356,12 @@ function consultaMenu(ultimaRecebida) {
                 if (typeof 'li' + content[i]['idContato'] != "undefined") { //( Existe
                     var span = document.getElementById('span' + content[i]['idContato'])
                     span.innerHTML = parseFloat($('#span' + content[i]['idContato']).html()) + parseFloat(content[i]['quant'])
-                    span.style.display = block
+                    if(span.style.display == none){
+                        span.style.display = block
+                    }
 
-                    $("#li'" + content[i]['idContato']).parent().prepend(document.getElementById("#li'" + content[i]['idContato']));
+                    var li = "li" + content['idContato']
+                    $("#" + li).parent().prepend(document.getElementById(li));
 
                 } else { //( não existe
                     var conteudo = ''
