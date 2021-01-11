@@ -391,11 +391,14 @@ function ordenarDecrescente(a, b) {
 }
 
 $('#ordena-menor').click(function () {
-    $("#teste li").sort(numOrdDesc).appendTo('#teste');
+    //$("#teste li").sort(numOrdDesc).appendTo('#teste');
+    $("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
+
 });
 
 $('#ordena-maior').click(function () {
-    $("#teste li").sort(ordenarDecrescente).appendTo('#teste');
+    //$("#teste li").sort(numOrdCres).appendTo('#teste');
+    $("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 });
 
 
