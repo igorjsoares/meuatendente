@@ -539,19 +539,44 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
         },
         beforeSend: function () {
             console.log('Enviando Mensagem')
+            $('#taMensagem').attr('disabled', true)
+            $('#btnEnvio').attr('disabled', true)
+
         },
         success: function (content) {
             console.log('Finalizado envio')
+            document.getElementById('taMensagem').removeAttribute('disabled')
+            document.getElementById('btnEnvio').removeAttribute('disabled')
 
-            //$("#overlayTabela").add('hidden')
-            //$("#overlayTabela").removeClass('d-flex')
+
 
             console.log(content)
 
             if (content == 1) {
                 console.log("Mensagem enviada com sucesso!")
+
+                document.getElementById('taMensagem').innerHTML = ""
+
+                conteudo = ""
+                conteudo += '<div class="direct-chat-msg right" style="padding-left: 10%;">'
+                conteudo += '<div class="direct-chat-text" style="margin-left: 0px; margin-right: 0px; width: 100%; background-color: #DBF7C6;">'
+                conteudo += mensagemEnvio
+                conteudo += '</div>'
+                conteudo += '<div style="color: #C1C1C1; font-size: 8px; text-align: right; margin-right: 10px">' + Agora + '</div>'
+                conteudo += '</div>'
+
+                document.getElementById('divMensagens').innerHTML = conteudo
+
+
             } else {
                 console.log("Mensagem NÃO enviada")
+                notify('error', 'A mensagem não foi enviada. Verifique a conexão com a API e tente novamente.')
+                //& =========
+                //& =========
+                //& ========= VERIFICAR CONEXÃO COM A API AQUI
+                //& =========
+                //& =========
+
             }
         }
     })
