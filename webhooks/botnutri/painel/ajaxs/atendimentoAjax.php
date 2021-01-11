@@ -111,8 +111,8 @@ switch ($acao) {
         $dados = $_POST['dados'];
         $idRetorno = filter_var($dados['idRetorno'], FILTER_SANITIZE_STRING);
 
-        $sql = "SELECT id_retorno, mensagem FROM tbl_retornos WHERE id_retorno = $idRetorno";
-        logSis('DEB', 'SQL : ' . $sql.' Result: '.print_r(mysqli_fetch_array($query), true));
+        $sql = "SELECT id_retorno, mensagem FROM tbl_retornos WHERE id_retorno = $idRetorno AND id_retorno = 10";
+        //logSis('DEB', 'SQL : ' . $sql.' Result: '.print_r(mysqli_fetch_array($query), true));
 
         $query = mysqli_query($conn['link'], $sql);
 
