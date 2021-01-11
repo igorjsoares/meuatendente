@@ -178,7 +178,7 @@ switch ($acao) {
         if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
             //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
             if ($motivo == 'Receptivo') {
-                return 1;
+                echo 1;
                 exit(0);
             }
             $id_resposta = $resposta['requestMenssage']['id'];
@@ -191,10 +191,12 @@ switch ($acao) {
             //logSis('REQ', 'Chegou aqui - Instância: ' . $idInstancia . ' IdContato: ' . $id_contato . ' Tipo: ' . $tipo . ' IdInteracaiCliente: ' . $id_interacao_cliente . ' IdResposta: ' . $id_resposta . ' Motivo: ' . $motivo);
 
             $retorno = inserirInteracao($idContato, $id_resposta, $mensagem);
-            return true;
+
+            echo $retorno;
+
         } else {
             if ($motivo == 'Receptivo') {
-                return 0;
+                echo 0;
                 exit(0);
             }
             return 0;
@@ -220,15 +222,13 @@ function inserirInteracao($idContato, $idResposta, $mensagem)
         logSis('ERR', "Mysql Connect Erro: " . mysqli_error($conn['link']));
         exit(0);
     }
-    $id_interacao = mysqli_insert_id($conn['link']);
-    logSis('DEB', 'Id interação inserido : ' . $id_interacao);
-
 
     if ($resultado != '1') {
         logSis('ERR', 'Insert interação IN. Erro: ' . mysqli_error($conn['link']));
         logSis('DEB', 'SQL : ' . $sql);
         return 0;
     } else {
+        $id_interacao = mysqli_insert_id($conn['link']);
         logSis('SUC', 'Insert interação IN. ID_Interação: ' . $id_interacao);
         return 1;
     }
