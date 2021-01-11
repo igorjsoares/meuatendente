@@ -389,30 +389,26 @@ function consultaMenu(ultimaRecebida) {
         }
     })
 }
-//* Ordenação descrescente de uma lista
-function ordenarDecrescente(a, b) {
-    // Para crescente basta alterar o sinal de maior e menor < >
-    return ($(b).val()) < ($(a).val()) ? 1 : -1;
-}
 
 $('#ordena-menor').click(function () {
-    $("#teste li").sort(numOrdDesc).appendTo('#teste');
+    $("#list li").sort(numOrdDesc).appendTo('#list');
     console.log("Ordenar Menor")
     //$("#ulMenuConversas li").sort(numOrdDesc).appendTo('#ulMenuConversas');
 
 });
 
 $('#ordena-maior').click(function () {
-    $("#teste li").sort(numOrdCres).appendTo('#teste');
+    $("#list li").sort(numOrdCres).appendTo('#list');
     console.log("Ordenar Maior")
     //$("#ulMenuConversas li").sort(numOrdCres).appendTo('#ulMenuConversas');
 });
 
-
+//* Ordenação descrescente de uma lista
 function numOrdDesc(a, b) {
     return ($(b).val()) < ($(a).val()) ? 1 : -1;
 }
 
+//* Ordenação descrescente de uma lista
 function numOrdCres(a, b) {
     return ($(b).val()) > ($(a).val()) ? 1 : -1;
 }
