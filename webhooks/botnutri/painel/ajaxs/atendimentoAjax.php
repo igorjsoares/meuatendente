@@ -177,7 +177,7 @@ switch ($acao) {
         if ($statusEnvio == "Mensagem enviada com sucesso" || $statusEnvio == "Mensagem Enviada") {
             //( Identifica se é uma função receptiva, aqui retorna a resposta da requisição
             if ($motivo == 'Receptivo') {
-                return true;
+                return 1;
                 exit(0);
             }
             $id_resposta = $resposta['requestMenssage']['id'];
@@ -201,10 +201,10 @@ switch ($acao) {
             return true;
         } else {
             if ($motivo == 'Receptivo') {
-                return false;
+                return 0;
                 exit(0);
             }
-            return false;
+            return 0;
             logSis('ERR', 'Não teve resposta da requisição a tempo' . $resposta);
         }
 

@@ -547,7 +547,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
 
             console.log(content)
 
-            if (content == true) {
+            if (content == 1) {
                 console.log("Mensagem enviada com sucesso!")
             } else {
                 console.log("Mensagem NÃO enviada")
