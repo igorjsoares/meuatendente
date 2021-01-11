@@ -533,7 +533,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio) {
             acao: 'envioMensagem',
             dados: {
                 numero: numeroEnvio,
-                menssagem: mensagemEnvio
+                mensagem: mensagemEnvio
             }
         },
         beforeSend: function () {
