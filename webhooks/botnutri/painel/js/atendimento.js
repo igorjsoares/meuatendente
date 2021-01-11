@@ -395,7 +395,7 @@ $('#ordena-menor').click(function () {
 });
 
 $('#ordena-maior').click(function () {
-    $("#teste li").sort(numOrdCres).appendTo('#teste');
+    $("#teste li").sort(ordenarDecrescente).appendTo('#teste');
 });
 
 
