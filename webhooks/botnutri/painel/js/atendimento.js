@@ -601,6 +601,7 @@ function envioMensagem(numeroEnvio, mensagemEnvio, chat) {
     })
 }
 
+//* Preview Show
 $('#modalPreview').on('show.bs.modal', function (e) {
     var button = $(e.relatedTarget) // Button that triggered the modal
     //Variáveis recebendo os dados do botão
@@ -638,29 +639,29 @@ $('#modalPreview').on('show.bs.modal', function (e) {
 
             }
         }
-
-
     })
+})
 
-    $('#modalPreview').on('hidden.bs.modal', function (e) {
-        document.getElementById('pMensagem').value = ""
-    })
+//* Modal Preview HIDE
+$('#modalPreview').on('hidden.bs.modal', function (e) {
+    document.getElementById('pMensagem').value = ""
+})
 
-    //* FUNÇÃO de notificação
-    function notify(alert, alert_message) {
-        if (alert == 'success') {
-            toastr.success(alert_message, '', {
-                timeOut: 2000,
-                positionClass: 'toast-bottom-right',
-                progressBar: true
-            })
-        }
-        if (alert == 'error') {
-            toastr.error(alert_message, '', {
-                timeOut: 2000,
-                positionClass: 'toast-bottom-right',
-                progressBar: true
-            })
-        }
+//* FUNÇÃO de notificação
+function notify(alert, alert_message) {
+    if (alert == 'success') {
+        toastr.success(alert_message, '', {
+            timeOut: 2000,
+            positionClass: 'toast-bottom-right',
+            progressBar: true
+        })
     }
+    if (alert == 'error') {
+        toastr.error(alert_message, '', {
+            timeOut: 2000,
+            positionClass: 'toast-bottom-right',
+            progressBar: true
+        })
+    }
+}
 
