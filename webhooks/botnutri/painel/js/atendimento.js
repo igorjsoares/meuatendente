@@ -302,7 +302,7 @@ function atualizacaoPeriodica() {
                         },
                         success: function (content) {
                             var ultimaRecebidaAtiva = content[0]['ultimo_envio']
-            console.log('Fim da consulta. ultimaRecebidaAtiva do banco: ' + ultimaRecebidaAtiva)
+                            console.log('Fim da consulta. ultimaRecebidaAtiva do banco: ' + ultimaRecebidaAtiva)
 
                             if (window.ultimaRecebidaAtiva != ultimaRecebidaAtiva) {
                                 consultaConversaAtiva(window.idContatoAtivo, window.ultimaRecebidaAtiva, ultimaAnterior)
@@ -522,8 +522,8 @@ $("#btnEnvio").click(function () {
 })
 
 //* Envio de mensagem
-function envioMensagem(numeroEnvio, mensagemEnvio){
-    console.log("Envio acionado")
+function envioMensagem(numeroEnvio, mensagemEnvio) {
+    console.log("Envio acionado. Número: " + numeroEnvio + " Mensagem: " + mensagemEnvio)
 
     $.ajax({
         url: 'ajaxs/atendimentoAjax.php',
@@ -547,9 +547,9 @@ function envioMensagem(numeroEnvio, mensagemEnvio){
 
             console.log(content)
 
-            if (content == true){
+            if (content == true) {
                 console.log("Mensagem enviada com sucesso!")
-            }else{
+            } else {
                 console.log("Mensagem NÃO enviada")
             }
         }
