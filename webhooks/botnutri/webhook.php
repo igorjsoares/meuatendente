@@ -1365,7 +1365,7 @@
 
                     $ultimoEmailEnviado = fctConsultaParaArray(
                         'ConsultaUltimoEmail',
-                        'SELECT ultimo_email FROM tbl_instancias WHERE id_instancia = 1',
+                        'SELECT ultima FROM tbl_conexao WHERE id_conexao = 1',
                         array('ultimo_email')
                     );
 
@@ -1378,7 +1378,7 @@
                     if ($intervalo > 30) {
                         fctUpdate(
                             'AtualizaUltimoEmail',
-                            'UPDATE tbl_instancias SET ultimo_email = NOW() WHERE id_instancia = 1'
+                            'UPDATE tbl_conexao SET ultima = NOW() WHERE id_conexao = 1'
                         );
 
                         file_put_contents('log_conexao.txt', "> ERR " . date('d/m/Y h:i:s') . " " . 'Mais de 5 tentativas. Enviado email. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas . PHP_EOL, FILE_APPEND);
