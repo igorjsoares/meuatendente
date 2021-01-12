@@ -1318,20 +1318,23 @@
 
             $response = file_get_contents($url, false, $options);
 
-            $this->logSis('REQ', 'Resp Requisição: ' . $response);
+            file_put_contents('log_conexao.txt', "> REQ " . date('d/m/Y h:i:s') . " " . 'Resp Requisição: ' . $response . PHP_EOL, FILE_APPEND);
+
 
             $resposta = json_decode($response, true);
             $status = $resposta['status'];
             if ($status == "ok") {
-                $this->logSis('SUC', 'Reload com sucesso: ');
+                file_put_contents('log_conexao.txt', "> SUC " . date('d/m/Y h:i:s') . " " . 'Reload com sucesso: ' . PHP_EOL, FILE_APPEND);
             } else {
-                $this->logSis('REQ', 'Não conseguiu recarregar. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas);
+                file_put_contents('log_conexao.txt', "> ERR " . date('d/m/Y h:i:s') . " " . 'Não conseguiu recarregar. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas . PHP_EOL, FILE_APPEND);
+
                 $this->status($tentativasAPI, $tentativasInternas);
             }
         }
 
         //* Função para verificação de status
-        public function status($tentativasAPI, $tentativasInternas){
+        public function status($tentativasAPI, $tentativasInternas)
+        {
             sleep(10);
 
             $APIurl = "v4.chatpro.com.br/chatpro-9piq49nyf9" . '/api/v1/';
@@ -1346,17 +1349,44 @@
 
             $response = file_get_contents($url, false, $options);
 
-            $this->logSis('REQ', 'Resp Requisição: ' . $response);
+            file_put_contents('log_conexao.txt', "> REQ " . date('d/m/Y h:i:s') . " " . 'Resp Requisição: ' . $response . PHP_EOL, FILE_APPEND);
+
 
             $resposta = json_decode($response, true);
             $conectado = $resposta['connected'];
             if ($conectado == "true") {
                 $this->logSis('SUC', 'Status verificado e está ON');
+                file_put_contents('log_conexao.txt', "> SUC " . date('d/m/Y h:i:s') . " " . 'Status verificado e está ON' . PHP_EOL, FILE_APPEND);
             } else {
-                $this->logSis('REQ', 'Verificado Status, está OFF. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas);
-                if($tentativasInternas >= 5){
-                    $this->enviarEmail('igorjsoares@gmail.com', 'Instância NUTRI MARI MARTINS deslogada!');
-                    exit(0);
+                file_put_contents('log_conexao.txt', "> ERR " . date('d/m/Y h:i:s') . " " . 'Verificado Status, está OFF. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas . PHP_EOL, FILE_APPEND);
+
+                if ($tentativasInternas >= 5) {
+                    include_once("servicos.php");
+
+                    $ultimoEmailEnviado = fctConsultaParaArray(
+                        'ConsultaUltimoEmail',
+                        'SELECT ultimo_email FROM tbl_instancias WHERE id_instancia = 1',
+                        array('ultimo_email')
+                    );
+
+                    $ultimoEmailEnviado = $ultimoEmailEnviado[0]['ultimo_email'];
+                    $agora = date('Y-m-d H:i:s');
+
+                    $intervalo = abs(strtotime($ultimoEmailEnviado) - strtotime($agora)) / 60;
+                    file_put_contents('log_conexao.txt', "> DEB " . date('d/m/Y h:i:s') . " " . 'Ultimo e-mail de erro enviado a: ' . $intervalo . PHP_EOL, FILE_APPEND);
+
+                    if ($intervalo > 30) {
+                        fctUpdate(
+                            'AtualizaUltimoEmail',
+                            'UPDATE tbl_instancias SET ultimo_email = NOW() WHERE id_instancia = 1'
+                        );
+
+                        file_put_contents('log_conexao.txt', "> ERR " . date('d/m/Y h:i:s') . " " . 'Mais de 5 tentativas. Enviado email. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas . PHP_EOL, FILE_APPEND);
+                        $this->enviarEmail('igorjsoares@gmail.com', 'Instância NUTRI MARI MARTINS deslogada!');
+                        exit(0);
+                    } else {
+                        exit(0);
+                    }
                 }
                 $this->reload($tentativasAPI, $tentativasInternas);
             }
