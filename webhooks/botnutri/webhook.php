@@ -31,6 +31,11 @@
 
             //() Verifica SE É uma mensagem recebida 
             if (isset($decoded['Type'])) {
+                if ($decoded['Type'] == 'error_instace') {
+                    $this->logSis('DEB', 'error_instace - Tentativa da API: ' . $decoded['ErrorCount']);
+                    $this->reload($decoded['ErrorCount'], 0);
+                    exit(0);
+                }
                 $this->logSis('DEB', 'Tipo de mensagem: ' . $decoded['Type']);
                 if ($decoded['Type'] == 'receveid_message') {
                     $mensagemDeTexto = true;
@@ -1295,6 +1300,66 @@
         public function logSis($tipo, $texto)
         {
             file_put_contents('log.txt', "> " . $tipo . " " . date('d/m/Y h:i:s') . " " . $texto . PHP_EOL, FILE_APPEND);
+        }
+
+        //* Função de reload
+        public function reload($tentativasAPI, $tentativasInternas)
+        {
+            $tentativasInternas += 1;
+            $APIurl = "v4.chatpro.com.br/chatpro-9piq49nyf9" . '/api/v1/';
+            $token = "69fa9a02548516e0e7507d0265b1caf2e3fde824";
+            $method = 'reload';
+            $url = 'https://' . $APIurl . $method;
+
+            $options = stream_context_create(['http' => [
+                'method'  => 'GET',
+                'header'  => "Content-type: application/json\r\nAuthorization: $token\r\n"
+            ]]);
+
+            $response = file_get_contents($url, false, $options);
+
+            $this->logSis('REQ', 'Resp Requisição: ' . $response);
+
+            $resposta = json_decode($response, true);
+            $status = $resposta['status'];
+            if ($status == "ok") {
+                $this->logSis('SUC', 'Reload com sucesso: ');
+            } else {
+                $this->logSis('REQ', 'Não conseguiu recarregar. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas);
+                $this->status($tentativasAPI, $tentativasInternas);
+            }
+        }
+
+        //* Função para verificação de status
+        public function status($tentativasAPI, $tentativasInternas){
+            sleep(10);
+
+            $APIurl = "v4.chatpro.com.br/chatpro-9piq49nyf9" . '/api/v1/';
+            $token = "69fa9a02548516e0e7507d0265b1caf2e3fde824";
+            $method = 'status';
+            $url = 'https://' . $APIurl . $method;
+
+            $options = stream_context_create(['http' => [
+                'method'  => 'GET',
+                'header'  => "Content-type: application/json\r\nAuthorization: $token\r\n"
+            ]]);
+
+            $response = file_get_contents($url, false, $options);
+
+            $this->logSis('REQ', 'Resp Requisição: ' . $response);
+
+            $resposta = json_decode($response, true);
+            $conectado = $resposta['connected'];
+            if ($conectado == "true") {
+                $this->logSis('SUC', 'Status verificado e está ON');
+            } else {
+                $this->logSis('REQ', 'Verificado Status, está OFF. Tentativa API: ' . $tentativasAPI . ' Tentativas Internas: ' . $tentativasInternas);
+                if($tentativasInternas >= 5){
+                    $this->enviarEmail('igorjsoares@gmail.com', 'Instância NUTRI MARI MARTINS deslogada!');
+                    exit(0);
+                }
+                $this->reload($tentativasAPI, $tentativasInternas);
+            }
         }
     } //# Class whatsAppBot
 
